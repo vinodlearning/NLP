@@ -1,0 +1,1 @@
+.match-highlight{background-color:var(--mark-bg)}body{--focus-shadow-inset: 0 0 0 2px var(--primary-2) inset;--focus-shadow: 0 0 0 2px var(--primary-2)}:focus{outline:none}a:focus-visible{box-shadow:var(--focus-shadow-inset)}
