@@ -1,0 +1,479 @@
+# Help Training Data for Contract and Parts Management Chatbot
+# Format: QUERY|||RESPONSE
+# This file contains training data for help-related intents
+
+# General Help Queries
+help|||I'm here to help you with contract and parts management! Here's what I can do:
+
+**📋 Contract Management:**
+• Look up contract details by contract number
+• Show all contracts in the system
+• Display contract status and information
+• Find contracts by customer or date range
+
+**🔧 Parts Management:**
+• Search for parts by part number
+• Show parts associated with specific contracts
+• Display part specifications and availability
+• Check part failure history and warranties
+
+**❓ How to Get Started:**
+• Type a contract number (6 digits) to view contract details
+• Enter a part number (format: XX#####-########) to search parts
+• Ask "show all contracts" to see all available contracts
+• Use "help" anytime for assistance
+
+**💡 Example Queries:**
+• "Show contract 123456"
+• "Find part AB12345-87654321"
+• "Show all contracts"
+• "What parts are in contract 123456?"
+
+Just type your question or request, and I'll help you find the information you need!
+
+what can you do|||I can help you with several tasks related to contract and parts management:
+
+**🔍 Search & Lookup:**
+• Find contracts by number, customer, or date
+• Search for parts by part number or description
+• Look up part specifications and availability
+• Check contract status and details
+
+**📊 Information Display:**
+• Show all contracts in the system
+• Display parts associated with contracts
+• Present part failure history and warranties
+• Show contract timelines and milestones
+
+**🛠️ Troubleshooting:**
+• Help resolve system access issues
+• Guide you through search procedures
+• Explain error messages and solutions
+• Provide step-by-step instructions
+
+**📋 Reporting:**
+• Generate contract summaries
+• Show parts usage across contracts
+• Display system statistics
+• Export information for external use
+
+Try asking me about a specific contract number or part number to get started!
+
+how do I|||To help you effectively, I need to know what specific task you'd like to accomplish. Here are common procedures:
+
+**📋 Contract Operations:**
+• **Find a Contract:** Enter the 6-digit contract number
+• **View All Contracts:** Type "show all contracts"
+• **Search by Customer:** Ask "contracts for [customer name]"
+
+**🔧 Parts Operations:**
+• **Find a Part:** Enter the part number (XX#####-########)
+• **Parts in Contract:** Ask "parts for contract [number]"
+• **Check Availability:** Request "availability of part [number]"
+
+**🔍 Advanced Searches:**
+• **Date Range:** "contracts from [date] to [date]"
+• **Status Filter:** "active contracts" or "completed contracts"
+• **Part Categories:** "show electrical parts" or "mechanical parts"
+
+**💡 Tips:**
+• Be specific with your requests
+• Use exact contract or part numbers when possible
+• Ask for examples if you're unsure about formats
+
+What specific task would you like help with?
+
+tutorial|||Here's a step-by-step tutorial for using the contract and parts management system:
+
+**🚀 Getting Started Tutorial**
+
+**Step 1: Understanding the Interface**
+The chatbot responds to natural language queries. You can type questions or commands in plain English.
+
+**Step 2: Contract Lookup**
+• Type a 6-digit contract number (e.g., "123456")
+• Or ask "show contract 123456"
+• The system will display contract details, customer info, and associated parts
+
+**Step 3: Parts Search**
+• Enter a part number in format XX#####-########
+• Or ask "find part AB12345-87654321"
+• View part specifications, availability, and related contracts
+
+**Step 4: Browse All Data**
+• Type "show all contracts" to see complete contract list
+• Use "list all parts" to browse parts inventory
+• Filter results with specific criteria
+
+**Step 5: Advanced Queries**
+• Combine searches: "parts for contract 123456"
+• Check status: "active contracts only"
+• Date ranges: "contracts from January 2024"
+
+**Step 6: Getting Help**
+• Type "help" anytime for assistance
+• Ask "what can you do" for capability overview
+• Use "examples" to see sample queries
+
+**🎯 Practice Examples:**
+Try these sample queries to get familiar:
+1. "Show contract 123456"
+2. "Find part AB12345-87654321"
+3. "What parts are failing in contract 123456?"
+4. "Show all active contracts"
+
+Ready to start? Try entering a contract number or part number!
+
+guide|||**📖 Complete User Guide**
+
+**🔍 Search Functions:**
+
+**Contract Search:**
+• **By Number:** Enter 6-digit contract number
+• **By Customer:** "contracts for [customer name]"
+• **By Status:** "active contracts", "completed contracts"
+• **By Date:** "contracts from [start date] to [end date]"
+
+**Parts Search:**
+• **By Part Number:** Enter XX#####-######## format
+• **By Description:** "find electrical parts"
+• **By Contract:** "parts for contract [number]"
+• **By Status:** "failed parts", "warranty parts"
+
+**📊 Information Display:**
+
+**Contract Details Include:**
+• Customer information and contact details
+• Contract value and payment terms
+• Start and end dates
+• Current status and progress
+• Associated parts and quantities
+• Failure history and warranties
+
+**Parts Information Include:**
+• Part specifications and descriptions
+• Manufacturer and model details
+• Current availability and pricing
+• Associated contracts and usage
+• Failure rates and warranty status
+• Maintenance schedules and history
+
+**🛠️ Troubleshooting:**
+
+**Common Issues:**
+• **"Contract not found"** - Verify 6-digit format
+• **"Part not found"** - Check part number format
+• **"Access denied"** - Contact system administrator
+• **"System slow"** - Try refreshing or contact support
+
+**Best Practices:**
+• Use exact numbers when possible
+• Be specific in your queries
+• Check spelling of customer names
+• Use standard date formats (MM/DD/YYYY)
+
+**💡 Pro Tips:**
+• Bookmark frequently accessed contracts
+• Use filters to narrow large result sets
+• Export data for offline analysis
+• Set up alerts for critical parts
+
+Need help with a specific function? Just ask!
+
+examples|||**💡 Query Examples - Try These!**
+
+**📋 Contract Examples:**
+
+**Basic Contract Lookup:**
+• "123456" - Look up contract by number
+• "Show contract 123456" - Detailed contract view
+• "Contract 123456 details" - Full contract information
+
+**Contract Lists:**
+• "Show all contracts" - Display all contracts
+• "List active contracts" - Only active contracts
+• "Completed contracts" - Only finished contracts
+
+**Customer-Based Searches:**
+• "Contracts for ABC Company" - All contracts for customer
+• "Show Johnson contracts" - Contracts for customer Johnson
+• "ABC Company active contracts" - Active contracts only
+
+**🔧 Parts Examples:**
+
+**Basic Parts Lookup:**
+• "AB12345-87654321" - Look up part by number
+• "Find part AB12345-87654321" - Detailed part search
+• "Part AB12345-87654321 details" - Full part information
+
+**Parts in Contracts:**
+• "Parts for contract 123456" - All parts in contract
+• "Show contract 123456 parts" - Parts list for contract
+• "What parts are in 123456?" - Natural language query
+
+**Parts Status:**
+• "Failed parts in contract 123456" - Only failed parts
+• "Warranty parts" - Parts under warranty
+• "Available parts" - Parts in stock
+
+**🔍 Advanced Examples:**
+
+**Combined Searches:**
+• "Failed parts for ABC Company" - Failed parts by customer
+• "Electrical parts in contract 123456" - Filtered by type
+• "Parts failing this month" - Time-based filter
+
+**Status and Analysis:**
+• "Contract 123456 status" - Current contract status
+• "Part failure rate for AB12345-87654321" - Failure analysis
+• "Warranty expiring soon" - Upcoming warranty expirations
+
+**Reporting:**
+• "Summary of contract 123456" - Contract summary
+• "Parts usage report" - Usage statistics
+• "Monthly contract report" - Time-based reporting
+
+**❓ Help Examples:**
+• "help" - General help
+• "what can you do" - Capability overview
+• "how to search contracts" - Specific help
+• "examples" - This examples list
+
+**🎯 Try It Now:**
+Copy and paste any of these examples to see how they work!
+
+how to search|||**🔍 Complete Search Guide**
+
+**📋 Contract Search Methods:**
+
+**Method 1: Direct Number Entry**
+• Simply type the 6-digit contract number: "123456"
+• System automatically recognizes and searches
+• Fastest method for known contract numbers
+
+**Method 2: Descriptive Search**
+• "Show contract 123456"
+• "Find contract 123456"
+• "Look up contract 123456"
+• "Contract 123456 details"
+
+**Method 3: Customer-Based Search**
+• "Contracts for [Customer Name]"
+• "Show ABC Company contracts"
+• "[Customer] active contracts"
+• "Find contracts by customer ABC"
+
+**Method 4: Status-Based Search**
+• "Show all contracts" - All contracts
+• "Active contracts" - Currently active only
+• "Completed contracts" - Finished contracts
+• "Pending contracts" - Awaiting approval
+
+**Method 5: Date-Based Search**
+• "Contracts from January 2024"
+• "Contracts between 01/01/2024 and 03/31/2024"
+• "Recent contracts" - Last 30 days
+• "This year's contracts"
+
+**🔧 Parts Search Methods:**
+
+**Method 1: Direct Part Number**
+• Enter full part number: "AB12345-87654321"
+• Must follow format: XX#####-########
+• System auto-detects part number format
+
+**Method 2: Descriptive Parts Search**
+• "Find part AB12345-87654321"
+• "Search for part AB12345-87654321"
+• "Part AB12345-87654321 details"
+• "Show part information AB12345-87654321"
+
+**Method 3: Contract-Related Parts**
+• "Parts for contract 123456"
+• "Show parts in contract 123456"
+• "What parts are used in 123456?"
+• "Contract 123456 parts list"
+
+**Method 4: Category-Based Search**
+• "Electrical parts" - By category
+• "Mechanical parts" - By type
+• "Failed parts" - By status
+• "Warranty parts" - Under warranty
+
+**Method 5: Availability Search**
+• "Available parts" - In stock
+• "Out of stock parts" - Not available
+• "Parts on order" - Being restocked
+• "Critical parts" - Low inventory
+
+**🎯 Search Tips:**
+
+**For Best Results:**
+• Use exact contract numbers (6 digits)
+• Use complete part numbers (XX#####-########)
+• Spell customer names correctly
+• Use standard date formats
+
+**Common Formats:**
+• Contract: 123456 (exactly 6 digits)
+• Part: AB12345-87654321 (2 letters, 5 numbers, dash, 8 numbers)
+• Date: MM/DD/YYYY or "January 2024"
+• Customer: Exact company name
+
+**Search Modifiers:**
+• Add "active" for active items only
+• Add "failed" for failure analysis
+• Add "warranty" for warranty items
+• Add "recent" for recent items
+
+**🔍 Advanced Search Combinations:**
+• "Active contracts for ABC Company"
+• "Failed parts in contract 123456"
+• "Electrical parts under warranty"
+• "Recent contracts with part failures"
+
+Try any of these search methods to find the information you need!
+
+how to find contract|||**📋 How to Find Contract Information**
+
+**Step 1: Identify Your Search Method**
+Choose the best approach based on what information you have:
+
+**If you have the contract number:**
+• Type the 6-digit number directly: "123456"
+• Or use: "Show contract 123456"
+
+**If you know the customer:**
+• Type: "Contracts for [Customer Name]"
+• Example: "Contracts for ABC Company"
+
+**If you want to browse:**
+• Type: "Show all contracts"
+• Or: "List all contracts"
+
+**Step 2: Enter Your Query**
+Type your search query in the chat input field and press Enter.
+
+**Step 3: Review Results**
+The system will display:
+• Contract basic information
+• Customer details
+• Contract dates and status
+• Associated parts list
+• Financial information
+• Current progress status
+
+**Step 4: Get More Details**
+For additional information, you can ask:
+• "Parts for contract 123456" - See all parts
+• "Contract 123456 status" - Current status
+• "Contract 123456 history" - Change history
+
+**🔍 Contract Search Examples:**
+
+**Direct Number Search:**
+• "123456" ✓
+• "Show contract 123456" ✓
+• "Find 123456" ✓
+
+**Customer Search:**
+• "ABC Company contracts" ✓
+• "Contracts for Johnson Industries" ✓
+• "Show XYZ Corp contracts" ✓
+
+**Status-Based Search:**
+• "Active contracts" ✓
+• "Completed contracts" ✓
+• "Pending approval contracts" ✓
+
+**Date-Based Search:**
+• "Contracts from 2024" ✓
+• "Recent contracts" ✓
+• "Contracts this month" ✓
+
+**📊 What You'll See:**
+When you find a contract, the display includes:
+• **Contract Number** and title
+• **Customer Information** (name, contact)
+• **Contract Dates** (start, end, milestones)
+• **Financial Details** (value, payments)
+• **Status Information** (current phase, completion %)
+• **Parts List** (all associated parts)
+• **Failure History** (if any parts have failed)
+• **Warranty Information** (active warranties)
+
+**🚨 Troubleshooting:**
+
+**"Contract not found" Error:**
+• Verify the contract number is exactly 6 digits
+• Check for typos in customer names
+• Ensure the contract exists in the system
+• Try browsing all contracts first
+
+**Slow Search Results:**
+• Check your internet connection
+• Try refreshing the page
+• Contact support if problems persist
+
+**Access Issues:**
+• Verify you have proper permissions
+• Contact your system administrator
+• Check if you're logged in correctly
+
+**💡 Pro Tips:**
+• Bookmark frequently accessed contracts
+• Use specific contract numbers for fastest results
+• Filter large result sets with status or date criteria
+• Export contract data for offline reference
+
+Ready to search? Try entering a contract number now!
+
+how to find parts|||**🔧 How to Find Parts Information**
+
+**Step 1: Choose Your Search Method**
+
+**If you have the part number:**
+• Enter the complete part number: "AB12345-87654321"
+• Format must be: XX#####-########
+• Or use: "Find part AB12345-87654321"
+
+**If you know the contract:**
+• Type: "Parts for contract 123456"
+• Or: "Show parts in contract 123456"
+
+**If you want to browse by category:**
+• Type: "Electrical parts"
+• Or: "Mechanical parts"
+• Or: "Show all parts"
+
+**Step 2: Enter Your Search**
+Type your query in the chat input and press Enter.
+
+**Step 3: Review Part Information**
+The system will show:
+• Part number and description
+• Manufacturer and model details
+• Technical specifications
+• Current availability status
+• Pricing information
+• Associated contracts
+• Failure history and rates
+• Warranty status
+
+**Step 4: Get Additional Details**
+For more information, ask:
+• "Contracts using part AB12345-87654321"
+• "Part AB12345-87654321 failures"
+• "Warranty status for AB12345-87654321"
+
+**🔍 Parts Search Examples:**
+
+**Direct Part Number:**
+• "AB12345-87654321" ✓
+• "Find part AB12345-87654321" ✓
+• "Search AB12345-87654321" ✓
+
+**Contract-Based Search:**
+• "Parts for contract 123456" ✓
+• "Show contract 123456 parts" ✓
+• "What parts are in
