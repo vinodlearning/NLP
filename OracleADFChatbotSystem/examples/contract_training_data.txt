@@ -1,0 +1,52 @@
+# Contract Training Data for Apache OpenNLP
+# Format: INTENT<TAB>TRAINING_TEXT
+
+CONTRACT_LOOKUP	show contract 123456
+CONTRACT_LOOKUP	display contract ABC-789
+CONTRACT_LOOKUP	get contract details for 555666
+CONTRACT_LOOKUP	find contract number 789012
+CONTRACT_LOOKUP	lookup contract XYZ-123
+CONTRACT_LOOKUP	view contract information for 456789
+
+CONTRACT_DATES	effective date for contract 123456
+CONTRACT_DATES	expiration date of contract ABC-789
+CONTRACT_DATES	when does contract 555666 expire
+CONTRACT_DATES	contract 123456 start date
+CONTRACT_DATES	show dates for contract ABC-789
+CONTRACT_DATES	contract 789012 end date
+
+CONTRACT_CUSTOMER	customer for contract 123456
+CONTRACT_CUSTOMER	who is the customer of contract ABC-789
+CONTRACT_CUSTOMER	contract 555666 customer name
+CONTRACT_CUSTOMER	show customer for contract XYZ-123
+CONTRACT_CUSTOMER	client information for contract 789012
+
+CONTRACT_VENDOR	vendor for contract 123456
+CONTRACT_VENDOR	supplier of contract ABC-789
+CONTRACT_VENDOR	who is the vendor for contract 555666
+CONTRACT_VENDOR	contract 789012 supplier information
+
+CONTRACT_STATUS	status of contract 123456
+CONTRACT_STATUS	is contract ABC-789 active
+CONTRACT_STATUS	contract 555666 current status
+CONTRACT_STATUS	show status for contract XYZ-123
+
+CONTRACT_VALUE	value of contract 123456
+CONTRACT_VALUE	contract ABC-789 total amount
+CONTRACT_VALUE	how much is contract 555666 worth
+CONTRACT_VALUE	show value for contract 789012
+CONTRACT_VALUE	contract XYZ-123 price
+
+CONTRACT_SEARCH	list all contracts
+CONTRACT_SEARCH	show all active contracts
+CONTRACT_SEARCH	find contracts created this month
+CONTRACT_SEARCH	contracts by customer ABC Corp
+CONTRACT_SEARCH	search contracts by vendor
+CONTRACT_SEARCH	show contracts created by john
+CONTRACT_SEARCH	contracts created after 2020
+CONTRACT_SEARCH	find expired contracts
+
+CONTRACT_COUNT	how many contracts
+CONTRACT_COUNT	total number of contracts
+CONTRACT_COUNT	count of active contracts
+CONTRACT_COUNT	number of contracts by customer
