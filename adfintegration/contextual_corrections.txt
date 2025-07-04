@@ -1,0 +1,153 @@
+# Contextual Corrections File
+# Format: wrong_phrase → correct_phrase
+# Context-specific corrections for phrases and expressions
+
+# Action phrase corrections
+pull contracts → get contracts
+fetch contracts → get contracts
+bring contracts → get contracts
+grab contracts → get contracts
+take contracts → get contracts
+give me contracts → get contracts
+show me contracts → show contracts
+tell me contracts → show contracts
+
+pull parts → get parts
+fetch parts → get parts
+bring parts → get parts
+grab parts → get parts
+take parts → get parts
+give me parts → get parts
+show me parts → show parts
+tell me parts → show parts
+
+# Polite expression corrections
+show me → show
+display me → display
+list me → list
+get me → get
+find me → find
+search me → search
+give me → get
+tell me → show
+bring me → get
+fetch me → get
+
+# Help expression corrections
+help me → help
+assist me → help
+guide me → help
+teach me → help
+show me how → help
+tell me how → help
+explain how → help
+help me to → help
+can you help → help
+please help → help
+
+# Query expression corrections
+i want to → 
+i need to → 
+i would like to → 
+can you → 
+please → 
+could you → 
+would you → 
+let me → 
+i want → 
+i need → 
+
+# Contract-specific corrections
+contract details → contract
+contract information → contract
+contract info → contract
+contract data → contract
+about contract → contract
+contract record → contract
+contract entry → contract
+
+# Parts-specific corrections
+parts details → parts
+parts information → parts
+parts info → parts
+parts data → parts
+about parts → parts
+parts record → parts
+parts entry → parts
+parts list → parts
+parts listing → parts
+
+# Customer-specific corrections
+customer details → customer
+customer information → customer
+customer info → customer
+customer data → customer
+about customer → customer
+customer record → customer
+customer entry → customer
+
+# User-specific corrections
+user details → user
+user information → user
+user info → user
+user data → user
+about user → user
+user record → user
+created by user → created by
+made by user → created by
+
+# Date-specific corrections
+date details → date
+date information → date
+date info → date
+creation date → created date
+made date → created date
+build date → created date
+effective date → effective date
+start date → effective date
+expiration date → expiration date
+expire date → expiration date
+end date → expiration date
+
+# Status-specific corrections
+status details → status
+status information → status
+status info → status
+current status → status
+contract status → status
+parts status → status
+
+# Common verb corrections
+let me see → show
+i want to see → show
+i need to see → show
+show me all → show
+display all → display
+list all → list
+get all → get
+find all → find
+
+# Time-related corrections
+created after → after
+created before → before
+made after → after
+made before → before
+built after → after
+built before → before
+from date → after
+to date → before
+until date → before
+since date → after
+
+# Comparison corrections
+greater than → >
+less than → <
+equal to → =
+equals to → =
+is equal to → =
+is greater than → >
+is less than → <
+more than → >
+fewer than → <
+bigger than → >
+smaller than → <
