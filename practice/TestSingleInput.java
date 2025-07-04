@@ -1,4 +1,4 @@
-THIS SHOULD BE A LINTER ERRORimport java.util.*;
+import java.util.*;
 
 /**
  * Test single user input and show JSON response
@@ -71,8 +71,7 @@ public class TestSingleInput {
         // Create keywords
         Set<String> createKeywords = new HashSet<>(Arrays.asList(
             "create", "creating", "make", "making", "new", "add", "adding",
-            "generate", "generating", "build", "building", "establish", "setup",
-            "help"  // Help requests for creation should also route to HelpModel
+            "generate", "generating", "build", "building", "establish", "setup"
         ));
         configurations.put("create", createKeywords);
         
