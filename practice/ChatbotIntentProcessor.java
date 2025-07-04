@@ -395,16 +395,16 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("? **Contract Found** (Mock Data)\n\n");
         result.append("? **Contract Details:**\n");
-        result.append("• Contract Number: ")
+        result.append("* Contract Number: ")
               .append(contractNumber)
               .append("\n");
-        result.append("• Customer: Mock Customer Corp\n");
-        result.append("• Status: Active\n");
-        result.append("• Start Date: 01/01/2024\n");
-        result.append("• End Date: 12/31/2024\n");
-        result.append("• Value: $150,000.00\n");
-        result.append("• Project Type: Software Development\n");
-        result.append("• Description: Mock contract for testing purposes\n\n");
+        result.append("* Customer: Mock Customer Corp\n");
+        result.append("* Status: Active\n");
+        result.append("* Start Date: 01/01/2024\n");
+        result.append("* End Date: 12/31/2024\n");
+        result.append("* Value: $150,000.00\n");
+        result.append("* Project Type: Software Development\n");
+        result.append("* Description: Mock contract for testing purposes\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
 
         return result.toString();
@@ -461,17 +461,17 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("? **Part Found** (Mock Data)\n\n");
         result.append("? **Part Details:**\n");
-        result.append("• Part Number: ")
+        result.append("* Part Number: ")
               .append(partNumber.toUpperCase())
               .append("\n");
-        result.append("• Description: Mock Electronic Component\n");
-        result.append("• Category: Electronics\n");
-        result.append("• Status: Active\n");
-        result.append("• Quantity on Hand: 150\n");
-        result.append("• Unit Price: $25.99\n");
-        result.append("• Manufacturer: Mock Electronics Inc.\n");
-        result.append("• Location: Warehouse A-15\n");
-        result.append("• Lead Time: 5-7 business days\n\n");
+        result.append("* Description: Mock Electronic Component\n");
+        result.append("* Category: Electronics\n");
+        result.append("* Status: Active\n");
+        result.append("* Quantity on Hand: 150\n");
+        result.append("* Unit Price: $25.99\n");
+        result.append("* Manufacturer: Mock Electronics Inc.\n");
+        result.append("* Location: Warehouse A-15\n");
+        result.append("* Lead Time: 5-7 business days\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
 
         return result.toString();
@@ -509,9 +509,9 @@ public class ChatbotIntentProcessor {
               .append(customer.toUpperCase())
               .append("** (Mock Data)\n\n");
         result.append("? **Found Contracts:**\n");
-        result.append("• Contract 123456 - Status: Active - Start: 01/01/2024\n");
-        result.append("• Contract 123457 - Status: Pending - Start: 02/15/2024\n");
-        result.append("• Contract 123458 - Status: Completed - Start: 03/01/2024\n\n");
+        result.append("* Contract 123456 - Status: Active - Start: 01/01/2024\n");
+        result.append("* Contract 123457 - Status: Pending - Start: 02/15/2024\n");
+        result.append("* Contract 123458 - Status: Completed - Start: 03/01/2024\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
 
         return result.toString();
@@ -554,18 +554,18 @@ public class ChatbotIntentProcessor {
                   .append(contractNumber)
                   .append("** (Mock Data)\n\n");
             result.append("? **Failed Parts:**\n");
-            result.append("• Part AE125 - Status: Failed - Reason: Quality Issue\n");
-            result.append("• Part BC789 - Status: Failed - Reason: Delivery Delay\n");
-            result.append("• Part XY456 - Status: Failed - Reason: Specification Mismatch\n\n");
+            result.append("* Part AE125 - Status: Failed - Reason: Quality Issue\n");
+            result.append("* Part BC789 - Status: Failed - Reason: Delivery Delay\n");
+            result.append("* Part XY456 - Status: Failed - Reason: Specification Mismatch\n\n");
         } else {
             result.append("? **Parts for Contract ")
                   .append(contractNumber)
                   .append("** (Mock Data)\n\n");
             result.append("? **Contract Parts:**\n");
-            result.append("• Part AE125 - Qty: 50 - Status: Active\n");
-            result.append("• Part BC789 - Qty: 25 - Status: Active\n");
-            result.append("• Part XY456 - Qty: 100 - Status: Active\n");
-            result.append("• Part MN321 - Qty: 75 - Status: Pending\n\n");
+            result.append("* Part AE125 - Qty: 50 - Status: Active\n");
+            result.append("* Part BC789 - Qty: 25 - Status: Active\n");
+            result.append("* Part XY456 - Qty: 100 - Status: Active\n");
+            result.append("* Part MN321 - Qty: 75 - Status: Pending\n\n");
             result.append("? **Summary:** 4 parts total, 3 active, 1 pending\n\n");
         }
 
@@ -605,9 +605,9 @@ public class ChatbotIntentProcessor {
               .append(partNumber.toUpperCase())
               .append("** (Mock Data)\n\n");
         result.append("? **Associated Contracts:**\n");
-        result.append("• Contract 123456 - Customer: Boeing - Qty: 50\n");
-        result.append("• Contract 123457 - Customer: Honeywell - Qty: 25\n");
-        result.append("• Contract 123458 - Customer: Acme Corp - Qty: 100\n\n");
+        result.append("* Contract 123456 - Customer: Boeing - Qty: 50\n");
+        result.append("* Contract 123457 - Customer: Honeywell - Qty: 25\n");
+        result.append("* Contract 123458 - Customer: Acme Corp - Qty: 100\n\n");
         result.append("? **Summary:** Part used in 3 contracts, total quantity: 175\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
 
@@ -845,10 +845,10 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("? **Active Contracts** (Mock Data)\n\n");
         result.append("? **Currently Active:**\n");
-        result.append("• Contract 123456 - Boeing - Expires: 12/31/2024\n");
-        result.append("• Contract 123457 - Honeywell - Expires: 06/30/2025\n");
-        result.append("• Contract 123458 - Acme Corp - Expires: 09/15/2024\n");
-        result.append("• Contract 123459 - Microsoft - Expires: 11/20/2024\n\n");
+        result.append("* Contract 123456 - Boeing - Expires: 12/31/2024\n");
+        result.append("* Contract 123457 - Honeywell - Expires: 06/30/2025\n");
+        result.append("* Contract 123458 - Acme Corp - Expires: 09/15/2024\n");
+        result.append("* Contract 123459 - Microsoft - Expires: 11/20/2024\n\n");
         result.append("? **Summary:** 4 active contracts\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -861,9 +861,9 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("?? **Expired Contracts** (Mock Data)\n\n");
         result.append("? **Recently Expired:**\n");
-        result.append("• Contract 123450 - Oracle - Expired: 01/15/2024\n");
-        result.append("• Contract 123451 - IBM - Expired: 02/28/2024\n");
-        result.append("• Contract 123452 - Dell - Expired: 03/10/2024\n\n");
+        result.append("* Contract 123450 - Oracle - Expired: 01/15/2024\n");
+        result.append("* Contract 123451 - IBM - Expired: 02/28/2024\n");
+        result.append("* Contract 123452 - Dell - Expired: 03/10/2024\n\n");
         result.append("? **Summary:** 3 expired contracts\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -876,10 +876,10 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("? **Failed Parts** (Mock Data)\n\n");
         result.append("?? **Parts with Issues:**\n");
-        result.append("• Part AE125 - Issue: Quality Control Failed\n");
-        result.append("• Part BC789 - Issue: Delivery Delayed\n");
-        result.append("• Part XY456 - Issue: Specification Mismatch\n");
-        result.append("• Part MN321 - Issue: Manufacturing Defect\n\n");
+        result.append("* Part AE125 - Issue: Quality Control Failed\n");
+        result.append("* Part BC789 - Issue: Delivery Delayed\n");
+        result.append("* Part XY456 - Issue: Specification Mismatch\n");
+        result.append("* Part MN321 - Issue: Manufacturing Defect\n\n");
         result.append("? **Summary:** 4 parts with issues\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -892,11 +892,11 @@ public class ChatbotIntentProcessor {
         StringBuilder result = new StringBuilder();
         result.append("? **All Parts** (Mock Data)\n\n");
         result.append("? **Available Parts:**\n");
-        result.append("• AE125 - Electronic Component - Qty: 150\n");
-        result.append("• BC789 - Mechanical Part - Qty: 75\n");
-        result.append("• XY456 - Software License - Qty: 200\n");
-        result.append("• MN321 - Hardware Module - Qty: 50\n");
-        result.append("• PQ987 - Cable Assembly - Qty: 300\n\n");
+        result.append("* AE125 - Electronic Component - Qty: 150\n");
+        result.append("* BC789 - Mechanical Part - Qty: 75\n");
+        result.append("* XY456 - Software License - Qty: 200\n");
+        result.append("* MN321 - Hardware Module - Qty: 50\n");
+        result.append("* PQ987 - Cable Assembly - Qty: 300\n\n");
         result.append("? **Summary:** 5 different parts, total quantity: 775\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -916,16 +916,16 @@ public class ChatbotIntentProcessor {
         result.append("? **Contract ")
               .append(contractNumber)
               .append(":**\n");
-        result.append("• Customer: Mock Customer Corp\n");
-        result.append("• Status: Active\n");
-        result.append("• Start Date: 01/01/2024\n");
-        result.append("• End Date: 12/31/2024\n");
-        result.append("• Value: $150,000.00\n");
-        result.append("• Project Type: Software Development\n");
-        result.append("• Contact Person: John Smith\n");
-        result.append("• Terms: Net 30 days\n");
-        result.append("• Description: Comprehensive software development project\n");
-        result.append("• Notes: Priority project with milestone deliverables\n\n");
+        result.append("* Customer: Mock Customer Corp\n");
+        result.append("* Status: Active\n");
+        result.append("* Start Date: 01/01/2024\n");
+        result.append("* End Date: 12/31/2024\n");
+        result.append("* Value: $150,000.00\n");
+        result.append("* Project Type: Software Development\n");
+        result.append("* Contact Person: John Smith\n");
+        result.append("* Terms: Net 30 days\n");
+        result.append("* Description: Comprehensive software development project\n");
+        result.append("* Notes: Priority project with milestone deliverables\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -944,13 +944,13 @@ public class ChatbotIntentProcessor {
         result.append("? **Contract ")
               .append(contractNumber)
               .append(" Status:**\n");
-        result.append("• Current Status: ? Active\n");
-        result.append("• Customer: Mock Customer Corp\n");
-        result.append("• Progress: 65% Complete\n");
-        result.append("• Start Date: 01/01/2024\n");
-        result.append("• End Date: 12/31/2024\n");
-        result.append("• Days Remaining: 180\n");
-        result.append("• Last Updated: " + new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + "\n\n");
+        result.append("* Current Status: ? Active\n");
+        result.append("* Customer: Mock Customer Corp\n");
+        result.append("* Progress: 65% Complete\n");
+        result.append("* Start Date: 01/01/2024\n");
+        result.append("* End Date: 12/31/2024\n");
+        result.append("* Days Remaining: 180\n");
+        result.append("* Last Updated: " + new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + "\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -969,11 +969,11 @@ public class ChatbotIntentProcessor {
         result.append("? **Contract ")
               .append(contractNumber)
               .append(" History:**\n");
-        result.append("• 07/01/2024 - Status Change: Updated to Active\n");
-        result.append("• 06/15/2024 - Amendment: Extended end date\n");
-        result.append("• 05/20/2024 - Review: Quarterly review completed\n");
-        result.append("• 04/10/2024 - Milestone: Phase 1 completed\n");
-        result.append("• 01/01/2024 - Creation: Contract created and signed\n\n");
+        result.append("* 07/01/2024 - Status Change: Updated to Active\n");
+        result.append("* 06/15/2024 - Amendment: Extended end date\n");
+        result.append("* 05/20/2024 - Review: Quarterly review completed\n");
+        result.append("* 04/10/2024 - Milestone: Phase 1 completed\n");
+        result.append("* 01/01/2024 - Creation: Contract created and signed\n\n");
         result.append("? **Summary:** 5 history entries\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -993,17 +993,17 @@ public class ChatbotIntentProcessor {
         result.append("? **Part ")
               .append(partNumber.toUpperCase())
               .append(":**\n");
-        result.append("• Description: Advanced Electronic Component\n");
-        result.append("• Category: Electronics\n");
-        result.append("• Manufacturer: Mock Electronics Inc.\n");
-        result.append("• Model: ME-2024-X\n");
-        result.append("• Status: Active\n");
-        result.append("• Quantity on Hand: 150\n");
-        result.append("• Unit Price: $25.99\n");
-        result.append("• Location: Warehouse A-15, Shelf B-3\n");
-        result.append("• Lead Time: 5-7 business days\n");
-        result.append("• Specifications: 12V, 2.5A, Temperature range: -40°C to +85°C\n");
-        result.append("• Last Updated: " + new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + "\n\n");
+        result.append("* Description: Advanced Electronic Component\n");
+        result.append("* Category: Electronics\n");
+        result.append("* Manufacturer: Mock Electronics Inc.\n");
+        result.append("* Model: ME-2024-X\n");
+        result.append("* Status: Active\n");
+        result.append("* Quantity on Hand: 150\n");
+        result.append("* Unit Price: $25.99\n");
+        result.append("* Location: Warehouse A-15, Shelf B-3\n");
+        result.append("* Lead Time: 5-7 business days\n");
+        result.append("* Specifications: 12V, 2.5A, Temperature range: -40°C to +85°C\n");
+        result.append("* Last Updated: " + new SimpleDateFormat("MM/dd/yyyy").format(new Date()) + "\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -1022,13 +1022,13 @@ public class ChatbotIntentProcessor {
         result.append("? **Part ")
               .append(partNumber.toUpperCase())
               .append(" Availability:**\n");
-        result.append("• Status: ? In Stock\n");
-        result.append("• Quantity Available: 150 units\n");
-        result.append("• Reserved: 25 units\n");
-        result.append("• Available for Order: 125 units\n");
-        result.append("• Location: Warehouse A-15\n");
-        result.append("• Reorder Level: 50 units\n");
-        result.append("• Next Shipment: 07/15/2024 (200 units)\n\n");
+        result.append("* Status: ? In Stock\n");
+        result.append("* Quantity Available: 150 units\n");
+        result.append("* Reserved: 25 units\n");
+        result.append("* Available for Order: 125 units\n");
+        result.append("* Location: Warehouse A-15\n");
+        result.append("* Reorder Level: 50 units\n");
+        result.append("* Next Shipment: 07/15/2024 (200 units)\n\n");
         result.append("? **Ready for immediate shipment**\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -1048,13 +1048,13 @@ public class ChatbotIntentProcessor {
         result.append("? **Part ")
               .append(partNumber.toUpperCase())
               .append(" Pricing:**\n");
-        result.append("• Unit Price: $25.99\n");
-        result.append("• List Price: $32.99\n");
-        result.append("• Bulk Price (100+): $22.99\n");
-        result.append("• Volume Price (500+): $19.99\n");
-        result.append("• Currency: USD\n");
-        result.append("• Price Valid Until: 12/31/2024\n");
-        result.append("• Discount Available: 15% for orders over $1000\n\n");
+        result.append("* Unit Price: $25.99\n");
+        result.append("* List Price: $32.99\n");
+        result.append("* Bulk Price (100+): $22.99\n");
+        result.append("* Volume Price (500+): $19.99\n");
+        result.append("* Currency: USD\n");
+        result.append("* Price Valid Until: 12/31/2024\n");
+        result.append("* Discount Available: 15% for orders over $1000\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -1073,15 +1073,15 @@ public class ChatbotIntentProcessor {
         result.append("? **Part ")
               .append(partNumber.toUpperCase())
               .append(" Compatible With:**\n");
-        result.append("• BC789 (Direct Replacement)\n");
-        result.append("• XY456 (Functional Equivalent)\n");
-        result.append("• MN321 (Alternative Option)\n");
-        result.append("• PQ987 (Cross-Reference)\n\n");
+        result.append("* BC789 (Direct Replacement)\n");
+        result.append("* XY456 (Functional Equivalent)\n");
+        result.append("* MN321 (Alternative Option)\n");
+        result.append("* PQ987 (Cross-Reference)\n\n");
         result.append("?? **Compatibility Notes:**\n");
-        result.append("• BC789: 100% compatible, same specifications\n");
-        result.append("• XY456: Compatible with minor wiring changes\n");
-        result.append("• MN321: Requires firmware update\n");
-        result.append("• PQ987: Compatible in most applications\n\n");
+        result.append("* BC789: 100% compatible, same specifications\n");
+        result.append("* XY456: Compatible with minor wiring changes\n");
+        result.append("* MN321: Requires firmware update\n");
+        result.append("* PQ987: Compatible in most applications\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -1112,13 +1112,13 @@ public class ChatbotIntentProcessor {
         } else {
             response.append("**Please specify what you're looking for:**\n\n");
             response.append("? **For Contracts:**\n");
-            response.append("• 'Find contract 123456'\n");
-            response.append("• 'Show contracts for Boeing'\n");
-            response.append("• 'Active contracts'\n\n");
+            response.append("* 'Find contract 123456'\n");
+            response.append("* 'Show contracts for Boeing'\n");
+            response.append("* 'Active contracts'\n\n");
             response.append("? **For Parts:**\n");
-            response.append("• 'Search part AE125'\n");
-            response.append("• 'Part availability BC789'\n");
-            response.append("• 'Parts for contract 123456'\n\n");
+            response.append("* 'Search part AE125'\n");
+            response.append("* 'Part availability BC789'\n");
+            response.append("* 'Parts for contract 123456'\n\n");
             response.append("? **Need Help?** Type 'help' for more options");
             return response.toString();
         }
@@ -1138,11 +1138,11 @@ public class ChatbotIntentProcessor {
             StringBuilder response = new StringBuilder();
             response.append("? **Contract Information Help**\n\n");
             response.append("**I can help you with:**\n");
-            response.append("• Search by contract number: 'Find contract 123456'\n");
-            response.append("• Search by customer: 'Contracts for Boeing'\n");
-            response.append("• Search by account: 'Account 123456789'\n");
-            response.append("• View active contracts: 'Active contracts'\n");
-            response.append("• View expired contracts: 'Expired contracts'\n\n");
+            response.append("* Search by contract number: 'Find contract 123456'\n");
+            response.append("* Search by customer: 'Contracts for Boeing'\n");
+            response.append("* Search by account: 'Account 123456789'\n");
+            response.append("* View active contracts: 'Active contracts'\n");
+            response.append("* View expired contracts: 'Expired contracts'\n\n");
             response.append("? Type 'help contracts' for more detailed assistance");
             return response.toString();
         }
@@ -1160,11 +1160,11 @@ public class ChatbotIntentProcessor {
             StringBuilder response = new StringBuilder();
             response.append("? **Parts Information Help**\n\n");
             response.append("**I can help you with:**\n");
-            response.append("• Search by part number: 'Find part AE125'\n");
-            response.append("• Check availability: 'Availability of AE125'\n");
-            response.append("• Get pricing: 'Price for part BC789'\n");
-            response.append("• View parts by contract: 'Parts for contract 123456'\n");
-            response.append("• View failed parts: 'Failed parts'\n\n");
+            response.append("* Search by part number: 'Find part AE125'\n");
+            response.append("* Check availability: 'Availability of AE125'\n");
+            response.append("* Get pricing: 'Price for part BC789'\n");
+            response.append("* View parts by contract: 'Parts for contract 123456'\n");
+            response.append("* View failed parts: 'Failed parts'\n\n");
             response.append("? Type 'help parts' for more detailed assistance");
             return response.toString();
         }
@@ -1184,9 +1184,9 @@ public class ChatbotIntentProcessor {
               .append(accountNumber)
               .append("** (Mock Data)\n\n");
         result.append("? **Found Contracts:**\n");
-        result.append("• Contract 123456 - Status: Active - Customer: Boeing\n");
-        result.append("• Contract 123457 - Status: Pending - Customer: Boeing\n");
-        result.append("• Contract 123458 - Status: Completed - Customer: Boeing\n\n");
+        result.append("* Contract 123456 - Status: Active - Customer: Boeing\n");
+        result.append("* Contract 123457 - Status: Pending - Customer: Boeing\n");
+        result.append("* Contract 123458 - Status: Completed - Customer: Boeing\n\n");
         result.append("? **Summary:** 3 contracts for this account\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
@@ -1200,27 +1200,27 @@ public class ChatbotIntentProcessor {
         help.append("? **Chatbot Assistant Help Center**\n\n");
         help.append("**I can help you with:**\n\n");
         help.append("? **Contract Management:**\n");
-        help.append("• Search contracts by number, customer, or account\n");
-        help.append("• View contract details, status, and history\n");
-        help.append("• List active or expired contracts\n");
-        help.append("• Create new contracts (guided process)\n\n");
+        help.append("* Search contracts by number, customer, or account\n");
+        help.append("* View contract details, status, and history\n");
+        help.append("* List active or expired contracts\n");
+        help.append("* Create new contracts (guided process)\n\n");
         help.append("? **Parts Management:**\n");
-        help.append("• Search parts by number or description\n");
-        help.append("• Check availability, pricing, and compatibility\n");
-        help.append("• View parts by contract or failed parts\n");
-        help.append("• Get detailed specifications\n\n");
+        help.append("* Search parts by number or description\n");
+        help.append("* Check availability, pricing, and compatibility\n");
+        help.append("* View parts by contract or failed parts\n");
+        help.append("* Get detailed specifications\n\n");
         help.append("? **Cross-Reference:**\n");
-        help.append("• Find parts used in specific contracts\n");
-        help.append("• Find contracts using specific parts\n\n");
+        help.append("* Find parts used in specific contracts\n");
+        help.append("* Find contracts using specific parts\n\n");
         help.append("**Quick Examples:**\n");
-        help.append("• 'Find contract 123456'\n");
-        help.append("• 'Search part AE125'\n");
-        help.append("• 'Contracts for Boeing'\n");
-        help.append("• 'Create contract'\n\n");
+        help.append("* 'Find contract 123456'\n");
+        help.append("* 'Search part AE125'\n");
+        help.append("* 'Contracts for Boeing'\n");
+        help.append("* 'Create contract'\n\n");
         help.append("? **Need specific help?** Try:\n");
-        help.append("• 'help contracts' - Contract-specific help\n");
-        help.append("• 'help parts' - Parts-specific help\n");
-        help.append("• 'help format' - Format requirements");
+        help.append("* 'help contracts' - Contract-specific help\n");
+        help.append("* 'help parts' - Parts-specific help\n");
+        help.append("* 'help format' - Format requirements");
         return help.toString();
     }
 
@@ -1228,25 +1228,25 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Contract Help & Commands**\n\n");
         help.append("**Search Commands:**\n");
-        help.append("• 'Find contract [number]' - Search by contract number\n");
-        help.append("• 'Contract [number]' - Quick contract lookup\n");
-        help.append("• 'Show contract [number]' - Display contract details\n\n");
+        help.append("* 'Find contract [number]' - Search by contract number\n");
+        help.append("* 'Contract [number]' - Quick contract lookup\n");
+        help.append("* 'Show contract [number]' - Display contract details\n\n");
         help.append("**Filter Commands:**\n");
-        help.append("• 'Contracts for [customer]' - Filter by customer\n");
-        help.append("• 'Account [number]' - Filter by account number\n");
-        help.append("• 'Active contracts' - Show only active contracts\n");
-        help.append("• 'Expired contracts' - Show expired contracts\n\n");
+        help.append("* 'Contracts for [customer]' - Filter by customer\n");
+        help.append("* 'Account [number]' - Filter by account number\n");
+        help.append("* 'Active contracts' - Show only active contracts\n");
+        help.append("* 'Expired contracts' - Show expired contracts\n\n");
         help.append("**Information Commands:**\n");
-        help.append("• 'Status of [number]' - Get contract status\n");
-        help.append("• 'History for [number]' - View contract history\n");
-        help.append("• 'Details of [number]' - Get detailed information\n\n");
+        help.append("* 'Status of [number]' - Get contract status\n");
+        help.append("* 'History for [number]' - View contract history\n");
+        help.append("* 'Details of [number]' - Get detailed information\n\n");
         help.append("**Creation Commands:**\n");
-        help.append("• 'Create contract' - Start contract creation process\n");
-        help.append("• 'New contract for [account]' - Create with account number\n\n");
+        help.append("* 'Create contract' - Start contract creation process\n");
+        help.append("* 'New contract for [account]' - Create with account number\n\n");
         help.append("**Format Requirements:**\n");
-        help.append("• Contract numbers: 6 digits (e.g., 123456)\n");
-        help.append("• Account numbers: 9 digits (e.g., 123456789)\n");
-        help.append("• Customer names: Full company name");
+        help.append("* Contract numbers: 6 digits (e.g., 123456)\n");
+        help.append("* Account numbers: 9 digits (e.g., 123456789)\n");
+        help.append("* Customer names: Full company name");
         return help.toString();
     }
 
@@ -1254,25 +1254,25 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Parts Help & Commands**\n\n");
         help.append("**Search Commands:**\n");
-        help.append("• 'Find part [number]' - Search by part number\n");
-        help.append("• 'Search part [number]' - Part lookup\n");
-        help.append("• 'Part [number]' - Quick part search\n\n");
+        help.append("* 'Find part [number]' - Search by part number\n");
+        help.append("* 'Search part [number]' - Part lookup\n");
+        help.append("* 'Part [number]' - Quick part search\n\n");
         help.append("**Information Commands:**\n");
-        help.append("• 'Availability of [part]' - Check stock levels\n");
-        help.append("• 'Price for [part]' - Get pricing information\n");
-        help.append("• 'Details of [part]' - Get detailed specifications\n");
-        help.append("• 'Compatibility for [part]' - Find compatible parts\n\n");
+        help.append("* 'Availability of [part]' - Check stock levels\n");
+        help.append("* 'Price for [part]' - Get pricing information\n");
+        help.append("* 'Details of [part]' - Get detailed specifications\n");
+        help.append("* 'Compatibility for [part]' - Find compatible parts\n\n");
         help.append("**Contract-Parts Commands:**\n");
-        help.append("• 'Parts for contract [number]' - Parts in a contract\n");
-        help.append("• 'Contracts for part [number]' - Contracts using a part\n");
-        help.append("• 'Failed parts for [contract]' - Failed parts in contract\n\n");
+        help.append("* 'Parts for contract [number]' - Parts in a contract\n");
+        help.append("* 'Contracts for part [number]' - Contracts using a part\n");
+        help.append("* 'Failed parts for [contract]' - Failed parts in contract\n\n");
         help.append("**List Commands:**\n");
-        help.append("• 'Failed parts' - Show all failed parts\n");
-        help.append("• 'All parts' - Show all available parts\n\n");
+        help.append("* 'Failed parts' - Show all failed parts\n");
+        help.append("* 'All parts' - Show all available parts\n\n");
         help.append("**Format Requirements:**\n");
-        help.append("• Standard format: XX#####-######## (e.g., AB12345-12345678)\n");
-        help.append("• Simple format: XX### (e.g., AE125)\n");
-        help.append("• Case insensitive: ae125 = AE125");
+        help.append("* Standard format: XX#####-######## (e.g., AB12345-12345678)\n");
+        help.append("* Simple format: XX### (e.g., AE125)\n");
+        help.append("* Case insensitive: ae125 = AE125");
         return help.toString();
     }
 
@@ -1280,24 +1280,24 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Search Help & Tips**\n\n");
         help.append("**Search Strategies:**\n");
-        help.append("• Use specific numbers when possible\n");
-        help.append("• Try different keywords if first search fails\n");
-        help.append("• Use partial matches for customer names\n");
-        help.append("• Combine search terms for better results\n\n");
+        help.append("* Use specific numbers when possible\n");
+        help.append("* Try different keywords if first search fails\n");
+        help.append("* Use partial matches for customer names\n");
+        help.append("* Combine search terms for better results\n\n");
         help.append("**Search Examples:**\n");
-        help.append("• 'Find contract 123456' - Exact contract search\n");
-        help.append("• 'Boeing contracts' - Customer-based search\n");
-        help.append("• 'Active contracts Boeing' - Combined filters\n");
-        help.append("• 'Part AE125 availability' - Part with specific info\n\n");
+        help.append("* 'Find contract 123456' - Exact contract search\n");
+        help.append("* 'Boeing contracts' - Customer-based search\n");
+        help.append("* 'Active contracts Boeing' - Combined filters\n");
+        help.append("* 'Part AE125 availability' - Part with specific info\n\n");
         help.append("**Troubleshooting:**\n");
-        help.append("• No results? Check number format\n");
-        help.append("• Wrong results? Be more specific\n");
-        help.append("• Typos? I can handle common misspellings\n");
-        help.append("• Still stuck? Try 'help format' for requirements\n\n");
+        help.append("* No results? Check number format\n");
+        help.append("* Wrong results? Be more specific\n");
+        help.append("* Typos? I can handle common misspellings\n");
+        help.append("* Still stuck? Try 'help format' for requirements\n\n");
         help.append("**Advanced Searches:**\n");
-        help.append("• 'Parts for contract 123456' - Cross-reference\n");
-        help.append("• 'Failed parts contract 123456' - Filtered results\n");
-        help.append("• 'Expired contracts Boeing' - Multiple filters");
+        help.append("* 'Parts for contract 123456' - Cross-reference\n");
+        help.append("* 'Failed parts contract 123456' - Filtered results\n");
+        help.append("* 'Expired contracts Boeing' - Multiple filters");
         return help.toString();
     }
 
@@ -1305,25 +1305,25 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Format Requirements & Examples**\n\n");
         help.append("**Contract Numbers:**\n");
-        help.append("• Format: 6 digits\n");
-        help.append("• Examples: 123456, 789012, 456789\n");
-        help.append("• Invalid: 12345 (too short), 1234567 (too long)\n\n");
+        help.append("* Format: 6 digits\n");
+        help.append("* Examples: 123456, 789012, 456789\n");
+        help.append("* Invalid: 12345 (too short), 1234567 (too long)\n\n");
         help.append("**Part Numbers:**\n");
-        help.append("• Standard: XX#####-########\n");
-        help.append("• Examples: AB12345-12345678, XY98765-87654321\n");
-        help.append("• Simple: XX###\n");
-        help.append("• Examples: AE125, BC789, XY456\n\n");
+        help.append("* Standard: XX#####-########\n");
+        help.append("* Examples: AB12345-12345678, XY98765-87654321\n");
+        help.append("* Simple: XX###\n");
+        help.append("* Examples: AE125, BC789, XY456\n\n");
         help.append("**Account Numbers:**\n");
-        help.append("• Format: 9 digits\n");
-        help.append("• Examples: 123456789, 987654321\n");
-        help.append("• Used for: Contract creation, customer lookup\n\n");
+        help.append("* Format: 9 digits\n");
+        help.append("* Examples: 123456789, 987654321\n");
+        help.append("* Used for: Contract creation, customer lookup\n\n");
         help.append("**Customer Names:**\n");
-        help.append("• Format: Company or person name\n");
-        help.append("• Examples: Boeing, Honeywell, Acme Corp\n");
-        help.append("• Case insensitive: boeing = Boeing\n\n");
+        help.append("* Format: Company or person name\n");
+        help.append("* Examples: Boeing, Honeywell, Acme Corp\n");
+        help.append("* Case insensitive: boeing = Boeing\n\n");
         help.append("**Dates:**\n");
-        help.append("• Supported: MM/DD/YYYY, YYYY-MM-DD, DD/MM/YYYY\n");
-        help.append("• Examples: 01/15/2024, 2024-01-15, 15/01/2024");
+        help.append("* Supported: MM/DD/YYYY, YYYY-MM-DD, DD/MM/YYYY\n");
+        help.append("* Examples: 01/15/2024, 2024-01-15, 15/01/2024");
         return help.toString();
     }
 
@@ -1332,28 +1332,28 @@ public class ChatbotIntentProcessor {
         help.append("? **Troubleshooting Guide**\n\n");
         help.append("**Common Issues & Solutions:**\n\n");
         help.append("? **'No results found'**\n");
-        help.append("• Check number format (6 digits for contracts)\n");
-        help.append("• Verify spelling of customer names\n");
-        help.append("• Try simpler search terms\n");
-        help.append("• Use 'help format' for correct formats\n\n");
+        help.append("* Check number format (6 digits for contracts)\n");
+        help.append("* Verify spelling of customer names\n");
+        help.append("* Try simpler search terms\n");
+        help.append("* Use 'help format' for correct formats\n\n");
         help.append("? **'Wrong results returned'**\n");
-        help.append("• Be more specific with search terms\n");
-        help.append("• Include additional keywords\n");
-        help.append("• Use exact numbers when available\n");
-        help.append("• Try different search approaches\n\n");
+        help.append("* Be more specific with search terms\n");
+        help.append("* Include additional keywords\n");
+        help.append("* Use exact numbers when available\n");
+        help.append("* Try different search approaches\n\n");
         help.append("? **'System not responding'**\n");
-        help.append("• Wait a moment and try again\n");
-        help.append("• Use simpler queries first\n");
-        help.append("• Check your internet connection\n");
-        help.append("• Contact IT support if persistent\n\n");
+        help.append("* Wait a moment and try again\n");
+        help.append("* Use simpler queries first\n");
+        help.append("* Check your internet connection\n");
+        help.append("* Contact IT support if persistent\n\n");
         help.append("? **'Access denied errors'**\n");
-        help.append("• Contact your system administrator\n");
-        help.append("• Verify your user permissions\n");
-        help.append("• Try logging out and back in\n\n");
+        help.append("* Contact your system administrator\n");
+        help.append("* Verify your user permissions\n");
+        help.append("* Try logging out and back in\n\n");
         help.append("**Still having issues?**\n");
-        help.append("• Try 'help examples' for working queries\n");
-        help.append("• Contact IT support with error details\n");
-        help.append("• Use 'model status' to check system health");
+        help.append("* Try 'help examples' for working queries\n");
+        help.append("* Contact IT support with error details\n");
+        help.append("* Use 'model status' to check system health");
         return help.toString();
     }
 
@@ -1490,37 +1490,37 @@ public class ChatbotIntentProcessor {
             StringBuilder result = new StringBuilder();
             result.append("? **Contract Created Successfully!**\n\n");
             result.append("? **Contract Details:**\n");
-            result.append("• Contract Number: **")
+            result.append("* Contract Number: **")
                   .append(newContractNumber)
                   .append("**\n");
-            result.append("• Account Number: ")
+            result.append("* Account Number: ")
                   .append(session.getAccountNumber())
                   .append("\n");
-            result.append("• Contract Name: ")
+            result.append("* Contract Name: ")
                   .append(session.getContractName())
                   .append("\n");
-            result.append("• Project Type: ")
+            result.append("* Project Type: ")
                   .append(session.getProjectType())
                   .append("\n");
-            result.append("• Comments: ")
+            result.append("* Comments: ")
                   .append(session.getComments())
                   .append("\n");
-            result.append("• Description: ")
+            result.append("* Description: ")
                   .append(session.getDescription())
                   .append("\n");
-            result.append("• Is Price: ")
+            result.append("* Is Price: ")
                   .append(session.getIsPrice())
                   .append("\n");
-            result.append("• Status: Draft\n");
-            result.append("• Created: ")
+            result.append("* Status: Draft\n");
+            result.append("* Created: ")
                   .append(new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date()))
                   .append("\n");
-            result.append("• Created By: Chatbot Assistant\n\n");
+            result.append("* Created By: Chatbot Assistant\n\n");
             result.append("? **Contract is ready for review and approval.**\n\n");
             result.append("? **Next Steps:**\n");
-            result.append("• Would you like to create a checklist for this contract?\n");
-            result.append("• Reply **Yes** to create checklist or **No** to finish\n");
-            result.append("• You can also ask me to 'show contract " + newContractNumber + "' anytime");
+            result.append("* Would you like to create a checklist for this contract?\n");
+            result.append("* Reply **Yes** to create checklist or **No** to finish\n");
+            result.append("* You can also ask me to 'show contract " + newContractNumber + "' anytime");
 
             // Store for potential checklist creation
             storeContractForChecklist(session.getSessionId(), newContractNumber);
@@ -1644,29 +1644,29 @@ public class ChatbotIntentProcessor {
             StringBuilder result = new StringBuilder();
             result.append("? **Checklist Created Successfully!**\n\n");
             result.append("? **Checklist Details:**\n");
-            result.append("• Checklist ID: **")
+            result.append("* Checklist ID: **")
                   .append(newChecklistId)
                   .append("**\n");
-            result.append("• Contract Number: ")
+            result.append("* Contract Number: ")
                   .append(session.getContractNumber())
                   .append("\n");
-            result.append("• System Date: ")
+            result.append("* System Date: ")
                   .append(session.getSystemDate())
                   .append("\n");
-            result.append("• Effective Date: ")
+            result.append("* Effective Date: ")
                   .append(session.getEffectiveDate())
                   .append("\n");
-            result.append("• Expiration Date: ")
+            result.append("* Expiration Date: ")
                   .append(session.getExpirationDate())
                   .append("\n");
-            result.append("• Price Expiration Date: ")
+            result.append("* Price Expiration Date: ")
                   .append(session.getPriceExpirationDate())
                   .append("\n");
-            result.append("• Status: Active\n");
-            result.append("• Created: ")
+            result.append("* Status: Active\n");
+            result.append("* Created: ")
                   .append(new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date()))
                   .append("\n");
-            result.append("• Created By: Chatbot Assistant\n\n");
+            result.append("* Created By: Chatbot Assistant\n\n");
             result.append("? **Both Contract and Checklist have been created successfully!**\n\n");
             result.append("? **System is ready for new requests!**\n");
             result.append("How can I help you next?");
@@ -1965,26 +1965,26 @@ public class ChatbotIntentProcessor {
         StringBuilder status = new StringBuilder();
         status.append("? **Model Status Report**\n\n");
         status.append("**NLP Models:**\n");
-        status.append("• Contracts Model: ")
+        status.append("* Contracts Model: ")
               .append(contractsClassifier != null ? "? Loaded" : "? Not Loaded")
               .append("\n");
-        status.append("• Parts Model: ")
+        status.append("* Parts Model: ")
               .append(partsClassifier != null ? "? Loaded" : "? Not Loaded")
               .append("\n");
-        status.append("• Help Model: ")
+        status.append("* Help Model: ")
               .append(helpClassifier != null ? "? Loaded" : "? Not Loaded")
               .append("\n\n");
         status.append("**System Status:**\n");
-        status.append("• Active Contract Sessions: ")
+        status.append("* Active Contract Sessions: ")
               .append(activeContractSessions.size())
               .append("\n");
-        status.append("• Active Checklist Sessions: ")
+        status.append("* Active Checklist Sessions: ")
               .append(activeChecklistSessions.size())
               .append("\n");
-        status.append("• Typo Corrections: ")
+        status.append("* Typo Corrections: ")
               .append(TYPO_CORRECTIONS.size())
               .append(" entries\n");
-        status.append("• Help Keywords: ")
+        status.append("* Help Keywords: ")
               .append(HELP_KEYWORDS.length)
               .append(" keywords\n");
         return status.toString();
@@ -2009,30 +2009,30 @@ public class ChatbotIntentProcessor {
         StringBuilder stats = new StringBuilder();
         stats.append("? **Processing Statistics**\n\n");
         stats.append("**System Health:**\n");
-        stats.append("• Models Status: ")
+        stats.append("* Models Status: ")
              .append(areModelsReady() ? "? All Ready" : "?? Some Missing")
              .append("\n");
-        stats.append("• Session Management: ? Active\n");
-        stats.append("• Typo Correction: ? Active (")
+        stats.append("* Session Management: ? Active\n");
+        stats.append("* Typo Correction: ? Active (")
              .append(TYPO_CORRECTIONS.size())
              .append(" entries)\n\n");
         stats.append("**Active Sessions:**\n");
-        stats.append("• Contract Creation: ")
+        stats.append("* Contract Creation: ")
              .append(activeContractSessions.size())
              .append(" sessions\n");
-        stats.append("• Checklist Creation: ")
+        stats.append("* Checklist Creation: ")
              .append(activeChecklistSessions.size())
              .append(" sessions\n\n");
         stats.append("**Pattern Matchers:**\n");
-        stats.append("• Contract Pattern: ? Active (6-digit numbers)\n");
-        stats.append("• Part Pattern: ? Active (XX#####-######## and XX###)\n");
-        stats.append("• Account Pattern: ? Active (9-digit numbers)\n");
-        stats.append("• Customer Pattern: ? Active\n\n");
+        stats.append("* Contract Pattern: ? Active (6-digit numbers)\n");
+        stats.append("* Part Pattern: ? Active (XX#####-######## and XX###)\n");
+        stats.append("* Account Pattern: ? Active (9-digit numbers)\n");
+        stats.append("* Customer Pattern: ? Active\n\n");
         stats.append("**Help System:**\n");
-        stats.append("• Keywords: ")
+        stats.append("* Keywords: ")
              .append(HELP_KEYWORDS.length)
              .append(" active\n");
-        stats.append("• Help Categories: 6 available\n");
+        stats.append("* Help Categories: 6 available\n");
         return stats.toString();
     }
 
@@ -2146,18 +2146,18 @@ public class ChatbotIntentProcessor {
               .append(" & Part ")
               .append(partNumber.toUpperCase())
               .append(":**\n");
-        result.append("• Part Usage: 25 units in this contract\n");
-        result.append("• Part Status: ? Active and Available\n");
-        result.append("• Contract Status: ? Active\n");
-        result.append("• Last Updated: ")
+        result.append("* Part Usage: 25 units in this contract\n");
+        result.append("* Part Status: ? Active and Available\n");
+        result.append("* Contract Status: ? Active\n");
+        result.append("* Last Updated: ")
               .append(new SimpleDateFormat("MM/dd/yyyy").format(new Date()))
               .append("\n");
-        result.append("• Delivery Status: ? On Schedule\n");
-        result.append("• Quality Status: ? Passed All Tests\n\n");
+        result.append("* Delivery Status: ? On Schedule\n");
+        result.append("* Quality Status: ? Passed All Tests\n\n");
         result.append("? **Performance Metrics:**\n");
-        result.append("• Delivery Rate: 100%\n");
-        result.append("• Quality Score: 98.5%\n");
-        result.append("• Cost Efficiency: 95%\n\n");
+        result.append("* Delivery Rate: 100%\n");
+        result.append("* Quality Score: 98.5%\n");
+        result.append("* Cost Efficiency: 95%\n\n");
         result.append("? *This is mock data for testing. Real data will be available when integrated with ADF.*");
         return result.toString();
     }
@@ -2174,27 +2174,27 @@ public class ChatbotIntentProcessor {
         switch (queryType) {
         case "active":
             result.append("? **Active Contracts Only:**\n");
-            result.append("• Contract 123456 - Value: $150,000 - Ends: 12/31/2024\n");
-            result.append("• Contract 123458 - Value: $200,000 - Ends: 09/15/2024\n");
+            result.append("* Contract 123456 - Value: $150,000 - Ends: 12/31/2024\n");
+            result.append("* Contract 123458 - Value: $200,000 - Ends: 09/15/2024\n");
             result.append("? **Active Summary:** 2 contracts, $350,000 total value\n");
             break;
         case "expired":
             result.append("? **Expired Contracts Only:**\n");
-            result.append("• Contract 123459 - Value: $50,000 - Ended: 03/31/2024\n");
+            result.append("* Contract 123459 - Value: $50,000 - Ended: 03/31/2024\n");
             result.append("? **Expired Summary:** 1 contract, $50,000 total value\n");
             break;
         case "failed_parts":
             result.append("?? **Contracts with Failed Parts:**\n");
-            result.append("• Contract 123456 - Failed Part: XY789 - Issue: Quality Control\n");
-            result.append("• Contract 123458 - Failed Part: BC456 - Issue: Manufacturing Defect\n");
+            result.append("* Contract 123456 - Failed Part: XY789 - Issue: Quality Control\n");
+            result.append("* Contract 123458 - Failed Part: BC456 - Issue: Manufacturing Defect\n");
             result.append("? **Failed Parts Summary:** 2 contracts affected, 2 parts failed\n");
             break;
         default:
             result.append("? **All Contracts:**\n");
-            result.append("• Contract 123456 - Status: ? Active\n");
-            result.append("• Contract 123457 - Status: ?? Pending\n");
-            result.append("• Contract 123458 - Status: ? Active\n");
-            result.append("• Contract 123459 - Status: ? Expired\n");
+            result.append("* Contract 123456 - Status: ? Active\n");
+            result.append("* Contract 123457 - Status: ?? Pending\n");
+            result.append("* Contract 123458 - Status: ? Active\n");
+            result.append("* Contract 123459 - Status: ? Expired\n");
         }
 
         result.append("\n? *This is mock data for testing. Real data will be available when integrated with ADF.*");
@@ -2253,27 +2253,27 @@ public class ChatbotIntentProcessor {
         StringBuilder report = new StringBuilder();
         report.append("? **Performance Report**\n\n");
         report.append("**Request Statistics:**\n");
-        report.append("• Total Requests: ")
+        report.append("* Total Requests: ")
               .append(requestCount)
               .append("\n");
-        report.append("• Successful: ")
+        report.append("* Successful: ")
               .append(successCount)
               .append(" (")
               .append(requestCount > 0 ? String.format("%.1f", (double) successCount / requestCount * 100) : "0")
               .append("%)\n");
-        report.append("• Errors: ")
+        report.append("* Errors: ")
               .append(errorCount)
               .append(" (")
               .append(requestCount > 0 ? String.format("%.1f", (double) errorCount / requestCount * 100) : "0")
               .append("%)\n\n");
         report.append("**System Status:**\n");
-        report.append("• Health: ")
+        report.append("* Health: ")
               .append(isHealthy() ? "? Healthy" : "?? Issues Detected")
               .append("\n");
-        report.append("• Models: ")
+        report.append("* Models: ")
               .append(areModelsReady() ? "? Ready" : "? Not Ready")
               .append("\n");
-        report.append("• Memory Usage: ")
+        report.append("* Memory Usage: ")
               .append(getMemoryUsage())
               .append("\n");
         return report.toString();
@@ -2315,7 +2315,7 @@ public class ChatbotIntentProcessor {
         StringBuilder config = new StringBuilder();
         config.append("?? **System Configuration**\n\n");
         for (Map.Entry<String, String> entry : CONFIG_SETTINGS.entrySet()) {
-            config.append("• ")
+            config.append("* ")
                   .append(entry.getKey())
                   .append(": ")
                   .append(entry.getValue())
@@ -2417,18 +2417,18 @@ public class ChatbotIntentProcessor {
         help.append("6. **Description:** Provide detailed description\n");
         help.append("7. **Pricing:** Specify if contract includes pricing (Yes/No)\n\n");
         help.append("**Tips for Success:**\n");
-        help.append("• Have all information ready before starting\n");
-        help.append("• Use clear, descriptive names\n");
-        help.append("• Double-check account numbers\n");
-        help.append("• Session expires after 30 minutes of inactivity\n\n");
+        help.append("* Have all information ready before starting\n");
+        help.append("* Use clear, descriptive names\n");
+        help.append("* Double-check account numbers\n");
+        help.append("* Session expires after 30 minutes of inactivity\n\n");
         help.append("**Quick Start Examples:**\n");
-        help.append("• 'create contract' - Start with guided process\n");
-        help.append("• 'new contract 123456789' - Start with account number\n");
-        help.append("• 'help create contract' - Get this help\n\n");
+        help.append("* 'create contract' - Start with guided process\n");
+        help.append("* 'new contract 123456789' - Start with account number\n");
+        help.append("* 'help create contract' - Get this help\n\n");
         help.append("**After Creation:**\n");
-        help.append("• Option to create associated checklist\n");
-        help.append("• Contract starts in 'Draft' status\n");
-        help.append("• Can be viewed immediately with contract number");
+        help.append("* Option to create associated checklist\n");
+        help.append("* Contract starts in 'Draft' status\n");
+        help.append("* Can be viewed immediately with contract number");
         return help.toString();
     }
 
@@ -2436,23 +2436,23 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Checklist Creation Guide**\n\n");
         help.append("**When to Create:**\n");
-        help.append("• After creating a new contract\n");
-        help.append("• When prompted during contract creation\n");
-        help.append("• Manually for existing contracts\n\n");
+        help.append("* After creating a new contract\n");
+        help.append("* When prompted during contract creation\n");
+        help.append("* Manually for existing contracts\n\n");
         help.append("**Required Information:**\n");
         help.append("1. **System Date:** Current system date\n");
         help.append("2. **Effective Date:** When checklist becomes active\n");
         help.append("3. **Expiration Date:** When checklist expires\n");
         help.append("4. **Price Expiration:** When pricing expires\n\n");
         help.append("**Date Format Options:**\n");
-        help.append("• MM/DD/YYYY (e.g., 01/15/2024)\n");
-        help.append("• YYYY-MM-DD (e.g., 2024-01-15)\n");
-        help.append("• DD/MM/YYYY (e.g., 15/01/2024)\n\n");
+        help.append("* MM/DD/YYYY (e.g., 01/15/2024)\n");
+        help.append("* YYYY-MM-DD (e.g., 2024-01-15)\n");
+        help.append("* DD/MM/YYYY (e.g., 15/01/2024)\n\n");
         help.append("**Best Practices:**\n");
-        help.append("• Ensure dates are logical (effective < expiration)\n");
-        help.append("• Use consistent date format throughout\n");
-        help.append("• Consider business calendar when setting dates\n");
-        help.append("• Price expiration should align with contract terms");
+        help.append("* Ensure dates are logical (effective < expiration)\n");
+        help.append("* Use consistent date format throughout\n");
+        help.append("* Consider business calendar when setting dates\n");
+        help.append("* Price expiration should align with contract terms");
         return help.toString();
     }
 
@@ -2460,24 +2460,24 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Advanced Search Guide**\n\n");
         help.append("**Search Operators:**\n");
-        help.append("• **Exact Match:** Use quotes 'find \"contract 123456\"'\n");
-        help.append("• **Wildcard:** Use * for partial matches 'contract 1234*'\n");
-        help.append("• **Multiple Terms:** Combine with AND/OR 'boeing AND active'\n");
-        help.append("• **Exclusion:** Use NOT to exclude 'contracts NOT expired'\n\n");
+        help.append("* **Exact Match:** Use quotes 'find \"contract 123456\"'\n");
+        help.append("* **Wildcard:** Use * for partial matches 'contract 1234*'\n");
+        help.append("* **Multiple Terms:** Combine with AND/OR 'boeing AND active'\n");
+        help.append("* **Exclusion:** Use NOT to exclude 'contracts NOT expired'\n\n");
         help.append("**Advanced Patterns:**\n");
-        help.append("• **Date Ranges:** 'contracts from 2024-01-01 to 2024-12-31'\n");
-        help.append("• **Value Ranges:** 'contracts value > 100000'\n");
-        help.append("• **Status Filters:** 'active contracts boeing'\n");
-        help.append("• **Cross-Reference:** 'parts in contract 123456'\n\n");
+        help.append("* **Date Ranges:** 'contracts from 2024-01-01 to 2024-12-31'\n");
+        help.append("* **Value Ranges:** 'contracts value > 100000'\n");
+        help.append("* **Status Filters:** 'active contracts boeing'\n");
+        help.append("* **Cross-Reference:** 'parts in contract 123456'\n\n");
         help.append("**Search Shortcuts:**\n");
-        help.append("• **Quick Contract:** Just type the 6-digit number\n");
-        help.append("• **Quick Part:** Just type the part number\n");
-        help.append("• **Quick Customer:** Just type the customer name\n\n");
+        help.append("* **Quick Contract:** Just type the 6-digit number\n");
+        help.append("* **Quick Part:** Just type the part number\n");
+        help.append("* **Quick Customer:** Just type the customer name\n\n");
         help.append("**Performance Tips:**\n");
-        help.append("• Use specific numbers when possible\n");
-        help.append("• Limit results with additional filters\n");
-        help.append("• Use recent data for faster searches\n");
-        help.append("• Cache frequently accessed information");
+        help.append("* Use specific numbers when possible\n");
+        help.append("* Limit results with additional filters\n");
+        help.append("* Use recent data for faster searches\n");
+        help.append("* Cache frequently accessed information");
         return help.toString();
     }
 
@@ -2485,30 +2485,30 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **Advanced Troubleshooting**\n\n");
         help.append("**System Diagnostics:**\n");
-        help.append("• Type 'model status' - Check NLP model health\n");
-        help.append("• Type 'system health' - Overall system status\n");
-        help.append("• Type 'performance report' - Performance metrics\n");
-        help.append("• Type 'config' - View system configuration\n\n");
+        help.append("* Type 'model status' - Check NLP model health\n");
+        help.append("* Type 'system health' - Overall system status\n");
+        help.append("* Type 'performance report' - Performance metrics\n");
+        help.append("* Type 'config' - View system configuration\n\n");
         help.append("**Common Error Codes:**\n");
-        help.append("• **PROC_ERR_001:** General processing error\n");
-        help.append("• **MODEL_ERR_002:** NLP model not loaded\n");
-        help.append("• **SESSION_ERR_003:** Session timeout or invalid\n");
-        help.append("• **DATA_ERR_004:** Database connection issue\n\n");
+        help.append("* **PROC_ERR_001:** General processing error\n");
+        help.append("* **MODEL_ERR_002:** NLP model not loaded\n");
+        help.append("* **SESSION_ERR_003:** Session timeout or invalid\n");
+        help.append("* **DATA_ERR_004:** Database connection issue\n\n");
         help.append("**Recovery Procedures:**\n");
         help.append("1. **Model Issues:** Try 'reload models'\n");
         help.append("2. **Session Issues:** Clear sessions and restart\n");
         help.append("3. **Performance Issues:** Check system resources\n");
         help.append("4. **Data Issues:** Verify database connectivity\n\n");
         help.append("**When to Contact Support:**\n");
-        help.append("• Persistent error codes\n");
-        help.append("• System health shows critical issues\n");
-        help.append("• Performance degradation > 50%\n");
-        help.append("• Data corruption suspected\n\n");
+        help.append("* Persistent error codes\n");
+        help.append("* System health shows critical issues\n");
+        help.append("* Performance degradation > 50%\n");
+        help.append("* Data corruption suspected\n\n");
         help.append("**Support Information:**\n");
-        help.append("• Include error codes and timestamps\n");
-        help.append("• Provide steps to reproduce issue\n");
-        help.append("• Export session data if relevant\n");
-        help.append("• Note system configuration changes");
+        help.append("* Include error codes and timestamps\n");
+        help.append("* Provide steps to reproduce issue\n");
+        help.append("* Export session data if relevant\n");
+        help.append("* Note system configuration changes");
         return help.toString();
     }
 
@@ -2516,28 +2516,28 @@ public class ChatbotIntentProcessor {
         StringBuilder help = new StringBuilder();
         help.append("? **API Reference Guide**\n\n");
         help.append("**Core Methods:**\n");
-        help.append("• `processUserMessage(String input, String sessionId)`\n");
-        help.append("• `processUserMessage(String input)` - Auto-generates session\n");
-        help.append("• `processBatchMessages(List<String> messages)`\n\n");
+        help.append("* `processUserMessage(String input, String sessionId)`\n");
+        help.append("* `processUserMessage(String input)` - Auto-generates session\n");
+        help.append("* `processBatchMessages(List<String> messages)`\n\n");
         help.append("**Session Management:**\n");
-        help.append("• `clearUserSessions(String userId)`\n");
-        help.append("• `clearAllSessions()`\n");
-        help.append("• `getActiveContractSessions()`\n");
-        help.append("• `getActiveChecklistSessions()`\n\n");
+        help.append("* `clearUserSessions(String userId)`\n");
+        help.append("* `clearAllSessions()`\n");
+        help.append("* `getActiveContractSessions()`\n");
+        help.append("* `getActiveChecklistSessions()`\n\n");
         help.append("**System Status:**\n");
-        help.append("• `isHealthy()` - Returns boolean health status\n");
-        help.append("• `areModelsReady()` - Check NLP model status\n");
-        help.append("• `getModelStatus()` - Detailed model information\n");
-        help.append("• `getProcessingStats()` - Performance statistics\n\n");
+        help.append("* `isHealthy()` - Returns boolean health status\n");
+        help.append("* `areModelsReady()` - Check NLP model status\n");
+        help.append("* `getModelStatus()` - Detailed model information\n");
+        help.append("* `getProcessingStats()` - Performance statistics\n\n");
         help.append("**Configuration:**\n");
-        help.append("• `updateConfig(String key, String value)`\n");
-        help.append("• `getConfig(String key)`\n");
-        help.append("• `getAllConfig()`\n\n");
+        help.append("* `updateConfig(String key, String value)`\n");
+        help.append("* `getConfig(String key)`\n");
+        help.append("* `getAllConfig()`\n\n");
         help.append("**Utilities:**\n");
-        help.append("• `addTypoCorrection(String typo, String correction)`\n");
-        help.append("• `reloadModels()` - Reload NLP models\n");
-        help.append("• `exportSessions()` - Backup session data\n");
-        help.append("• `importSessions(String data)` - Restore sessions\n\n");
+        help.append("* `addTypoCorrection(String typo, String correction)`\n");
+        help.append("* `reloadModels()` - Reload NLP models\n");
+        help.append("* `exportSessions()` - Backup session data\n");
+        help.append("* `importSessions(String data)` - Restore sessions\n\n");
         help.append("**Usage Examples:**\n");
         help.append("```java\n");
         help.append("ChatbotIntentProcessor processor = new ChatbotIntentProcessor();\n");
@@ -2603,13 +2603,13 @@ public class ChatbotIntentProcessor {
         if (!overallHealthy) {
             health.append("\n**Recommendations:**\n");
             if (!modelsHealthy)
-                health.append("• Reload NLP models\n");
+                health.append("* Reload NLP models\n");
             if (memoryUsagePercent >= 85)
-                health.append("• Restart application to free memory\n");
+                health.append("* Restart application to free memory\n");
             if (totalSessions >= 100)
-                health.append("• Clear old sessions\n");
+                health.append("* Clear old sessions\n");
             if (successRate <= 85)
-                health.append("• Check error logs and fix issues\n");
+                health.append("* Check error logs and fix issues\n");
         }
 
         return health.toString();
@@ -2718,10 +2718,10 @@ public class ChatbotIntentProcessor {
         // Final test results
         System.out.println("========================================================");
         System.out.println("? **Test Suite Results:**");
-        System.out.println("• Total Tests: " + testQueries.length);
-        System.out.println("• Passed: " + passedTests + " ?");
-        System.out.println("• Failed: " + failedTests + " ?");
-        System.out.println("• Success Rate: " + String.format("%.1f", (double) passedTests / testQueries.length * 100) +
+        System.out.println("* Total Tests: " + testQueries.length);
+        System.out.println("* Passed: " + passedTests + " ?");
+        System.out.println("* Failed: " + failedTests + " ?");
+        System.out.println("* Success Rate: " + String.format("%.1f", (double) passedTests / testQueries.length * 100) +
                            "%");
 
         // System health after testing
@@ -2775,30 +2775,30 @@ public class ChatbotIntentProcessor {
     public static String getVersionInfo() {
         StringBuilder version = new StringBuilder();
         version.append("?? **ChatbotIntentProcessor Version Information**\n\n");
-        version.append("• Version: ")
+        version.append("* Version: ")
                .append(VERSION)
                .append("\n");
-        version.append("• Build Date: ")
+        version.append("* Build Date: ")
                .append(BUILD_DATE)
                .append("\n");
-        version.append("• Build Number: ")
+        version.append("* Build Number: ")
                .append(BUILD_NUMBER)
                .append("\n");
-        version.append("• Java Version: ")
+        version.append("* Java Version: ")
                .append(System.getProperty("java.version"))
                .append("\n");
-        version.append("• OS: ")
+        version.append("* OS: ")
                .append(System.getProperty("os.name"))
                .append(" ")
                .append(System.getProperty("os.version"))
                .append("\n");
-        version.append("• Architecture: ")
+        version.append("* Architecture: ")
                .append(System.getProperty("os.arch"))
                .append("\n");
-        version.append("• Available Processors: ")
+        version.append("* Available Processors: ")
                .append(Runtime.getRuntime().availableProcessors())
                .append("\n");
-        version.append("• Max Memory: ")
+        version.append("* Max Memory: ")
                .append(Runtime.getRuntime().maxMemory() / 1024 / 1024)
                .append(" MB\n");
         return version.toString();

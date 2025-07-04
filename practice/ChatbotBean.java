@@ -222,10 +222,10 @@ public void processUserInput(ClientEvent clientEvent) {
        response.append("No problem! Your contract has been created successfully and is ready to use.\n\n");
        response.append("? **Ready for new requests!**\n\n");
        response.append("How can I help you next? You can:\n");
-       response.append("• Create another contract\n");
-       response.append("• Search for existing contracts\n");
-       response.append("• Look up parts information\n");
-       response.append("• Type 'help' for more options\n\n");
+       response.append("* Create another contract\n");
+       response.append("* Search for existing contracts\n");
+       response.append("* Look up parts information\n");
+       response.append("* Type 'help' for more options\n\n");
        response.append("What would you like to do?");
        
        return response.toString();
@@ -278,47 +278,47 @@ public void processUserInput(ClientEvent clientEvent) {
        help.append("I can assist you with:\n\n");
        
        help.append("? **Contract Management:**\n");
-       help.append("• Create new contracts with step-by-step guidance\n");
-       help.append("• Search existing contracts by number or customer\n");
-       help.append("• Check contract status and details\n");
-       help.append("• View contract history\n\n");
+       help.append("* Create new contracts with step-by-step guidance\n");
+       help.append("* Search existing contracts by number or customer\n");
+       help.append("* Check contract status and details\n");
+       help.append("* View contract history\n\n");
        
        help.append("? **Checklist Management:**\n");
-       help.append("• Create checklists for contracts\n");
-       help.append("• Set system, effective, and expiration dates\n");
-       help.append("• Manage price expiration dates\n");
-       help.append("• Track checklist status\n\n");
+       help.append("* Create checklists for contracts\n");
+       help.append("* Set system, effective, and expiration dates\n");
+       help.append("* Manage price expiration dates\n");
+       help.append("* Track checklist status\n\n");
        
        help.append("? **Parts Information:**\n");
-       help.append("• Lookup parts by number\n");
-       help.append("• Check parts availability and pricing\n");
-       help.append("• Find parts compatibility\n");
-       help.append("• View parts for specific contracts\n\n");
+       help.append("* Lookup parts by number\n");
+       help.append("* Check parts availability and pricing\n");
+       help.append("* Find parts compatibility\n");
+       help.append("* View parts for specific contracts\n\n");
        
        help.append("? **Customer Services:**\n");
-       help.append("• Find contracts by customer name\n");
-       help.append("• View customer contract history\n");
-       help.append("• Search customer parts information\n\n");
+       help.append("* Find contracts by customer name\n");
+       help.append("* View customer contract history\n");
+       help.append("* Search customer parts information\n\n");
        
        help.append("**? Quick Start Examples:**\n");
-       help.append("• `\"Create contract\"` - Start contract creation wizard\n");
-       help.append("• `\"Create contract for account 123456789\"` - Create with account\n");
-       help.append("• `\"Find contract 123456\"` - Search specific contract\n");
-       help.append("• `\"Search part AB12345-12345678\"` - Lookup part details\n");
-       help.append("• `\"Contracts for Acme Corp\"` - Find customer contracts\n");
-       help.append("• `\"Part availability AB12345-12345678\"` - Check part status\n\n");
+       help.append("* `\"Create contract\"` - Start contract creation wizard\n");
+       help.append("* `\"Create contract for account 123456789\"` - Create with account\n");
+       help.append("* `\"Find contract 123456\"` - Search specific contract\n");
+       help.append("* `\"Search part AB12345-12345678\"` - Lookup part details\n");
+       help.append("* `\"Contracts for Acme Corp\"` - Find customer contracts\n");
+       help.append("* `\"Part availability AB12345-12345678\"` - Check part status\n\n");
        
        help.append("**? Pro Tips:**\n");
-       help.append("• I understand natural language - speak normally!\n");
-       help.append("• I can handle typos and different phrasings\n");
-       help.append("• Use `\"help contracts\"`, `\"help parts\"`, or `\"help format\"` for specific guidance\n");
-       help.append("• Type `\"status\"` to check system health\n");
-       help.append("• Use `\"clear\"` to reset our conversation\n\n");
+       help.append("* I understand natural language - speak normally!\n");
+       help.append("* I can handle typos and different phrasings\n");
+       help.append("* Use `\"help contracts\"`, `\"help parts\"`, or `\"help format\"` for specific guidance\n");
+       help.append("* Type `\"status\"` to check system health\n");
+       help.append("* Use `\"clear\"` to reset our conversation\n\n");
        
        help.append("**? Session Management:**\n");
-       help.append("• I remember our conversation context\n");
-       help.append("• Multi-step processes are automatically managed\n");
-       help.append("• Sessions timeout after 30 minutes of inactivity\n\n");
+       help.append("* I remember our conversation context\n");
+       help.append("* Multi-step processes are automatically managed\n");
+       help.append("* Sessions timeout after 30 minutes of inactivity\n\n");
        
        help.append("Need specific help? Just ask! ?");
        
@@ -722,10 +722,10 @@ public void processUserInput(ClientEvent clientEvent) {
                         "I encountered an unexpected error while processing your request. " +
                         "Don't worry - I'm still here to help!<br><br>" +
                         "? <strong>What you can try:</strong><br>" +
-                        "• Rephrase your request and try again<br>" +
-                        "• Type 'help' to see available commands<br>" +
-                        "• Use 'clear' to reset our conversation<br>" +
-                        "• Check 'status' to see system health<br><br>" +
+                        "* Rephrase your request and try again<br>" +
+                        "* Type 'help' to see available commands<br>" +
+                        "* Use 'clear' to reset our conversation<br>" +
+                        "* Check 'status' to see system health<br><br>" +
                         "If the problem persists, please contact technical support." +
                         "</div>";
        
@@ -865,9 +865,9 @@ public void processUserInput(ClientEvent clientEvent) {
            return "<div style='padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; color: #856404;'>" +
                   "?? <strong>Empty Message</strong><br><br>" +
                   "Please type a message to get started. You can:<br>" +
-                  "• Ask me to create a contract<br>" +
-                  "• Search for parts or contracts<br>" +
-                  "• Type 'help' for all available options<br><br>" +
+                  "* Ask me to create a contract<br>" +
+                  "* Search for parts or contracts<br>" +
+                  "* Type 'help' for all available options<br><br>" +
                   "What would you like to do?" +
                   "</div>";
        }
@@ -1113,8 +1113,8 @@ public void processUserInput(ClientEvent clientEvent) {
                "? **Contracts**: Search, status, history, customer contracts\n" +
                "? **Parts**: Lookup, availability, pricing, compatibility\n" +
                "? **Customers**: Find contracts and parts by customer\n\n" + "**Quick Examples:**\n" +
-               "• 'Find contract 123456'\n" + "• 'Search part AB12345-12345678'\n" + "• 'Contracts for Acme Corp'\n" +
-               "• 'Part availability AB12345-12345678'\n\n" +
+               "* 'Find contract 123456'\n" + "* 'Search part AB12345-12345678'\n" + "* 'Contracts for Acme Corp'\n" +
+               "* 'Part availability AB12345-12345678'\n\n" +
                "Type 'help contracts', 'help parts', or 'help format' for specific guidance.";
     }
 
