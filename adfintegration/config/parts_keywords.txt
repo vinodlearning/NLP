@@ -1,0 +1,33 @@
+# Parts Keywords Configuration
+# One keyword per line
+# Lines starting with # are comments
+
+# Core parts terms
+parts
+part
+lines
+line
+components
+component
+
+# Manufacturing terms
+inventory
+stock
+item
+items
+materials
+supplies
+
+# Specific part identifiers
+ae125
+ae126
+manufacturer
+
+# Product related
+product
+products
+prduct
+
+# Alternative spellings (for backward compatibility)
+prts
+prt
