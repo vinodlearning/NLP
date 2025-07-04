@@ -4,6 +4,7 @@ import nlp.core.QueryStructure;
 import nlp.engine.NLPEngine;
 import nlp.handler.RequestHandler;
 import nlp.correction.SpellChecker;
+import java.util.Map;
 
 /**
  * Complete NLP System Test

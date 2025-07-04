@@ -163,6 +163,22 @@ public class TextAnalyzer {
         int partsScore = 0;
         int helpScore = 0;
         
+        // Enhanced scoring logic with context awareness
+        
+        // Check for explicit parts queries first
+        if (lowerText.startsWith("parts ") || lowerText.startsWith("part ") || 
+            lowerText.contains("show part") || lowerText.contains("list parts") ||
+            lowerText.contains("get part") || lowerText.contains("find parts")) {
+            partsScore += 5;
+        }
+        
+        // Check for explicit contract queries
+        if (lowerText.startsWith("contracts ") || lowerText.startsWith("contract ") ||
+            lowerText.contains("show contract") || lowerText.contains("list contracts") ||
+            lowerText.contains("get contract") || lowerText.contains("find contracts")) {
+            contractScore += 5;
+        }
+        
         // Score based on keyword presence
         for (String keyword : contractKeywords) {
             if (lowerText.contains(keyword)) {
@@ -184,15 +200,27 @@ public class TextAnalyzer {
         
         // Additional scoring based on patterns
         if (CONTRACT_NUMBER_PATTERN.matcher(text).find()) {
-            contractScore += 2;
+            // Don't automatically give contract score if it's clearly a parts query
+            if (!lowerText.startsWith("parts") && !lowerText.startsWith("part")) {
+                contractScore += 2;
+            }
         }
         
         if (PART_NUMBER_PATTERN.matcher(text).find()) {
-            partsScore += 2;
+            partsScore += 3; // Part numbers are strong indicators
         }
         
         if (lowerText.contains("create") || lowerText.contains("make") || lowerText.contains("new")) {
             helpScore += 2;
+        }
+        
+        // Context-specific adjustments
+        if (lowerText.contains("parts for contract") || lowerText.contains("part for contract")) {
+            partsScore += 3; // This is clearly a parts query
+        }
+        
+        if (lowerText.contains("contracts containing part") || lowerText.contains("contracts with part")) {
+            contractScore += 3; // This is clearly a contract query
         }
         
         // Determine highest score
@@ -215,35 +243,46 @@ public class TextAnalyzer {
         
         switch (queryType) {
             case CONTRACT:
-                if (CONTRACT_NUMBER_PATTERN.matcher(text).find()) {
-                    return ActionType.CONTRACTS_BY_CONTRACT_NUMBER;
-                }
+                // Check for user-based queries first (higher priority)
                 if (CREATED_BY_PATTERN.matcher(text).find()) {
                     return ActionType.CONTRACTS_BY_USER;
                 }
-                if (ACCOUNT_NUMBER_PATTERN.matcher(text).find()) {
-                    return ActionType.CONTRACTS_BY_ACCOUNT_NUMBER;
-                }
-                if (CUSTOMER_PATTERN.matcher(text).find()) {
+                // Check for customer-based queries
+                if (lowerText.contains("customer") || lowerText.contains("client")) {
                     return ActionType.CONTRACTS_BY_CUSTOMER_NAME;
                 }
-                if (lowerText.contains("part") || lowerText.contains("component")) {
+                // Check for account-based queries
+                if (lowerText.contains("account") && ACCOUNT_NUMBER_PATTERN.matcher(text).find()) {
+                    return ActionType.CONTRACTS_BY_ACCOUNT_NUMBER;
+                }
+                // Check for parts-based contract queries
+                if ((lowerText.contains("part") || lowerText.contains("component")) && 
+                    (lowerText.contains("containing") || lowerText.contains("with"))) {
                     return ActionType.CONTRACTS_BY_PARTS;
+                }
+                // Check for contract number queries
+                if (CONTRACT_NUMBER_PATTERN.matcher(text).find()) {
+                    return ActionType.CONTRACTS_BY_CONTRACT_NUMBER;
                 }
                 return ActionType.CONTRACTS_BY_CONTRACT_NUMBER; // Default
                 
             case PARTS:
-                if (PART_NUMBER_PATTERN.matcher(text).find()) {
-                    return ActionType.PARTS_BY_PART_NUMBER;
-                }
-                if (CONTRACT_NUMBER_PATTERN.matcher(text).find()) {
-                    return ActionType.PARTS_BY_CONTRACT;
-                }
+                // Check for user-based parts queries first
                 if (CREATED_BY_PATTERN.matcher(text).find()) {
                     return ActionType.PARTS_BY_USER;
                 }
-                if (CUSTOMER_PATTERN.matcher(text).find()) {
+                // Check for customer-based parts queries
+                if (lowerText.contains("customer") || lowerText.contains("client")) {
                     return ActionType.PARTS_BY_CUSTOMER;
+                }
+                // Check for part number queries
+                if (PART_NUMBER_PATTERN.matcher(text).find()) {
+                    return ActionType.PARTS_BY_PART_NUMBER;
+                }
+                // Check for contract-based parts queries
+                if (CONTRACT_NUMBER_PATTERN.matcher(text).find() || 
+                    lowerText.contains("contract")) {
+                    return ActionType.PARTS_BY_CONTRACT;
                 }
                 return ActionType.PARTS_BY_CONTRACT; // Default
                 
