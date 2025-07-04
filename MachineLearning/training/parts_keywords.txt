@@ -1,0 +1,24 @@
+# Parts Keywords Configuration
+# One keyword per line - used for routing parts-related queries
+# Update this file to add new parts-related keywords
+
+parts
+part
+lines
+line
+components
+component
+specifications
+specs
+inventory
+stock
+items
+materials
+hardware
+software
+modules
+assemblies
+units
+pieces
+elements
+subsystems

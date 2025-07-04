@@ -1,0 +1,115 @@
+# Parts Training Data
+# Format: INPUT_TEXT|CATEGORY|EXPECTED_RESPONSE_TYPE
+
+show parts for contract 123456|PARTS_LOOKUP|PARTS_LIST
+list all parts for contract 123456|PARTS_LOOKUP|PARTS_LIST
+what parts are in contract 123456|PARTS_LOOKUP|PARTS_LIST
+display parts information for contract 123456|PARTS_LOOKUP|PARTS_LIST
+get parts details for contract 123456|PARTS_LOOKUP|PARTS_LIST
+parts inventory for contract 123456|PARTS_INVENTORY|PARTS_INVENTORY
+how many parts in contract 123456|PARTS_COUNT|PARTS_COUNT
+parts count for contract 123456|PARTS_COUNT|PARTS_COUNT
+total parts for contract 123456|PARTS_COUNT|PARTS_COUNT
+number of parts in contract 123456|PARTS_COUNT|PARTS_COUNT
+parts specifications for contract 123456|PARTS_SPECS|PARTS_SPECS
+technical specs for parts in contract 123456|PARTS_SPECS|PARTS_SPECS
+parts requirements for contract 123456|PARTS_REQUIREMENTS|PARTS_REQUIREMENTS
+parts compatibility for contract 123456|PARTS_COMPATIBILITY|PARTS_COMPATIBILITY
+parts availability for contract 123456|PARTS_AVAILABILITY|PARTS_AVAILABILITY
+parts stock level for contract 123456|PARTS_STOCK|PARTS_STOCK
+parts ordering information for contract 123456|PARTS_ORDERING|PARTS_ORDERING
+parts supplier for contract 123456|PARTS_SUPPLIER|PARTS_SUPPLIER
+parts manufacturer for contract 123456|PARTS_MANUFACTURER|PARTS_MANUFACTURER
+parts warranty for contract 123456|PARTS_WARRANTY|PARTS_WARRANTY
+parts pricing for contract 123456|PARTS_PRICING|PARTS_PRICING
+parts cost for contract 123456|PARTS_PRICING|PARTS_PRICING
+parts delivery schedule for contract 123456|PARTS_DELIVERY|PARTS_DELIVERY
+parts shipping for contract 123456|PARTS_SHIPPING|PARTS_SHIPPING
+parts quality standards for contract 123456|PARTS_QUALITY|PARTS_QUALITY
+parts testing requirements for contract 123456|PARTS_TESTING|PARTS_TESTING
+parts certification for contract 123456|PARTS_CERTIFICATION|PARTS_CERTIFICATION
+parts compliance for contract 123456|PARTS_COMPLIANCE|PARTS_COMPLIANCE
+parts maintenance schedule for contract 123456|PARTS_MAINTENANCE|PARTS_MAINTENANCE
+parts replacement schedule for contract 123456|PARTS_REPLACEMENT|PARTS_REPLACEMENT
+parts lifecycle for contract 123456|PARTS_LIFECYCLE|PARTS_LIFECYCLE
+parts obsolescence for contract 123456|PARTS_OBSOLESCENCE|PARTS_OBSOLESCENCE
+parts alternatives for contract 123456|PARTS_ALTERNATIVES|PARTS_ALTERNATIVES
+parts substitutes for contract 123456|PARTS_ALTERNATIVES|PARTS_ALTERNATIVES
+parts documentation for contract 123456|PARTS_DOCUMENTATION|PARTS_DOCUMENTATION
+parts manual for contract 123456|PARTS_DOCUMENTATION|PARTS_DOCUMENTATION
+parts installation guide for contract 123456|PARTS_INSTALLATION|PARTS_INSTALLATION
+parts assembly instructions for contract 123456|PARTS_ASSEMBLY|PARTS_ASSEMBLY
+parts configuration for contract 123456|PARTS_CONFIGURATION|PARTS_CONFIGURATION
+parts setup for contract 123456|PARTS_SETUP|PARTS_SETUP
+parts troubleshooting for contract 123456|PARTS_TROUBLESHOOTING|PARTS_TROUBLESHOOTING
+parts diagnostics for contract 123456|PARTS_DIAGNOSTICS|PARTS_DIAGNOSTICS
+parts performance metrics for contract 123456|PARTS_PERFORMANCE|PARTS_PERFORMANCE
+parts efficiency for contract 123456|PARTS_EFFICIENCY|PARTS_EFFICIENCY
+parts reliability for contract 123456|PARTS_RELIABILITY|PARTS_RELIABILITY
+parts durability for contract 123456|PARTS_DURABILITY|PARTS_DURABILITY
+parts safety requirements for contract 123456|PARTS_SAFETY|PARTS_SAFETY
+parts environmental impact for contract 123456|PARTS_ENVIRONMENTAL|PARTS_ENVIRONMENTAL
+parts recycling for contract 123456|PARTS_RECYCLING|PARTS_RECYCLING
+parts disposal for contract 123456|PARTS_DISPOSAL|PARTS_DISPOSAL
+parts return policy for contract 123456|PARTS_RETURN|PARTS_RETURN
+parts exchange for contract 123456|PARTS_EXCHANGE|PARTS_EXCHANGE
+parts refund for contract 123456|PARTS_REFUND|PARTS_REFUND
+parts tracking for contract 123456|PARTS_TRACKING|PARTS_TRACKING
+parts history for contract 123456|PARTS_HISTORY|PARTS_HISTORY
+parts usage statistics for contract 123456|PARTS_USAGE|PARTS_USAGE
+parts consumption for contract 123456|PARTS_CONSUMPTION|PARTS_CONSUMPTION
+parts optimization for contract 123456|PARTS_OPTIMIZATION|PARTS_OPTIMIZATION
+parts standardization for contract 123456|PARTS_STANDARDIZATION|PARTS_STANDARDIZATION
+parts consolidation for contract 123456|PARTS_CONSOLIDATION|PARTS_CONSOLIDATION
+parts rationalization for contract 123456|PARTS_RATIONALIZATION|PARTS_RATIONALIZATION
+parts catalog for contract 123456|PARTS_CATALOG|PARTS_CATALOG
+parts database for contract 123456|PARTS_DATABASE|PARTS_DATABASE
+parts search in contract 123456|PARTS_SEARCH|PARTS_SEARCH
+parts filter for contract 123456|PARTS_FILTER|PARTS_FILTER
+parts comparison for contract 123456|PARTS_COMPARISON|PARTS_COMPARISON
+parts analysis for contract 123456|PARTS_ANALYSIS|PARTS_ANALYSIS
+parts report for contract 123456|PARTS_REPORT|PARTS_REPORT
+parts summary for contract 123456|PARTS_SUMMARY|PARTS_SUMMARY
+parts dashboard for contract 123456|PARTS_DASHBOARD|PARTS_DASHBOARD
+parts visualization for contract 123456|PARTS_VISUALIZATION|PARTS_VISUALIZATION
+parts mapping for contract 123456|PARTS_MAPPING|PARTS_MAPPING
+parts hierarchy for contract 123456|PARTS_HIERARCHY|PARTS_HIERARCHY
+parts structure for contract 123456|PARTS_STRUCTURE|PARTS_STRUCTURE
+parts relationship for contract 123456|PARTS_RELATIONSHIP|PARTS_RELATIONSHIP
+parts dependencies for contract 123456|PARTS_DEPENDENCIES|PARTS_DEPENDENCIES
+parts integration for contract 123456|PARTS_INTEGRATION|PARTS_INTEGRATION
+parts interface for contract 123456|PARTS_INTERFACE|PARTS_INTERFACE
+parts connectivity for contract 123456|PARTS_CONNECTIVITY|PARTS_CONNECTIVITY
+parts communication for contract 123456|PARTS_COMMUNICATION|PARTS_COMMUNICATION
+parts protocol for contract 123456|PARTS_PROTOCOL|PARTS_PROTOCOL
+parts standard for contract 123456|PARTS_STANDARD|PARTS_STANDARD
+parts requirement for contract 123456|PARTS_REQUIREMENT|PARTS_REQUIREMENT
+parts specification sheet for contract 123456|PARTS_SPEC_SHEET|PARTS_SPEC_SHEET
+parts datasheet for contract 123456|PARTS_DATASHEET|PARTS_DATASHEET
+parts technical drawing for contract 123456|PARTS_DRAWING|PARTS_DRAWING
+parts blueprint for contract 123456|PARTS_BLUEPRINT|PARTS_BLUEPRINT
+parts model number for contract 123456|PARTS_MODEL|PARTS_MODEL
+parts part number for contract 123456|PARTS_NUMBER|PARTS_NUMBER
+parts serial number for contract 123456|PARTS_SERIAL|PARTS_SERIAL
+parts batch number for contract 123456|PARTS_BATCH|PARTS_BATCH
+parts lot number for contract 123456|PARTS_LOT|PARTS_LOT
+parts revision for contract 123456|PARTS_REVISION|PARTS_REVISION
+parts version for contract 123456|PARTS_VERSION|PARTS_VERSION
+parts generation for contract 123456|PARTS_GENERATION|PARTS_GENERATION
+parts evolution for contract 123456|PARTS_EVOLUTION|PARTS_EVOLUTION
+parts upgrade for contract 123456|PARTS_UPGRADE|PARTS_UPGRADE
+parts enhancement for contract 123456|PARTS_ENHANCEMENT|PARTS_ENHANCEMENT
+parts improvement for contract 123456|PARTS_IMPROVEMENT|PARTS_IMPROVEMENT
+parts modification for contract 123456|PARTS_MODIFICATION|PARTS_MODIFICATION
+parts customization for contract 123456|PARTS_CUSTOMIZATION|PARTS_CUSTOMIZATION
+parts personalization for contract 123456|PARTS_PERSONALIZATION|PARTS_PERSONALIZATION
+parts adaptation for contract 123456|PARTS_ADAPTATION|PARTS_ADAPTATION
+parts configuration management for contract 123456|PARTS_CONFIG_MGMT|PARTS_CONFIG_MGMT
+parts change control for contract 123456|PARTS_CHANGE_CONTROL|PARTS_CHANGE_CONTROL
+parts version control for contract 123456|PARTS_VERSION_CONTROL|PARTS_VERSION_CONTROL
+parts baseline for contract 123456|PARTS_BASELINE|PARTS_BASELINE
+parts milestone for contract 123456|PARTS_MILESTONE|PARTS_MILESTONE
+parts roadmap for contract 123456|PARTS_ROADMAP|PARTS_ROADMAP
+parts planning for contract 123456|PARTS_PLANNING|PARTS_PLANNING
+parts scheduling for contract 123456|PARTS_SCHEDULING|PARTS_SCHEDULING
+parts timeline for contract 123456|PARTS_TIMELINE|PARTS_TIMELINE

@@ -1,0 +1,63 @@
+# Spell Corrections Configuration
+# Format: incorrect_word=correct_word
+# One correction per line - used for automatic spell correction
+# Update this file to add new domain-specific spell corrections
+
+# Contract-specific corrections
+effectuve=effective
+exipraion=expiration
+contrct=contract
+expiraton=expiration
+effectiv=effective
+agrement=agreement
+contarct=contract
+agreeement=agreement
+
+# Parts-specific corrections
+partz=parts
+componant=component
+specificatons=specifications
+inventroy=inventory
+stok=stock
+materiels=materials
+
+# General corrections
+teh=the
+adn=and
+thier=their
+recieve=receive
+seperate=separate
+occured=occurred
+necesary=necessary
+recomend=recommend
+accomodate=accommodate
+definitly=definitely
+
+# Business domain corrections
+anual=annual
+quaterly=quarterly
+montly=monthly
+anually=annually
+buisness=business
+managment=management
+departement=department
+organiztion=organization
+guarentee=guarantee
+liscense=license
+
+# Date/Time corrections
+todate=to date
+uptodate=up to date
+deadlin=deadline
+expiry=expiry
+renewel=renewal
+extention=extension
+
+# Action corrections
+submitt=submit
+procede=proceed
+reccommend=recommend
+seperat=separate
+occurence=occurrence
+performace=performance
+maintainance=maintenance
