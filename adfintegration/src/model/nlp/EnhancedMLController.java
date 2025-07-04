@@ -2,7 +2,6 @@ package model.nlp;
 
 import java.util.*;
 import java.io.*;
-import javax.faces.context.FacesContext;
 
 /**
  * Enhanced ML Controller for Oracle ADF Integration
@@ -117,6 +116,8 @@ public class EnhancedMLController {
         spellCorrections.put("cntract", "contract");
         spellCorrections.put("contrct", "contract");
         spellCorrections.put("kontrct", "contract");
+        spellCorrections.put("contrst", "contract");
+        spellCorrections.put("contarct", "contract");
         spellCorrections.put("cntracts", "contracts");
         spellCorrections.put("contrcts", "contracts");
         
@@ -171,13 +172,41 @@ public class EnhancedMLController {
         StringBuilder corrected = new StringBuilder();
         
         for (String word : words) {
-            // Clean word and check for corrections
-            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-            String correctedWord = spellCorrections.getOrDefault(cleanWord, word);
+            String correctedWord = correctSingleWord(word);
             corrected.append(correctedWord).append(" ");
         }
         
         return corrected.toString().trim();
+    }
+    
+    /**
+     * Correct a single word, handling word+number combinations
+     */
+    private String correctSingleWord(String word) {
+        if (word == null || word.isEmpty()) {
+            return word;
+        }
+        
+        String originalWord = word;
+        String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        
+        // Check for direct word match
+        if (spellCorrections.containsKey(cleanWord)) {
+            return word.replace(cleanWord, spellCorrections.get(cleanWord));
+        }
+        
+        // Handle word+number combinations (e.g., "contrst78954632")
+        if (cleanWord.matches(".*\\d+.*")) {
+            String wordPart = cleanWord.replaceAll("\\d+", "");
+            String numberPart = cleanWord.replaceAll("[^0-9]", "");
+            
+            if (spellCorrections.containsKey(wordPart)) {
+                String correctedWord = spellCorrections.get(wordPart);
+                return word.replace(cleanWord, correctedWord + numberPart);
+            }
+        }
+        
+        return word;
     }
     
     /**
@@ -227,11 +256,22 @@ public class EnhancedMLController {
         }
         
         // Pattern 3: Contract followed by numbers (contract123456)
-        if (input.matches(".*contract\\d{4,8}.*")) {
-            String[] parts = input.split("contract");
+        if (input.toLowerCase().matches(".*contract\\d{4,8}.*")) {
+            String[] parts = input.toLowerCase().split("contract");
             if (parts.length > 1) {
                 String numberPart = parts[1].replaceAll("[^0-9]", "");
                 if (numberPart.length() >= 4) {
+                    return numberPart;
+                }
+            }
+        }
+        
+        // Pattern 5: Any word+number combination after correction
+        for (String word : words) {
+            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "");
+            if (cleanWord.matches(".*\\d{6,8}.*")) {
+                String numberPart = cleanWord.replaceAll("[^0-9]", "");
+                if (numberPart.length() >= 6) {
                     return numberPart;
                 }
             }
