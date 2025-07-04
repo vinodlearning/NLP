@@ -1035,7 +1035,7 @@ public class MLIntentClassifierImproved {
             if (!recommendations.isEmpty()) {
                 sb.append("? Recommendations:\n");
                 for (String rec : recommendations) {
-                    sb.append("  - ")
+                    sb.append("   ")
                       .append(rec)
                       .append("\n");
                 }
@@ -1513,7 +1513,7 @@ public class MLIntentClassifierImproved {
             if (!failures.isEmpty()) {
                 sb.append("\n? Failed Tests:\n");
                 for (TestResult failure : failures) {
-                    sb.append("  - ")
+                    sb.append("   ")
                       .append(failure.toString())
                       .append("\n");
                 }
@@ -1813,20 +1813,20 @@ public class MLIntentClassifierImproved {
     private void showDemoHelp() {
         System.out.println("\n? Demo Examples:");
         System.out.println("Contract Creation:");
-        System.out.println("  - create contract for account 123456");
-        System.out.println("  - make new contract for boeing expires 2025-12-31");
-        System.out.println("  - setup contract named premium service");
+        System.out.println("   create contract for account 123456");
+        System.out.println("   make new contract for boeing expires 2025-12-31");
+        System.out.println("   setup contract named premium service");
 
         System.out.println("\nGuidance Requests:");
-        System.out.println("  - how to create contract");
-        System.out.println("  - steps to make new contract");
-        System.out.println("  - help me with contract creation");
+        System.out.println("   how to create contract");
+        System.out.println("   steps to make new contract");
+        System.out.println("   help me with contract creation");
 
         System.out.println("\nLegacy Queries:");
-        System.out.println("  - show contract 123456");
-        System.out.println("  - list all contracts");
-        System.out.println("  - search contracts for microsoft");
-        System.out.println("  - expired contracts");
+        System.out.println("   show contract 123456");
+        System.out.println("   list all contracts");
+        System.out.println("   search contracts for microsoft");
+        System.out.println("   expired contracts");
         System.out.println();
     }
 
@@ -1842,7 +1842,7 @@ public class MLIntentClassifierImproved {
         if (!result.getEntities().isEmpty()) {
             System.out.println("\n? Extracted Entities:");
             for (Map.Entry<String, Object> entry : result.getEntities().entrySet()) {
-                System.out.println("  - " + formatFieldName(entry.getKey()) + ": " + entry.getValue());
+                System.out.println("   " + formatFieldName(entry.getKey()) + ": " + entry.getValue());
             }
         }
 
@@ -1850,7 +1850,7 @@ public class MLIntentClassifierImproved {
             if (!result.getMissingFields().isEmpty()) {
                 System.out.println("\n?? Missing Required Fields:");
                 for (String field : result.getMissingFields()) {
-                    System.out.println("  - " + formatFieldName(field));
+                    System.out.println("   " + formatFieldName(field));
                 }
 
                 System.out.println("\n? Suggestions:");
@@ -1867,13 +1867,13 @@ public class MLIntentClassifierImproved {
             if (!validation.isValid()) {
                 System.out.println("\n? Validation Errors:");
                 for (String error : validation.getErrors()) {
-                    System.out.println("  - " + error);
+                    System.out.println("   " + error);
                 }
             }
             if (!validation.getWarnings().isEmpty()) {
                 System.out.println("\n?? Validation Warnings:");
                 for (String warning : validation.getWarnings()) {
-                    System.out.println("  - " + warning);
+                    System.out.println("   " + warning);
                 }
             }
 
@@ -2310,7 +2310,7 @@ public class MLIntentClassifierImproved {
         if (requiredContractFields != null) {
             config.append("\nRequired Contract Fields:\n");
             for (String field : requiredContractFields) {
-                config.append("  - ")
+                config.append("   ")
                       .append(field)
                       .append("\n");
             }
@@ -2439,10 +2439,10 @@ public class MLIntentClassifierImproved {
             MLIntentClassifierImproved classifier = new MLIntentClassifierImproved();
 
             System.out.println("? Training with enhanced contract data...");
-            System.out.println("  - Contract creation samples");
-            System.out.println("  - Guidance and help samples");
-            System.out.println("  - Legacy compatibility samples");
-            System.out.println("  - Entity extraction patterns");
+            System.out.println("   Contract creation samples");
+            System.out.println("   Guidance and help samples");
+            System.out.println("   Legacy compatibility samples");
+            System.out.println("   Entity extraction patterns");
 
             classifier.initializeWithTrainingData();
             System.out.println("? Training completed successfully!");
@@ -3168,13 +3168,13 @@ public class MLIntentClassifierImproved {
 
         if (helpTopic == null || helpTopic.equals("general_help") || helpTopic.contains("create")) {
             steps.add("1. ? Gather required information:");
-            steps.add("   - Customer account number (6-8 digits)");
-            steps.add("   - Contract name/description");
-            steps.add("   - Expiration date (YYYY-MM-DD)");
-            steps.add("   - Price or price list");
+            steps.add("    Customer account number (6-8 digits)");
+            steps.add("    Contract name/description");
+            steps.add("    Expiration date (YYYY-MM-DD)");
+            steps.add("    Price or price list");
             steps.add("2. ? Use creation command:");
-            steps.add("   - \"create contract for account [number]\"");
-            steps.add("   - \"make new contract named [name]\"");
+            steps.add("    \"create contract for account [number]\"");
+            steps.add("    \"make new contract named [name]\"");
             steps.add("3. ? Review and confirm details");
             steps.add("4. ? Save the contract");
         } else {
