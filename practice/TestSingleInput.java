@@ -15,7 +15,7 @@ public class TestSingleInput {
         initializeConfigurations();
         
         // Test the user's input
-        String userInput = "list all partz for contract 123456";
+        String userInput = "how many parst for 123456";
         testInput(userInput);
     }
     
@@ -78,6 +78,7 @@ public class TestSingleInput {
         // Spell corrections
         spellCorrections = new HashMap<>();
         spellCorrections.put("partz", "parts");
+        spellCorrections.put("parst", "parts");  // New correction for user's input
         spellCorrections.put("prts", "parts");
         spellCorrections.put("shwo", "show");
         spellCorrections.put("creat", "create");
@@ -154,40 +155,81 @@ public class TestSingleInput {
         // Extract contract ID if present
         String contractId = "123456"; // Extracted from input
         
-        return "{\n" +
-               "  \"responseType\": \"PARTS_RESULT\",\n" +
-               "  \"message\": \"Parts listing retrieved successfully for contract " + contractId + "\",\n" +
-               "  \"query\": \"" + input + "\",\n" +
-               "  \"contractId\": \"" + contractId + "\",\n" +
-               "  \"results\": [\n" +
-               "    {\n" +
-               "      \"partId\": \"P-C123456-001\",\n" +
-               "      \"partName\": \"Engine Component A\",\n" +
-               "      \"status\": \"ACTIVE\",\n" +
-               "      \"quantity\": 25,\n" +
-               "      \"location\": \"Warehouse Section B\",\n" +
-               "      \"lastUpdated\": \"2024-01-15T10:30:00Z\"\n" +
-               "    },\n" +
-               "    {\n" +
-               "      \"partId\": \"P-C123456-002\",\n" +
-               "      \"partName\": \"Transmission Unit\",\n" +
-               "      \"status\": \"PENDING\",\n" +
-               "      \"quantity\": 10,\n" +
-               "      \"location\": \"Production Line 3\",\n" +
-               "      \"lastUpdated\": \"2024-01-15T11:45:00Z\"\n" +
-               "    },\n" +
-               "    {\n" +
-               "      \"partId\": \"P-C123456-003\",\n" +
-               "      \"partName\": \"Control Module\",\n" +
-               "      \"status\": \"QUALITY_CHECK\",\n" +
-               "      \"quantity\": 5,\n" +
-               "      \"location\": \"QC Department\",\n" +
-               "      \"lastUpdated\": \"2024-01-15T14:20:00Z\"\n" +
-               "    }\n" +
-               "  ],\n" +
-               "  \"totalResults\": 3,\n" +
-               "  \"totalQuantity\": 40\n" +
-               "}";
+        // Check if this is a "how many" query for optimized response
+        boolean isCountQuery = input.toLowerCase().contains("how many");
+        
+        if (isCountQuery) {
+            return "{\n" +
+                   "  \"responseType\": \"PARTS_COUNT_RESULT\",\n" +
+                   "  \"message\": \"Parts count retrieved for contract " + contractId + "\",\n" +
+                   "  \"query\": \"" + input + "\",\n" +
+                   "  \"contractId\": \"" + contractId + "\",\n" +
+                   "  \"summary\": {\n" +
+                   "    \"totalPartsCount\": 3,\n" +
+                   "    \"totalQuantity\": 40,\n" +
+                   "    \"breakdown\": {\n" +
+                   "      \"ACTIVE\": 1,\n" +
+                   "      \"PENDING\": 1,\n" +
+                   "      \"QUALITY_CHECK\": 1\n" +
+                   "    }\n" +
+                   "  },\n" +
+                   "  \"results\": [\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-001\",\n" +
+                   "      \"partName\": \"Engine Component A\",\n" +
+                   "      \"status\": \"ACTIVE\",\n" +
+                   "      \"quantity\": 25\n" +
+                   "    },\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-002\",\n" +
+                   "      \"partName\": \"Transmission Unit\",\n" +
+                   "      \"status\": \"PENDING\",\n" +
+                   "      \"quantity\": 10\n" +
+                   "    },\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-003\",\n" +
+                   "      \"partName\": \"Control Module\",\n" +
+                   "      \"status\": \"QUALITY_CHECK\",\n" +
+                   "      \"quantity\": 5\n" +
+                   "    }\n" +
+                   "  ]\n" +
+                   "}";
+        } else {
+            return "{\n" +
+                   "  \"responseType\": \"PARTS_RESULT\",\n" +
+                   "  \"message\": \"Parts listing retrieved successfully for contract " + contractId + "\",\n" +
+                   "  \"query\": \"" + input + "\",\n" +
+                   "  \"contractId\": \"" + contractId + "\",\n" +
+                   "  \"results\": [\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-001\",\n" +
+                   "      \"partName\": \"Engine Component A\",\n" +
+                   "      \"status\": \"ACTIVE\",\n" +
+                   "      \"quantity\": 25,\n" +
+                   "      \"location\": \"Warehouse Section B\",\n" +
+                   "      \"lastUpdated\": \"2024-01-15T10:30:00Z\"\n" +
+                   "    },\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-002\",\n" +
+                   "      \"partName\": \"Transmission Unit\",\n" +
+                   "      \"status\": \"PENDING\",\n" +
+                   "      \"quantity\": 10,\n" +
+                   "      \"location\": \"Production Line 3\",\n" +
+                   "      \"lastUpdated\": \"2024-01-15T11:45:00Z\"\n" +
+                   "    },\n" +
+                   "    {\n" +
+                   "      \"partId\": \"P-C123456-003\",\n" +
+                   "      \"partName\": \"Control Module\",\n" +
+                   "      \"status\": \"QUALITY_CHECK\",\n" +
+                   "      \"quantity\": 5,\n" +
+                   "      \"location\": \"QC Department\",\n" +
+                   "      \"lastUpdated\": \"2024-01-15T14:20:00Z\"\n" +
+                   "    }\n" +
+                   "  ],\n" +
+                   "  \"totalResults\": 3,\n" +
+                   "  \"totalQuantity\": 40\n" +
+                   "}";
+        }
     }
     
     /**
