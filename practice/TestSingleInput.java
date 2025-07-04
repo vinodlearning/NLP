@@ -15,7 +15,7 @@ public class TestSingleInput {
         initializeConfigurations();
         
         // Test the user's input
-        String userInput = "help me to create contract";
+        String userInput = "steps to create contract";
         testInput(userInput);
     }
     
