@@ -1,4 +1,4 @@
-import java.util.*;
+THIS SHOULD BE A LINTER ERRORimport java.util.*;
 
 /**
  * Test single user input and show JSON response
@@ -15,7 +15,7 @@ public class TestSingleInput {
         initializeConfigurations();
         
         // Test the user's input
-        String userInput = "how many parst for 123456";
+        String userInput = "help me to create contract";
         testInput(userInput);
     }
     
@@ -71,7 +71,8 @@ public class TestSingleInput {
         // Create keywords
         Set<String> createKeywords = new HashSet<>(Arrays.asList(
             "create", "creating", "make", "making", "new", "add", "adding",
-            "generate", "generating", "build", "building", "establish", "setup"
+            "generate", "generating", "build", "building", "establish", "setup",
+            "help"  // Help requests for creation should also route to HelpModel
         ));
         configurations.put("create", createKeywords);
         
@@ -238,15 +239,59 @@ public class TestSingleInput {
     private static String generateHelpResponse(String input) {
         return "{\n" +
                "  \"responseType\": \"HELP_RESPONSE\",\n" +
-               "  \"message\": \"Contract creation guidance provided\",\n" +
+               "  \"message\": \"Contract creation guidance provided successfully\",\n" +
                "  \"query\": \"" + input + "\",\n" +
                "  \"helpContent\": {\n" +
-               "    \"title\": \"How to Create a Contract\",\n" +
+               "    \"title\": \"Step-by-Step Contract Creation Guide\",\n" +
+               "    \"overview\": \"Follow these steps to create a new contract in the system\",\n" +
                "    \"steps\": [\n" +
-               "      \"1. Verify customer account number\",\n" +
-               "      \"2. Enter contract details\",\n" +
-               "      \"3. Set pricing information\",\n" +
-               "      \"4. Review and submit\"\n" +
+               "      {\n" +
+               "        \"stepNumber\": 1,\n" +
+               "        \"title\": \"Account Verification\",\n" +
+               "        \"description\": \"Verify customer account number (6-12 digits)\",\n" +
+               "        \"details\": \"Ensure account is active and in good standing\",\n" +
+               "        \"required\": true\n" +
+               "      },\n" +
+               "      {\n" +
+               "        \"stepNumber\": 2,\n" +
+               "        \"title\": \"Contract Details\",\n" +
+               "        \"description\": \"Enter contract name, title, and description\",\n" +
+               "        \"details\": \"Make contract names descriptive and unique\",\n" +
+               "        \"required\": true\n" +
+               "      },\n" +
+               "      {\n" +
+               "        \"stepNumber\": 3,\n" +
+               "        \"title\": \"Pricing Configuration\",\n" +
+               "        \"description\": \"Set up price lists and discount structures\",\n" +
+               "        \"details\": \"Configure pricing tiers if applicable\",\n" +
+               "        \"required\": false\n" +
+               "      },\n" +
+               "      {\n" +
+               "        \"stepNumber\": 4,\n" +
+               "        \"title\": \"Additional Information\",\n" +
+               "        \"description\": \"Add comments, attachments, and terms\",\n" +
+               "        \"details\": \"Include special terms and conditions\",\n" +
+               "        \"required\": false\n" +
+               "      },\n" +
+               "      {\n" +
+               "        \"stepNumber\": 5,\n" +
+               "        \"title\": \"Review and Submit\",\n" +
+               "        \"description\": \"Validate all fields and submit for approval\",\n" +
+               "        \"details\": \"Double-check all information before submission\",\n" +
+               "        \"required\": true\n" +
+               "      }\n" +
+               "    ],\n" +
+               "    \"tips\": [\n" +
+               "      \"Keep contract names descriptive but concise\",\n" +
+               "      \"Always double-check account numbers\",\n" +
+               "      \"Include comprehensive descriptions to avoid confusion\",\n" +
+               "      \"Consider future pricing changes when setting up price lists\"\n" +
+               "    ],\n" +
+               "    \"estimatedTime\": \"5-10 minutes\",\n" +
+               "    \"nextActions\": [\n" +
+               "      \"Click 'Create New Contract' button to start\",\n" +
+               "      \"Have customer account number ready\",\n" +
+               "      \"Prepare contract details and pricing information\"\n" +
                "    ]\n" +
                "  }\n" +
                "}";
