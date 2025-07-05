@@ -1,0 +1,721 @@
+package com.company.contracts.enhanced;
+
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+/**
+ * Fixed Standard JSON Processor
+ * Addresses all issues identified in test reports:
+ * 1. General query validation too strict
+ * 2. Date/Year recognition issues
+ * 3. Creator name recognition
+ * 4. Customer name recognition
+ * 5. Special character handling
+ * 6. Enhanced spell correction
+ */
+public class FixedStandardJSONProcessor {
+    
+    // Business rule patterns
+    private static final Pattern CONTRACT_NUMBER_PATTERN = Pattern.compile("\\d{6,}");
+    private static final Pattern PART_NUMBER_PATTERN = Pattern.compile("[A-Za-z0-9]{3,}");
+    private static final Pattern CUSTOMER_NUMBER_PATTERN = Pattern.compile("\\d{4,8}");
+    private static final Pattern YEAR_PATTERN = Pattern.compile("\\b(19|20)\\d{2}\\b");
+    
+    // Command words to filter out
+    private static final Set<String> COMMAND_WORDS = Set.of(
+        "show", "get", "list", "find", "display", "fetch", "retrieve", "give", "provide",
+        "what", "how", "why", "when", "where", "which", "who", "is", "are", "can", "will",
+        "the", "of", "for", "in", "on", "at", "by", "with", "from", "to", "and", "or",
+        "contract", "contracts", "part", "parts", "customer", "account", "info", "details",
+        "status", "data", "all", "any", "some", "many", "much", "more", "most", "less",
+        "created", "expired", "active", "inactive", "failed", "passed", "loaded", "missing",
+        "under", "name", "number", "after", "before", "between", "during", "within"
+    );
+    
+    // Customer context words
+    private static final Set<String> CUSTOMER_CONTEXT_WORDS = Set.of(
+        "customer", "customers", "client", "clients", "account", "accounts"
+    );
+    
+    // Creator context words
+    private static final Set<String> CREATOR_CONTEXT_WORDS = Set.of(
+        "created", "by", "author", "maker", "developer", "owner"
+    );
+    
+    // Enhanced spell corrections
+    private static final Map<String, String> SPELL_CORRECTIONS = createSpellCorrections();
+    
+    /**
+     * Create spell corrections map
+     */
+    private static Map<String, String> createSpellCorrections() {
+        Map<String, String> corrections = new HashMap<>();
+        
+        // Contract misspellings
+        corrections.put("contrct", "contract");
+        corrections.put("contrcts", "contracts");
+        corrections.put("contrat", "contract");
+        corrections.put("conract", "contract");
+        corrections.put("contarcts", "contracts");
+        corrections.put("cntrct", "contract");
+        corrections.put("kontract", "contract");
+        corrections.put("contrato", "contract");
+        
+        // Customer misspellings  
+        corrections.put("custmer", "customer");
+        corrections.put("custmers", "customers");
+        corrections.put("customar", "customer");
+        
+        // Part misspellings
+        corrections.put("prt", "part");
+        corrections.put("prts", "parts");
+        corrections.put("partz", "parts");
+        
+        // Common word misspellings
+        corrections.put("shwo", "show");
+        corrections.put("infro", "info");
+        corrections.put("detials", "details");
+        corrections.put("detl", "details");
+        corrections.put("aftr", "after");
+        corrections.put("exipred", "expired");
+        corrections.put("lst", "last");
+        corrections.put("mnth", "month");
+        corrections.put("creatd", "created");
+        corrections.put("statuz", "status");
+        corrections.put("efective", "effective");
+        corrections.put("btwn", "between");
+        corrections.put("activ", "active");
+        corrections.put("isses", "issues");
+        corrections.put("defect", "defects");
+        corrections.put("warrenty", "warranty");
+        corrections.put("priod", "period");
+        corrections.put("faild", "failed");
+        corrections.put("hw", "how");
+        corrections.put("giv", "give");
+        corrections.put("detalles", "details");
+        corrections.put("stok", "stock");
+        corrections.put("wth", "with");
+        corrections.put("wats", "what");
+        corrections.put("pls", "please");
+        corrections.put("al", "all");
+        corrections.put("meta", "metadata");
+        
+        return corrections;
+    }
+    
+    /**
+     * Process query and return JSON string following JSON_DESIGN.md standards
+     */
+    public String processQuery(String originalInput) {
+        long startTime = System.nanoTime();
+        
+        try {
+            // Step 1: Input tracking and spell correction
+            InputTrackingResult inputTracking = processInputTracking(originalInput);
+            String processedInput = inputTracking.correctedInput != null ? 
+                                  inputTracking.correctedInput : originalInput;
+            
+            // Step 2: Enhanced header analysis
+            HeaderResult headerResult = analyzeHeadersEnhanced(processedInput);
+            
+            // Step 3: Enhanced entity extraction
+            List<EntityFilter> entities = extractEntitiesEnhanced(processedInput);
+            
+            // Step 4: Improved validation
+            List<ValidationError> errors = validateInputImproved(headerResult, entities, processedInput);
+            
+            // Step 5: Query metadata
+            QueryMetadata metadata = determineQueryMetadata(headerResult, entities, errors);
+            
+            // Step 6: Display entities
+            List<String> displayEntities = determineDisplayEntities(processedInput, headerResult, entities, metadata);
+            
+            // Calculate processing time
+            long endTime = System.nanoTime();
+            double processingTime = (endTime - startTime) / 1_000_000.0;
+            metadata.processingTimeMs = processingTime;
+            
+            // Step 7: Generate JSON according to JSON_DESIGN.md
+            return generateStandardJSON(originalInput, inputTracking, headerResult, metadata, entities, displayEntities, errors);
+            
+        } catch (Exception e) {
+            // Error fallback
+            long endTime = System.nanoTime();
+            double processingTime = (endTime - startTime) / 1_000_000.0;
+            
+            return generateErrorJSON(originalInput, e.getMessage(), processingTime);
+        }
+    }
+    
+    /**
+     * Enhanced input tracking with better spell correction
+     */
+    private InputTrackingResult processInputTracking(String originalInput) {
+        String[] words = originalInput.toLowerCase().split("\\s+");
+        StringBuilder correctedBuilder = new StringBuilder();
+        boolean hasCorrections = false;
+        int totalWords = words.length;
+        int correctedWords = 0;
+        
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i].replaceAll("[^a-zA-Z0-9]", ""); // Remove special chars for lookup
+            if (SPELL_CORRECTIONS.containsKey(word)) {
+                correctedBuilder.append(SPELL_CORRECTIONS.get(word));
+                hasCorrections = true;
+                correctedWords++;
+            } else {
+                correctedBuilder.append(words[i]); // Keep original with special chars
+            }
+            
+            if (i < words.length - 1) {
+                correctedBuilder.append(" ");
+            }
+        }
+        
+        String correctedInput = hasCorrections ? correctedBuilder.toString() : null;
+        double confidence = totalWords > 0 ? (double) correctedWords / totalWords : 0.0;
+        
+        return new InputTrackingResult(originalInput, correctedInput, confidence);
+    }
+    
+    /**
+     * Enhanced header analysis that handles all the failed cases
+     */
+    private HeaderResult analyzeHeadersEnhanced(String input) {
+        Header header = new Header();
+        List<String> issues = new ArrayList<>();
+        
+        String cleanInput = input.toLowerCase().trim();
+        
+        // Enhanced tokenization - handle special characters better
+        String[] tokens = cleanInput.split("[;\\s,&@#\\$\\|\\+\\-\\*\\/\\(\\)\\[\\]\\{\\}\\?\\!\\:\\.]+");
+        
+        // Check for customer context
+        boolean hasCustomerContext = Arrays.stream(tokens)
+            .anyMatch(CUSTOMER_CONTEXT_WORDS::contains) || 
+            cleanInput.contains("account name") || 
+            cleanInput.contains("customer name");
+        
+        // Check for creator context
+        boolean hasCreatorContext = cleanInput.contains("created by") || 
+                                   cleanInput.contains("by ");
+        
+        for (String token : tokens) {
+            token = token.trim();
+            if (token.isEmpty() || COMMAND_WORDS.contains(token)) {
+                continue;
+            }
+            
+            // Handle years specifically - don't treat as contract numbers
+            if (YEAR_PATTERN.matcher(token).matches()) {
+                // This is a year, skip treating as contract number
+                continue;
+            }
+            
+            // Explicit prefixes
+            if (token.startsWith("contract")) {
+                String numberPart = token.substring("contract".length());
+                if (!numberPart.isEmpty() && CONTRACT_NUMBER_PATTERN.matcher(numberPart).matches()) {
+                    header.contractNumber = numberPart;
+                } else if (!numberPart.isEmpty()) {
+                    issues.add("Contract number '" + numberPart + "' must be 6+ digits");
+                }
+            } else if (token.startsWith("part")) {
+                String numberPart = token.substring("part".length());
+                if (!numberPart.isEmpty() && PART_NUMBER_PATTERN.matcher(numberPart).matches()) {
+                    header.partNumber = numberPart.toUpperCase();
+                } else if (!numberPart.isEmpty()) {
+                    issues.add("Part number '" + numberPart + "' must be 3+ alphanumeric characters");
+                }
+            } else if (token.startsWith("customer")) {
+                String numberPart = token.substring("customer".length());
+                if (!numberPart.isEmpty() && CUSTOMER_NUMBER_PATTERN.matcher(numberPart).matches()) {
+                    header.customerNumber = numberPart;
+                } else if (!numberPart.isEmpty()) {
+                    issues.add("Customer number '" + numberPart + "' must be 4-8 digits");
+                }
+            }
+            // Standalone numbers
+            else if (token.matches("\\d+")) {
+                if (hasCustomerContext && CUSTOMER_NUMBER_PATTERN.matcher(token).matches()) {
+                    header.customerNumber = token;
+                } else if (token.length() >= 6) {
+                    header.contractNumber = token;
+                } else {
+                    // Don't add error for short numbers that might be years or other values
+                    // issues.add("Number '" + token + "' too short for contract number (need 6+ digits)");
+                }
+            }
+            // Alphanumeric tokens (potential part numbers)
+            else if (token.matches("[A-Za-z0-9]+") && token.length() >= 3) {
+                if (containsLettersAndNumbers(token) || token.equals(token.toUpperCase())) {
+                    header.partNumber = token.toUpperCase();
+                }
+            }
+        }
+        
+        // Extract creator name
+        if (hasCreatorContext) {
+            String creatorName = extractCreatorName(cleanInput);
+            if (creatorName != null) {
+                header.createdBy = creatorName;
+            }
+        }
+        
+        // Extract customer name from quotes or after "account name"
+        String customerName = extractCustomerName(cleanInput);
+        if (customerName != null) {
+            header.customerName = customerName;
+        }
+        
+        return new HeaderResult(header, issues);
+    }
+    
+    /**
+     * Extract creator name from "created by [name]" patterns
+     */
+    private String extractCreatorName(String input) {
+        Pattern creatorPattern = Pattern.compile("(?:created\\s+by|by)\\s+([a-zA-Z]+)", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = creatorPattern.matcher(input);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return null;
+    }
+    
+    /**
+     * Extract customer name from quotes or "account name" patterns
+     */
+    private String extractCustomerName(String input) {
+        // Look for quoted names
+        Pattern quotedPattern = Pattern.compile("'([^']+)'|\"([^\"]+)\"");
+        Matcher quotedMatcher = quotedPattern.matcher(input);
+        if (quotedMatcher.find()) {
+            return quotedMatcher.group(1) != null ? quotedMatcher.group(1) : quotedMatcher.group(2);
+        }
+        
+        // Look for "account name [name]" or "customer name [name]"
+        Pattern namePattern = Pattern.compile("(?:account\\s+name|customer\\s+name)\\s+([a-zA-Z]+)", Pattern.CASE_INSENSITIVE);
+        Matcher nameMatcher = namePattern.matcher(input);
+        if (nameMatcher.find()) {
+            return nameMatcher.group(1);
+        }
+        
+        return null;
+    }
+    
+    private boolean containsLettersAndNumbers(String token) {
+        boolean hasLetter = false, hasNumber = false;
+        for (char c : token.toCharArray()) {
+            if (Character.isLetter(c)) hasLetter = true;
+            if (Character.isDigit(c)) hasNumber = true;
+            if (hasLetter && hasNumber) return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Enhanced entity extraction
+     */
+    private List<EntityFilter> extractEntitiesEnhanced(String input) {
+        List<EntityFilter> entities = new ArrayList<>();
+        String lowerInput = input.toLowerCase();
+        
+        // Enhanced date filters
+        if (lowerInput.contains("created in") || lowerInput.contains("in ")) {
+            String year = extractYear(lowerInput);
+            if (year != null) {
+                entities.add(new EntityFilter("CREATED_DATE", "=", year, "user_input"));
+            }
+        }
+        
+        // Date range filters
+        if (lowerInput.contains("after") || lowerInput.contains("before") || lowerInput.contains("between")) {
+            String dateRange = extractDateRange(lowerInput);
+            if (dateRange != null) {
+                entities.add(new EntityFilter("CREATED_DATE", "between", dateRange, "user_input"));
+            }
+        }
+        
+        // Enhanced status filters
+        if (lowerInput.contains("status") || lowerInput.contains("expired") || 
+            lowerInput.contains("active") || lowerInput.contains("inactive")) {
+            String status = extractStatusEnhanced(lowerInput);
+            if (status != null) {
+                entities.add(new EntityFilter("STATUS", "=", status, "user_input"));
+            }
+        }
+        
+        // Failure/issue filters
+        if (lowerInput.contains("failed") || lowerInput.contains("failure") || 
+            lowerInput.contains("issues") || lowerInput.contains("defect")) {
+            entities.add(new EntityFilter("STATUS", "=", "FAILED", "user_input"));
+        }
+        
+        return entities;
+    }
+    
+    private String extractYear(String input) {
+        Matcher matcher = YEAR_PATTERN.matcher(input);
+        return matcher.find() ? matcher.group() : null;
+    }
+    
+    private String extractDateRange(String input) {
+        // Extract date ranges like "after 1-Jan-2020", "between Jan and June 2024"
+        Pattern dateRangePattern = Pattern.compile("(\\d{1,2}-\\w{3}-\\d{4}|\\w{3}\\s+\\d{4}|\\d{4})");
+        Matcher matcher = dateRangePattern.matcher(input);
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        return null;
+    }
+    
+    private String extractStatusEnhanced(String input) {
+        if (input.contains("expired")) return "EXPIRED";
+        if (input.contains("active")) return "ACTIVE";
+        if (input.contains("inactive")) return "INACTIVE";
+        if (input.contains("pending")) return "PENDING";
+        if (input.contains("failed")) return "FAILED";
+        return null;
+    }
+    
+    /**
+     * Improved validation - less strict for general queries
+     */
+    private List<ValidationError> validateInputImproved(HeaderResult headerResult, List<EntityFilter> entities, String input) {
+        List<ValidationError> errors = new ArrayList<>();
+        
+        // Add header issues
+        headerResult.issues.forEach(issue -> 
+            errors.add(new ValidationError("INVALID_HEADER", issue, "BLOCKER"))
+        );
+        
+        // Check if we have at least one header or entity
+        Header header = headerResult.header;
+        boolean hasValidHeader = header.contractNumber != null || 
+                                header.partNumber != null || 
+                                header.customerNumber != null || 
+                                header.customerName != null || 
+                                header.createdBy != null;
+        
+        // Enhanced general query detection - be more permissive
+        String lowerInput = input.toLowerCase();
+        boolean isGeneralQuery = lowerInput.contains("all") || 
+                                lowerInput.contains("list") || 
+                                lowerInput.contains("show") ||
+                                lowerInput.contains("status") ||
+                                lowerInput.contains("details") ||
+                                lowerInput.contains("expired") ||
+                                lowerInput.contains("active") ||
+                                lowerInput.contains("created") ||
+                                lowerInput.contains("contracts") ||
+                                lowerInput.contains("parts") ||
+                                !entities.isEmpty(); // If we have entities, it's a valid query
+        
+        // Only require identifiers for very specific queries
+        if (!hasValidHeader && entities.isEmpty() && !isGeneralQuery) {
+            // Only add error if it's clearly not a general query
+            if (!lowerInput.contains("contract") && !lowerInput.contains("part") && !lowerInput.contains("customer")) {
+                errors.add(new ValidationError("MISSING_HEADER", 
+                    "Provide at least one identifier (contract/part/customer) or filter (date/status)", 
+                    "BLOCKER"));
+            }
+        }
+        
+        return errors;
+    }
+    
+    /**
+     * Determine query metadata
+     */
+    private QueryMetadata determineQueryMetadata(HeaderResult headerResult, List<EntityFilter> entities, List<ValidationError> errors) {
+        if (!errors.isEmpty() && errors.stream().anyMatch(e -> "BLOCKER".equals(e.severity))) {
+            return new QueryMetadata("CONTRACTS", "error", 0);
+        }
+        
+        Header header = headerResult.header;
+        
+        // Determine query type
+        String queryType = "CONTRACTS"; // Default
+        if (header.partNumber != null && header.contractNumber == null) {
+            queryType = "PARTS";
+        }
+        
+        // Determine action type
+        String actionType = determineActionType(header, entities);
+        
+        return new QueryMetadata(queryType, actionType, 0);
+    }
+    
+    private String determineActionType(Header header, List<EntityFilter> entities) {
+        if (header.contractNumber != null) return "contracts_by_contractNumber";
+        if (header.partNumber != null) return "parts_by_partNumber";
+        if (header.customerNumber != null) return "contracts_by_customerNumber";
+        if (header.customerName != null) return "contracts_by_customerName";
+        if (header.createdBy != null) return "contracts_by_createdBy";
+        
+        if (!entities.isEmpty()) {
+            EntityFilter firstEntity = entities.get(0);
+            switch (firstEntity.attribute) {
+                case "CREATED_DATE": return "contracts_by_date";
+                case "STATUS": return "contracts_by_status";
+                default: return "contracts_by_filter";
+            }
+        }
+        
+        return "general_query";
+    }
+    
+    /**
+     * Determine display entities
+     */
+    private List<String> determineDisplayEntities(String input, HeaderResult headerResult, 
+                                                 List<EntityFilter> entities, QueryMetadata metadata) {
+        List<String> displayEntities = new ArrayList<>();
+        
+        // Add defaults based on query type
+        if ("CONTRACTS".equals(metadata.queryType)) {
+            displayEntities.add("CONTRACT_NUMBER");
+            displayEntities.add("CUSTOMER_NAME");
+        } else if ("PARTS".equals(metadata.queryType)) {
+            displayEntities.add("PART_NUMBER");
+            displayEntities.add("DESCRIPTION");
+        }
+        
+        // Auto-add filtered fields
+        entities.forEach(entity -> {
+            if (!displayEntities.contains(entity.attribute)) {
+                displayEntities.add(entity.attribute);
+            }
+        });
+        
+        // Add user-requested fields
+        String lowerInput = input.toLowerCase();
+        if (lowerInput.contains("effective date") && !displayEntities.contains("EFFECTIVE_DATE")) {
+            displayEntities.add("EFFECTIVE_DATE");
+        }
+        if (lowerInput.contains("status") && !displayEntities.contains("STATUS")) {
+            displayEntities.add("STATUS");
+        }
+        if ((lowerInput.contains("expiration") || lowerInput.contains("expiry")) && !displayEntities.contains("EXPIRATION_DATE")) {
+            displayEntities.add("EXPIRATION_DATE");
+        }
+        if ((lowerInput.contains("price") || lowerInput.contains("cost")) && !displayEntities.contains("TOTAL_VALUE")) {
+            displayEntities.add("TOTAL_VALUE");
+        }
+        if (lowerInput.contains("project type") && !displayEntities.contains("PROJECT_TYPE")) {
+            displayEntities.add("PROJECT_TYPE");
+        }
+        if (lowerInput.contains("metadata") && !displayEntities.contains("METADATA")) {
+            displayEntities.add("METADATA");
+        }
+        
+        return displayEntities;
+    }
+    
+    /**
+     * Generate standard JSON following JSON_DESIGN.md exactly
+     */
+    private String generateStandardJSON(String originalInput, InputTrackingResult inputTracking, 
+                                       HeaderResult headerResult, QueryMetadata metadata, 
+                                       List<EntityFilter> entities, List<String> displayEntities, 
+                                       List<ValidationError> errors) {
+        StringBuilder json = new StringBuilder();
+        
+        json.append("{\n");
+        
+        // Header section with inputTracking
+        json.append("  \"header\": {\n");
+        json.append("    \"contractNumber\": ").append(quote(headerResult.header.contractNumber)).append(",\n");
+        json.append("    \"partNumber\": ").append(quote(headerResult.header.partNumber)).append(",\n");
+        json.append("    \"customerNumber\": ").append(quote(headerResult.header.customerNumber)).append(",\n");
+        json.append("    \"customerName\": ").append(quote(headerResult.header.customerName)).append(",\n");
+        json.append("    \"createdBy\": ").append(quote(headerResult.header.createdBy)).append(",\n");
+        
+        // InputTracking section (NEW as per JSON_DESIGN.md)
+        json.append("    \"inputTracking\": {\n");
+        json.append("      \"originalInput\": ").append(quote(inputTracking.originalInput)).append(",\n");
+        json.append("      \"correctedInput\": ").append(quote(inputTracking.correctedInput)).append(",\n");
+        json.append("      \"correctionConfidence\": ").append(inputTracking.correctionConfidence).append("\n");
+        json.append("    }\n");
+        json.append("  },\n");
+        
+        // QueryMetadata section
+        json.append("  \"queryMetadata\": {\n");
+        json.append("    \"queryType\": ").append(quote(metadata.queryType)).append(",\n");
+        json.append("    \"actionType\": ").append(quote(metadata.actionType)).append(",\n");
+        json.append("    \"processingTimeMs\": ").append(String.format("%.3f", metadata.processingTimeMs)).append("\n");
+        json.append("  },\n");
+        
+        // Entities section
+        json.append("  \"entities\": [\n");
+        for (int i = 0; i < entities.size(); i++) {
+            EntityFilter entity = entities.get(i);
+            json.append("    {\n");
+            json.append("      \"attribute\": ").append(quote(entity.attribute)).append(",\n");
+            json.append("      \"operation\": ").append(quote(entity.operation)).append(",\n");
+            json.append("      \"value\": ").append(quote(entity.value)).append(",\n");
+            json.append("      \"source\": ").append(quote(entity.source)).append("\n");
+            json.append("    }").append(i < entities.size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ],\n");
+        
+        // DisplayEntities section
+        json.append("  \"displayEntities\": [\n");
+        for (int i = 0; i < displayEntities.size(); i++) {
+            json.append("    ").append(quote(displayEntities.get(i)));
+            json.append(i < displayEntities.size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ],\n");
+        
+        // Errors section
+        json.append("  \"errors\": [\n");
+        for (int i = 0; i < errors.size(); i++) {
+            ValidationError error = errors.get(i);
+            json.append("    {\n");
+            json.append("      \"code\": ").append(quote(error.code)).append(",\n");
+            json.append("      \"message\": ").append(quote(error.message)).append(",\n");
+            json.append("      \"severity\": ").append(quote(error.severity)).append("\n");
+            json.append("    }").append(i < errors.size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ]\n");
+        
+        json.append("}");
+        
+        return json.toString();
+    }
+    
+    /**
+     * Generate error JSON
+     */
+    private String generateErrorJSON(String originalInput, String errorMessage, double processingTime) {
+        return String.format(
+            "{\n" +
+            "  \"header\": {\n" +
+            "    \"contractNumber\": null,\n" +
+            "    \"partNumber\": null,\n" +
+            "    \"customerNumber\": null,\n" +
+            "    \"customerName\": null,\n" +
+            "    \"createdBy\": null,\n" +
+            "    \"inputTracking\": {\n" +
+            "      \"originalInput\": %s,\n" +
+            "      \"correctedInput\": null,\n" +
+            "      \"correctionConfidence\": 0\n" +
+            "    }\n" +
+            "  },\n" +
+            "  \"queryMetadata\": {\n" +
+            "    \"queryType\": \"CONTRACTS\",\n" +
+            "    \"actionType\": \"error\",\n" +
+            "    \"processingTimeMs\": %.3f\n" +
+            "  },\n" +
+            "  \"entities\": [],\n" +
+            "  \"displayEntities\": [],\n" +
+            "  \"errors\": [\n" +
+            "    {\n" +
+            "      \"code\": \"PROCESSING_ERROR\",\n" +
+            "      \"message\": %s,\n" +
+            "      \"severity\": \"BLOCKER\"\n" +
+            "    }\n" +
+            "  ]\n" +
+            "}",
+            quote(originalInput), processingTime, quote(errorMessage)
+        );
+    }
+    
+    private String quote(String value) {
+        return value == null ? "null" : "\"" + value.replace("\"", "\\\"") + "\"";
+    }
+    
+    // Data classes (same as before)
+    private static class InputTrackingResult {
+        final String originalInput;
+        final String correctedInput;
+        final double correctionConfidence;
+        
+        InputTrackingResult(String originalInput, String correctedInput, double correctionConfidence) {
+            this.originalInput = originalInput;
+            this.correctedInput = correctedInput;
+            this.correctionConfidence = correctionConfidence;
+        }
+    }
+    
+    private static class Header {
+        String contractNumber;
+        String partNumber;
+        String customerNumber;
+        String customerName;
+        String createdBy;
+    }
+    
+    private static class HeaderResult {
+        final Header header;
+        final List<String> issues;
+        
+        HeaderResult(Header header, List<String> issues) {
+            this.header = header;
+            this.issues = issues;
+        }
+    }
+    
+    private static class QueryMetadata {
+        final String queryType;
+        final String actionType;
+        double processingTimeMs;
+        
+        QueryMetadata(String queryType, String actionType, double processingTimeMs) {
+            this.queryType = queryType;
+            this.actionType = actionType;
+            this.processingTimeMs = processingTimeMs;
+        }
+    }
+    
+    private static class EntityFilter {
+        final String attribute;
+        final String operation;
+        final String value;
+        final String source;
+        
+        EntityFilter(String attribute, String operation, String value, String source) {
+            this.attribute = attribute;
+            this.operation = operation;
+            this.value = value;
+            this.source = source;
+        }
+    }
+    
+    private static class ValidationError {
+        final String code;
+        final String message;
+        final String severity;
+        
+        ValidationError(String code, String message, String severity) {
+            this.code = code;
+            this.message = message;
+            this.severity = severity;
+        }
+    }
+    
+    /**
+     * Test with some of the failed cases
+     */
+    public static void main(String[] args) {
+        FixedStandardJSONProcessor processor = new FixedStandardJSONProcessor();
+        
+        String[] failedCases = {
+            "contracts created by vinod after 1-Jan-2020",
+            "expired contracts",
+            "contracts created in 2024",
+            "contracts under account name 'Siemens'",
+            "show partz faild in contrct 123456"
+        };
+        
+        for (String input : failedCases) {
+            System.out.printf("\n🔍 TESTING FAILED CASE: \"%s\"\n", input);
+            System.out.println("=".repeat(60));
+            String jsonResponse = processor.processQuery(input);
+            System.out.println(jsonResponse);
+            System.out.println("=".repeat(60));
+        }
+    }
+}
