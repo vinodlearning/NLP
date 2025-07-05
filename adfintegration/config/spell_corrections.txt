@@ -1,13 +1,91 @@
 # Spell Corrections Configuration
-# Format: wrong_word=correct_word
-# Lines starting with # are comments
+# Format: misspelled_word=correct_word
+# This file can be updated without recompiling Java code
 
-# Contract related corrections
-cntract=contract
+# Contract-related corrections
 contrct=contract
-kontrct=contract
-cntracts=contracts
-contrcts=contracts
+contrat=contract
+contrac=contract
+contraact=contract
+conract=contract
+cntrct=contract
+cntract=contract
+awrd=award
+awrad=award
+agrmt=agreement
+agremnt=agreement
+agreemnt=agreement
+
+# Parts-related corrections
+prt=part
+prts=parts
+partz=parts
+parst=parts
+prast=parts
+itm=item
+itms=items
+componnt=component
+compnent=component
+matrl=material
+matrls=materials
+supplr=supplier
+vendr=vendor
+invntry=inventory
+inventoy=inventory
+
+# Common action corrections
+shw=show
+sho=show
+dispay=display
+disply=display
+lst=list
+lsit=list
+crete=create
+creat=create
+crate=create
+mke=make
+mak=make
+ad=add
+addd=add
+bild=build
+buld=build
+hlp=help
+halp=help
+gide=guide
+guid=guide
+
+# Date-related corrections
+efectiv=effective
+efectve=effective
+efective=effective
+expiraton=expiration
+expiratoin=expiration
+exipraion=expiration
+expiaton=expiration
+creatd=created
+createed=created
+
+# Common misspellings
+acount=account
+acont=account
+custmer=customer
+custmr=customer
+customr=customer
+organizaton=organization
+organiztion=organization
+departmnt=department
+departmt=department
+staus=status
+sttus=status
+statsu=status
+pric=price
+prce=price
+priing=pricing
+prcng=pricing
+amunt=amount
+amout=amount
+vlue=value
+valu=value
 
 # Common word corrections
 detals=details

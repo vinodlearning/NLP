@@ -1,0 +1,59 @@
+# Response Templates Configuration
+# Format: template_name=template_content
+# Use {field_name} for dynamic content replacement
+# This file can be updated without recompiling Java code
+
+# Contract Response Templates
+contract_single_result=Contract {contract_number} found: {contract_name} for customer {customer_name}, effective from {effective_date} to {expiration_date}, status: {status}
+
+contract_multiple_results=Found {count} contracts matching your criteria. First result: Contract {contract_number} - {contract_name}
+
+contract_not_found=No contract found matching your criteria. Please check the contract number or search terms.
+
+contract_date_info=Contract {contract_number} dates: Effective Date: {effective_date}, Expiration Date: {expiration_date}, Created Date: {created_date}
+
+contract_customer_info=Contract {contract_number} customer information: {customer_name} (Customer #{customer_number}), Organization: {organization}
+
+contract_financial_info=Contract {contract_number} financial details: Amount: {amount}, Price List: {price_list}, Type: {contract_type}
+
+# Parts Response Templates
+parts_single_result=Part {part_number} found: {part_name} for contract {contract_number}, quantity: {quantity}, unit price: ${unit_price}
+
+parts_multiple_results=Found {count} parts matching your criteria. First result: Part {part_number} - {part_name}
+
+parts_not_found=No parts found matching your criteria. Please check the part number or search terms.
+
+parts_count_info=Contract {contract_number} contains {count} parts with total value of ${total_value}
+
+parts_availability_info=Part {part_number} availability: Status: {status}, Quantity: {quantity}, Delivery Date: {delivery_date}
+
+parts_supplier_info=Part {part_number} supplier information: {supplier}, Manufacturer: {manufacturer}
+
+# Help Response Templates
+help_create_contract=To create a new contract, follow these steps: 1) Gather required information (customer details, contract terms, effective dates), 2) Use the Contract Creation form, 3) Fill in all mandatory fields, 4) Submit for approval, 5) Track approval status
+
+help_contract_workflow=Contract creation workflow: Draft → Review → Approval → Active → Execution → Completion/Renewal
+
+help_required_fields=Required fields for contract creation: Contract Number, Customer Name, Effective Date, Expiration Date, Contract Type, Amount, Organization
+
+help_approval_process=Contract approval process involves: Legal Review → Financial Approval → Management Sign-off → Customer Acceptance
+
+# Error Response Templates
+error_invalid_input=Invalid input format. Please provide a valid contract number, customer name, or search criteria.
+
+error_database_connection=Database connection error. Please try again later or contact system administrator.
+
+error_access_denied=Access denied. You don't have permission to view this information.
+
+error_system_busy=System is currently busy. Please try again in a few moments.
+
+# General Response Templates
+processing_request=Processing your request...
+
+request_completed=Request completed successfully.
+
+multiple_matches_found=Multiple matches found. Please be more specific or use additional search criteria.
+
+no_results_found=No results found matching your search criteria.
+
+spell_correction_applied=Applied spell correction to your query: "{original}" → "{corrected}"
