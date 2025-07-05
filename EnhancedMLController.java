@@ -48,6 +48,15 @@ public class EnhancedMLController {
     }
     
     /**
+     * Main method to process user queries and return JSON
+     * This method returns a properly formatted JSON string
+     */
+    public String processQueryJSON(String userInput) {
+        GenericMLResponse response = processQuery(userInput);
+        return response.processQueryJSON();
+    }
+    
+    /**
      * Build response based on query analysis
      */
     private GenericMLResponse buildResponse(QueryAnalysis analysis) {

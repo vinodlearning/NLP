@@ -115,6 +115,158 @@ public class GenericMLResponse {
         }
         return null;
     }
+    
+    /**
+     * Convert the response to JSON format
+     * This method returns a properly formatted JSON string representation
+     * of the GenericMLResponse object
+     */
+    public String processQueryJSON() {
+        StringBuilder json = new StringBuilder();
+        json.append("{\n");
+        
+        // Basic response information
+        json.append("  \"responseType\": ").append(quote(responseType)).append(",\n");
+        json.append("  \"message\": ").append(quote(message)).append(",\n");
+        json.append("  \"success\": ").append(success).append(",\n");
+        json.append("  \"timestamp\": ").append(timestamp).append(",\n");
+        
+        // Request information
+        if (request != null) {
+            json.append("  \"request\": {\n");
+            json.append("    \"originalInput\": ").append(quote(request.getOriginalInput())).append(",\n");
+            json.append("    \"correctedInput\": ").append(quote(request.getCorrectedInput())).append(",\n");
+            json.append("    \"entityId\": ").append(quote(request.getEntityId())).append(",\n");
+            json.append("    \"entityType\": ").append(quote(request.getEntityType())).append(",\n");
+            json.append("    \"requestedAttributes\": ").append(listToJSON(request.getRequestedAttributes())).append(",\n");
+            json.append("    \"detectedEntities\": ").append(mapToJSON(request.getDetectedEntities())).append("\n");
+            json.append("  },\n");
+        }
+        
+        // Data attributes (main content)
+        json.append("  \"data\": ").append(mapToJSON(data)).append(",\n");
+        
+        // Processing information
+        if (processing != null) {
+            json.append("  \"processing\": {\n");
+            json.append("    \"modelUsed\": ").append(quote(processing.getModelUsed())).append(",\n");
+            json.append("    \"processingTimeMs\": ").append(processing.getProcessingTimeMs()).append(",\n");
+            json.append("    \"confidence\": ").append(processing.getConfidence()).append(",\n");
+            json.append("    \"attributesFound\": ").append(processing.getAttributesFound()).append(",\n");
+            json.append("    \"dataSource\": ").append(quote(processing.getDataSource())).append(",\n");
+            json.append("    \"spellCorrectionsApplied\": ").append(listToJSON(processing.getSpellCorrectionsApplied())).append(",\n");
+            json.append("    \"additionalInfo\": ").append(mapToJSON(processing.getAdditionalInfo())).append("\n");
+            json.append("  },\n");
+        }
+        
+        // Action information
+        if (actions != null) {
+            json.append("  \"actions\": {\n");
+            json.append("    \"recommendedUIAction\": ").append(quote(actions.getRecommendedUIAction())).append(",\n");
+            json.append("    \"navigationTarget\": ").append(quote(actions.getNavigationTarget())).append(",\n");
+            json.append("    \"availableActions\": ").append(listToJSON(actions.getAvailableActions())).append(",\n");
+            json.append("    \"actionParameters\": ").append(mapToJSON(actions.getActionParameters())).append("\n");
+            json.append("  }\n");
+        } else {
+            // Remove trailing comma if no actions
+            json.setLength(json.length() - 2);
+            json.append("\n");
+        }
+        
+        json.append("}");
+        return json.toString();
+    }
+    
+    /**
+     * Helper method to quote strings for JSON
+     */
+    private String quote(String str) {
+        if (str == null) return "null";
+        return "\"" + escapeJSON(str) + "\"";
+    }
+    
+    /**
+     * Helper method to escape JSON special characters
+     */
+    private String escapeJSON(String str) {
+        if (str == null) return "";
+        return str.replace("\\", "\\\\")
+                  .replace("\"", "\\\"")
+                  .replace("\n", "\\n")
+                  .replace("\r", "\\r")
+                  .replace("\t", "\\t");
+    }
+    
+    /**
+     * Convert List to JSON array format
+     */
+    private String listToJSON(List<?> list) {
+        if (list == null || list.isEmpty()) {
+            return "[]";
+        }
+        
+        StringBuilder json = new StringBuilder();
+        json.append("[");
+        
+        for (int i = 0; i < list.size(); i++) {
+            if (i > 0) json.append(", ");
+            
+            Object item = list.get(i);
+            if (item instanceof String) {
+                json.append(quote((String) item));
+            } else if (item instanceof Map) {
+                json.append(mapToJSON((Map<?, ?>) item));
+            } else if (item instanceof List) {
+                json.append(listToJSON((List<?>) item));
+            } else if (item instanceof Number || item instanceof Boolean) {
+                json.append(item);
+            } else {
+                json.append(quote(item != null ? item.toString() : null));
+            }
+        }
+        
+        json.append("]");
+        return json.toString();
+    }
+    
+    /**
+     * Convert Map to JSON object format
+     */
+    private String mapToJSON(Map<?, ?> map) {
+        if (map == null || map.isEmpty()) {
+            return "{}";
+        }
+        
+        StringBuilder json = new StringBuilder();
+        json.append("{\n");
+        
+        int count = 0;
+        for (Map.Entry<?, ?> entry : map.entrySet()) {
+            if (count > 0) json.append(",\n");
+            
+            String key = entry.getKey().toString();
+            Object value = entry.getValue();
+            
+            json.append("    ").append(quote(key)).append(": ");
+            
+            if (value instanceof String) {
+                json.append(quote((String) value));
+            } else if (value instanceof Map) {
+                json.append(mapToJSON((Map<?, ?>) value));
+            } else if (value instanceof List) {
+                json.append(listToJSON((List<?>) value));
+            } else if (value instanceof Number || value instanceof Boolean) {
+                json.append(value);
+            } else {
+                json.append(quote(value != null ? value.toString() : null));
+            }
+            
+            count++;
+        }
+        
+        json.append("\n  }");
+        return json.toString();
+    }
 }
 
 // Request Information (flexible for any model)
