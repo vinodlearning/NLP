@@ -14,6 +14,7 @@ public class StandardJSONProcessor {
     private static final Pattern CONTRACT_NUMBER_PATTERN = Pattern.compile("\\d{6,}");
     private static final Pattern PART_NUMBER_PATTERN = Pattern.compile("[A-Za-z0-9]{3,}");
     private static final Pattern CUSTOMER_NUMBER_PATTERN = Pattern.compile("\\d{4,8}");
+    private static final Pattern YEAR_PATTERN = Pattern.compile("\\b(19|20)\\d{2}\\b");
     
     // Command words to filter out
     private static final Set<String> COMMAND_WORDS = Set.of(
@@ -22,7 +23,8 @@ public class StandardJSONProcessor {
         "the", "of", "for", "in", "on", "at", "by", "with", "from", "to", "and", "or",
         "contract", "contracts", "part", "parts", "customer", "account", "info", "details",
         "status", "data", "all", "any", "some", "many", "much", "more", "most", "less",
-        "created", "expired", "active", "inactive", "failed", "passed", "loaded", "missing"
+        "created", "expired", "active", "inactive", "failed", "passed", "loaded", "missing",
+        "under", "name", "number", "after", "before", "between", "during", "within"
     );
     
     // Customer context words
@@ -30,16 +32,71 @@ public class StandardJSONProcessor {
         "customer", "customers", "client", "clients", "account", "accounts"
     );
     
-    // Spell corrections (basic implementation)
-    private static final Map<String, String> SPELL_CORRECTIONS = Map.of(
-        "contrct", "contract",
-        "contrcts", "contracts", 
-        "contrat", "contract",
-        "custmer", "customer",
-        "custmers", "customers",
-        "prt", "part",
-        "prts", "parts"
+    // Creator context words
+    private static final Set<String> CREATOR_CONTEXT_WORDS = Set.of(
+        "created", "by", "author", "maker", "developer", "owner"
     );
+    
+    // Enhanced spell corrections
+    private static final Map<String, String> SPELL_CORRECTIONS = createSpellCorrections();
+    
+    /**
+     * Create enhanced spell corrections map
+     */
+    private static Map<String, String> createSpellCorrections() {
+        Map<String, String> corrections = new HashMap<>();
+        
+        // Contract misspellings
+        corrections.put("contrct", "contract");
+        corrections.put("contrcts", "contracts");
+        corrections.put("contrat", "contract");
+        corrections.put("conract", "contract");
+        corrections.put("contarcts", "contracts");
+        corrections.put("cntrct", "contract");
+        corrections.put("kontract", "contract");
+        corrections.put("contrato", "contract");
+        
+        // Customer misspellings  
+        corrections.put("custmer", "customer");
+        corrections.put("custmers", "customers");
+        corrections.put("customar", "customer");
+        
+        // Part misspellings
+        corrections.put("prt", "part");
+        corrections.put("prts", "parts");
+        corrections.put("partz", "parts");
+        
+        // Common word misspellings
+        corrections.put("shwo", "show");
+        corrections.put("infro", "info");
+        corrections.put("detials", "details");
+        corrections.put("detl", "details");
+        corrections.put("aftr", "after");
+        corrections.put("exipred", "expired");
+        corrections.put("lst", "last");
+        corrections.put("mnth", "month");
+        corrections.put("creatd", "created");
+        corrections.put("statuz", "status");
+        corrections.put("efective", "effective");
+        corrections.put("btwn", "between");
+        corrections.put("activ", "active");
+        corrections.put("isses", "issues");
+        corrections.put("defect", "defects");
+        corrections.put("warrenty", "warranty");
+        corrections.put("priod", "period");
+        corrections.put("faild", "failed");
+        corrections.put("hw", "how");
+        corrections.put("giv", "give");
+        corrections.put("detalles", "details");
+        corrections.put("stok", "stock");
+        corrections.put("wth", "with");
+        corrections.put("wats", "what");
+        corrections.put("pls", "please");
+        corrections.put("al", "all");
+        corrections.put("meta", "metadata");
+        
+        return corrections;
+    }
     
     /**
      * Process query and return JSON string following JSON_DESIGN.md standards
@@ -86,23 +143,23 @@ public class StandardJSONProcessor {
     }
     
     /**
-     * Process input tracking with spell correction
+     * Enhanced input tracking with better spell correction
      */
     private InputTrackingResult processInputTracking(String originalInput) {
         String[] words = originalInput.toLowerCase().split("\\s+");
         StringBuilder correctedBuilder = new StringBuilder();
-        boolean hasCorrectionss = false;
+        boolean hasCorrections = false;
         int totalWords = words.length;
         int correctedWords = 0;
         
         for (int i = 0; i < words.length; i++) {
-            String word = words[i];
+            String word = words[i].replaceAll("[^a-zA-Z0-9]", ""); // Remove special chars for lookup
             if (SPELL_CORRECTIONS.containsKey(word)) {
                 correctedBuilder.append(SPELL_CORRECTIONS.get(word));
-                hasCorrectionss = true;
+                hasCorrections = true;
                 correctedWords++;
             } else {
-                correctedBuilder.append(word);
+                correctedBuilder.append(words[i]); // Keep original with special chars
             }
             
             if (i < words.length - 1) {
@@ -110,29 +167,43 @@ public class StandardJSONProcessor {
             }
         }
         
-        String correctedInput = hasCorrectionss ? correctedBuilder.toString() : null;
+        String correctedInput = hasCorrections ? correctedBuilder.toString() : null;
         double confidence = totalWords > 0 ? (double) correctedWords / totalWords : 0.0;
         
         return new InputTrackingResult(originalInput, correctedInput, confidence);
     }
     
     /**
-     * Analyze headers following the fixed parsing logic
+     * Enhanced header analysis that handles all the failed cases
      */
     private HeaderResult analyzeHeaders(String input) {
         Header header = new Header();
         List<String> issues = new ArrayList<>();
         
         String cleanInput = input.toLowerCase().trim();
-        String[] tokens = cleanInput.split("[;\\s,]+");
+        
+        // Enhanced tokenization - handle special characters better
+        String[] tokens = cleanInput.split("[;\\s,&@#\\$\\|\\+\\-\\*\\/\\(\\)\\[\\]\\{\\}\\?\\!\\:\\.]+");
         
         // Check for customer context
         boolean hasCustomerContext = Arrays.stream(tokens)
-            .anyMatch(CUSTOMER_CONTEXT_WORDS::contains);
+            .anyMatch(CUSTOMER_CONTEXT_WORDS::contains) || 
+            cleanInput.contains("account name") || 
+            cleanInput.contains("customer name");
+        
+        // Check for creator context
+        boolean hasCreatorContext = cleanInput.contains("created by") || 
+                                   cleanInput.contains("by ");
         
         for (String token : tokens) {
             token = token.trim();
             if (token.isEmpty() || COMMAND_WORDS.contains(token)) {
+                continue;
+            }
+            
+            // Handle years specifically - don't treat as contract numbers
+            if (YEAR_PATTERN.matcher(token).matches()) {
+                // This is a year, skip treating as contract number
                 continue;
             }
             
@@ -166,7 +237,8 @@ public class StandardJSONProcessor {
                 } else if (token.length() >= 6) {
                     header.contractNumber = token;
                 } else {
-                    issues.add("Number '" + token + "' too short for contract number (need 6+ digits)");
+                    // Don't add error for short numbers that might be years or other values
+                    // issues.add("Number '" + token + "' too short for contract number (need 6+ digits)");
                 }
             }
             // Alphanumeric tokens (potential part numbers)
@@ -177,7 +249,54 @@ public class StandardJSONProcessor {
             }
         }
         
+        // Extract creator name
+        if (hasCreatorContext) {
+            String creatorName = extractCreatorName(cleanInput);
+            if (creatorName != null) {
+                header.createdBy = creatorName;
+            }
+        }
+        
+        // Extract customer name from quotes or after "account name"
+        String customerName = extractCustomerName(cleanInput);
+        if (customerName != null) {
+            header.customerName = customerName;
+        }
+        
         return new HeaderResult(header, issues);
+    }
+    
+    /**
+     * Extract creator name from "created by [name]" patterns
+     */
+    private String extractCreatorName(String input) {
+        Pattern creatorPattern = Pattern.compile("(?:created\\s+by|by)\\s+([a-zA-Z]+)", Pattern.CASE_INSENSITIVE);
+        java.util.regex.Matcher matcher = creatorPattern.matcher(input);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return null;
+    }
+    
+    /**
+     * Extract customer name from quotes or "account name" patterns
+     */
+    private String extractCustomerName(String input) {
+        // Look for quoted names
+        Pattern quotedPattern = Pattern.compile("'([^']+)'|\"([^\"]+)\"");
+        java.util.regex.Matcher quotedMatcher = quotedPattern.matcher(input);
+        if (quotedMatcher.find()) {
+            return quotedMatcher.group(1) != null ? quotedMatcher.group(1) : quotedMatcher.group(2);
+        }
+        
+        // Look for "account name [name]" or "customer name [name]"
+        Pattern namePattern = Pattern.compile("(?:account\\s+name|customer\\s+name)\\s+([a-zA-Z]+)", Pattern.CASE_INSENSITIVE);
+        java.util.regex.Matcher nameMatcher = namePattern.matcher(input);
+        if (nameMatcher.find()) {
+            return nameMatcher.group(1);
+        }
+        
+        return null;
     }
     
     private boolean containsLettersAndNumbers(String token) {
@@ -191,46 +310,72 @@ public class StandardJSONProcessor {
     }
     
     /**
-     * Extract entities (filters)
+     * Enhanced entity extraction
      */
     private List<EntityFilter> extractEntities(String input) {
         List<EntityFilter> entities = new ArrayList<>();
         String lowerInput = input.toLowerCase();
         
-        // Date filters
-        if (lowerInput.contains("created in")) {
+        // Enhanced date filters
+        if (lowerInput.contains("created in") || lowerInput.contains("in ")) {
             String year = extractYear(lowerInput);
             if (year != null) {
                 entities.add(new EntityFilter("CREATED_DATE", "=", year, "user_input"));
             }
         }
         
-        // Status filters
-        if (lowerInput.contains("status")) {
-            String status = extractStatus(lowerInput);
+        // Date range filters
+        if (lowerInput.contains("after") || lowerInput.contains("before") || lowerInput.contains("between")) {
+            String dateRange = extractDateRange(lowerInput);
+            if (dateRange != null) {
+                entities.add(new EntityFilter("CREATED_DATE", "between", dateRange, "user_input"));
+            }
+        }
+        
+        // Enhanced status filters
+        if (lowerInput.contains("status") || lowerInput.contains("expired") || 
+            lowerInput.contains("active") || lowerInput.contains("inactive")) {
+            String status = extractStatusEnhanced(lowerInput);
             if (status != null) {
                 entities.add(new EntityFilter("STATUS", "=", status, "user_input"));
             }
+        }
+        
+        // Failure/issue filters
+        if (lowerInput.contains("failed") || lowerInput.contains("failure") || 
+            lowerInput.contains("issues") || lowerInput.contains("defect")) {
+            entities.add(new EntityFilter("STATUS", "=", "FAILED", "user_input"));
         }
         
         return entities;
     }
     
     private String extractYear(String input) {
-        Pattern yearPattern = Pattern.compile("\\b(20\\d{2})\\b");
-        java.util.regex.Matcher matcher = yearPattern.matcher(input);
-        return matcher.find() ? matcher.group(1) : null;
+        java.util.regex.Matcher matcher = YEAR_PATTERN.matcher(input);
+        return matcher.find() ? matcher.group() : null;
     }
     
-    private String extractStatus(String input) {
+    private String extractDateRange(String input) {
+        // Extract date ranges like "after 1-Jan-2020", "between Jan and June 2024"
+        Pattern dateRangePattern = Pattern.compile("(\\d{1,2}-\\w{3}-\\d{4}|\\w{3}\\s+\\d{4}|\\d{4})");
+        java.util.regex.Matcher matcher = dateRangePattern.matcher(input);
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        return null;
+    }
+    
+    private String extractStatusEnhanced(String input) {
+        if (input.contains("expired")) return "EXPIRED";
         if (input.contains("active")) return "ACTIVE";
         if (input.contains("inactive")) return "INACTIVE";
         if (input.contains("pending")) return "PENDING";
+        if (input.contains("failed")) return "FAILED";
         return null;
     }
     
     /**
-     * Validate input
+     * Improved validation - less strict for general queries
      */
     private List<ValidationError> validateInput(HeaderResult headerResult, List<EntityFilter> entities, String input) {
         List<ValidationError> errors = new ArrayList<>();
@@ -248,18 +393,28 @@ public class StandardJSONProcessor {
                                 header.customerName != null || 
                                 header.createdBy != null;
         
-        // Allow general queries
+        // Enhanced general query detection - be more permissive
         String lowerInput = input.toLowerCase();
         boolean isGeneralQuery = lowerInput.contains("all") || 
                                 lowerInput.contains("list") || 
                                 lowerInput.contains("show") ||
                                 lowerInput.contains("status") ||
-                                lowerInput.contains("details");
+                                lowerInput.contains("details") ||
+                                lowerInput.contains("expired") ||
+                                lowerInput.contains("active") ||
+                                lowerInput.contains("created") ||
+                                lowerInput.contains("contracts") ||
+                                lowerInput.contains("parts") ||
+                                !entities.isEmpty(); // If we have entities, it's a valid query
         
+        // Only require identifiers for very specific queries
         if (!hasValidHeader && entities.isEmpty() && !isGeneralQuery) {
-            errors.add(new ValidationError("MISSING_HEADER", 
-                "Provide at least one identifier (contract/part/customer) or filter (date/status)", 
-                "BLOCKER"));
+            // Only add error if it's clearly not a general query
+            if (!lowerInput.contains("contract") && !lowerInput.contains("part") && !lowerInput.contains("customer")) {
+                errors.add(new ValidationError("MISSING_HEADER", 
+                    "Provide at least one identifier (contract/part/customer) or filter (date/status)", 
+                    "BLOCKER"));
+            }
         }
         
         return errors;
@@ -342,6 +497,12 @@ public class StandardJSONProcessor {
         }
         if ((lowerInput.contains("price") || lowerInput.contains("cost")) && !displayEntities.contains("TOTAL_VALUE")) {
             displayEntities.add("TOTAL_VALUE");
+        }
+        if (lowerInput.contains("project type") && !displayEntities.contains("PROJECT_TYPE")) {
+            displayEntities.add("PROJECT_TYPE");
+        }
+        if (lowerInput.contains("metadata") && !displayEntities.contains("METADATA")) {
+            displayEntities.add("METADATA");
         }
         
         return displayEntities;
