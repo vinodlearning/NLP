@@ -197,7 +197,7 @@ public class StandardJSONProcessor {
             String confidenceStr = extractJSONValue(json, "correctionConfidence");
             
             double confidence = 0.0;
-            if (confidenceStr != null && !confidenceStr.equals("null")) {
+            if (confidenceStr != null) {
                 try {
                     confidence = Double.parseDouble(confidenceStr);
                 } catch (NumberFormatException e) {
@@ -214,7 +214,7 @@ public class StandardJSONProcessor {
         String confidenceStr = extractJSONValue(inputTrackingSection, "correctionConfidence");
         
         double confidence = 0.0;
-        if (confidenceStr != null && !confidenceStr.equals("null")) {
+        if (confidenceStr != null) {
             try {
                 confidence = Double.parseDouble(confidenceStr);
             } catch (NumberFormatException e) {
@@ -360,7 +360,12 @@ public class StandardJSONProcessor {
         java.util.regex.Matcher m = p.matcher(json);
         
         if (m.find()) {
-            return m.group(1) != null ? m.group(1) : m.group(2).trim();
+            String value = m.group(1) != null ? m.group(1) : m.group(2).trim();
+            // Handle JSON null values
+            if ("null".equals(value)) {
+                return null;
+            }
+            return value;
         }
         
         return null;
