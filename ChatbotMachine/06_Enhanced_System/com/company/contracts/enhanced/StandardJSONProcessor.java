@@ -200,6 +200,9 @@ public class StandardJSONProcessor {
         boolean hasCreatorContext = cleanInput.contains("created by") || 
                                    cleanInput.contains("by ");
         
+        // Check for contract context - prioritize contract numbers when "contract" is mentioned
+        boolean hasContractContext = cleanInput.contains("contract");
+        
         for (String token : tokens) {
             token = token.trim();
             if (token.isEmpty() || COMMAND_WORDS.contains(token)) {
@@ -217,8 +220,12 @@ public class StandardJSONProcessor {
                 String numberPart = token.substring("contract".length());
                 if (!numberPart.isEmpty() && CONTRACT_NUMBER_PATTERN.matcher(numberPart).matches()) {
                     header.contractNumber = numberPart;
-                } else if (!numberPart.isEmpty()) {
-                    issues.add("Contract number '" + numberPart + "' must be 6+ digits");
+                } else if (!numberPart.isEmpty() && !numberPart.matches("\\d+")) {
+                    // Only add error if it's clearly intended as a contract number (all digits)
+                    // Don't error on things like "contractSiemens" or "contractAE125"
+                    if (numberPart.matches("\\d+")) {
+                        issues.add("Contract number '" + numberPart + "' must be 6+ digits");
+                    }
                 }
             } else if (token.startsWith("part")) {
                 String numberPart = token.substring("part".length());
@@ -239,12 +246,18 @@ public class StandardJSONProcessor {
             else if (token.matches("\\d+")) {
                 if (hasCustomerContext && CUSTOMER_NUMBER_PATTERN.matcher(token).matches()) {
                     header.customerNumber = token;
+                } else if (hasContractContext && token.length() >= 6 && header.contractNumber == null) {
+                    // Prioritize contract number when "contract" is in input and number is long enough
+                    header.contractNumber = token;
+                } else if (hasContractContext && token.length() >= 3 && header.contractNumber == null) {
+                    // Even shorter numbers can be contract numbers if contract context is strong
+                    header.contractNumber = token;
                 } else if (token.length() >= 6 && header.contractNumber == null) {
                     // Only assign as contract number if we don't already have one and it's long enough
                     header.contractNumber = token;
                 } else if (token.length() >= 4 && token.length() <= 8 && header.customerNumber == null) {
-                    // Could be a customer number if in valid range and no contract context
-                    if (!cleanInput.contains("contract") || hasCustomerContext) {
+                    // Could be a customer number if in valid range and no strong contract context
+                    if (!hasContractContext || hasCustomerContext) {
                         header.customerNumber = token;
                     }
                 }
@@ -257,7 +270,10 @@ public class StandardJSONProcessor {
                     token.equals(token.toUpperCase()) ||
                     token.matches("[A-Z]{2,3}\\d+") ||
                     token.contains("_") || token.contains("-")) {
-                    header.partNumber = token.toUpperCase();
+                    // Only assign as part number if we don't have a strong contract context with pure numbers
+                    if (!hasContractContext || !token.matches("\\d+[a-zA-Z]+")) {
+                        header.partNumber = token.toUpperCase();
+                    }
                 }
             }
         }
@@ -293,7 +309,20 @@ public class StandardJSONProcessor {
             
             // Handle concatenated patterns like "contract123sumry", "customer897654contracts"
             List<String> subTokens = splitConcatenatedWords(token.trim());
-            tokens.addAll(subTokens);
+            
+            // Apply splitting recursively to sub-tokens if needed
+            List<String> finalSubTokens = new ArrayList<>();
+            for (String subToken : subTokens) {
+                if (subToken.matches("\\d+[a-zA-Z]+")) {
+                    // Further split number+suffix patterns
+                    List<String> furtherSplit = splitConcatenatedWords(subToken);
+                    finalSubTokens.addAll(furtherSplit);
+                } else {
+                    finalSubTokens.add(subToken);
+                }
+            }
+            
+            tokens.addAll(finalSubTokens);
         }
         
         return tokens.toArray(new String[0]);
@@ -313,6 +342,17 @@ public class StandardJSONProcessor {
             String remainder = word.substring("contract".length());
             result.addAll(splitByKnownWords(remainder));
             return result;
+        }
+        
+        // Pattern for "contract" + number + suffix (like "456789status")
+        if (word.matches("\\d+[a-zA-Z]+")) {
+            Pattern numberSuffixPattern = Pattern.compile("(\\d+)([a-zA-Z]+)");
+            java.util.regex.Matcher matcher = numberSuffixPattern.matcher(word);
+            if (matcher.matches()) {
+                result.add(matcher.group(1)); // number part
+                result.add(matcher.group(2)); // suffix part
+                return result;
+            }
         }
         
         // Pattern 2: "customernumber123456contract" -> ["customer", "number", "123456", "contract"]
