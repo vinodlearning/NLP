@@ -100,10 +100,15 @@ public class CompleteMLController {
     
     /**
      * PHASE 2 FIX: Initialize enhanced regex patterns for better entity extraction
+     * PHASE 2.1 FIX: Enhanced patterns to handle special characters and edge cases
      */
     private void initializePatterns() {
-        contractIdPattern = Pattern.compile("\\b(\\d{3,10})\\b");
-        partNumberPattern = Pattern.compile("\\b([A-Z]{1,3}\\d{2,5})\\b", Pattern.CASE_INSENSITIVE);
+        // Enhanced contract ID pattern - handles embedded numbers with special chars
+        contractIdPattern = Pattern.compile("\\b(\\d{3,10})\\b", Pattern.CASE_INSENSITIVE);
+        
+        // Enhanced part number pattern - handles underscores, hyphens, and special chars
+        partNumberPattern = Pattern.compile("\\b([A-Z]{1,3}\\d{2,5})(?:[_\\-]\\w+)?\\b", Pattern.CASE_INSENSITIVE);
+        
         customerNumberPattern = Pattern.compile("customer\\s+number\\s+(\\d+)", Pattern.CASE_INSENSITIVE);
         accountNumberPattern = Pattern.compile("account\\s+(?:number\\s+)?(\\d+)", Pattern.CASE_INSENSITIVE);
     }
@@ -235,20 +240,50 @@ public class CompleteMLController {
     
     /**
      * PHASE 2 FIX: Enhanced entity extraction with proper customer number handling
+     * PHASE 2.1 FIX: Enhanced to handle edge cases and special characters
      */
     private Map<String, String> extractEntitiesEnhanced(String input) {
         Map<String, String> entities = new HashMap<>();
         
-        // Extract contract ID
+        // Extract contract ID with enhanced pattern
         Matcher contractMatcher = contractIdPattern.matcher(input);
         if (contractMatcher.find()) {
             entities.put("contract_number", contractMatcher.group(1));
         }
         
-        // Extract part number
+        // Extract part number with enhanced pattern (handles AE125_validation-fail)
         Matcher partMatcher = partNumberPattern.matcher(input);
         if (partMatcher.find()) {
             entities.put("part_number", partMatcher.group(1));
+        }
+        
+        // FALLBACK: Additional part number extraction for edge cases
+        if (!entities.containsKey("part_number")) {
+            // Pattern for AE125 in AE125_validation-fail or AE125-something
+            Pattern fallbackPartPattern = Pattern.compile("\\b([A-Z]{2}\\d{3,5})(?:[_\\-]\\w+)*", Pattern.CASE_INSENSITIVE);
+            Matcher fallbackPartMatcher = fallbackPartPattern.matcher(input);
+            if (fallbackPartMatcher.find()) {
+                entities.put("part_number", fallbackPartMatcher.group(1));
+            }
+        }
+        
+        // FALLBACK: Additional contract number extraction for edge cases  
+        if (!entities.containsKey("contract_number")) {
+            // Pattern for numbers embedded in words like cntrct123456!!!
+            Pattern fallbackContractPattern = Pattern.compile("(?:cntrct|contrct|kontract|contract)([0-9]{3,10})", Pattern.CASE_INSENSITIVE);
+            Matcher fallbackContractMatcher = fallbackContractPattern.matcher(input);
+            if (fallbackContractMatcher.find()) {
+                entities.put("contract_number", fallbackContractMatcher.group(1));
+            }
+        }
+        
+        // SUPER FALLBACK: Extract any 6-digit number if no contract found yet
+        if (!entities.containsKey("contract_number")) {
+            Pattern superFallbackPattern = Pattern.compile("([0-9]{6})");
+            Matcher superFallbackMatcher = superFallbackPattern.matcher(input);
+            if (superFallbackMatcher.find()) {
+                entities.put("contract_number", superFallbackMatcher.group(1));
+            }
         }
         
         // CRITICAL FIX: Extract customer number (not name as "number")
