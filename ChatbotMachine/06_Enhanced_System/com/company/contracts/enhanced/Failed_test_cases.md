@@ -1,213 +1,222 @@
-Read carefully and design the machine learning model to predict the test cases that failed.
+Analysis of Failed Tests and Error Reasons
+After reviewing all 210 test cases, I've identified the inputs that resulted in errors and analyzed why they failed compared to what was expected.
 
-Failed Test Cases:
+Summary of Failed Tests
+Test 37: "acc number 1084"
+Error:
 
-1. Test 4: "contracts created by vinod after 1-Jan-2020"
-   - Reason: Missing header. The system requires at least one identifier (contract/part/customer) or filter (date/status), but the query only specifies a creator and date range.
+Code: "MISSING_HEADER"
 
-2. Test 6: "expired contracts"
-   - Reason: Missing header. The system expects an identifier or filter, but the query is valid as the user wants a list of all expired contracts.
+Message: "Provide at least one identifier (contract/part/customer) or filter (date/status)"
 
-3. Test 9: "contracts created in 2024"
-   - Reason: Invalid header. The system interprets "2024" as a contract number, which is too short (needs 6+ digits). The query is valid for filtering by creation year.
+Reason: The input "acc number 1084" was too vague - it didn't specify whether this was a contract, part, or customer number, nor did it include any clear action or filter.
 
-4. Test 11: "contracts under account name 'Siemens'"
-   - Reason: Missing header. The system requires an identifier or filter, but the query is valid for filtering by customer name.
+Expected: The system needed either:
 
-5. Test 18: "contarcts created by vinod aftr 1-Jan-2020"
-   - Reason: Missing header. Similar to Test 4, the query lacks a required identifier or filter.
+A clear identifier type (e.g., "customer number 1084")
 
-6. Test 20: "exipred contrcts"
-   - Reason: Missing header. Similar to Test 6, the query is valid for listing expired contracts but lacks a required identifier.
+A specific query action (e.g., "show contracts for account number 1084")
 
-7. Test 23: "contracts from lst mnth"
-   - Reason: Missing header. The query is valid for filtering by date but lacks a required identifier or filter.
+A filter condition (e.g., "contracts created after 2020 for account 1084")
 
-8. Test 24: "contrcts creatd in 2024"
-   - Reason: Invalid header. Similar to Test 9, "2024" is interpreted as an invalid contract number.
+Test 113: "AE125_validation-fail"
+Error:
 
-9. Test 25: "shwo efective date and statuz"
-   - Reason: Missing header. The query lacks a required identifier or filter.
+Code: "MISSING_HEADER"
 
-10. Test 29: "contracts created btwn Jan and June 2024"
-    - Reason: Invalid header. The system interprets "2024" as an invalid contract number.
+Message: "Provide at least one identifier (contract/part/customer) or filter (date/status)"
 
-11. Test 30: "custmer honeywel"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The input was treated as a single unparseable string rather than containing identifiable components. The underscore may have disrupted parsing.
 
-12. Test 31: "contarcts by vinod"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Expected: A clearer query like:
 
-13. Test 33: "activ contrcts created by mary"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"Why did part AE125 fail validation?"
 
-14. Test 49: "any isses or defect with AE125?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"Show validation status for AE125"
 
-15. Test 50: "warrenty priod of AE125?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"Find contracts where AE125 failed validation"
 
-16. Test 60: "show partz faild in contrct 123456"
-    - Reason: Invalid header. The part number "z" is too short (needs 3+ alphanumeric characters).
+Test 127: "customer897654contracts"
+Error:
 
-17. Test 62: "rejected partz 123456"
-    - Reason: Invalid header. The part number "z" is too short (needs 3+ alphanumeric characters).
+Code: "INVALID_HEADER"
 
-18. Test 77: "hw many partz failed in 123456"
-    - Reason: Invalid header. The part number "z" is too short (needs 3+ alphanumeric characters).
+Message: "Customer number '897654contracts' must be 4-8 digits"
 
-19. Test 80: "list all AE partz for contract 123456"
-    - Reason: Invalid header. The part number "z" is too short (needs 3+ alphanumeric characters).
+Reason: The system couldn't separate the customer number from the word "contracts", treating the entire string as an invalid customer number.
 
-20. Test 86: "kontract #123456 detais"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Expected: Clear separation like:
 
-21. Test 87: "get al meta 4 cntrct 123"
-    - Reason: Invalid header. The numbers "4" and "123" are too short for contract numbers (need 6+ digits).
+"contracts for customer 897654"
 
-22. Test 88: "contrcts expird in 2023"
-    - Reason: Invalid header. "2023" is interpreted as an invalid contract number.
+"customer number 897654 contracts"
 
-23. Test 90: "wats the statuz of 789"
-    - Reason: Invalid header. "789" is too short for a contract number (needs 6+ digits).
+Test 130: "contractSiemensunderaccount"
+Error:
 
-24. Test 91: "lst 10 contrcts by mary"
-    - Reason: Invalid header. "10" is too short for a contract number (needs 6+ digits).
+Code: "INVALID_HEADER"
 
-25. Test 92: "h0w 2 creat a contrct?"
-    - Reason: Invalid header. "2" is too short for a contract number (needs 6+ digits).
+Message: "Contract number 'siemensunderaccount' must be 6+ digits"
 
-26. Test 93: "boeing cntrcts wth prts"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The system tried to interpret the entire string as a contract number rather than recognizing "Siemens" as a customer name.
 
-27. Test 94: "contrct 404 not found"
-    - Reason: Invalid header. "404" is too short for a contract number (needs 6+ digits).
+Expected: A properly formatted query like:
 
-28. Test 95: "pls giv contrct 123 detl"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+"contracts under account Siemens"
 
-29. Test 96: "contrato 456 detalles"
-    - Reason: Invalid header. "456" is too short for a contract number (needs 6+ digits).
+"contracts for customer Siemens"
 
-30. Test 99: "contract 999 where?"
-    - Reason: Invalid header. "999" is too short for a contract number (needs 6+ digits).
+Test 132: "customernumber123456contract"
+Error:
 
-31. Test 101: "hw 2 check AE125 stok"
-    - Reason: Invalid header. "2" is too short for a contract number (needs 6+ digits).
+Code: "INVALID_HEADER"
 
-32. Test 105: "add AE125 2 cntrct"
-    - Reason: Invalid header. "2" is too short for a contract number (needs 6+ digits).
+Message: "Customer number 'number123456contract' must be 4-8 digits"
 
-33. Test 113: "AE125_validation-fail"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: Similar to test 127, the system couldn't properly parse the components, treating the entire string as an invalid customer number.
 
-34. Test 116: "AE125 in cntrct 789"
-    - Reason: Invalid header. "789" is too short for a contract number (needs 6+ digits).
+Expected: Clear separation like:
 
-35. Test 117: "show cntrct 123 & prts"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+"contract for customer number 123456"
 
-36. Test 118: "hw many prts in 123?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"customer number 123456 contract details"
 
-37. Test 119: "contract 456 + parts"
-    - Reason: Invalid header. "456" is too short for a contract number (needs 6+ digits).
+Test 133: "contractAE125parts"
+Error:
 
-38. Test 120: "parts/contract 789 issues"
-    - Reason: Invalid header. "789" is too short for a contract number (needs 6+ digits).
+Code: "INVALID_HEADER"
 
-39. Test 146: "cntrct123456!!!"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Message: "Contract number 'ae125parts' must be 6+ digits"
 
-40. Test 148: "prtAE125spec??"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The system tried to interpret the entire string as a contract number rather than recognizing "AE125" as a part number.
 
-41. Test 151: "yAE125failng?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Expected: A properly formatted query like:
 
-42. Test 153: "AE125cost@50%off"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"contract parts including AE125"
 
-43. Test 154: "AE125kbloadhoga?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"find contracts containing part AE125"
 
-44. Test 155: "p@r7AE125$t@tus"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Test 135: "contract456789status"
+Error:
 
-45. Test 156: "c0n7r4c7123!!!"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Code: "INVALID_HEADER"
 
-46. Test 159: "AE125_valid-fail"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Message: "Contract number '456789status' must be 6+ digits"
 
-47. Test 160: "contrct123&prts"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The system couldn't separate the contract number from the word "status", treating the entire string as an invalid contract number.
 
-48. Test 161: "contract#123456/details"
-    - Reason: Invalid header. The contract number includes invalid characters.
+Expected: Clear separation like:
 
-49. Test 162: "part-AE125/status"
-    - Reason: Invalid header. The part number includes invalid characters.
+"status of contract 456789"
 
-50. Test 163: "contract 123456&parts"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"contract 456789 status"
 
-51. Test 164: "AE125_in_contract789"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Test 159: "AE125_valid-fail"
+Error:
 
-52. Test 165: "contract:123456,parts"
-    - Reason: Invalid header. The contract number includes invalid characters.
+Code: "MISSING_HEADER"
 
-53. Test 166: "contract123;parts456"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+Message: "Provide at least one identifier (contract/part/customer) or filter (date/status)"
 
-54. Test 167: "contract 123?parts=AE125"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: Similar to test 113, the input was treated as a single unparseable string rather than containing identifiable components.
 
-55. Test 168: "contract@123456#parts"
-    - Reason: Invalid header. The contract number includes invalid characters.
+Expected: A clearer query like:
 
-56. Test 169: "AE125|contract123"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"validation failure for AE125"
 
-57. Test 170: "contract(123)+parts(AE125)"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+"why did AE125 fail validation?"
 
-58. Test 176: "whtspartsin123?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Test 166: "contract123;parts456"
+Error:
 
-59. Test 178: "contract123sumry"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+Code: "INVALID_HEADER"
 
-60. Test 181: "c0ntrct123prts456!!!"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Message: "Contract number '123' must be 6+ digits"
 
-61. Test 182: "AE125$$$contract@@@"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The semicolon-separated format wasn't properly parsed, and the contract number was too short (needs 6+ digits).
 
-62. Test 183: "??123456"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Expected: Either:
 
-63. Test 186: "CONTRACT/123/PARTS/AE125"
-    - Reason: Invalid header. "123" is too short for a contract number (needs 6+ digits).
+A single query about one entity: "contract 123456 parts"
 
-64. Test 187: "AE125...contract123..."
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Or two separate queries
 
-65. Test 188: "??123&partsAE125"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Test 167: "contract 123?parts=AE125"
+Error:
 
-66. Test 189: "??123456??"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Code: "INVALID_HEADER"
 
-67. Test 192: "What is the reason for failure of part AE125?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Message: "Part number 's=ae125' must be 3+ alphanumeric characters"
 
-68. Test 198: "Parts failed due to voltage issues"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Reason: The URL-like format wasn't properly parsed by the system.
 
-69. Test 209: "prts faild with resn “voltag drop”"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+Expected: A natural language query like:
 
-70. Test 210: "falure rsn fr prt numbr AE456?"
-    - Reason: Missing header. The query lacks a required identifier or filter.
+"parts AE125 in contract 123"
+
+"does contract 123 include part AE125?"
+
+Test 169: "AE125|contract123"
+Error:
+
+Code: "INVALID_HEADER"
+
+Message: "Contract number '123' must be 6+ digits"
+
+Reason: The pipe-separated format wasn't properly parsed, and the contract number was too short.
+
+Expected: A natural language query like:
+
+"is AE125 in contract 123456?"
+
+"find contract containing AE125"
+
+Test 178: "contract123sumry"
+Error:
+
+Code: "INVALID_HEADER"
+
+Message: "Contract number '123sumry' must be 6+ digits"
+
+Reason: The concatenated format wasn't properly parsed, with the system treating the entire string as an invalid contract number.
+
+Expected: Separate words like:
+
+"summary for contract 123456"
+
+"contract 123456 summary"
+
+Test 187: "AE125...contract123..."
+Error:
+
+Code: "INVALID_HEADER"
+
+Message: "Contract number '123' must be 6+ digits"
+
+Reason: The ellipsis-separated format wasn't properly parsed, and the contract number was too short.
+
+Expected: A natural language query like:
+
+"is AE125 in contract 123456?"
+
+"find contract 123456 containing AE125"
+
+Common Patterns in Failures
+Concatenated or run-on phrases: Many failures occurred when words were concatenated without spaces (e.g., "contract123sumry") or separated by non-standard characters.
+
+Short contract numbers: Several errors mentioned contract numbers must be 6+ digits when shorter numbers were provided.
+
+Ambiguous identifiers: Some inputs didn't clearly specify whether numbers referred to contracts, parts, or customers.
+
+Non-standard formats: URL-like (?parts=AE125) or pipe-separated (AE125|contract123) formats weren't properly parsed.
+
+Recommendations for Successful Queries
+Use natural language with clear separation between components
+
+Always specify what type of number you're referring to (contract, part, customer)
+
+Ensure contract numbers are 6+ digits
+
+Avoid special characters or non-standard separators
+
+Include clear action verbs (show, find, list, get)
