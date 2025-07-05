@@ -141,9 +141,16 @@ public class CompleteMLController {
     
     /**
      * PHASE 2 FIX: Enhanced spell correction dictionary with 50+ corrections
+     * PHASE 2.2: Added database-specific terms and award number synonyms
      */
     private void initializeSpellCorrections() {
         spellCorrections = new HashMap<>();
+        
+        // Database-specific corrections (award number synonyms)
+        spellCorrections.put("award", "contract");
+        spellCorrections.put("awrd", "award");
+        spellCorrections.put("awd", "award");
+        spellCorrections.put("contract", "award");  // Map contract to award for database consistency
         
         // Contract-related corrections
         spellCorrections.put("cntract", "contract");
@@ -245,10 +252,11 @@ public class CompleteMLController {
     private Map<String, String> extractEntitiesEnhanced(String input) {
         Map<String, String> entities = new HashMap<>();
         
-        // Extract contract ID with enhanced pattern
+        // Extract contract ID with enhanced pattern (maps to AWARD_NUMBER in database)
         Matcher contractMatcher = contractIdPattern.matcher(input);
         if (contractMatcher.find()) {
             entities.put("contract_number", contractMatcher.group(1));
+            entities.put("award_number", contractMatcher.group(1));  // Database mapping
         }
         
         // Extract part number with enhanced pattern (handles AE125_validation-fail)
@@ -269,11 +277,12 @@ public class CompleteMLController {
         
         // FALLBACK: Additional contract number extraction for edge cases  
         if (!entities.containsKey("contract_number")) {
-            // Pattern for numbers embedded in words like cntrct123456!!!
-            Pattern fallbackContractPattern = Pattern.compile("(?:cntrct|contrct|kontract|contract)([0-9]{3,10})", Pattern.CASE_INSENSITIVE);
+            // Pattern for numbers embedded in words like cntrct123456!!! or award123456
+            Pattern fallbackContractPattern = Pattern.compile("(?:cntrct|contrct|kontract|contract|award|awrd|awd)([0-9]{3,10})", Pattern.CASE_INSENSITIVE);
             Matcher fallbackContractMatcher = fallbackContractPattern.matcher(input);
             if (fallbackContractMatcher.find()) {
                 entities.put("contract_number", fallbackContractMatcher.group(1));
+                entities.put("award_number", fallbackContractMatcher.group(1));  // Database mapping
             }
         }
         
@@ -283,6 +292,7 @@ public class CompleteMLController {
             Matcher superFallbackMatcher = superFallbackPattern.matcher(input);
             if (superFallbackMatcher.find()) {
                 entities.put("contract_number", superFallbackMatcher.group(1));
+                entities.put("award_number", superFallbackMatcher.group(1));  // Database mapping
             }
         }
         

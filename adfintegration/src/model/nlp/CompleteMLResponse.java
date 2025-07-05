@@ -163,6 +163,8 @@ public class CompleteMLResponse {
             if (extractedEntities.containsKey("contract_number")) {
                 this.contract_number = extractedEntities.get("contract_number");
                 entities.add(new EntityOperation("contract_number", "=", this.contract_number));
+                // Add database mapping for AWARD_NUMBER
+                entities.add(new EntityOperation("award_number", "=", this.contract_number));
             }
             if (extractedEntities.containsKey("part_number")) {
                 this.part_number = extractedEntities.get("part_number");
