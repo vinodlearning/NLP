@@ -509,6 +509,76 @@ public class FinalFixedChatbotProcessor {
         return value == null ? "null" : "\"" + value + "\"";
     }
     
+    /**
+     * Print QueryResponse as formatted JSON
+     */
+    public void printJSON(QueryResponse response) {
+        showFormattedJSON(response);
+    }
+    
+    /**
+     * Convert QueryResponse to JSON string
+     */
+    public String toJSONString(QueryResponse response) {
+        StringBuilder json = new StringBuilder();
+        
+        json.append("{\n");
+        
+        // Header
+        json.append("  \"header\": {\n");
+        Header header = response.getHeader();
+        json.append("    \"contractNumber\": ").append(quote(header.getContractNumber())).append(",\n");
+        json.append("    \"partNumber\": ").append(quote(header.getPartNumber())).append(",\n");
+        json.append("    \"customerNumber\": ").append(quote(header.getCustomerNumber())).append(",\n");
+        json.append("    \"customerName\": ").append(quote(header.getCustomerName())).append(",\n");
+        json.append("    \"createdBy\": ").append(quote(header.getCreatedBy())).append("\n");
+        json.append("  },\n");
+        
+        // Query Metadata
+        json.append("  \"queryMetadata\": {\n");
+        json.append("    \"queryType\": ").append(quote(response.getQueryMetadata().getQueryType())).append(",\n");
+        json.append("    \"actionType\": ").append(quote(response.getQueryMetadata().getActionType())).append(",\n");
+        json.append("    \"processingTimeMs\": ").append(String.format("%.3f", response.getQueryMetadata().getProcessingTimeMs())).append("\n");
+        json.append("  },\n");
+        
+        // Entities
+        json.append("  \"entities\": [\n");
+        for (int i = 0; i < response.getEntities().size(); i++) {
+            EntityFilter entity = response.getEntities().get(i);
+            json.append("    {\n");
+            json.append("      \"attribute\": ").append(quote(entity.getAttribute())).append(",\n");
+            json.append("      \"operation\": ").append(quote(entity.getOperation())).append(",\n");
+            json.append("      \"value\": ").append(quote(entity.getValue())).append(",\n");
+            json.append("      \"source\": ").append(quote(entity.getSource())).append("\n");
+            json.append("    }").append(i < response.getEntities().size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ],\n");
+        
+        // Display Entities
+        json.append("  \"displayEntities\": [\n");
+        for (int i = 0; i < response.getDisplayEntities().size(); i++) {
+            json.append("    ").append(quote(response.getDisplayEntities().get(i)));
+            json.append(i < response.getDisplayEntities().size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ],\n");
+        
+        // Errors
+        json.append("  \"errors\": [\n");
+        for (int i = 0; i < response.getErrors().size(); i++) {
+            ValidationError error = response.getErrors().get(i);
+            json.append("    {\n");
+            json.append("      \"code\": ").append(quote(error.getCode())).append(",\n");
+            json.append("      \"message\": ").append(quote(error.getMessage())).append(",\n");
+            json.append("      \"severity\": ").append(quote(error.getSeverity())).append("\n");
+            json.append("    }").append(i < response.getErrors().size() - 1 ? "," : "").append("\n");
+        }
+        json.append("  ]\n");
+        
+        json.append("}");
+        
+        return json.toString();
+    }
+    
     // Supporting Classes (same as before)
     public static class Header {
         private String contractNumber;
