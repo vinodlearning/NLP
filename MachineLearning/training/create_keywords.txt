@@ -1,0 +1,21 @@
+# Create Keywords Configuration
+# One keyword per line - used for routing creation/help-related queries
+# Update this file to add new creation-related keywords
+
+create
+creating
+make
+making
+new
+add
+adding
+generate
+generating
+build
+building
+establish
+setup
+initialize
+commence
+start
+begin

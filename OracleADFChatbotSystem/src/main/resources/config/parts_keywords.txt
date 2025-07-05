@@ -1,0 +1,62 @@
+# Parts Keywords for Domain Classification
+# These keywords help route queries to the parts domain
+
+# Basic parts terms
+parts
+part
+components
+component
+items
+item
+lines
+line
+
+# Parts actions
+count
+many
+number
+total
+quantity
+inventory
+stock
+available
+availability
+
+# Parts properties
+specifications
+specs
+details
+description
+manufacturer
+supplier
+warranty
+price
+cost
+
+# Parts identification
+number
+id
+code
+sku
+model
+serial
+
+# Parts status
+available
+unavailable
+in-stock
+out-of-stock
+backordered
+discontinued
+
+# Parts categories
+engine
+hydraulic
+electrical
+mechanical
+filter
+gasket
+pump
+valve
+bearing
+seal

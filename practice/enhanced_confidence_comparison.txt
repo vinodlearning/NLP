@@ -1,0 +1,1311 @@
+================================================================================
+ENHANCED CONFIDENCE ALGORITHM COMPARISON
+================================================================================
+Generated: 2025-07-04T08:04:19.503260673
+================================================================================
+
+TEST 1 of 40
+--------------------------------------------------
+INPUT: "show contract 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "show contract 123456",
+    "normalizedQuery": "show contract 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.523784304"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 2 of 40
+--------------------------------------------------
+INPUT: "contract details 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contract details 123456",
+    "normalizedQuery": "contract details 123456",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.525609997"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 3 of 40
+--------------------------------------------------
+INPUT: "get contract info 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get contract info 123456",
+    "normalizedQuery": "get contract info 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.526701464"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 4 of 40
+--------------------------------------------------
+INPUT: "contracts created by vinod after 1-Jan-2020"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts created by vinod after 1-Jan-2020",
+    "normalizedQuery": "contracts created by vinod after 1-jan-2020",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.527600521"
+  },
+  "entities": {
+    "contractNumber": "2020",
+    "userName": "vinod"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "after_2020_01_01",
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 2020
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 5 of 40
+--------------------------------------------------
+INPUT: "status of contract 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "status of contract 123456",
+    "normalizedQuery": "status of contract 123456",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.528411676"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 6 of 40
+--------------------------------------------------
+INPUT: "expired contracts"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "expired contracts",
+    "normalizedQuery": "expired contracts",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.529233372"
+  },
+  "entities": {
+    "contractNumber": "tracts"
+  },
+  "requestedAttributes": ["expiration_date"],
+  "context": {
+    "complexity": "0",
+    "status_filter": "expired"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 7 of 40
+--------------------------------------------------
+INPUT: "contracts for customer number 897654"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts for customer number 897654",
+    "normalizedQuery": "contracts for customer number 897654",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.530049237"
+  },
+  "entities": {
+    "contractNumber": "897654",
+    "customerNumber": "897654"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 897654
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 8 of 40
+--------------------------------------------------
+INPUT: "account 10840607 contracts"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "account 10840607 contracts",
+    "normalizedQuery": "account 10840607 contracts",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.530850563"
+  },
+  "entities": {
+    "contractNumber": "10840607",
+    "accountNumber": "10840607"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 10840607
+  Account Number: 10840607
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 9 of 40
+--------------------------------------------------
+INPUT: "contracts created in 2024"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts created in 2024",
+    "normalizedQuery": "contracts created in 2024",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.531689299"
+  },
+  "entities": {
+    "contractNumber": "2024"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "year_2024",
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 2024
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 10 of 40
+--------------------------------------------------
+INPUT: "get all metadata for contract 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get all metadata for contract 123456",
+    "normalizedQuery": "get all metadata for contract 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.532545125"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["project_type", "effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 5 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 11 of 40
+--------------------------------------------------
+INPUT: "contracts under account name 'Siemens'"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts under account name 'Siemens'",
+    "normalizedQuery": "contracts under account name  siemens",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.533484241"
+  },
+  "entities": {
+    "contractNumber": "tracts",
+    "customerName": "Siemens"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Customer Name: Siemens
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 12 of 40
+--------------------------------------------------
+INPUT: "get project type, effective date, and price list for account number 10840607"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get project type, effective date, and price list for account number 10840607",
+    "normalizedQuery": "get project type  effective date  and price list for account number 10840607",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.534296487"
+  },
+  "entities": {
+    "contractNumber": "10840607",
+    "accountNumber": "10840607"
+  },
+  "requestedAttributes": ["project_type", "price", "effective_date"],
+  "context": {
+    "complexity": "2"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 10840607
+  Account Number: 10840607
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 3 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 13 of 40
+--------------------------------------------------
+INPUT: "show contract for customer number 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "show contract for customer number 123456",
+    "normalizedQuery": "show contract for customer number 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.535053392"
+  },
+  "entities": {
+    "contractNumber": "123456",
+    "customerNumber": "123456"
+  },
+  "requestedAttributes": ["contract_number"],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 14 of 40
+--------------------------------------------------
+INPUT: "shwo contrct 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "shwo contrct 123456",
+    "normalizedQuery": "show contract 123456",
+    "confidence": 0.978,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.535907488"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.978
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 15 of 40
+--------------------------------------------------
+INPUT: "get contrct infro 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get contrct infro 123456",
+    "normalizedQuery": "get contract info 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.536658553"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 16 of 40
+--------------------------------------------------
+INPUT: "find conract detials 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "find conract detials 123456",
+    "normalizedQuery": "find contract details 123456",
+    "confidence": 0.980,
+    "intent": "contract_search",
+    "timestamp": "2025-07-04T08:04:19.537486569"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_search
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 17 of 40
+--------------------------------------------------
+INPUT: "cntract summry for 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "cntract summry for 123456",
+    "normalizedQuery": "contract summary for 123456",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.538235414"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 18 of 40
+--------------------------------------------------
+INPUT: "contarcts created by vinod aftr 1-Jan-2020"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contarcts created by vinod aftr 1-Jan-2020",
+    "normalizedQuery": "contracts created by vinod after 1-jan-2020",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.53918687"
+  },
+  "entities": {
+    "contractNumber": "2020",
+    "userName": "vinod"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "after_2020_01_01",
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 2020
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 19 of 40
+--------------------------------------------------
+INPUT: "statuss of contrct 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "statuss of contrct 123456",
+    "normalizedQuery": "status of contract 123456",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.539917125"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 20 of 40
+--------------------------------------------------
+INPUT: "exipred contrcts"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "exipred contrcts",
+    "normalizedQuery": "expired contracts",
+    "confidence": 0.925,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.54052959"
+  },
+  "entities": {
+    "contractNumber": "tracts"
+  },
+  "requestedAttributes": ["expiration_date"],
+  "context": {
+    "complexity": "0",
+    "status_filter": "expired"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Confidence: 0.925
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 21 of 40
+--------------------------------------------------
+INPUT: "contracs for cstomer numer 897654"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracs for cstomer numer 897654",
+    "normalizedQuery": "contracts for customer number 897654",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.541372195"
+  },
+  "entities": {
+    "contractNumber": "897654",
+    "customerNumber": "897654"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 897654
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 22 of 40
+--------------------------------------------------
+INPUT: "accunt number 10840607 contrcts"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "accunt number 10840607 contrcts",
+    "normalizedQuery": "account number 10840607 contracts",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.542124591"
+  },
+  "entities": {
+    "contractNumber": "10840607",
+    "accountNumber": "10840607"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 10840607
+  Account Number: 10840607
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 23 of 40
+--------------------------------------------------
+INPUT: "contracts from lst mnth"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts from lst mnth",
+    "normalizedQuery": "contracts from last month",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.542700724"
+  },
+  "entities": {
+    "contractNumber": "tracts"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "last_month",
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 24 of 40
+--------------------------------------------------
+INPUT: "contrcts creatd in 2024"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contrcts creatd in 2024",
+    "normalizedQuery": "contracts created in 2024",
+    "confidence": 0.900,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.543342009"
+  },
+  "entities": {
+    "contractNumber": "2024"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "year_2024",
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 2024
+  Confidence: 0.900
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 25 of 40
+--------------------------------------------------
+INPUT: "shwo efective date and statuz"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "shwo efective date and statuz",
+    "normalizedQuery": "show effective date and status",
+    "confidence": 0.813,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.543982533"
+  },
+  "entities": {
+
+  },
+  "requestedAttributes": ["effective_date", "status"],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Confidence: 0.813
+  Assessment: MEDIUM CONFIDENCE - Verify with user ⚠️
+  Intent: attribute_query
+  Requested Attributes: 2 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 26 of 40
+--------------------------------------------------
+INPUT: "get cntracts for acount no 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get cntracts for acount no 123456",
+    "normalizedQuery": "get contracts for account no 123456",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.544660988"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 27 of 40
+--------------------------------------------------
+INPUT: "contrct summry for custmor 999999"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contrct summry for custmor 999999",
+    "normalizedQuery": "contract summary for customer 999999",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.545412363"
+  },
+  "entities": {
+    "contractNumber": "999999"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 999999
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 28 of 40
+--------------------------------------------------
+INPUT: "get contrct detals by acount 10840607"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get contrct detals by acount 10840607",
+    "normalizedQuery": "get contract details by account 10840607",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.546208689"
+  },
+  "entities": {
+    "contractNumber": "10840607",
+    "accountNumber": "10840607"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 10840607
+  Account Number: 10840607
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 29 of 40
+--------------------------------------------------
+INPUT: "contracts created btwn Jan and June 2024"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contracts created btwn Jan and June 2024",
+    "normalizedQuery": "contracts created between jan and june 2024",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.547088765"
+  },
+  "entities": {
+    "contractNumber": "2024"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "timeframe": "jan_to_june_2024",
+    "complexity": "2"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 2024
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 30 of 40
+--------------------------------------------------
+INPUT: "custmer honeywel"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "custmer honeywel",
+    "normalizedQuery": "customer honeywell",
+    "confidence": 0.915,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.547648529"
+  },
+  "entities": {
+    "customerName": "Honeywell"
+  },
+  "requestedAttributes": ["customer_name"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Customer Name: Honeywell
+  Confidence: 0.915
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 31 of 40
+--------------------------------------------------
+INPUT: "contarcts by vinod"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "contarcts by vinod",
+    "normalizedQuery": "contracts by vinod",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.548122682"
+  },
+  "entities": {
+    "contractNumber": "tracts",
+    "userName": "vinod"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 32 of 40
+--------------------------------------------------
+INPUT: "show contracts for acc no 456789"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "show contracts for acc no 456789",
+    "normalizedQuery": "show contracts for acc no 456789",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.548526045"
+  },
+  "entities": {
+    "contractNumber": "456789",
+    "accountNumber": "456789"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 456789
+  Account Number: 456789
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 33 of 40
+--------------------------------------------------
+INPUT: "activ contrcts created by mary"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "activ contrcts created by mary",
+    "normalizedQuery": "active contracts created by mary",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.549074738"
+  },
+  "entities": {
+    "contractNumber": "tracts",
+    "userName": "mary"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0",
+    "status_filter": "active"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 34 of 40
+--------------------------------------------------
+INPUT: "kontract detials 123456"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "kontract detials 123456",
+    "normalizedQuery": "contract details 123456",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.549558202"
+  },
+  "entities": {
+    "contractNumber": "123456"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123456
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 35 of 40
+--------------------------------------------------
+INPUT: "kontrakt sumry for account 888888"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "kontrakt sumry for account 888888",
+    "normalizedQuery": "contract summary for account 888888",
+    "confidence": 0.980,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.550091885"
+  },
+  "entities": {
+    "contractNumber": "888888",
+    "accountNumber": "888888"
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 888888
+  Account Number: 888888
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 36 of 40
+--------------------------------------------------
+INPUT: "boieng contrcts"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "boieng contrcts",
+    "normalizedQuery": "boeing contracts",
+    "confidence": 0.980,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.550595149"
+  },
+  "entities": {
+    "contractNumber": "tracts",
+    "customerName": "Boeing"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: tracts
+  Customer Name: Boeing
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: contract_list
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 37 of 40
+--------------------------------------------------
+INPUT: "acc number 1084"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "acc number 1084",
+    "normalizedQuery": "acc number 1084",
+    "confidence": 0.980,
+    "intent": "general_query",
+    "timestamp": "2025-07-04T08:04:19.550956181"
+  },
+  "entities": {
+    "contractNumber": "1084",
+    "accountNumber": "1084"
+  },
+  "requestedAttributes": [],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 1084
+  Account Number: 1084
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: general_query
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 38 of 40
+--------------------------------------------------
+INPUT: "price list corprate2024"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "price list corprate2024",
+    "normalizedQuery": "price list corporate2024",
+    "confidence": 0.750,
+    "intent": "contract_list",
+    "timestamp": "2025-07-04T08:04:19.551365594"
+  },
+  "entities": {
+
+  },
+  "requestedAttributes": ["price"],
+  "context": {
+    "timeframe": "year_2024",
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Confidence: 0.750
+  Assessment: MEDIUM CONFIDENCE - Verify with user ⚠️
+  Intent: contract_list
+  Requested Attributes: 1 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 39 of 40
+--------------------------------------------------
+INPUT: "oppurtunity code details"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "oppurtunity code details",
+    "normalizedQuery": "opportunity code details",
+    "confidence": 0.880,
+    "intent": "attribute_query",
+    "timestamp": "2025-07-04T08:04:19.551789827"
+  },
+  "entities": {
+
+  },
+  "requestedAttributes": ["effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "0"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Confidence: 0.880
+  Assessment: MEDIUM CONFIDENCE - Verify with user ⚠️
+  Intent: attribute_query
+  Requested Attributes: 4 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+TEST 40 of 40
+--------------------------------------------------
+INPUT: "get all flieds for customer 123123"
+
+ENHANCED JSON OUTPUT:
+{
+  "metadata": {
+    "originalQuery": "get all flieds for customer 123123",
+    "normalizedQuery": "get all fields for customer 123123",
+    "confidence": 0.980,
+    "intent": "specific_lookup",
+    "timestamp": "2025-07-04T08:04:19.552313661"
+  },
+  "entities": {
+    "contractNumber": "123123"
+  },
+  "requestedAttributes": ["project_type", "effective_date", "contract_name", "customer_name", "status"],
+  "context": {
+    "complexity": "1"
+  }
+}
+
+ENHANCED ANALYSIS:
+  Contract Number: 123123
+  Confidence: 0.980
+  Assessment: HIGH CONFIDENCE - Auto-execute ✅
+  Intent: specific_lookup
+  Requested Attributes: 5 attributes found
+  Processing: SUCCESS ✓
+
+================================================================================
+
+
+ENHANCED CONFIDENCE SUMMARY
+================================================================================
+Total queries processed: 40
+Average confidence: 0.963
+
+Confidence Distribution:
+  HIGH (≥0.90): 37 queries (92.5%)
+  MEDIUM (0.70-0.89): 3 queries (7.5%)
+  LOW (<0.70): 0 queries (0.0%)
+
+🎯 TARGET ACHIEVED: 100.0% of queries have confidence ≥ 0.70

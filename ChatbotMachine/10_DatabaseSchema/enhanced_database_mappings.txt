@@ -1,0 +1,253 @@
+# Enhanced Database Column Mappings for Contract System
+
+# ====================================
+# CONTRACTS TABLE MAPPINGS (Updated)
+# ====================================
+
+# Core Contract Information
+contract_number=AWARD_NUMBER
+contract_id=AWARD_NUMBER
+award_number=AWARD_NUMBER
+contract_name=CONTRACT_NAME
+contract_status=STATUS
+status=STATUS
+title=TITLE
+description=DESCRIPTION
+comments=COMMENTS
+
+# Customer Information
+customer_name=CUSTOMER_NAME
+customer_number=CUSTOMER_NUMBER
+customer=CUSTOMER_NAME
+alternate_customers=ALTERNATE_CUSTOMERS
+customer_focus=CUSTOMER_FOCUS
+
+# Date Information
+effective_date=EFFECTIVE_DATE
+expiration_date=EXPIRATION_DATE
+end_date=EXPIRATION_DATE
+start_date=EFFECTIVE_DATE
+price_expiration_date=PRICE_EXPIRATION_DATE
+contract_length=CONTRACT_LENGTH
+created_date=CREATE_DATE
+creation_date=CREATE_DATE
+updated_date=UPDATED_DATE
+last_update_date=UPDATED_DATE
+
+# Financial Information
+contract_value=CONTRACT_VALUE
+amount=CONTRACT_VALUE
+price=CONTRACT_VALUE
+payment_terms=PAYMENT_TERMS
+currency=CURRENCY
+rebate=REBATE
+line_min=LINE_MIN
+order_min=ORDER_MIN
+target_margin=TARGET_MARGIN
+
+# Notification Settings
+exp_notif_sent_90=EXP_NOTIF_SENT_90
+exp_notif_sent_60=EXP_NOTIF_SENT_60
+exp_notif_sent_30=EXP_NOTIF_SENT_30
+exp_notif_feedback=EXP_NOTIF_FEEDBACK
+notification_90=EXP_NOTIF_SENT_90
+notification_60=EXP_NOTIF_SENT_60
+notification_30=EXP_NOTIF_SENT_30
+
+# Program Information
+program_information=PROGRAM_INFORMATION
+is_program=IS_PROGRAM
+is_hpp_unpriced_contract=IS_HPP_UNPRICED_CONTRACT
+opportunity_number=OPPORTUNITY_NUMBER
+contract_type=CONTRACT_TYPE
+project_type=PROJECT_TYPE
+group_type=GROUP_TYPE
+
+# Service Features
+cmi=CMI
+vmi=VMI
+bailment=BAILMENT
+consignment=CONSIGNMENT
+edi=EDI
+min_max=MIN_MAX
+kitting=KITTING
+pl_3=PL_3
+pl_4=PL_4
+fsl_location=FSL_LOCATION
+vending_machines=VENDING_MACHINES
+service_fee_applies=SERVICE_FEE_APPLIES
+e_commerce_access=E_COMMERCE_ACCESS
+
+# Compliance and Regulations
+pma_tso_applies=PMA_TSO_APPLIES
+dfar_applies=DFAR_APPLIES
+asl_applies=ASL_APPLIES
+asl_detail=ASL_DETAIL
+is_tso_pma=IS_TSO_PMA
+is_fsl_req=IS_FSL_REQ
+is_site_visit_req=IS_SITE_VISIT_REQ
+
+# Terms and Conditions
+incoterms=INCOTERMS
+ultimate_destination=ULTIMATE_DESTINATION
+gt_25=GT_25
+part_file=PART_FILE
+stocking_strategy=STOCKING_STRATEGY
+liability_on_investment=LIABILITY_ON_INVESTMENT
+hpp_language=HPP_LANGUAGE
+csm_language=CSM_LANGUAGE
+d_item_language=D_ITEM_LANGUAGE
+s_item_language=S_ITEM_LANGUAGE
+
+# Contract Clauses
+effective_lol=EFFECTIVE_LOL
+penalties_damages=PENALTIES_DAMAGES
+unusual_title_transfer=UNUSUAL_TITLE_TRANSFER
+rights_of_return=RIGHTS_OF_RETURN
+incentives_credits=INCENTIVES_CREDITS
+cancellation_privileges=CANCELLATION_PRIVILEGES
+bill_and_hold=BILL_AND_HOLD
+buy_back=BUY_BACK
+
+# Additional Opportunities and Investment
+addl_opportunities=ADDL_OPPORTUNITIES
+min_inv_obligation=MIN_INV_OBLIGATION
+additional_opportunities=ADDL_OPPORTUNITIES
+minimum_investment_obligation=MIN_INV_OBLIGATION
+
+# System Fields
+created_by=CREATED_BY
+updated_by=UPDATED_BY
+process_flag=PROCESS_FLAG
+completeness_check=COMPLETENESS_CHECK
+warehouse_info=WAREHOUSE_INFO
+price_list=PRICE_LIST
+impl_code=IMPL_CODE
+external_contract_number=EXTERNAL_CONTRACT_NUMBER
+account_type=ACCOUNT_TYPE
+competition=COMPETITION
+existing_contract_number=EXISTING_CONTRACT_NUMBER
+existing_contract_type=EXISTING_CONTRACT_TYPE
+legal_format_type=LEGAL_FORMAT_TYPE
+moqs_amortize=MOQS_AMORTIZE
+platform_info=PLATFORM_INFO
+return_part_list_format=RETURN_PART_LIST_FORMAT
+source_products=SOURCE_PRODUCTS
+summary=SUMMARY
+total_part_count=TOTAL_PART_COUNT
+crf_id=CRF_ID
+
+# ====================================
+# PARTS TABLE MAPPINGS (Updated)
+# ====================================
+
+# Core Part Information
+part_number=INVOICE_PART_NUMBER
+part_id=AWARD_ID
+line_number=LINE_NO
+line_no=LINE_NO
+invoice_part_number=INVOICE_PART_NUMBER
+nsn_part_number=NSN_PART_NUMBER
+sap_number=SAP_NUMBER
+loaded_cp_number=LOADED_CP_NUMBER
+
+# Part Details
+eau=EAU
+uom=UOM
+price=PRICE
+item_classification=ITEM_CLASSIFICATION
+lead_time=LEAD_TIME
+status=STATUS
+moq=MOQ
+tot_con_qty_req=TOT_CON_QTY_REQ
+
+# Pricing Information
+quote_cost=QUOTE_COST
+quote_cost_source=QUOTE_COST_SOURCE
+future_price=FUTURE_PRICE
+f_price_effective_date=F_PRICE_EFFECTIVE_DATE
+future_price2=FUTURE_PRICE2
+f_price_effective_date2=F_PRICE_EFFECTIVE_DATE2
+future_price3=FUTURE_PRICE3
+f_price_effective_date3=F_PRICE_EFFECTIVE_DATE3
+prev_price=PREV_PRICE
+reprice_effective_date=REPRICE_EFFECTIVE_DATE
+
+# Date Information
+effective_date=EFFECTIVE_DATE
+part_expiration_date=PART_EXPIRATION_DATE
+date_loaded=DATE_LOADED
+creation_date=CREATION_DATE
+last_update_date=LAST_UPDATE_DATE
+
+# Contract Association
+award_tags=AWARD_TAGS
+external_contract_no=EXTERNAL_CONTRACT_NO
+external_line_no=EXTERNAL_LINE_NO
+applicable_contract=APPLICABLE_CONTRACT
+opportunity_number=OPPORTUNITY_NUMBER
+
+# Quality and Compliance
+test_reports_required=TEST_REPORTS_REQUIRED
+csm_status=CSM_STATUS
+csm_monitored=CSM_MONITORED
+asl_codes=ASL_CODES
+prime=PRIME
+valuation_type=VALUATION_TYPE
+plant=PLANT
+
+# Terms and Conditions
+incoterms=INCOTERMS
+incoterms_location=INCOTERMS_LOCATION
+customer_reference=CUSTOMER_REFERENCE
+cust_exclude_pn=CUST_EXCLUDE_PN
+
+# Comments and Notes
+comments=COMMENTS
+award_rep_comments=AWARD_REP_COMMENTS
+purchase_comments=PURCHASE_COMMENTS
+sales_comments=SALES_COMMENTS
+customer_response=CUSTOMER_RESPONSE
+planning_comments=PLANNING_COMMENTS
+
+# Vendor Information
+pl4_vendor=PL4_VENDOR
+
+# System Fields
+created_by=CREATED_BY
+last_updated_by=LAST_UPDATED_BY
+
+# ====================================
+# PARTS_FAILED TABLE MAPPINGS (New)
+# ====================================
+
+# Core Failed Parts Information
+failed_part_number=PARTS_NUMBER
+failed_parts_number=PARTS_NUMBER
+parts_number=PARTS_NUMBER
+part_number=PARTS_NUMBER
+
+# Contract Association
+failed_contract_number=CONTRACT_NUMBER
+contract_number=CONTRACT_NUMBER
+contract_id=CONTRACT_NUMBER
+award_number=CONTRACT_NUMBER
+
+# Failure Information
+failed_message=FAILED_MESSAGE_COLUMN
+failure_message=FAILED_MESSAGE_COLUMN
+failed_message_column=FAILED_MESSAGE_COLUMN
+error_message=FAILED_MESSAGE_COLUMN
+failure_reason=REASON_FOR_FAILED
+failed_reason=REASON_FOR_FAILED
+reason_for_failed=REASON_FOR_FAILED
+failure_cause=REASON_FOR_FAILED
+failed_cause=REASON_FOR_FAILED
+
+# Common Field Mappings
+id=ID
+name=NAME
+type=TYPE
+code=CODE
+reference=REFERENCE
+notes=NOTES

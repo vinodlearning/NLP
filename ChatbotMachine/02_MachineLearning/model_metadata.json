@@ -1,0 +1,34 @@
+{
+  "packageName": "ContractPortal_Models",
+  "version": "1.0.0",
+  "generatedOn": "2025-07-04 16:14:24",
+  "description": "Contract Portal ML Models and NLP Processing Classes",
+  "models": {
+    "contractModel": {
+      "file": "contract_model.bin",
+      "type": "ML Model",
+      "purpose": "Contract query processing"
+    },
+    "partsModel": {
+      "file": "parts_model.bin",
+      "type": "ML Model",
+      "purpose": "Parts query processing"
+    },
+    "helpModel": {
+      "file": "help_model.bin",
+      "type": "ML Model",
+      "purpose": "Help and creation assistance"
+    }
+  },
+  "javaClasses": [
+    "StructuredQueryProcessor.java",
+    "StructuredQueryResponse.java",
+    "OptimizedNLPController.java",
+    "Helper.java"
+  ],
+  "configurationFiles": [
+    "parts_keywords.txt",
+    "create_keywords.txt",
+    "spell_corrections.txt"
+  ]
+}

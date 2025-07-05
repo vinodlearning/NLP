@@ -1,0 +1,105 @@
+# Parts Table Column Mappings
+# Format: user_term=database_column_name
+# This file can be updated without recompiling Java code
+
+# Parts Identification
+part_number=PART_NUMBER
+part_id=PART_NUMBER
+part=PART_NUMBER
+item_number=PART_NUMBER
+item_id=PART_NUMBER
+item=PART_NUMBER
+component_number=PART_NUMBER
+component_id=PART_NUMBER
+
+# Parts Basic Information
+part_name=PART_NAME
+name=PART_NAME
+title=PART_NAME
+part_title=PART_NAME
+item_name=PART_NAME
+component_name=PART_NAME
+
+# Parts Description
+description=DESCRIPTION
+desc=DESCRIPTION
+details=DESCRIPTION
+specification=SPECIFICATION
+spec=SPECIFICATION
+specifications=SPECIFICATION
+
+# Contract Association
+contract_number=CONTRACT_NUMBER
+award_number=CONTRACT_NUMBER
+contract_id=CONTRACT_NUMBER
+award_id=CONTRACT_NUMBER
+contract=CONTRACT_NUMBER
+award=CONTRACT_NUMBER
+
+# Line Item Information
+line_number=LINE_NUMBER
+line_id=LINE_NUMBER
+line=LINE_NUMBER
+item_line=LINE_NUMBER
+line_item=LINE_NUMBER
+
+# Quantity and Pricing
+quantity=QUANTITY
+qty=QUANTITY
+amount=QUANTITY
+count=QUANTITY
+unit_price=UNIT_PRICE
+price=UNIT_PRICE
+cost=UNIT_PRICE
+rate=UNIT_PRICE
+total_price=TOTAL_PRICE
+total_cost=TOTAL_PRICE
+total_amount=TOTAL_PRICE
+extended_price=TOTAL_PRICE
+
+# Units and Measurements
+unit=UNIT
+uom=UNIT
+unit_of_measure=UNIT
+measurement_unit=UNIT
+
+# Status and Availability
+status=STATUS
+part_status=STATUS
+availability=AVAILABILITY
+available=AVAILABILITY
+stock_status=AVAILABILITY
+inventory_status=AVAILABILITY
+
+# Dates
+delivery_date=DELIVERY_DATE
+ship_date=DELIVERY_DATE
+expected_date=DELIVERY_DATE
+due_date=DELIVERY_DATE
+required_date=DELIVERY_DATE
+
+# Supplier Information
+supplier=SUPPLIER
+vendor=SUPPLIER
+manufacturer=MANUFACTURER
+mfg=MANUFACTURER
+supplier_name=SUPPLIER
+vendor_name=SUPPLIER
+
+# Category and Classification
+category=CATEGORY
+type=CATEGORY
+classification=CATEGORY
+group=CATEGORY
+part_type=CATEGORY
+item_type=CATEGORY
+
+# Technical Specifications
+weight=WEIGHT
+dimensions=DIMENSIONS
+size=DIMENSIONS
+material=MATERIAL
+color=COLOR
+model=MODEL
+version=VERSION
+revision=REVISION

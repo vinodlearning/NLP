@@ -1,0 +1,1270 @@
+{
+  "testSession": {
+    "timestamp": "2025-07-05T14:26:34.685050202",
+    "totalTests": 210,
+    "successfulTests": 113,
+    "failedTests": 97
+  },
+  "testResults": [
+    {
+      "testNumber": 1,
+      "input": "show contract 123456",
+      "processingTimeMs": 2.481,
+      "response": {"header":{"contractNumber":"123456","partNumber":"SHOW","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":2.281927},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 2,
+      "input": "contract details 123456",
+      "processingTimeMs": 0.179,
+      "response": {"header":{"contractNumber":"123456","partNumber":"DETAILS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.177871},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 3,
+      "input": "get contract info 123456",
+      "processingTimeMs": 0.131,
+      "response": {"header":{"contractNumber":"123456","partNumber":"INFO","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.130021},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 4,
+      "input": "contracts created by vinod after 1-Jan-2020",
+      "processingTimeMs": 6.356,
+      "response": {"header":{"contractNumber":null,"partNumber":"AFTER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":6.35436},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 5,
+      "input": "status of contract 123456",
+      "processingTimeMs": 0.166,
+      "response": {"header":{"contractNumber":"123456","partNumber":"STATUS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.165481},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME","STATUS"],"errors":[]}
+    },
+    {
+      "testNumber": 6,
+      "input": "expired contracts",
+      "processingTimeMs": 0.099,
+      "response": {"header":{"contractNumber":null,"partNumber":"EXPIRED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.098401},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 7,
+      "input": "contracts for customer number 897654",
+      "processingTimeMs": 0.196,
+      "response": {"header":{"contractNumber":"897654","partNumber":"NUMBER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.195132},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 8,
+      "input": "account 10840607 contracts",
+      "processingTimeMs": 0.106,
+      "response": {"header":{"contractNumber":"10840607","partNumber":"ACCOUNT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.105121},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 9,
+      "input": "contracts created in 2024",
+      "processingTimeMs": 0.666,
+      "response": {"header":{"contractNumber":null,"partNumber":"CREATED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.664715},"entities":[{"attribute":"CREATED_DATE","operation":"=","value":"2024","source":"user_input"}],"displayEntities":["CREATED_DATE"],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"},{"code":"INVALID_HEADER","message":"Number '2024' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 10,
+      "input": "get all metadata for contract 123456",
+      "processingTimeMs": 0.180,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.178841},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 11,
+      "input": "contracts under account name 'Siemens'",
+      "processingTimeMs": 0.147,
+      "response": {"header":{"contractNumber":null,"partNumber":"NAME","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.144531},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 12,
+      "input": "get project type, effective date, and price list for account number 10840607",
+      "processingTimeMs": 0.281,
+      "response": {"header":{"contractNumber":"10840607","partNumber":"NUMBER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.280032},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME","EFFECTIVE_DATE","TOTAL_VALUE"],"errors":[]}
+    },
+    {
+      "testNumber": 13,
+      "input": "show contract for customer number 123456",
+      "processingTimeMs": 0.133,
+      "response": {"header":{"contractNumber":"123456","partNumber":"NUMBER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.132071},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 14,
+      "input": "shwo contrct 123456",
+      "processingTimeMs": 0.090,
+      "response": {"header":{"contractNumber":"123456","partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.08889},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 15,
+      "input": "get contrct infro 123456",
+      "processingTimeMs": 0.111,
+      "response": {"header":{"contractNumber":"123456","partNumber":"INFRO","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.1103},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 16,
+      "input": "find conract detials 123456",
+      "processingTimeMs": 0.106,
+      "response": {"header":{"contractNumber":"123456","partNumber":"DETIALS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.105861},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 17,
+      "input": "cntract summry for 123456",
+      "processingTimeMs": 0.095,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.094261},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 18,
+      "input": "contarcts created by vinod aftr 1-Jan-2020",
+      "processingTimeMs": 0.157,
+      "response": {"header":{"contractNumber":null,"partNumber":"AFTR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.155971},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 19,
+      "input": "statuss of contrct 123456",
+      "processingTimeMs": 0.087,
+      "response": {"header":{"contractNumber":"123456","partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.08592},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME","STATUS"],"errors":[]}
+    },
+    {
+      "testNumber": 20,
+      "input": "exipred contrcts",
+      "processingTimeMs": 0.062,
+      "response": {"header":{"contractNumber":null,"partNumber":"CONTRCTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.06166},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 21,
+      "input": "contracs for cstomer numer 897654",
+      "processingTimeMs": 0.093,
+      "response": {"header":{"contractNumber":"897654","partNumber":"NUMER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.092481},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 22,
+      "input": "accunt number 10840607 contrcts",
+      "processingTimeMs": 0.083,
+      "response": {"header":{"contractNumber":"10840607","partNumber":"CONTRCTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.082651},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 23,
+      "input": "contracts from lst mnth",
+      "processingTimeMs": 0.101,
+      "response": {"header":{"contractNumber":null,"partNumber":"MNTH","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.099991},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 24,
+      "input": "contrcts creatd in 2024",
+      "processingTimeMs": 0.085,
+      "response": {"header":{"contractNumber":null,"partNumber":"CREATD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.084761},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '2024' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 25,
+      "input": "shwo efective date and statuz",
+      "processingTimeMs": 0.104,
+      "response": {"header":{"contractNumber":null,"partNumber":"STATUZ","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.103091},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 26,
+      "input": "get cntracts for acount no 123456",
+      "processingTimeMs": 0.115,
+      "response": {"header":{"contractNumber":"123456","partNumber":"ACOUNT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.1141},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 27,
+      "input": "contrct summry for custmor 999999",
+      "processingTimeMs": 0.088,
+      "response": {"header":{"contractNumber":"999999","partNumber":"CUSTMOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.08739},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 28,
+      "input": "get contrct detals by acount 10840607",
+      "processingTimeMs": 0.124,
+      "response": {"header":{"contractNumber":"10840607","partNumber":"ACOUNT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.123711},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 29,
+      "input": "contracts created btwn Jan and June 2024",
+      "processingTimeMs": 0.129,
+      "response": {"header":{"contractNumber":null,"partNumber":"JUNE","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.128361},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"},{"code":"INVALID_HEADER","message":"Number '2024' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 30,
+      "input": "custmer honeywel",
+      "processingTimeMs": 0.054,
+      "response": {"header":{"contractNumber":null,"partNumber":"HONEYWEL","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.05327},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 31,
+      "input": "contarcts by vinod",
+      "processingTimeMs": 0.093,
+      "response": {"header":{"contractNumber":null,"partNumber":"VINOD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.06452},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 32,
+      "input": "show contracts for acc no 456789",
+      "processingTimeMs": 0.150,
+      "response": {"header":{"contractNumber":"456789","partNumber":"ACC","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.149002},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 's' must be 6+ digits (found: 1 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 33,
+      "input": "activ contrcts created by mary",
+      "processingTimeMs": 0.091,
+      "response": {"header":{"contractNumber":null,"partNumber":"MARY","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.090041},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 34,
+      "input": "kontract detials 123456",
+      "processingTimeMs": 0.055,
+      "response": {"header":{"contractNumber":"123456","partNumber":"DETIALS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.05468},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 35,
+      "input": "kontrakt sumry for account 888888",
+      "processingTimeMs": 0.087,
+      "response": {"header":{"contractNumber":"888888","partNumber":"ACCOUNT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.086871},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 36,
+      "input": "boieng contrcts",
+      "processingTimeMs": 0.049,
+      "response": {"header":{"contractNumber":null,"partNumber":"CONTRCTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04851},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 37,
+      "input": "acc number 1084",
+      "processingTimeMs": 0.070,
+      "response": {"header":{"contractNumber":null,"partNumber":"NUMBER","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.06994},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '1084' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 38,
+      "input": "price list corprate2024",
+      "processingTimeMs": 0.067,
+      "response": {"header":{"contractNumber":null,"partNumber":"CORPRATE2024","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.066611},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION","TOTAL_VALUE"],"errors":[]}
+    },
+    {
+      "testNumber": 39,
+      "input": "oppurtunity code details",
+      "processingTimeMs": 0.067,
+      "response": {"header":{"contractNumber":null,"partNumber":"DETAILS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.06673},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 40,
+      "input": "get all flieds for customer 123123",
+      "processingTimeMs": 0.081,
+      "response": {"header":{"contractNumber":"123123","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.0805},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 41,
+      "input": "lst out contrcts with part numbr AE125",
+      "processingTimeMs": 0.111,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.11011},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 42,
+      "input": "whats the specifcations of prduct AE125",
+      "processingTimeMs": 0.169,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.168391},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 43,
+      "input": "is part AE125 actve or discontnued",
+      "processingTimeMs": 0.119,
+      "response": {"header":{"contractNumber":null,"partNumber":"DISCONTNUED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.118501},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 44,
+      "input": "can yu provid datashet for AE125",
+      "processingTimeMs": 0.125,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.124211},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 45,
+      "input": "wat r compatble prts for AE125",
+      "processingTimeMs": 0.122,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.120861},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 46,
+      "input": "ae125 avalable in stok?",
+      "processingTimeMs": 0.071,
+      "response": {"header":{"contractNumber":null,"partNumber":"AVALABLE","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.070111},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 47,
+      "input": "what is lede time part AE125",
+      "processingTimeMs": 0.099,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.098171},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 48,
+      "input": "who's the manufacterer of ae125",
+      "processingTimeMs": 0.091,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.09026},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 49,
+      "input": "any isses or defect with AE125?",
+      "processingTimeMs": 0.103,
+      "response": {"header":{"contractNumber":null,"partNumber":"WITH","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.102791},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 50,
+      "input": "warrenty priod of AE125?",
+      "processingTimeMs": 0.091,
+      "response": {"header":{"contractNumber":null,"partNumber":"PRIOD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.090621},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 51,
+      "input": "shwo mee parts 123456",
+      "processingTimeMs": 0.232,
+      "response": {"header":{"contractNumber":"123456","partNumber":"MEE","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.230962},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 52,
+      "input": "how many parst for 123456",
+      "processingTimeMs": 0.085,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.083881},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 53,
+      "input": "list the prts of 123456",
+      "processingTimeMs": 0.083,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.082241},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 54,
+      "input": "parts of 123456 not showing",
+      "processingTimeMs": 0.099,
+      "response": {"header":{"contractNumber":"123456","partNumber":"SHOWING","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.098301},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 55,
+      "input": "123456 prts failed",
+      "processingTimeMs": 0.065,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FAILED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.064021},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 56,
+      "input": "faield prts of 123456",
+      "processingTimeMs": 0.061,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.0606},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 57,
+      "input": "parts failed validdation in 123456",
+      "processingTimeMs": 0.171,
+      "response": {"header":{"contractNumber":"123456","partNumber":"VALIDDATION","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.170861},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 58,
+      "input": "filde prts in 123456",
+      "processingTimeMs": 0.087,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.086561},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 59,
+      "input": "contract 123456 parst not loadded",
+      "processingTimeMs": 0.069,
+      "response": {"header":{"contractNumber":"123456","partNumber":"LOADDED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.068751},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 60,
+      "input": "show partz faild in contrct 123456",
+      "processingTimeMs": 0.091,
+      "response": {"header":{"contractNumber":"123456","partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.08999},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 'z' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 61,
+      "input": "parts misssing for 123456",
+      "processingTimeMs": 0.073,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.072501},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 62,
+      "input": "rejected partz 123456",
+      "processingTimeMs": 0.053,
+      "response": {"header":{"contractNumber":"123456","partNumber":"REJECTED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.05231},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 'z' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 63,
+      "input": "why ae125 was not addedd in contract",
+      "processingTimeMs": 0.108,
+      "response": {"header":{"contractNumber":null,"partNumber":"ADDEDD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.107361},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 64,
+      "input": "part ae125 pricng mismatch",
+      "processingTimeMs": 0.062,
+      "response": {"header":{"contractNumber":null,"partNumber":"MISMATCH","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.061801},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 65,
+      "input": "ae125 nt in mastr data",
+      "processingTimeMs": 0.075,
+      "response": {"header":{"contractNumber":null,"partNumber":"DATA","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.07464},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 66,
+      "input": "ae125 discntinued?",
+      "processingTimeMs": 0.046,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.045091},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 67,
+      "input": "shw successfull prts 123456",
+      "processingTimeMs": 0.064,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.063011},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 68,
+      "input": "get all parst that passd in 123456",
+      "processingTimeMs": 0.088,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PASSD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.087881},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 69,
+      "input": "what parts faild due to price error",
+      "processingTimeMs": 0.133,
+      "response": {"header":{"contractNumber":null,"partNumber":"ERROR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.132471},"entities":[],"displayEntities":["TOTAL_VALUE"],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 70,
+      "input": "chek error partz in contrct 123456",
+      "processingTimeMs": 0.097,
+      "response": {"header":{"contractNumber":"123456","partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.09622},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 'z' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 71,
+      "input": "ae125 faild becasue no cost data?",
+      "processingTimeMs": 0.084,
+      "response": {"header":{"contractNumber":null,"partNumber":"COST","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.08301},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION","TOTAL_VALUE"],"errors":[]}
+    },
+    {
+      "testNumber": 72,
+      "input": "is ae125 loaded in contract 123456?",
+      "processingTimeMs": 0.083,
+      "response": {"header":{"contractNumber":null,"partNumber":"LOADED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.082111},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 73,
+      "input": "ae125 skipped? why?",
+      "processingTimeMs": 0.048,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04766},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 74,
+      "input": "ae125 passd validation?",
+      "processingTimeMs": 0.052,
+      "response": {"header":{"contractNumber":null,"partNumber":"PASSD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.051431},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 75,
+      "input": "parts that arnt in stock 123456",
+      "processingTimeMs": 0.079,
+      "response": {"header":{"contractNumber":"123456","partNumber":"STOCK","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.07873},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 76,
+      "input": "shwo failed and pasd parts 123456",
+      "processingTimeMs": 0.076,
+      "response": {"header":{"contractNumber":"123456","partNumber":"PASD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.075551},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 77,
+      "input": "hw many partz failed in 123456",
+      "processingTimeMs": 0.112,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FAILED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.111001},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 'z' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 78,
+      "input": "show parts today loadded 123456",
+      "processingTimeMs": 0.063,
+      "response": {"header":{"contractNumber":"123456","partNumber":"LOADDED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.06209},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 79,
+      "input": "show part AE126 detalis",
+      "processingTimeMs": 0.047,
+      "response": {"header":{"contractNumber":null,"partNumber":"DETALIS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.046841},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 80,
+      "input": "list all AE partz for contract 123456",
+      "processingTimeMs": 0.074,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.07372},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 'z' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 81,
+      "input": "shwo me AE125 statuz in contrct",
+      "processingTimeMs": 0.063,
+      "response": {"header":{"contractNumber":null,"partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.062081},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 82,
+      "input": "what happen to AE125 during loadding",
+      "processingTimeMs": 0.078,
+      "response": {"header":{"contractNumber":null,"partNumber":"LOADDING","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.07727},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 83,
+      "input": "any issues while loading AE125",
+      "processingTimeMs": 0.102,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.101471},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 84,
+      "input": "get contract123456 failed parts",
+      "processingTimeMs": 0.073,
+      "response": {"header":{"contractNumber":"123456","partNumber":"FAILED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.072231},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 85,
+      "input": "sh0w c0ntract 123456",
+      "processingTimeMs": 0.087,
+      "response": {"header":{"contractNumber":"123456","partNumber":"C0NTRACT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.0865},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 86,
+      "input": "kontract #123456 detais",
+      "processingTimeMs": 0.045,
+      "response": {"header":{"contractNumber":null,"partNumber":"DETAIS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.044111},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 87,
+      "input": "get al meta 4 cntrct 123",
+      "processingTimeMs": 0.081,
+      "response": {"header":{"contractNumber":null,"partNumber":"CNTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.08011},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '4' too short for contract number (need 6+ digits)","severity":"BLOCKER"},{"code":"INVALID_HEADER","message":"Number '123' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 88,
+      "input": "contrcts expird in 2023",
+      "processingTimeMs": 0.051,
+      "response": {"header":{"contractNumber":null,"partNumber":"EXPIRD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.050681},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '2023' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 89,
+      "input": "cntrct by V1N0D aftr Jan",
+      "processingTimeMs": 0.065,
+      "response": {"header":{"contractNumber":null,"partNumber":"JAN","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.064121},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 90,
+      "input": "wats the statuz of 789",
+      "processingTimeMs": 0.076,
+      "response": {"header":{"contractNumber":null,"partNumber":"STATUZ","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.07549},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '789' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 91,
+      "input": "lst 10 contrcts by mary",
+      "processingTimeMs": 0.071,
+      "response": {"header":{"contractNumber":null,"partNumber":"MARY","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.070311},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '10' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 92,
+      "input": "h0w 2 creat a contrct?",
+      "processingTimeMs": 0.091,
+      "response": {"header":{"contractNumber":null,"partNumber":"CREAT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.09027},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '2' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 93,
+      "input": "boeing cntrcts wth prts",
+      "processingTimeMs": 0.042,
+      "response": {"header":{"contractNumber":null,"partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.0414},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 94,
+      "input": "contrct 404 not found",
+      "processingTimeMs": 0.046,
+      "response": {"header":{"contractNumber":null,"partNumber":"FOUND","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.045291},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '404' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 95,
+      "input": "pls giv contrct 123 detl",
+      "processingTimeMs": 0.053,
+      "response": {"header":{"contractNumber":null,"partNumber":"DETL","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.052851},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '123' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 96,
+      "input": "contrato 456 detalles",
+      "processingTimeMs": 0.047,
+      "response": {"header":{"contractNumber":null,"partNumber":"DETALLES","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04614},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '456' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 97,
+      "input": "c0n7r4c7 123!!!",
+      "processingTimeMs": 0.039,
+      "response": {"header":{"contractNumber":null,"partNumber":"C0N7R4C7","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.038521},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 98,
+      "input": "wuu2 wit cntrct 456",
+      "processingTimeMs": 0.054,
+      "response": {"header":{"contractNumber":null,"partNumber":"CNTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.05333},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '456' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 99,
+      "input": "contract 999 where?",
+      "processingTimeMs": 0.045,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04402},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '999' too short for contract number (need 6+ digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 100,
+      "input": "prt AE125 spec pls",
+      "processingTimeMs": 0.049,
+      "response": {"header":{"contractNumber":null,"partNumber":"PLS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.048251},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 101,
+      "input": "hw 2 check AE125 stok",
+      "processingTimeMs": 0.054,
+      "response": {"header":{"contractNumber":null,"partNumber":"STOK","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.053451},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '2' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 102,
+      "input": "AE125 vs AE126 diff",
+      "processingTimeMs": 0.044,
+      "response": {"header":{"contractNumber":null,"partNumber":"DIFF","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04345},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 103,
+      "input": "y is AE125 failng?",
+      "processingTimeMs": 0.041,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04026},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 104,
+      "input": "AE125 datasheet.pdf?",
+      "processingTimeMs": 0.035,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03475},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 105,
+      "input": "add AE125 2 cntrct",
+      "processingTimeMs": 0.050,
+      "response": {"header":{"contractNumber":null,"partNumber":"CNTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.049591},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '2' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 106,
+      "input": "AE125 replacmnt part",
+      "processingTimeMs": 0.035,
+      "response": {"header":{"contractNumber":null,"partNumber":"REPLACMNT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03439},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 107,
+      "input": "AE125 ❌ in 123456",
+      "processingTimeMs": 0.137,
+      "response": {"header":{"contractNumber":"123456","partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.136561},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 108,
+      "input": "AE125 cost @ 50% off",
+      "processingTimeMs": 0.056,
+      "response": {"header":{"contractNumber":null,"partNumber":"OFF","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.054951},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION","TOTAL_VALUE"],"errors":[]}
+    },
+    {
+      "testNumber": 109,
+      "input": "whr is AE125 mfd?",
+      "processingTimeMs": 0.043,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.042631},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 110,
+      "input": "AE125 kab load hoga?",
+      "processingTimeMs": 0.044,
+      "response": {"header":{"contractNumber":null,"partNumber":"LOAD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04356},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 111,
+      "input": "p@r7 AE125 $t@tus",
+      "processingTimeMs": 0.043,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04226},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 112,
+      "input": "AE125 zzzz broken",
+      "processingTimeMs": 0.053,
+      "response": {"header":{"contractNumber":null,"partNumber":"BROKEN","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.05194},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 113,
+      "input": "AE125_validation-fail",
+      "processingTimeMs": 0.052,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.051331},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 114,
+      "input": "AE125 specs??",
+      "processingTimeMs": 0.033,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.032301},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 115,
+      "input": "contrct 123456 parts lst",
+      "processingTimeMs": 0.058,
+      "response": {"header":{"contractNumber":"123456","partNumber":"LST","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.057911},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 116,
+      "input": "AE125 in cntrct 789",
+      "processingTimeMs": 0.054,
+      "response": {"header":{"contractNumber":null,"partNumber":"CNTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.05321},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '789' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 117,
+      "input": "show cntrct 123 & prts",
+      "processingTimeMs": 0.048,
+      "response": {"header":{"contractNumber":null,"partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04779},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '123' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 118,
+      "input": "hw many prts in 123?",
+      "processingTimeMs": 0.046,
+      "response": {"header":{"contractNumber":null,"partNumber":"PRTS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04586},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 119,
+      "input": "contract 456 + parts",
+      "processingTimeMs": 0.044,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04398},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '456' too short for contract number (need 6+ digits)","severity":"BLOCKER"},{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 120,
+      "input": "parts/contract 789 issues",
+      "processingTimeMs": 0.042,
+      "response": {"header":{"contractNumber":null,"partNumber":"ISSUES","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04122},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Number '789' too short for contract number (need 6+ digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 121,
+      "input": "contract123456",
+      "processingTimeMs": 0.014,
+      "response": {"header":{"contractNumber":"123456","partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.01398},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 122,
+      "input": "showcontract123456",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01952},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 123,
+      "input": "statusofcontract123456",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01816},"entities":[],"displayEntities":["STATUS"],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 124,
+      "input": "detailsforcontract#123",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01932},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 125,
+      "input": "getcontract2024metadata",
+      "processingTimeMs": 0.018,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01753},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 126,
+      "input": "expiredcontractslist",
+      "processingTimeMs": 0.018,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01792},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 127,
+      "input": "customer897654contracts",
+      "processingTimeMs": 0.026,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.0255},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 128,
+      "input": "account10840607contracts",
+      "processingTimeMs": 0.023,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02162},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 129,
+      "input": "vinodcontracts2024",
+      "processingTimeMs": 0.031,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 130,
+      "input": "contractSiemensunderaccount",
+      "processingTimeMs": 0.044,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04321},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 'siemensunderaccount' must be 6+ digits (found: 19 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 131,
+      "input": "projecttype10840607",
+      "processingTimeMs": 0.032,
+      "response": {"header":{"contractNumber":null,"partNumber":"PROJECTTYPE10840607","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03145},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 132,
+      "input": "customernumber123456contract",
+      "processingTimeMs": 0.051,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.05016},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 133,
+      "input": "contractAE125parts",
+      "processingTimeMs": 0.039,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03622},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number 'ae125parts' must be 6+ digits (found: 10 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 134,
+      "input": "failedparts123456",
+      "processingTimeMs": 0.027,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.026741},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 135,
+      "input": "contract456789status",
+      "processingTimeMs": 0.032,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.031811},"entities":[],"displayEntities":["STATUS"],"errors":[{"code":"INVALID_HEADER","message":"Contract number '456789status' must be 6+ digits (found: 12 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 136,
+      "input": "partAE125specs",
+      "processingTimeMs": 0.017,
+      "response": {"header":{"contractNumber":null,"partNumber":"ae125specs","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01671},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 137,
+      "input": "AE125stockstatus",
+      "processingTimeMs": 0.028,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125STOCKSTATUS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02741},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION","STATUS"],"errors":[]}
+    },
+    {
+      "testNumber": 138,
+      "input": "AE125warrantyperiod",
+      "processingTimeMs": 0.040,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125WARRANTYPERIOD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03912},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 139,
+      "input": "AE125compatibleparts",
+      "processingTimeMs": 0.023,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02221},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 140,
+      "input": "AE125validationfailed",
+      "processingTimeMs": 0.022,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125VALIDATIONFAILED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02187},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 141,
+      "input": "parts123456missing",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":"s123456missing","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.019121},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 142,
+      "input": "parts123456failed",
+      "processingTimeMs": 0.015,
+      "response": {"header":{"contractNumber":null,"partNumber":"s123456failed","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01495},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 143,
+      "input": "loadAE125contract123",
+      "processingTimeMs": 0.025,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.0243},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 144,
+      "input": "AE125pricemismatch",
+      "processingTimeMs": 0.024,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125PRICEMISMATCH","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02385},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION","TOTAL_VALUE"],"errors":[]}
+    },
+    {
+      "testNumber": 145,
+      "input": "AE125manufacturerinfo",
+      "processingTimeMs": 0.027,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125MANUFACTURERINFO","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.026441},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 146,
+      "input": "cntrct123456!!!",
+      "processingTimeMs": 0.023,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02222},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 147,
+      "input": "shwcontrct123",
+      "processingTimeMs": 0.021,
+      "response": {"header":{"contractNumber":null,"partNumber":"SHWCONTRCT123","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02069},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 148,
+      "input": "prtAE125spec??",
+      "processingTimeMs": 0.040,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03982},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 149,
+      "input": "AE125vsAE126diff",
+      "processingTimeMs": 0.023,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125VSAE126DIFF","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.0225},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 150,
+      "input": "w2chkAE125stok",
+      "processingTimeMs": 0.023,
+      "response": {"header":{"contractNumber":null,"partNumber":"W2CHKAE125STOK","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02254},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 151,
+      "input": "yAE125failng?",
+      "processingTimeMs": 0.032,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03114},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 152,
+      "input": "addAE125tocntrct",
+      "processingTimeMs": 0.026,
+      "response": {"header":{"contractNumber":null,"partNumber":"ADDAE125TOCNTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02508},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 153,
+      "input": "AE125cost@50%off",
+      "processingTimeMs": 0.025,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02461},"entities":[],"displayEntities":["TOTAL_VALUE"],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 154,
+      "input": "AE125kbloadhoga?",
+      "processingTimeMs": 0.030,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02954},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 155,
+      "input": "p@r7AE125$t@tus",
+      "processingTimeMs": 0.027,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02647},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 156,
+      "input": "c0n7r4c7123!!!",
+      "processingTimeMs": 0.036,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03542},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 157,
+      "input": "wuu2witcntrct456",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":"WUU2WITCNTRCT456","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01964},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 158,
+      "input": "AE125zzzzbroken",
+      "processingTimeMs": 0.017,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125ZZZZBROKEN","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01633},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 159,
+      "input": "AE125_valid-fail",
+      "processingTimeMs": 0.022,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02188},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 160,
+      "input": "contrct123&prts",
+      "processingTimeMs": 0.022,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02116},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 161,
+      "input": "contract#123456/details",
+      "processingTimeMs": 0.027,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02697},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '#123456/details' must be 6+ digits (found: 15 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 162,
+      "input": "part-AE125/status",
+      "processingTimeMs": 0.021,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.020831},"entities":[],"displayEntities":["STATUS"],"errors":[{"code":"INVALID_HEADER","message":"Part number '-ae125/status' must be 3+ alphanumeric characters (found: 13 characters)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 163,
+      "input": "contract 123456&parts",
+      "processingTimeMs": 0.021,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02089},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 164,
+      "input": "AE125_in_contract789",
+      "processingTimeMs": 0.018,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01733},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 165,
+      "input": "contract:123456,parts",
+      "processingTimeMs": 0.032,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03131},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number ':123456' must be 6+ digits (found: 7 digits)","severity":"BLOCKER"},{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 166,
+      "input": "contract123;parts456",
+      "processingTimeMs": 0.048,
+      "response": {"header":{"contractNumber":null,"partNumber":"s456","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04777},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '123' must be 6+ digits (found: 3 digits)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 167,
+      "input": "contract 123?parts=AE125",
+      "processingTimeMs": 0.025,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02457},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 168,
+      "input": "contract@123456#parts",
+      "processingTimeMs": 0.025,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.024951},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '@123456#parts' must be 6+ digits (found: 13 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 169,
+      "input": "AE125|contract123",
+      "processingTimeMs": 0.016,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01529},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 170,
+      "input": "contract(123)+parts(AE125)",
+      "processingTimeMs": 0.022,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02141},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '(123)+parts(ae125)' must be 6+ digits (found: 18 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 171,
+      "input": "plsshowcntrct123",
+      "processingTimeMs": 0.025,
+      "response": {"header":{"contractNumber":null,"partNumber":"PLSSHOWCNTRCT123","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02412},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 172,
+      "input": "givmectrct456deets",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":"GIVMECTRCT456DEETS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01998},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 173,
+      "input": "needprtAE125infoASAP",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":"NEEDPRTAE125INFOASAP","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.018901},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 174,
+      "input": "AE125statpls",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125STATPLS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01892},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 175,
+      "input": "cntrct789quicklook",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":"CNTRCT789QUICKLOOK","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.01859},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 176,
+      "input": "whtspartsin123?",
+      "processingTimeMs": 0.017,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01638},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 177,
+      "input": "chkAE125valid",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":"CHKAE125VALID","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.0182},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 178,
+      "input": "contract123sumry",
+      "processingTimeMs": 0.024,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02397},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '123sumry' must be 6+ digits (found: 8 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 179,
+      "input": "AE125warrantypls",
+      "processingTimeMs": 0.022,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125WARRANTYPLS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.02153},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 180,
+      "input": "prts4contract456",
+      "processingTimeMs": 0.019,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01841},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 181,
+      "input": "c0ntrct123prts456!!!",
+      "processingTimeMs": 0.024,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02352},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 182,
+      "input": "AE125$$$contract@@@",
+      "processingTimeMs": 0.016,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01567},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 183,
+      "input": "合同123456",
+      "processingTimeMs": 0.035,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.03402},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 184,
+      "input": "PARTae125CONTRACT123",
+      "processingTimeMs": 0.020,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.019751},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 185,
+      "input": "123456CONTRACTae125PART",
+      "processingTimeMs": 0.016,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01597},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 186,
+      "input": "CONTRACT/123/PARTS/AE125",
+      "processingTimeMs": 0.028,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.02717},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Contract number '/123/parts/ae125' must be 6+ digits (found: 16 digits)","severity":"BLOCKER"},{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 187,
+      "input": "AE125...contract123...",
+      "processingTimeMs": 0.016,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01521},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 188,
+      "input": "合同123&partsAE125",
+      "processingTimeMs": 0.044,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.043401},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 189,
+      "input": "契約123456詳細",
+      "processingTimeMs": 0.032,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.031621},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 190,
+      "input": "CONTRATO123PARTES",
+      "processingTimeMs": 0.016,
+      "response": {"header":{"contractNumber":null,"partNumber":null,"customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.01577},"entities":[],"displayEntities":[],"errors":[{"code":"MISSING_HEADER","message":"Provide at least one identifier (contract/part/customer) or filter (date/status)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 191,
+      "input": "Show all failed parts for contract 987654",
+      "processingTimeMs": 0.100,
+      "response": {"header":{"contractNumber":"987654","partNumber":"FOR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.099581},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 192,
+      "input": "What is the reason for failure of part AE125?",
+      "processingTimeMs": 0.061,
+      "response": {"header":{"contractNumber":null,"partNumber":"FAILURE","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.060281},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 193,
+      "input": "List all parts that failed under contract CN1234",
+      "processingTimeMs": 0.077,
+      "response": {"header":{"contractNumber":null,"partNumber":"CN1234","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.07634},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 194,
+      "input": "Get failure message for part number PN7890",
+      "processingTimeMs": 0.062,
+      "response": {"header":{"contractNumber":null,"partNumber":"PN7890","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.06175},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 195,
+      "input": "Why did part PN4567 fail?",
+      "processingTimeMs": 0.037,
+      "response": {"header":{"contractNumber":null,"partNumber":"PN4567","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03659},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 196,
+      "input": "Show failed message and reason for AE777",
+      "processingTimeMs": 0.051,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE777","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.05026},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 197,
+      "input": "List failed parts and their contract numbers",
+      "processingTimeMs": 0.132,
+      "response": {"header":{"contractNumber":null,"partNumber":"NUMBERS","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.131091},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 198,
+      "input": "Parts failed due to voltage issues",
+      "processingTimeMs": 0.071,
+      "response": {"header":{"contractNumber":null,"partNumber":"ISSUES","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.07082},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 199,
+      "input": "Find all parts failed with error message \"Leak detected\"",
+      "processingTimeMs": 0.068,
+      "response": {"header":{"contractNumber":null,"partNumber":"MESSAGE","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.06784},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 200,
+      "input": "Which parts failed in contract 888999",
+      "processingTimeMs": 0.045,
+      "response": {"header":{"contractNumber":"888999","partNumber":"FAILED","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.04457},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 201,
+      "input": "show faild prts for contrct 987654",
+      "processingTimeMs": 0.038,
+      "response": {"header":{"contractNumber":"987654","partNumber":"CONTRCT","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"CONTRACTS","actionType":"contracts_by_contractNumber","processingTimeMs":0.03751},"entities":[],"displayEntities":["CONTRACT_NUMBER","CUSTOMER_NAME"],"errors":[]}
+    },
+    {
+      "testNumber": 202,
+      "input": "reasn for failr of prt AE125",
+      "processingTimeMs": 0.040,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE125","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03978},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 203,
+      "input": "get falure mesage for part PN7890",
+      "processingTimeMs": 0.036,
+      "response": {"header":{"contractNumber":null,"partNumber":"PN7890","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03521},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 204,
+      "input": "whch prts faild in cntract CN1234",
+      "processingTimeMs": 0.040,
+      "response": {"header":{"contractNumber":null,"partNumber":"CN1234","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03987},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 205,
+      "input": "list fialed prts due to ovrheating",
+      "processingTimeMs": 0.041,
+      "response": {"header":{"contractNumber":null,"partNumber":"OVRHEATING","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04025},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 206,
+      "input": "wht is the faild reasn of AE777",
+      "processingTimeMs": 0.043,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE777","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04275},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 207,
+      "input": "parts whch hav faild n contract 888999",
+      "processingTimeMs": 0.052,
+      "response": {"header":{"contractNumber":"888999","partNumber":"FAILD","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"UNKNOWN","actionType":"error","processingTimeMs":0.05101},"entities":[],"displayEntities":[],"errors":[{"code":"INVALID_HEADER","message":"Part number 's' must be 3+ alphanumeric characters (found: 1 characters)","severity":"BLOCKER"}]}
+    },
+    {
+      "testNumber": 208,
+      "input": "shw me mesage colum for faild part AE901",
+      "processingTimeMs": 0.049,
+      "response": {"header":{"contractNumber":null,"partNumber":"AE901","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04861},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 209,
+      "input": "prts faild with resn \"voltag drop\"",
+      "processingTimeMs": 0.039,
+      "response": {"header":{"contractNumber":null,"partNumber":"RESN","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.03843},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    },
+    {
+      "testNumber": 210,
+      "input": "falure rsn fr prt numbr AE456?",
+      "processingTimeMs": 0.043,
+      "response": {"header":{"contractNumber":null,"partNumber":"NUMBR","customerNumber":null,"customerName":null,"createdBy":null},"queryMetadata":{"queryType":"PARTS","actionType":"parts_by_partNumber","processingTimeMs":0.04238},"entities":[],"displayEntities":["PART_NUMBER","DESCRIPTION"],"errors":[]}
+    }
+  ]
+}

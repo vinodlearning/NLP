@@ -1,0 +1,3900 @@
+================================================================================
+DETAILED TEST ANALYSIS
+================================================================================
+Generated: 2025-07-05T14:26:34.705522571
+
+TEST 1: show contract 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: SHOW
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 2.282 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 2: contract details 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: DETAILS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.178 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 3: get contract info 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: INFO
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.130 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 4: contracts created by vinod after 1-Jan-2020
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AFTER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 6.354 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 5: status of contract 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: STATUS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.165 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME, STATUS]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 6: expired contracts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: EXPIRED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.098 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 7: contracts for customer number 897654
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 897654
+  Part Number: NUMBER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.195 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 8: account 10840607 contracts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 10840607
+  Part Number: ACCOUNT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.105 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 9: contracts created in 2024
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CREATED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.665 ms
+ENTITIES: 1 found
+  - CREATED_DATE = 2024 (source: user_input)
+DISPLAY ENTITIES: [CREATED_DATE]
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+  - INVALID_HEADER: Number '2024' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 10: get all metadata for contract 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.179 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 11: contracts under account name 'Siemens'
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: NAME
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.145 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 12: get project type, effective date, and price list for account number 10840607
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 10840607
+  Part Number: NUMBER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.280 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME, EFFECTIVE_DATE, TOTAL_VALUE]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 13: show contract for customer number 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: NUMBER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.132 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 14: shwo contrct 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.089 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 15: get contrct infro 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: INFRO
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.110 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 16: find conract detials 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: DETIALS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.106 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 17: cntract summry for 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.094 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 18: contarcts created by vinod aftr 1-Jan-2020
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AFTR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.156 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 19: statuss of contrct 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.086 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME, STATUS]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 20: exipred contrcts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CONTRCTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.062 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 21: contracs for cstomer numer 897654
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 897654
+  Part Number: NUMER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.092 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 22: accunt number 10840607 contrcts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 10840607
+  Part Number: CONTRCTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.083 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 23: contracts from lst mnth
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: MNTH
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.100 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 24: contrcts creatd in 2024
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CREATD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.085 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '2024' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 25: shwo efective date and statuz
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: STATUZ
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.103 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 26: get cntracts for acount no 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: ACOUNT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.114 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 27: contrct summry for custmor 999999
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 999999
+  Part Number: CUSTMOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.087 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 28: get contrct detals by acount 10840607
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 10840607
+  Part Number: ACOUNT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.124 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 29: contracts created btwn Jan and June 2024
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: JUNE
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.128 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+  - INVALID_HEADER: Number '2024' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 30: custmer honeywel
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: HONEYWEL
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.053 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 31: contarcts by vinod
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: VINOD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.065 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 32: show contracts for acc no 456789
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 456789
+  Part Number: ACC
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.149 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number 's' must be 6+ digits (found: 1 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 33: activ contrcts created by mary
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: MARY
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.090 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 34: kontract detials 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: DETIALS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.055 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 35: kontrakt sumry for account 888888
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 888888
+  Part Number: ACCOUNT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.087 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 36: boieng contrcts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CONTRCTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.049 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 37: acc number 1084
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: NUMBER
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.070 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '1084' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 38: price list corprate2024
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CORPRATE2024
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.067 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION, TOTAL_VALUE]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 39: oppurtunity code details
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DETAILS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.067 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 40: get all flieds for customer 123123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123123
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.081 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 41: lst out contrcts with part numbr AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.110 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 42: whats the specifcations of prduct AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.168 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 43: is part AE125 actve or discontnued
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DISCONTNUED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.119 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 44: can yu provid datashet for AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.124 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 45: wat r compatble prts for AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.121 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 46: ae125 avalable in stok?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AVALABLE
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.070 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 47: what is lede time part AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.098 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 48: who's the manufacterer of ae125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.090 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 49: any isses or defect with AE125?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: WITH
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.103 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 50: warrenty priod of AE125?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PRIOD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.091 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 51: shwo mee parts 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: MEE
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.231 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 52: how many parst for 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.084 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 53: list the prts of 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.082 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 54: parts of 123456 not showing
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: SHOWING
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.098 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 55: 123456 prts failed
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FAILED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.064 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 56: faield prts of 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.061 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 57: parts failed validdation in 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: VALIDDATION
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.171 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 58: filde prts in 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.087 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 59: contract 123456 parst not loadded
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: LOADDED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.069 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 60: show partz faild in contrct 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.090 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 'z' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 61: parts misssing for 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.073 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 62: rejected partz 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: REJECTED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.052 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 'z' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 63: why ae125 was not addedd in contract
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ADDEDD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.107 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 64: part ae125 pricng mismatch
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: MISMATCH
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.062 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 65: ae125 nt in mastr data
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DATA
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.075 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 66: ae125 discntinued?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.045 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 67: shw successfull prts 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.063 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 68: get all parst that passd in 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PASSD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.088 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 69: what parts faild due to price error
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ERROR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.132 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [TOTAL_VALUE]
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 70: chek error partz in contrct 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.096 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 'z' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 71: ae125 faild becasue no cost data?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: COST
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.083 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION, TOTAL_VALUE]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 72: is ae125 loaded in contract 123456?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: LOADED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.082 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 73: ae125 skipped? why?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.048 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 74: ae125 passd validation?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PASSD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.051 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 75: parts that arnt in stock 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: STOCK
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.079 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 76: shwo failed and pasd parts 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: PASD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.076 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 77: hw many partz failed in 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FAILED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.111 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 'z' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 78: show parts today loadded 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: LOADDED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.062 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 79: show part AE126 detalis
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DETALIS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.047 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 80: list all AE partz for contract 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.074 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 'z' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 81: shwo me AE125 statuz in contrct
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.062 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 82: what happen to AE125 during loadding
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: LOADDING
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.077 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 83: any issues while loading AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.101 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 84: get contract123456 failed parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: FAILED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.072 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 85: sh0w c0ntract 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: C0NTRACT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.087 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 86: kontract #123456 detais
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DETAIS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.044 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 87: get al meta 4 cntrct 123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CNTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.080 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Number '4' too short for contract number (need 6+ digits) (BLOCKER)
+  - INVALID_HEADER: Number '123' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 88: contrcts expird in 2023
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: EXPIRD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.051 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '2023' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 89: cntrct by V1N0D aftr Jan
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: JAN
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.064 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 90: wats the statuz of 789
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: STATUZ
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.075 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '789' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 91: lst 10 contrcts by mary
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: MARY
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.070 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '10' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 92: h0w 2 creat a contrct?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CREAT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.090 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '2' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 93: boeing cntrcts wth prts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.041 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 94: contrct 404 not found
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: FOUND
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.045 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '404' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 95: pls giv contrct 123 detl
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DETL
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.053 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '123' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 96: contrato 456 detalles
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DETALLES
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.046 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '456' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 97: c0n7r4c7 123!!!
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: C0N7R4C7
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.039 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 98: wuu2 wit cntrct 456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CNTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.053 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '456' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 99: contract 999 where?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.044 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Number '999' too short for contract number (need 6+ digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 100: prt AE125 spec pls
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PLS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.048 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 101: hw 2 check AE125 stok
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: STOK
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.053 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '2' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 102: AE125 vs AE126 diff
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: DIFF
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.043 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 103: y is AE125 failng?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.040 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 104: AE125 datasheet.pdf?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.035 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 105: add AE125 2 cntrct
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CNTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.050 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '2' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 106: AE125 replacmnt part
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: REPLACMNT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.034 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 107: AE125 ❌ in 123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.137 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 108: AE125 cost @ 50% off
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: OFF
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.055 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION, TOTAL_VALUE]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 109: whr is AE125 mfd?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.043 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 110: AE125 kab load hoga?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: LOAD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.044 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 111: p@r7 AE125 $t@tus
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.042 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 112: AE125 zzzz broken
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: BROKEN
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.052 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 113: AE125_validation-fail
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.051 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 114: AE125 specs??
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.032 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 115: contrct 123456 parts lst
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: LST
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.058 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 116: AE125 in cntrct 789
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CNTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.053 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '789' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 117: show cntrct 123 & prts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.048 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '123' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 118: hw many prts in 123?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PRTS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.046 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 119: contract 456 + parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.044 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 3 found
+  - INVALID_HEADER: Number '456' too short for contract number (need 6+ digits) (BLOCKER)
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 120: parts/contract 789 issues
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ISSUES
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.041 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Number '789' too short for contract number (need 6+ digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 121: contract123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 123456
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.014 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 122: showcontract123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.020 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 123: statusofcontract123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.018 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [STATUS]
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 124: detailsforcontract#123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.019 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 125: getcontract2024metadata
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.018 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 126: expiredcontractslist
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.018 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 127: customer897654contracts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.026 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 128: account10840607contracts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 129: vinodcontracts2024
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.030 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 130: contractSiemensunderaccount
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.043 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number 'siemensunderaccount' must be 6+ digits (found: 19 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 131: projecttype10840607
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PROJECTTYPE10840607
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.031 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 132: customernumber123456contract
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.050 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 133: contractAE125parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.036 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number 'ae125parts' must be 6+ digits (found: 10 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 134: failedparts123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.027 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 135: contract456789status
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.032 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [STATUS]
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '456789status' must be 6+ digits (found: 12 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 136: partAE125specs
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ae125specs
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.017 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 137: AE125stockstatus
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125STOCKSTATUS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.027 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION, STATUS]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 138: AE125warrantyperiod
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125WARRANTYPERIOD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.039 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 139: AE125compatibleparts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 140: AE125validationfailed
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125VALIDATIONFAILED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 141: parts123456missing
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: s123456missing
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.019 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 142: parts123456failed
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: s123456failed
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.015 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 143: loadAE125contract123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.024 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 144: AE125pricemismatch
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125PRICEMISMATCH
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.024 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION, TOTAL_VALUE]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 145: AE125manufacturerinfo
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125MANUFACTURERINFO
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.026 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 146: cntrct123456!!!
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 147: shwcontrct123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: SHWCONTRCT123
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.021 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 148: prtAE125spec??
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.040 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 149: AE125vsAE126diff
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125VSAE126DIFF
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.023 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 150: w2chkAE125stok
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: W2CHKAE125STOK
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.023 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 151: yAE125failng?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.031 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 152: addAE125tocntrct
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ADDAE125TOCNTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.025 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 153: AE125cost@50%off
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.025 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [TOTAL_VALUE]
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 154: AE125kbloadhoga?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.030 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 155: p@r7AE125$t@tus
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.026 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 156: c0n7r4c7123!!!
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.035 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 157: wuu2witcntrct456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: WUU2WITCNTRCT456
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.020 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 158: AE125zzzzbroken
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125ZZZZBROKEN
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.016 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 159: AE125_valid-fail
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 160: contrct123&prts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.021 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 161: contract#123456/details
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.027 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '#123456/details' must be 6+ digits (found: 15 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 162: part-AE125/status
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.021 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [STATUS]
+ERRORS: 2 found
+  - INVALID_HEADER: Part number '-ae125/status' must be 3+ alphanumeric characters (found: 13 characters) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 163: contract 123456&parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.021 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 164: AE125_in_contract789
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.017 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 165: contract:123456,parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.031 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 3 found
+  - INVALID_HEADER: Contract number ':123456' must be 6+ digits (found: 7 digits) (BLOCKER)
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 166: contract123;parts456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: s456
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.048 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Contract number '123' must be 6+ digits (found: 3 digits) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 167: contract 123?parts=AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.025 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 168: contract@123456#parts
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.025 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '@123456#parts' must be 6+ digits (found: 13 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 169: AE125|contract123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.015 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 170: contract(123)+parts(AE125)
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.021 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '(123)+parts(ae125)' must be 6+ digits (found: 18 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 171: plsshowcntrct123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PLSSHOWCNTRCT123
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.024 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 172: givmectrct456deets
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: GIVMECTRCT456DEETS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.020 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 173: needprtAE125infoASAP
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: NEEDPRTAE125INFOASAP
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.019 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 174: AE125statpls
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125STATPLS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.019 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 175: cntrct789quicklook
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CNTRCT789QUICKLOOK
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.019 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 176: whtspartsin123?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.016 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 177: chkAE125valid
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CHKAE125VALID
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.018 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 178: contract123sumry
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.024 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '123sumry' must be 6+ digits (found: 8 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 179: AE125warrantypls
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125WARRANTYPLS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.022 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 180: prts4contract456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.018 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 181: c0ntrct123prts456!!!
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.024 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 182: AE125$$$contract@@@
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.016 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 183: 合同123456
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.034 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 184: PARTae125CONTRACT123
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.020 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 185: 123456CONTRACTae125PART
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.016 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 186: CONTRACT/123/PARTS/AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.027 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 2 found
+  - INVALID_HEADER: Contract number '/123/parts/ae125' must be 6+ digits (found: 16 digits) (BLOCKER)
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 187: AE125...contract123...
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.015 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 188: 合同123&partsAE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.043 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 189: 契約123456詳細
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.032 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 190: CONTRATO123PARTES
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: null
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.016 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - MISSING_HEADER: Provide at least one identifier (contract/part/customer) or filter (date/status) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 191: Show all failed parts for contract 987654
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 987654
+  Part Number: FOR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.100 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 192: What is the reason for failure of part AE125?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: FAILURE
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.060 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 193: List all parts that failed under contract CN1234
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CN1234
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.076 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 194: Get failure message for part number PN7890
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PN7890
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.062 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 195: Why did part PN4567 fail?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PN4567
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.037 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 196: Show failed message and reason for AE777
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE777
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.050 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 197: List failed parts and their contract numbers
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: NUMBERS
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.131 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 198: Parts failed due to voltage issues
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: ISSUES
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.071 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 199: Find all parts failed with error message "Leak detected"
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: MESSAGE
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.068 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 200: Which parts failed in contract 888999
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 888999
+  Part Number: FAILED
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.045 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 201: show faild prts for contrct 987654
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 987654
+  Part Number: CONTRCT
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: CONTRACTS
+  Action Type: contracts_by_contractNumber
+  Processing Time: 0.038 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [CONTRACT_NUMBER, CUSTOMER_NAME]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 202: reasn for failr of prt AE125
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE125
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.040 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 203: get falure mesage for part PN7890
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: PN7890
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.035 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 204: whch prts faild in cntract CN1234
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: CN1234
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.040 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 205: list fialed prts due to ovrheating
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: OVRHEATING
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.040 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 206: wht is the faild reasn of AE777
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE777
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.043 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 207: parts whch hav faild n contract 888999
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: 888999
+  Part Number: FAILD
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: UNKNOWN
+  Action Type: error
+  Processing Time: 0.051 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: []
+ERRORS: 1 found
+  - INVALID_HEADER: Part number 's' must be 3+ alphanumeric characters (found: 1 characters) (BLOCKER)
+STATUS: ❌ FAILED
+============================================================
+
+TEST 208: shw me mesage colum for faild part AE901
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: AE901
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.049 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 209: prts faild with resn "voltag drop"
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: RESN
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.038 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+
+TEST 210: falure rsn fr prt numbr AE456?
+------------------------------------------------------------
+HEADER ANALYSIS:
+  Contract Number: null
+  Part Number: NUMBR
+  Customer Number: null
+  Customer Name: null
+  Created By: null
+QUERY METADATA:
+  Query Type: PARTS
+  Action Type: parts_by_partNumber
+  Processing Time: 0.042 ms
+ENTITIES: 0 found
+DISPLAY ENTITIES: [PART_NUMBER, DESCRIPTION]
+ERRORS: 0 found
+STATUS: ✅ SUCCESS
+============================================================
+

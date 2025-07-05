@@ -1,0 +1,55 @@
+# Spell Corrections for Contract Portal Chatbot
+# Format: wrong_word=correct_word
+# This file can be updated without code changes
+
+# Contract-related corrections
+contrct=contract
+contarct=contract
+contractt=contract
+agrement=agreement
+
+# Action corrections
+shw=show
+dsplay=display
+lst=list
+creat=create
+delet=delete
+
+# Field corrections
+effectuve=effective
+expir=expiration
+exipraion=expiration
+customr=customer
+acount=account
+numer=number
+dtails=details
+statu=status
+valu=value
+
+# Parts corrections
+parst=parts
+partz=parts
+compnent=component
+inventoy=inventory
+suppier=supplier
+waranty=warranty
+
+# Help corrections
+hep=help
+asistance=assistance
+guid=guide
+workfow=workflow
+tempate=template
+validaton=validation
+
+# Common typos
+teh=the
+adn=and
+fo=for
+ot=to
+frm=from
+whth=with
+cna=can
+yu=you
+ther=there
+yuo=you

@@ -1,0 +1,52 @@
+# Database Column Mappings for Contract System
+
+# Contract Table Mappings
+contract_number=AWARD_NUMBER
+contract_id=AWARD_NUMBER
+award_number=AWARD_NUMBER
+contract_status=STATUS
+status=STATUS
+effective_date=EFFECTIVE_DATE
+expiration_date=EXPIRATION_DATE
+end_date=EXPIRATION_DATE
+start_date=EFFECTIVE_DATE
+contract_value=CONTRACT_VALUE
+amount=CONTRACT_VALUE
+price=CONTRACT_VALUE
+customer_name=CUSTOMER_NAME
+customer=CUSTOMER_NAME
+vendor_name=VENDOR_NAME
+vendor=VENDOR_NAME
+supplier=VENDOR_NAME
+account_number=ACCOUNT_NUMBER
+account=ACCOUNT_NUMBER
+description=DESCRIPTION
+terms=TERMS
+conditions=CONDITIONS
+created_date=CREATED_DATE
+created_by=CREATED_BY
+modified_date=MODIFIED_DATE
+modified_by=MODIFIED_BY
+
+# Parts Table Mappings
+part_number=PART_NUMBER
+part_id=PART_ID
+part_name=PART_NAME
+part_description=PART_DESCRIPTION
+quantity=QUANTITY
+unit_price=UNIT_PRICE
+total_price=TOTAL_PRICE
+manufacturer=MANUFACTURER
+model=MODEL
+category=CATEGORY
+inventory_status=INVENTORY_STATUS
+available_quantity=AVAILABLE_QUANTITY
+
+# Common Field Mappings
+id=ID
+name=NAME
+type=TYPE
+code=CODE
+reference=REFERENCE
+notes=NOTES
+comments=COMMENTS

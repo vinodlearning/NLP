@@ -1,0 +1,27 @@
+# Create Keywords Configuration
+# One keyword per line
+# Lines starting with # are comments
+
+# Core creation terms
+create
+creating
+make
+new
+add
+generate
+
+# Help related terms
+help
+how to
+guide
+steps
+process
+workflow
+instruction
+tutorial
+
+# Setup and building terms
+build
+setup
+establish
+configure

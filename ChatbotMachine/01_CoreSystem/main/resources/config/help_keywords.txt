@@ -1,0 +1,68 @@
+# Help Keywords for Domain Classification
+# These keywords help route queries to the help domain
+
+# Basic help terms
+help
+assistance
+support
+guide
+guidance
+tutorial
+
+# Help actions
+how
+what
+when
+where
+why
+steps
+process
+procedure
+
+# Creation and workflow
+create
+creating
+creation
+new
+add
+setup
+configure
+workflow
+approval
+process
+
+# Navigation and usage
+use
+using
+navigate
+navigation
+access
+login
+interface
+system
+
+# Validation and rules
+validate
+validation
+rules
+requirements
+mandatory
+required
+fields
+format
+
+# Templates and examples
+template
+templates
+example
+examples
+sample
+samples
+
+# General assistance
+explain
+understand
+learn
+training
+documentation
+manual

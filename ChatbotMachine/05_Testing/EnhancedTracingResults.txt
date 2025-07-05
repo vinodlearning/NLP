@@ -1,0 +1,843 @@
+ENHANCED TRACING RESULTS - PHASE 1 IMPROVEMENTS
+===============================================
+
+Query 1:
+  Input: lst out contrcts with part numbr AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 3838.451 microseconds
+  Routing Correct: YES
+
+Query 2:
+  Input: whats the specifcations of prduct AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [product, ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 480.864 microseconds
+  Routing Correct: YES
+
+Query 3:
+  Input: is part AE125 actve or discontnued
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 481.114 microseconds
+  Routing Correct: YES
+
+Query 4:
+  Input: can yu provid datashet for AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 397.043 microseconds
+  Routing Correct: YES
+
+Query 5:
+  Input: wat r compatble prts for AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 398.373 microseconds
+  Routing Correct: YES
+
+Query 6:
+  Input: ae125 avalable in stok?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 273.163 microseconds
+  Routing Correct: YES
+
+Query 7:
+  Input: what is lede time part AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 453.583 microseconds
+  Routing Correct: YES
+
+Query 8:
+  Input: who's the manufacterer of ae125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, manufacturer]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 310.872 microseconds
+  Routing Correct: YES
+
+Query 9:
+  Input: any isses or defect with AE125?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 345.412 microseconds
+  Routing Correct: YES
+
+Query 10:
+  Input: warrenty priod of AE125?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 215.422 microseconds
+  Routing Correct: YES
+
+Query 11:
+  Input: shwo mee parts 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 151.861 microseconds
+  Routing Correct: YES
+
+Query 12:
+  Input: how many parst for 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 211.192 microseconds
+  Routing Correct: YES
+
+Query 13:
+  Input: list the prts of 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 156.781 microseconds
+  Routing Correct: YES
+
+Query 14:
+  Input: parts of 123456 not showing
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 141.871 microseconds
+  Routing Correct: YES
+
+Query 15:
+  Input: 123456 prts failed
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 111.731 microseconds
+  Routing Correct: YES
+
+Query 16:
+  Input: faield prts of 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 128.421 microseconds
+  Routing Correct: YES
+
+Query 17:
+  Input: parts failed validdation in 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 141.951 microseconds
+  Routing Correct: YES
+
+Query 18:
+  Input: filde prts in 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 120.801 microseconds
+  Routing Correct: YES
+
+Query 19:
+  Input: contract 123456 parst not loadded
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 111.841 microseconds
+  Routing Correct: YES
+
+Query 20:
+  Input: show partz faild in contrct 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 142.301 microseconds
+  Routing Correct: YES
+
+Query 21:
+  Input: parts misssing for 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 116.441 microseconds
+  Routing Correct: YES
+
+Query 22:
+  Input: rejected partz 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 135.581 microseconds
+  Routing Correct: YES
+
+Query 23:
+  Input: why ae125 was not addedd in contract
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: Parts status detection: Not a creation request
+  Processing Time: 235.252 microseconds
+  Routing Correct: YES
+
+Query 24:
+  Input: part ae125 pricng mismatch
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 184.512 microseconds
+  Routing Correct: YES
+
+Query 25:
+  Input: ae125 nt in mastr data
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 220.452 microseconds
+  Routing Correct: YES
+
+Query 26:
+  Input: ae125 discntinued?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 181.172 microseconds
+  Routing Correct: YES
+
+Query 27:
+  Input: shw successfull prts 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 110.611 microseconds
+  Routing Correct: YES
+
+Query 28:
+  Input: get all parst that passd in 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 164.071 microseconds
+  Routing Correct: YES
+
+Query 29:
+  Input: what parts faild due to price error
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 250.502 microseconds
+  Routing Correct: YES
+
+Query 30:
+  Input: chek error partz in contrct 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 152.761 microseconds
+  Routing Correct: YES
+
+Query 31:
+  Input: ae125 faild becasue no cost data?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 186.582 microseconds
+  Routing Correct: YES
+
+Query 32:
+  Input: is ae125 loaded in contract 123456?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 190.642 microseconds
+  Routing Correct: YES
+
+Query 33:
+  Input: ae125 skipped? why?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 180.202 microseconds
+  Routing Correct: YES
+
+Query 34:
+  Input: ae125 passd validation?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 128.081 microseconds
+  Routing Correct: YES
+
+Query 35:
+  Input: parts that arnt in stock 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 133.111 microseconds
+  Routing Correct: YES
+
+Query 36:
+  Input: shwo failed and pasd parts 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 115.231 microseconds
+  Routing Correct: YES
+
+Query 37:
+  Input: hw many partz failed in 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 125.021 microseconds
+  Routing Correct: YES
+
+Query 38:
+  Input: show parts today loadded 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 109.53 microseconds
+  Routing Correct: YES
+
+Query 39:
+  Input: show part AE126 detalis
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae126, part]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 144.541 microseconds
+  Routing Correct: YES
+
+Query 40:
+  Input: list all AE partz for contract 123456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 179.502 microseconds
+  Routing Correct: YES
+
+Query 41:
+  Input: shwo me AE125 statuz in contrct
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 189.231 microseconds
+  Routing Correct: YES
+
+Query 42:
+  Input: what happen to AE125 during loadding
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 254.182 microseconds
+  Routing Correct: YES
+
+Query 43:
+  Input: any issues while loading AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 237.062 microseconds
+  Routing Correct: YES
+
+Query 44:
+  Input: get contract123456 failed parts
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Enhancement Applied: null
+  Processing Time: 168.371 microseconds
+  Routing Correct: YES
+
+Query 45:
+  Input: show contract 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 772.646 microseconds
+  Routing Correct: YES
+
+Query 46:
+  Input: contract details 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 92.751 microseconds
+  Routing Correct: YES
+
+Query 47:
+  Input: get contract info 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 82.141 microseconds
+  Routing Correct: YES
+
+Query 48:
+  Input: contracts created by vinod after 1-Jan-2020
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model [Enhanced: Past-tense query detected]
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: Past-tense detection: 'created' identified as informational query
+  Processing Time: 172.061 microseconds
+  Routing Correct: YES
+
+Query 49:
+  Input: status of contract 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 94.471 microseconds
+  Routing Correct: YES
+
+Query 50:
+  Input: expired contracts
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 67.88 microseconds
+  Routing Correct: YES
+
+Query 51:
+  Input: contracts for customer number 897654
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 897654)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 126.331 microseconds
+  Routing Correct: YES
+
+Query 52:
+  Input: account 10840607 contracts
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 10840607)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 112.511 microseconds
+  Routing Correct: YES
+
+Query 53:
+  Input: contracts created in 2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 2024) [Enhanced: Past-tense query detected]
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: Context analysis: Contract query with contract ID detected
+  Processing Time: 120.961 microseconds
+  Routing Correct: YES
+
+Query 54:
+  Input: get all metadata for contract 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 104.971 microseconds
+  Routing Correct: YES
+
+Query 55:
+  Input: contracts under account name 'Siemens'
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 131.002 microseconds
+  Routing Correct: YES
+
+Query 56:
+  Input: get project type, effective date, and price list for account number 10840607
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 10840607)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 271.372 microseconds
+  Routing Correct: YES
+
+Query 57:
+  Input: show contract for customer number 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 95.22 microseconds
+  Routing Correct: YES
+
+Query 58:
+  Input: shwo contrct 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 88.19 microseconds
+  Routing Correct: YES
+
+Query 59:
+  Input: get contrct infro 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 80.771 microseconds
+  Routing Correct: YES
+
+Query 60:
+  Input: find conract detials 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 66.66 microseconds
+  Routing Correct: YES
+
+Query 61:
+  Input: cntract summry for 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 77.031 microseconds
+  Routing Correct: YES
+
+Query 62:
+  Input: contarcts created by vinod aftr 1-Jan-2020
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model [Enhanced: Past-tense query detected]
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: Past-tense detection: 'created' identified as informational query
+  Processing Time: 143.771 microseconds
+  Routing Correct: YES
+
+Query 63:
+  Input: statuss of contrct 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 112.381 microseconds
+  Routing Correct: YES
+
+Query 64:
+  Input: exipred contrcts
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 61.76 microseconds
+  Routing Correct: YES
+
+Query 65:
+  Input: contracs for cstomer numer 897654
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 897654)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 80.761 microseconds
+  Routing Correct: YES
+
+Query 66:
+  Input: accunt number 10840607 contrcts
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 10840607)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 99.141 microseconds
+  Routing Correct: YES
+
+Query 67:
+  Input: contracts from lst mnth
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 78.6 microseconds
+  Routing Correct: YES
+
+Query 68:
+  Input: contrcts creatd in 2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 2024) [Enhanced: Past-tense query detected]
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: Context analysis: Contract query with contract ID detected
+  Processing Time: 80.351 microseconds
+  Routing Correct: YES
+
+Query 69:
+  Input: shwo efective date and statuz
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 95.381 microseconds
+  Routing Correct: YES
+
+Query 70:
+  Input: get cntracts for acount no 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 82.951 microseconds
+  Routing Correct: YES
+
+Query 71:
+  Input: contrct summry for custmor 999999
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 999999)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 71.881 microseconds
+  Routing Correct: YES
+
+Query 72:
+  Input: get contrct detals by acount 10840607
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 10840607)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 125.451 microseconds
+  Routing Correct: YES
+
+Query 73:
+  Input: contracts created btwn Jan and June 2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 2024) [Enhanced: Past-tense query detected]
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: Context analysis: Contract query with contract ID detected
+  Processing Time: 128.011 microseconds
+  Routing Correct: YES
+
+Query 74:
+  Input: custmer honeywel
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 56.671 microseconds
+  Routing Correct: YES
+
+Query 75:
+  Input: contarcts by vinod
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 93.41 microseconds
+  Routing Correct: YES
+
+Query 76:
+  Input: show contracts for acc no 456789
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 456789)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 80.211 microseconds
+  Routing Correct: YES
+
+Query 77:
+  Input: activ contrcts created by mary
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model [Enhanced: Past-tense query detected]
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: Past-tense detection: 'created' identified as informational query
+  Processing Time: 90.02 microseconds
+  Routing Correct: YES
+
+Query 78:
+  Input: kontract detials 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 73.021 microseconds
+  Routing Correct: YES
+
+Query 79:
+  Input: kontrakt sumry for account 888888
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 888888)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 249.702 microseconds
+  Routing Correct: YES
+
+Query 80:
+  Input: boieng contrcts
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 63.961 microseconds
+  Routing Correct: YES
+
+Query 81:
+  Input: acc number 1084
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 1084)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 101.531 microseconds
+  Routing Correct: YES
+
+Query 82:
+  Input: price list corprate2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 76.171 microseconds
+  Routing Correct: YES
+
+Query 83:
+  Input: oppurtunity code details
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Enhancement Applied: null
+  Processing Time: 69.55 microseconds
+  Routing Correct: YES
+
+Query 84:
+  Input: get all flieds for customer 123123
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID detected: 123123)
+  Intent Type: CONTRACT_ID_QUERY
+  Enhancement Applied: null
+  Processing Time: 80.551 microseconds
+  Routing Correct: YES
+

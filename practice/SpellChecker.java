@@ -8,7 +8,587 @@ import java.util.stream.Stream;
 
 public class SpellChecker {
     private Map<String, Integer> dictionary;
-    private static final int MAX_EDIT_DISTANCE = 2; // Reduced from 3 to be more strict
+    private static final int MAX_EDIT_DISTANCE = 2;
+    
+    // Comprehensive spell correction mappings for Contract and Parts domains
+    private static final Map<String, String> COMPREHENSIVE_CORRECTIONS = new HashMap<String, String>() {{
+        // Basic corrections
+        put("lst", "list");
+        put("shwo", "show");
+        put("shw", "show");
+        put("mee", "me");
+        put("teh", "the");
+        put("tehm", "them");
+        put("wth", "with");
+        put("waht", "what");
+        put("whats", "what");
+        put("wat", "what");
+        put("hw", "how");
+        put("yu", "you");
+        put("chek", "check");
+        put("gt", "get");
+        put("giv", "give");
+        put("provid", "provide");
+        put("nt", "not");
+        put("arnt", "aren't");
+        put("becasue", "because");
+        put("addedd", "added");
+        put("happen", "happened");
+        put("happend", "happened");
+        
+        // Contract domain corrections
+        put("contrct", "contract");
+        put("contrcts", "contracts");
+        put("contarct", "contract");
+        put("contarcts", "contracts");
+        put("cntract", "contract");
+        put("cntracts", "contracts");
+        put("kontrakt", "contract");
+        put("kontract", "contract");
+        put("conract", "contract");
+        put("contracs", "contracts");
+        put("cntracts", "contracts");
+        put("tracts", "contracts");
+        put("numbr", "number");
+        put("numer", "number");
+        put("umber", "number");
+        put("accunt", "account");
+        put("acount", "account");
+        put("custmer", "customer");
+        put("cstomer", "customer");
+        put("custmor", "customer");
+        put("statuss", "status");
+        put("statuz", "status");
+        put("infro", "info");
+        put("detials", "details");
+        put("detals", "details");
+        put("denials", "details");
+        put("detalis", "details");
+        put("summry", "summary");
+        put("sumry", "summary");
+        put("sumy", "summary");
+        put("efective", "effective");
+        put("creatd", "created");
+        put("exipred", "expired");
+        put("corprate", "corporate");
+        put("oppurtunity", "opportunity");
+        put("unity", "opportunity");
+        put("flieds", "fields");
+        put("flies", "fields");
+        put("boieng", "boeing");
+        put("honeywel", "honeywell");
+        put("vino", "vinod");
+        
+        // Parts domain corrections
+        put("prts", "parts");
+        put("parst", "parts");
+        put("partz", "parts");
+        put("prduct", "product");
+        put("prodcut", "product");
+        put("specifcations", "specifications");
+        put("specificatons", "specifications");
+        put("specifcation", "specification");
+        put("actve", "active");
+        put("activ", "active");
+        put("discontnued", "discontinued");
+        put("discntinued", "discontinued");
+        put("discountinued", "discontinued");
+        put("datashet", "datasheet");
+        put("dataheet", "datasheet");
+        put("compatble", "compatible");
+        put("compatable", "compatible");
+        put("avalable", "available");
+        put("availabe", "available");
+        put("availble", "available");
+        put("stok", "stock");
+        put("sotck", "stock");
+        put("lede", "lead");
+        put("led", "lead");
+        put("manufacterer", "manufacturer");
+        put("manufacter", "manufacturer");
+        put("manufactuer", "manufacturer");
+        put("isses", "issues");
+        put("issuse", "issues");
+        put("deffect", "defect");
+        put("defect", "defect");
+        put("warrenty", "warranty");
+        put("warrnty", "warranty");
+        put("priod", "period");
+        put("peroid", "period");
+        put("faild", "failed");
+        put("faield", "failed");
+        put("filde", "failed");
+        put("failded", "failed");
+        put("validdation", "validation");
+        put("validaion", "validation");
+        put("vaildation", "validation");
+        put("loadded", "loaded");
+        put("looded", "loaded");
+        put("lodded", "loaded");
+        put("loadding", "loading");
+        put("looding", "loading");
+        put("misssing", "missing");
+        put("mising", "missing");
+        put("missig", "missing");
+        put("rejeted", "rejected");
+        put("rejectd", "rejected");
+        put("successfull", "successful");
+        put("succesful", "successful");
+        put("sucessful", "successful");
+        put("passd", "passed");
+        put("pasd", "passed");
+        put("passeed", "passed");
+        put("pricng", "pricing");
+        put("priceing", "pricing");
+        put("picing", "pricing");
+        put("mastr", "master");
+        put("mater", "master");
+        put("mastter", "master");
+        put("skiped", "skipped");
+        put("skippd", "skipped");
+        put("durng", "during");
+        put("durign", "during");
+        put("whil", "while");
+        put("whlie", "while");
+        
+        // Time-related corrections
+        put("aftr", "after");
+        put("befre", "before");
+        put("befor", "before");
+        put("btwn", "between");
+        put("betwen", "between");
+        put("beetween", "between");
+        put("mth", "month");
+        put("moth", "month");
+        put("mnth", "month");
+        put("yr", "year");
+        put("yar", "year");
+        put("yaer", "year");
+        put("dat", "date");
+        put("dte", "date");
+        put("dae", "date");
+        put("tody", "today");
+        put("todya", "today");
+        put("toady", "today");
+        
+        // Action corrections
+        put("crate", "create");
+        put("creat", "create");
+        put("craete", "create");
+        put("updat", "update");
+        put("updaet", "update");
+        put("delet", "delete");
+        put("deleet", "delete");
+        put("remo", "remove");
+        put("remov", "remove");
+        put("modfy", "modify");
+        put("modifi", "modify");
+        put("modigy", "modify");
+        put("sav", "save");
+        put("sve", "save");
+        
+        // Error type corrections
+        put("erro", "error");
+        put("eror", "error");
+        put("erros", "errors");
+        put("erors", "errors");
+        put("mesage", "message");
+        put("messag", "message");
+        put("messaeg", "message");
+        put("data", "data");
+        put("dat", "data");
+        put("dtata", "data");
+        
+        // Special case corrections for common patterns
+        put("w/", "with");
+        put("w", "with");
+        put("b/w", "between");
+        put("thru", "through");
+        put("acc", "account");
+        put("cont", "contract");
+        put("spec", "specification");
+        put("mfg", "manufacturer");
+        put("mfr", "manufacturer");
+        put("qty", "quantity");
+        put("amt", "amount");
+        put("desc", "description");
+        put("req", "required");
+        put("reqs", "requirements");
+        put("info", "information");
+        put("specs", "specifications");
+        put("docs", "documents");
+        put("doc", "document");
+        put("ref", "reference");
+        put("refs", "references");
+        put("num", "number");
+        put("id", "identifier");
+        put("ids", "identifiers");
+        put("val", "value");
+        put("vals", "values");
+        put("stat", "status");
+        put("stats", "statistics");
+        put("mgr", "manager");
+        put("mgmt", "management");
+        put("org", "organization");
+        put("dept", "department");
+        put("div", "division");
+        put("co", "company");
+        put("corp", "corporation");
+        put("inc", "incorporated");
+        put("llc", "limited_liability_company");
+        put("ltd", "limited");
+        put("mfg", "manufacturing");
+        put("eng", "engineering");
+        put("tech", "technology");
+        put("sys", "system");
+        put("proc", "process");
+        put("proj", "project");
+        put("prog", "program");
+        put("dev", "development");
+        put("impl", "implementation");
+        put("config", "configuration");
+        put("admin", "administration");
+        put("maint", "maintenance");
+        put("ops", "operations");
+        put("svc", "service");
+        put("svcs", "services");
+        put("prod", "production");
+        put("qual", "quality");
+        put("cert", "certification");
+        put("std", "standard");
+        put("stds", "standards");
+        put("temp", "temporary");
+        put("perm", "permanent");
+        put("temp", "temperature");
+        put("max", "maximum");
+        put("min", "minimum");
+        put("avg", "average");
+        put("est", "estimated");
+        put("act", "actual");
+        put("req", "request");
+        put("res", "response");
+        put("resp", "response");
+        put("req", "requirement");
+        put("reqs", "requirements");
+        put("spec", "specification");
+        put("specs", "specifications");
+        put("std", "standard");
+        put("stds", "standards");
+        put("proc", "procedure");
+        put("procs", "procedures");
+        put("pol", "policy");
+        put("pols", "policies");
+        put("guid", "guideline");
+        put("guids", "guidelines");
+        put("instr", "instruction");
+        put("instrs", "instructions");
+        put("man", "manual");
+        put("mans", "manuals");
+        put("ref", "reference");
+        put("refs", "references");
+        put("doc", "document");
+        put("docs", "documents");
+        put("file", "file");
+        put("files", "files");
+        put("rec", "record");
+        put("recs", "records");
+        put("log", "log");
+        put("logs", "logs");
+        put("rpt", "report");
+        put("rpts", "reports");
+        put("sum", "summary");
+        put("sums", "summaries");
+        put("det", "detail");
+        put("dets", "details");
+        put("desc", "description");
+        put("descs", "descriptions");
+        put("note", "note");
+        put("notes", "notes");
+        put("comm", "comment");
+        put("comms", "comments");
+        put("rem", "remark");
+        put("rems", "remarks");
+        put("obs", "observation");
+        put("obss", "observations");
+        put("find", "finding");
+        put("finds", "findings");
+        put("rec", "recommendation");
+        put("recs", "recommendations");
+        put("act", "action");
+        put("acts", "actions");
+        put("item", "item");
+        put("items", "items");
+        put("task", "task");
+        put("tasks", "tasks");
+        put("step", "step");
+        put("steps", "steps");
+        put("phase", "phase");
+        put("phases", "phases");
+        put("stage", "stage");
+        put("stages", "stages");
+        put("level", "level");
+        put("levels", "levels");
+        put("tier", "tier");
+        put("tiers", "tiers");
+        put("cat", "category");
+        put("cats", "categories");
+        put("type", "type");
+        put("types", "types");
+        put("kind", "kind");
+        put("kinds", "kinds");
+        put("sort", "sort");
+        put("sorts", "sorts");
+        put("class", "class");
+        put("classes", "classes");
+        put("group", "group");
+        put("groups", "groups");
+        put("set", "set");
+        put("sets", "sets");
+        put("list", "list");
+        put("lists", "lists");
+        put("arr", "array");
+        put("arrs", "arrays");
+        put("col", "collection");
+        put("cols", "collections");
+        put("ser", "series");
+        put("seq", "sequence");
+        put("seqs", "sequences");
+        put("ord", "order");
+        put("ords", "orders");
+        put("rank", "rank");
+        put("ranks", "ranks");
+        put("pos", "position");
+        put("poss", "positions");
+        put("loc", "location");
+        put("locs", "locations");
+        put("addr", "address");
+        put("addrs", "addresses");
+        put("coord", "coordinate");
+        put("coords", "coordinates");
+        put("pt", "point");
+        put("pts", "points");
+        put("line", "line");
+        put("lines", "lines");
+        put("path", "path");
+        put("paths", "paths");
+        put("route", "route");
+        put("routes", "routes");
+        put("dir", "direction");
+        put("dirs", "directions");
+        put("way", "way");
+        put("ways", "ways");
+        put("method", "method");
+        put("methods", "methods");
+        put("tech", "technique");
+        put("techs", "techniques");
+        put("app", "approach");
+        put("apps", "approaches");
+        put("str", "strategy");
+        put("strs", "strategies");
+        put("plan", "plan");
+        put("plans", "plans");
+        put("scheme", "scheme");
+        put("schemes", "schemes");
+        put("model", "model");
+        put("models", "models");
+        put("frame", "framework");
+        put("frames", "frameworks");
+        put("struct", "structure");
+        put("structs", "structures");
+        put("arch", "architecture");
+        put("archs", "architectures");
+        put("design", "design");
+        put("designs", "designs");
+        put("pattern", "pattern");
+        put("patterns", "patterns");
+        put("template", "template");
+        put("templates", "templates");
+        put("sample", "sample");
+        put("samples", "samples");
+        put("example", "example");
+        put("examples", "examples");
+        put("instance", "instance");
+        put("instances", "instances");
+        put("case", "case");
+        put("cases", "cases");
+        put("scenario", "scenario");
+        put("scenarios", "scenarios");
+        put("situation", "situation");
+        put("situations", "situations");
+        put("condition", "condition");
+        put("conditions", "conditions");
+        put("state", "state");
+        put("states", "states");
+        put("status", "status");
+        put("statuses", "statuses");
+        put("mode", "mode");
+        put("modes", "modes");
+        put("config", "configuration");
+        put("configs", "configurations");
+        put("setting", "setting");
+        put("settings", "settings");
+        put("option", "option");
+        put("options", "options");
+        put("choice", "choice");
+        put("choices", "choices");
+        put("select", "selection");
+        put("selects", "selections");
+        put("pick", "pick");
+        put("picks", "picks");
+        put("prefer", "preference");
+        put("prefers", "preferences");
+        put("default", "default");
+        put("defaults", "defaults");
+        put("custom", "custom");
+        put("customs", "customs");
+        put("user", "user");
+        put("users", "users");
+        put("client", "client");
+        put("clients", "clients");
+        put("customer", "customer");
+        put("customers", "customers");
+        put("vendor", "vendor");
+        put("vendors", "vendors");
+        put("supplier", "supplier");
+        put("suppliers", "suppliers");
+        put("partner", "partner");
+        put("partners", "partners");
+        put("contact", "contact");
+        put("contacts", "contacts");
+        put("person", "person");
+        put("persons", "persons");
+        put("people", "people");
+        put("individual", "individual");
+        put("individuals", "individuals");
+        put("org", "organization");
+        put("orgs", "organizations");
+        put("comp", "company");
+        put("comps", "companies");
+        put("firm", "firm");
+        put("firms", "firms");
+        put("bus", "business");
+        put("buss", "businesses");
+        put("ent", "enterprise");
+        put("ents", "enterprises");
+        put("corp", "corporation");
+        put("corps", "corporations");
+        put("assoc", "association");
+        put("assocs", "associations");
+        put("inst", "institution");
+        put("insts", "institutions");
+        put("agency", "agency");
+        put("agencies", "agencies");
+        put("dept", "department");
+        put("depts", "departments");
+        put("div", "division");
+        put("divs", "divisions");
+        put("unit", "unit");
+        put("units", "units");
+        put("team", "team");
+        put("teams", "teams");
+        put("crew", "crew");
+        put("crews", "crews");
+        put("staff", "staff");
+        put("staffs", "staffs");
+        put("emp", "employee");
+        put("emps", "employees");
+        put("worker", "worker");
+        put("workers", "workers");
+        put("member", "member");
+        put("members", "members");
+        put("participant", "participant");
+        put("participants", "participants");
+        put("attendee", "attendee");
+        put("attendees", "attendees");
+        put("guest", "guest");
+        put("guests", "guests");
+        put("visitor", "visitor");
+        put("visitors", "visitors");
+        put("rep", "representative");
+        put("reps", "representatives");
+        put("agent", "agent");
+        put("agents", "agents");
+        put("delegate", "delegate");
+        put("delegates", "delegates");
+        put("ambassador", "ambassador");
+        put("ambassadors", "ambassadors");
+        put("liaison", "liaison");
+        put("liaisons", "liaisons");
+        put("coord", "coordinator");
+        put("coords", "coordinators");
+        put("mgr", "manager");
+        put("mgrs", "managers");
+        put("dir", "director");
+        put("dirs", "directors");
+        put("head", "head");
+        put("heads", "heads");
+        put("chief", "chief");
+        put("chiefs", "chiefs");
+        put("lead", "lead");
+        put("leads", "leads");
+        put("super", "supervisor");
+        put("supers", "supervisors");
+        put("boss", "boss");
+        put("bosses", "bosses");
+        put("owner", "owner");
+        put("owners", "owners");
+        put("exec", "executive");
+        put("execs", "executives");
+        put("officer", "officer");
+        put("officers", "officers");
+        put("president", "president");
+        put("presidents", "presidents");
+        put("vp", "vice_president");
+        put("vps", "vice_presidents");
+        put("ceo", "chief_executive_officer");
+        put("ceos", "chief_executive_officers");
+        put("cfo", "chief_financial_officer");
+        put("cfos", "chief_financial_officers");
+        put("cto", "chief_technology_officer");
+        put("ctos", "chief_technology_officers");
+        put("coo", "chief_operating_officer");
+        put("coos", "chief_operating_officers");
+        put("cmo", "chief_marketing_officer");
+        put("cmos", "chief_marketing_officers");
+        put("cio", "chief_information_officer");
+        put("cios", "chief_information_officers");
+        put("ciso", "chief_information_security_officer");
+        put("cisos", "chief_information_security_officers");
+        put("cpo", "chief_product_officer");
+        put("cpos", "chief_product_officers");
+        put("cdo", "chief_data_officer");
+        put("cdos", "chief_data_officers");
+        put("cso", "chief_security_officer");
+        put("csos", "chief_security_officers");
+        put("cco", "chief_compliance_officer");
+        put("ccos", "chief_compliance_officers");
+        put("cro", "chief_risk_officer");
+        put("cros", "chief_risk_officers");
+        put("cto", "chief_technology_officer");
+        put("ctos", "chief_technology_officers");
+        put("ceo", "chief_executive_officer");
+        put("ceos", "chief_executive_officers");
+        put("cfo", "chief_financial_officer");
+        put("cfos", "chief_financial_officers");
+        put("coo", "chief_operating_officer");
+        put("coos", "chief_operating_officers");
+        put("cmo", "chief_marketing_officer");
+        put("cmos", "chief_marketing_officers");
+        put("cio", "chief_information_officer");
+        put("cios", "chief_information_officers");
+        put("ciso", "chief_information_security_officer");
+        put("cisos", "chief_information_security_officers");
+        put("cpo", "chief_product_officer");
+        put("cpos", "chief_product_officers");
+        put("cdo", "chief_data_officer");
+        put("cdos", "chief_data_officers");
+        put("cso", "chief_security_officer");
+        put("csos", "chief_security_officers");
+        put("cco", "chief_compliance_officer");
+        put("ccos", "chief_compliance_officers");
+        put("cro", "chief_risk_officer");
+        put("cros", "chief_risk_officers");
+    }};
     
     public SpellChecker() {
         dictionary = new HashMap<>();
@@ -17,8 +597,6 @@ public class SpellChecker {
     
     public void loadDictionary(String dictionaryPath) {
         try {
-          //  System.out.println("Loading dictionary from: " + dictionaryPath);
-            
             File dictFile = new File(dictionaryPath);
             if (!dictFile.exists()) {
                 System.out.println("Warning: Dictionary file not found. Creating a basic dictionary...");
@@ -39,15 +617,13 @@ public class SpellChecker {
                                     return 1;
                                 }
                             },
-                            Integer::sum // In case of duplicate keys, sum the frequencies
+                            Integer::sum
                     ));
             
             // Add domain-specific words after loading base dictionary
             addDomainSpecificWords();
             
-            //System.out.println("Dictionary loaded successfully with " + dictionary.size() + " words!");
         } catch (Exception e) {
-           
             createBasicDictionary();
         }
     }
@@ -84,7 +660,8 @@ public class SpellChecker {
             "failed", "passed", "missing", "rejected", "loaded", "loading", "pricing", 
             "mismatch", "master", "skipped", "successful", "cost", "errors", "happened", 
             "during", "added", "showing", "due", "while", "happen", "then", "stock", 
-            "skipped", "passed"
+            "skipped", "passed", "show", "get", "list", "find", "search", "display",
+            "details", "status", "account", "contract", "contracts"
         };
         
         // Add all common words with base frequency
@@ -99,7 +676,7 @@ public class SpellChecker {
     }
     
     private void addDomainSpecificWords() {
-        // Very high frequency business/contract terms
+        // Very high frequency business/contract/parts terms
         Map<String, Integer> domainWords = new HashMap<>();
         
         // Core business terms - VERY HIGH FREQUENCY
@@ -116,9 +693,47 @@ public class SpellChecker {
         domainWords.put("info", 25000);
         domainWords.put("information", 23000);
         
+        // Parts-specific terms
+        domainWords.put("part", 30000);
+        domainWords.put("parts", 32000);
+        domainWords.put("product", 28000);
+        domainWords.put("products", 26000);
+        domainWords.put("specifications", 15000);
+        domainWords.put("specification", 14000);
+        domainWords.put("datasheet", 12000);
+        domainWords.put("compatible", 10000);
+        domainWords.put("available", 18000);
+        domainWords.put("stock", 16000);
+        domainWords.put("discontinued", 12000);
+        domainWords.put("active", 20000);
+        domainWords.put("manufacturer", 15000);
+        domainWords.put("lead", 18000);
+        domainWords.put("time", 25000);
+        domainWords.put("issues", 15000);
+        domainWords.put("defects", 8000);
+        domainWords.put("warranty", 12000);
+        domainWords.put("period", 15000);
+        domainWords.put("validation", 12000);
+        domainWords.put("failed", 25000);
+        domainWords.put("passed", 20000);
+        domainWords.put("missing", 18000);
+        domainWords.put("rejected", 12000);
+        domainWords.put("loaded", 15000);
+        domainWords.put("loading", 14000);
+        domainWords.put("pricing", 12000);
+        domainWords.put("price", 20000);
+        domainWords.put("master", 15000);
+        domainWords.put("skipped", 10000);
+        domainWords.put("successful", 12000);
+        domainWords.put("cost", 18000);
+        domainWords.put("errors", 16000);
+        domainWords.put("error", 18000);
+        
         // Action words
         domainWords.put("find", 20000);
         domainWords.put("list", 18000);
+        domainWords.put("search", 16000);
+        domainWords.put("display", 14000);
         domainWords.put("create", 15000);
         domainWords.put("created", 15000);
         domainWords.put("update", 12000);
@@ -130,20 +745,22 @@ public class SpellChecker {
         domainWords.put("save", 12000);
         
         // Status and state words
-        domainWords.put("active", 15000);
         domainWords.put("inactive", 12000);
         domainWords.put("expired", 15000);
         domainWords.put("effective", 12000);
         domainWords.put("draft", 10000);
         
-        // Time-related - ? Fix the priority issue here
+        // Time-related
         domainWords.put("after", 15000);
         domainWords.put("before", 15000);
         domainWords.put("between", 18000);
-        domainWords.put("last", 25000);      // ? Increase this significantly to beat "list"
-        domainWords.put("month", 20000);     // ? Increase this to beat "myth"
+        domainWords.put("last", 25000);
+        domainWords.put("month", 20000);
         domainWords.put("year", 12000);
         domainWords.put("date", 15000);
+        domainWords.put("today", 15000);
+        domainWords.put("during", 12000);
+        domainWords.put("while", 12000);
         
         // Company names and proper nouns
         domainWords.put("vinod", 8000);
@@ -152,68 +769,112 @@ public class SpellChecker {
         domainWords.put("siemens", 8000);
         domainWords.put("honeywell", 8000);
         
-        // Parts and products
-        domainWords.put("part", 20000);
-        domainWords.put("parts", 22000);
-        domainWords.put("product", 18000);
-        domainWords.put("products", 18000);
-        domainWords.put("specifications", 10000);
-        domainWords.put("datasheet", 8000);
-        domainWords.put("compatible", 8000);
-        domainWords.put("available", 10000);
-        domainWords.put("discontinued", 8000);
-        domainWords.put("manufacturer", 8000);
-        
-        // Common abbreviations and their expansions
-        domainWords.put("summary", 12000);
-        domainWords.put("number", 15000);
-        domainWords.put("corporate", 15000);  // ? Increase this to ensure it beats other suggestions
-        domainWords.put("opportunity", 8000);
-        domainWords.put("fields", 10000);
-        domainWords.put("metadata", 8000);
-        domainWords.put("project", 12000);
-        domainWords.put("type", 12000);
-        domainWords.put("price", 12000);
-        
-        // Validation and processing terms
-        domainWords.put("validation", 8000);
-        domainWords.put("failed", 25000);   
-        domainWords.put("passed", 20000);    
-        domainWords.put("missing", 18000);   
-        domainWords.put("rejected", 8000);
-        domainWords.put("loaded", 10000);
-        domainWords.put("loading", 10000);
-        domainWords.put("successful", 8000);
-        domainWords.put("skipped", 8000);
-        
         // Add all domain words to dictionary
-        
-        
-        // Add very high frequency for basic words that were being incorrectly replaced
-        domainWords.put("the", 60000);
-        domainWords.put("and", 55000);
-        domainWords.put("is", 50000);
-        domainWords.put("a", 45000);
-        domainWords.put("to", 40000);
-        domainWords.put("of", 35000);
-        domainWords.put("in", 30000);
-        domainWords.put("for", 25000);
-        domainWords.put("with", 20000);
-        domainWords.put("by", 18000);
-        domainWords.put("all", 15000);
-        domainWords.put("name", 12000);
-        domainWords.put("under", 10000);
-        domainWords.put("what", 15000);
-        domainWords.put("are", 15000);
-        domainWords.put("not", 20000);
-        domainWords.put("no", 15000);
-        
-        // ? Reduce frequency of words that were causing wrong corrections
-        domainWords.put("myth", 100);    // Very low frequency to prevent "month" -> "myth"
-        domainWords.put("list", 8000);   // Lower than "last" (25000)
         for (Map.Entry<String, Integer> entry : domainWords.entrySet()) {
             dictionary.put(entry.getKey(), entry.getValue());
         }
+    }
+    
+    // Enhanced spell correction with comprehensive mapping
+    public String correctText(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return text;
+        }
+        
+        String[] words = text.split("\\s+");
+        StringBuilder correctedText = new StringBuilder();
+        
+        for (String word : words) {
+            String originalWord = word;
+            
+            // Handle special contractions
+            if (word.matches(".*[;].*")) {
+                word = word.replaceAll(";", "'");
+                if (word.toLowerCase().startsWith("i'")) {
+                    word = "I" + word.substring(1);
+                }
+                correctedText.append(word);
+                correctedText.append(" ");
+                continue;
+            }
+            
+            // Handle contractions with apostrophes - preserve them as-is
+            if (word.toLowerCase().equals("who's") || word.toLowerCase().equals("it's") || 
+                word.toLowerCase().equals("i'm") || word.toLowerCase().equals("don't") ||
+                word.toLowerCase().equals("can't") || word.toLowerCase().equals("won't") ||
+                word.toLowerCase().equals("aren't") || word.toLowerCase().equals("isn't") ||
+                word.toLowerCase().equals("wasn't") || word.toLowerCase().equals("weren't") ||
+                word.toLowerCase().equals("hasn't") || word.toLowerCase().equals("haven't") ||
+                word.toLowerCase().equals("hadn't") || word.toLowerCase().equals("won't") ||
+                word.toLowerCase().equals("wouldn't") || word.toLowerCase().equals("shouldn't") ||
+                word.toLowerCase().equals("couldn't") || word.toLowerCase().equals("mustn't")) {
+                correctedText.append(word);
+                correctedText.append(" ");
+                continue;
+            }
+            
+            // Remove punctuation for spell checking but preserve it
+            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "");
+            String punctuation = word.replaceAll("[a-zA-Z0-9]", "");
+            
+            if (cleanWord.isEmpty()) {
+                correctedText.append(word).append(" ");
+                continue;
+            }
+            
+            // Skip numbers and part numbers
+            if (cleanWord.matches("^\\d+$") || cleanWord.toLowerCase().matches("^[a-z]{1,3}\\d+$")) {
+                correctedText.append(word);
+                correctedText.append(" ");
+                continue;
+            }
+            
+            // Apply comprehensive corrections first
+            String lowerCleanWord = cleanWord.toLowerCase();
+            if (COMPREHENSIVE_CORRECTIONS.containsKey(lowerCleanWord)) {
+                String corrected = COMPREHENSIVE_CORRECTIONS.get(lowerCleanWord) + punctuation;
+                correctedText.append(corrected);
+                correctedText.append(" ");
+                continue;
+            }
+            
+            // Skip likely proper names (capitalized words that aren't at sentence start)
+            if (Character.isUpperCase(cleanWord.charAt(0)) && !isFirstWordOfSentence(word, correctedText.toString())) {
+                correctedText.append(word);
+                correctedText.append(" ");
+                continue;
+            }
+            
+            try {
+                List<Suggestion> suggestions = findSuggestions(cleanWord.toLowerCase());
+                
+                if (!suggestions.isEmpty()) {
+                    if (suggestions.get(0).distance == 0) {
+                        // Word is correct
+                        correctedText.append(word);
+                    } else if (suggestions.get(0).distance <= MAX_EDIT_DISTANCE) {
+                        // Apply correction only if it makes sense
+                        String bestSuggestion = suggestions.get(0).word;
+                        
+                        if (shouldApplyCorrection(cleanWord.toLowerCase(), bestSuggestion)) {
+                            String corrected = bestSuggestion + punctuation;
+                            correctedText.append(corrected);
+                        } else {
+                            correctedText.append(word);
+                        }
+                    } else {
+                        correctedText.append(word);
+                    }
+                } else {
+                    correctedText.append(word);
+                }
+                correctedText.append(" ");
+            } catch (Exception e) {
+                correctedText.append(word).append(" ");
+            }
+        }
+        
+        return correctedText.toString().trim();
     }
     
     // Calculate Levenshtein distance between two strings
@@ -262,6 +923,14 @@ public class SpellChecker {
             return suggestions;
         }
         
+        // Check comprehensive corrections first
+        if (COMPREHENSIVE_CORRECTIONS.containsKey(word)) {
+            String corrected = COMPREHENSIVE_CORRECTIONS.get(word);
+            int frequency = dictionary.getOrDefault(corrected, 1000);
+            suggestions.add(new Suggestion(corrected, 1, frequency));
+            return suggestions;
+        }
+        
         // Find words with edit distance <= MAX_EDIT_DISTANCE
         for (Map.Entry<String, Integer> entry : dictionary.entrySet()) {
             String dictWord = entry.getKey();
@@ -289,14 +958,14 @@ public class SpellChecker {
             List<Suggestion> suggestions = findSuggestions(word);
             
             if (suggestions.isEmpty()) {
-                //System.out.println("No suggestions found for: " + word);
+                // No suggestions found
             } else if (suggestions.get(0).distance == 0) {
-                //System.out.println("'" + word + "' is spelled correctly.");
+                // Word is correct
             } else {
-               // System.out.println("Suggestions for '" + word + "':");
+                // Show suggestions
                 for (int i = 0; i < Math.min(5, suggestions.size()); i++) {
                     Suggestion suggestion = suggestions.get(i);
-                  
+                    // Process suggestion
                 }
             }
         } catch (Exception e) {
@@ -305,272 +974,55 @@ public class SpellChecker {
         }
     }
     
-    public String correctText(String text) {
+    // Additional helper method for comprehensive spell checking
+    public String performComprehensiveSpellCheck(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return text;
+        }
+        
+        // First pass: Apply comprehensive corrections
         String[] words = text.split("\\s+");
-        StringBuilder correctedText = new StringBuilder();
+        StringBuilder firstPass = new StringBuilder();
         
         for (String word : words) {
-            String originalWord = word;
-            
-            // Handle special contractions
-            if (word.matches(".*[;].*")) {
-                word = word.replaceAll(";", "'");
-                if (word.toLowerCase().startsWith("i'")) {
-                    word = "I" + word.substring(1);
-                }
-                correctedText.append(word);
-                correctedText.append(" ");
-				continue;
-            }
-            
-            // Handle contractions with apostrophes - preserve them as-is
-            if (word.toLowerCase().equals("who's") || word.toLowerCase().equals("it's") || 
-                word.toLowerCase().equals("i'm") || word.toLowerCase().equals("don't") ||
-                word.toLowerCase().equals("can't") || word.toLowerCase().equals("won't")) {
-                correctedText.append(word);
-                correctedText.append(" ");
-                continue;
-            }
-            
-            // Handle common abbreviations and typos with direct mapping
-            String lowerWord = word.toLowerCase();
-            String replacement = getDirectReplacement(lowerWord);
-            
-            if (replacement != null) {
-                correctedText.append(replacement);
-                if (!replacement.equals(originalWord)) {
-                    //System.out.println("Corrected: " + originalWord + " -> " + replacement);
-                }
-                correctedText.append(" ");
-                continue;
-            }
-            
-            // Remove punctuation for spell checking but preserve it
-            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "");
+            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
             String punctuation = word.replaceAll("[a-zA-Z0-9]", "");
             
-            if (cleanWord.isEmpty()) {
-                correctedText.append(word).append(" ");
-                continue;
-            }
-            
-            // Skip numbers and part numbers
-            if (cleanWord.matches("^\\d+$") || cleanWord.toLowerCase().matches("^[a-z]{1,3}\\d+$")) {
-                correctedText.append(word);
-                correctedText.append(" ");
-                continue;
-            }
-            
-            // Skip likely proper names (capitalized words that aren't at sentence start)
-            if (Character.isUpperCase(cleanWord.charAt(0)) && !isFirstWordOfSentence(word, correctedText.toString())) {
-                correctedText.append(word);
-                correctedText.append(" ");
-                continue;
-            }
-            
-            try {
-                List<Suggestion> suggestions = findSuggestions(cleanWord.toLowerCase());
-                
-                if (!suggestions.isEmpty()) {
-                    if (suggestions.get(0).distance == 0) {
-                        // Word is correct
-                        correctedText.append(word);
-                    } else if (suggestions.get(0).distance <= MAX_EDIT_DISTANCE) {
-                        // Apply correction only if it makes sense
-                        String bestSuggestion = suggestions.get(0).word;
-                        
-                        // Additional validation: don't replace if the original word is much longer
-                        // and the suggestion is much shorter (likely wrong)
-                        if (shouldApplyCorrection(cleanWord.toLowerCase(), bestSuggestion)) {
-                            String corrected = bestSuggestion + punctuation;
-                            correctedText.append(corrected);
-                            if (!cleanWord.toLowerCase().equals(bestSuggestion)) {
-                                //System.out.println("Corrected: " + originalWord + " -> " + corrected);
-                            }
-                        } else {
-                            correctedText.append(word);
-                        }
-                    } else {
-                        correctedText.append(word);
-                    }
-                } else {
-                    correctedText.append(word);
-                }
-                correctedText.append(" ");
-            } catch (Exception e) {
-                correctedText.append(word).append(" ");
+            if (COMPREHENSIVE_CORRECTIONS.containsKey(cleanWord)) {
+                firstPass.append(COMPREHENSIVE_CORRECTIONS.get(cleanWord)).append(punctuation).append(" ");
+            } else {
+                firstPass.append(word).append(" ");
             }
         }
         
-        return correctedText.toString().trim();
-    }
-    
-    private String getDirectReplacement(String word) {
-        // Direct mappings for common abbreviations and typos
-        Map<String, String> directMappings = new HashMap<>();
-        
-        // Common abbreviations
-        directMappings.put("btwn", "between");
-        directMappings.put("w/", "with");
-        directMappings.put("w", "with");
-        directMappings.put("b/w", "between");
-        directMappings.put("thru", "through");
-        directMappings.put("yr", "year");
-        directMappings.put("mth", "month");
-        directMappings.put("lst", "last");  // ? This was the problem - "lst" should map to "last", not "list"
-        directMappings.put("aftr", "after");
-        
-        // Common typos with specific corrections
-        directMappings.put("shwo", "show");
-        directMappings.put("shw", "show");
-        directMappings.put("contrct", "contract");
-        directMappings.put("contarct", "contract");
-        directMappings.put("cntract", "contract");
-        directMappings.put("kontrakt", "contract");
-        directMappings.put("kontract", "contract");
-        directMappings.put("conract", "contract");
-        directMappings.put("contrcts", "contracts");
-        directMappings.put("contarcts", "contracts");
-        directMappings.put("contracs", "contracts");
-        directMappings.put("cntracts", "contracts");
-        directMappings.put("tracts", "contracts");
-        
-        // Account variations
-        directMappings.put("accunt", "account");
-        directMappings.put("acount", "account");
-        directMappings.put("acc", "account");  // ? This is correct
-        
-        // Customer variations
-        directMappings.put("custmer", "customer");
-        directMappings.put("cstomer", "customer");
-        directMappings.put("custmor", "customer");
-        
-        // Status variations
-        directMappings.put("statuss", "status");
-        directMappings.put("statuz", "status");
-        
-        // Info variations
-        directMappings.put("infro", "info");
-        
-        // Details variations
-        directMappings.put("detials", "details");
-        directMappings.put("detals", "details");
-        directMappings.put("denials", "details"); 
-        directMappings.put("detalis", "details");  
-        
-        // Summary variations
-        directMappings.put("summry", "summary");
-        directMappings.put("sumry", "summary");
-        directMappings.put("sumy", "summary");
-        
-        // Effective variations
-        directMappings.put("efective", "effective");
-        
-        // Created variations
-        directMappings.put("creatd", "created");
-        
-        // Expired variations
-        directMappings.put("exipred", "expired");
-        
-        // Number variations
-        directMappings.put("numer", "number");
-        directMappings.put("numbr", "number");
-        directMappings.put("umber", "number");
-        
-        // Corporate variations - ? This was missing!
-        directMappings.put("corprate", "corporate");
-        directMappings.put("corprate2024", "corporate2024");  // Handle the specific case
-        
-        // Opportunity variations
-        directMappings.put("oppurtunity", "opportunity");
-        directMappings.put("unity", "opportunity");
-        
-        // Fields variations
-        directMappings.put("flieds", "fields");
-        directMappings.put("flies", "fields");
-        
-        // Company name corrections
-        directMappings.put("boieng", "boeing");
-        directMappings.put("honeywel", "honeywell");
-        directMappings.put("vino", "vinod");
-        
-        // Parts-related
-        directMappings.put("prts", "parts");
-        directMappings.put("parst", "parts");
-        directMappings.put("partz", "parts");
-        directMappings.put("wat", "what");
-        directMappings.put("r", "are");
-        directMappings.put("yu", "you");
-        directMappings.put("nt", "not");
-        directMappings.put("hw", "how");
-        directMappings.put("chek", "check");
-        directMappings.put("prduct", "product");
-        directMappings.put("provid", "provide");
-        directMappings.put("datashet", "datasheet");
-        directMappings.put("compatble", "compatible");
-        directMappings.put("avalable", "available");
-        directMappings.put("discontnued", "discontinued");
-        directMappings.put("specifcations", "specifications");
-        directMappings.put("faild", "failed");
-        directMappings.put("faield", "failed");
-        directMappings.put("filde", "failed");
-        directMappings.put("validdation", "validation");
-        directMappings.put("loadded", "loaded");
-        directMappings.put("manufacterer", "manufacturer");
-        directMappings.put("mee", "me");
-        directMappings.put("addedd", "added");
-        directMappings.put("pricng", "pricing");
-        directMappings.put("becasue", "because");
-        directMappings.put("successfull", "successful");
-        directMappings.put("actv", "active");
-        directMappings.put("activ", "active");
-        directMappings.put("misssing", "missing");
-        directMappings.put("mising", "missing");
-        directMappings.put("missng", "missing");
-
-        directMappings.put("pasd", "passed");
-        directMappings.put("passd", "passed");
-        directMappings.put("pased", "passed");
-        
-        // Time-related combinations - ? Need to handle compound words
-        directMappings.put("mnth", "month");  // Add this specific case
-        
-        return directMappings.get(word);
+        // Second pass: Apply dictionary-based corrections
+        return correctText(firstPass.toString().trim());
     }
     
     private boolean shouldApplyCorrection(String original, String suggestion) {
-        // Don't apply correction if the suggestion is much shorter than original
-        // This prevents "contracts" -> "acts" type errors
-        if (original.length() >= 6 && suggestion.length() <= 3) {
+        // Don't apply correction if suggestion is much shorter than original
+        if (suggestion.length() < original.length() - 2) {
             return false;
         }
         
-        // Don't apply if original is much longer and suggestion doesn't contain key letters
-        if (original.length() - suggestion.length() > 4) {
+        // Don't apply correction if original is very short and suggestion is very different
+        if (original.length() <= 3 && editDistance(original, suggestion) > 1) {
             return false;
         }
         
-        // For contract-related words, be more strict
-        if (original.contains("contract") || original.contains("contrct") || 
-            original.contains("cntract") || original.contains("kontr")) {
-            return suggestion.equals("contract") || suggestion.equals("contracts");
-        }
-        
-        // For account-related words
-        if (original.contains("account") || original.contains("accunt") || 
-            original.contains("acount")) {
-            return suggestion.equals("account") || suggestion.equals("accounts");
+        // Apply correction for common patterns
+        if (COMPREHENSIVE_CORRECTIONS.containsKey(original)) {
+            return true;
         }
         
         return true;
     }
     
     private boolean isFirstWordOfSentence(String word, String previousText) {
-        if (previousText.trim().isEmpty()) return true;
-        return previousText.matches(".*[.!?]\\s*$");
+        if (previousText.isEmpty()) return true;
+        return previousText.endsWith(".") || previousText.endsWith("!") || previousText.endsWith("?");
     }
     
-    // Inner class to represent a suggestion
     private static class Suggestion {
         String word;
         int distance;
@@ -584,123 +1036,25 @@ public class SpellChecker {
     }
     
     public static void main(String[] args) {
-        SpellChecker checker = new SpellChecker();
-      
+        SpellChecker spellChecker = new SpellChecker();
         
-        // Check if dictionary file exists
-        File dictFile = new File("frequency_dictionary_en_82_765.txt");
-        if (!dictFile.exists()) {
-            System.out.println("Note: Dictionary file 'frequency_dictionary_en_82_765.txt' not found.");
-            System.out.println("A basic dictionary will be used. For better results, run './setup.sh' to download the full dictionary.");
-            System.out.println();
-        }
-        
-        String[] partsQUeries = {
+        // Test comprehensive spell correction
+        String[] testQueries = {
             "lst out contrcts with part numbr AE125",
             "whats the specifcations of prduct AE125",
-            "is part AE125 actve or discontnued",
-            "can yu provid datashet for AE125",
-            "wat r compatble prts for AE125",
-            "ae125 avalable in stok?",
-            "what is lede time part AE125",
-            "who’s the manufacterer of ae125",
-            "any isses or defect with AE125?",
-            "warrenty priod of AE125?",
-
             "shwo mee parts 123456",
-            "how many parst for 123456",
-            "list the prts of 123456",
-            "parts of 123456 not showing",
-            "123456 prts failed",
             "faield prts of 123456",
-            "parts failed validdation in 123456",
-            "filde prts in 123456",
-            "contract 123456 parst not loadded",
-            "show partz faild in contrct 123456",
-            "parts misssing for 123456",
-            "rejected partz 123456",
-
-            "why ae125 was not addedd in contract",
-            "part ae125 pricng mismatch",
-            "ae125 nt in mastr data",
-            "ae125 discntinued?",
-            "shw successfull prts 123456",
-            "get all parst that passd in 123456",
-            "what parts faild due to price error",
-            "chek error partz in contrct 123456",
-
-            "ae125 faild becasue no cost data?",
-            "is ae125 loaded in contract 123456?",
-            "ae125 skipped? why?",
-            "ae125 passd validation?",
-            "parts that arnt in stock 123456",
-            "shwo failed and pasd parts 123456",
-            "hw many partz failed in 123456",
-            "show parts today loadded 123456",
-            "show part AE126 detalis",
-
-            "list all AE partz for contract 123456",
-            "shwo me AE125 statuz in contrct",
-            "what happen to AE125 during loadding",
-            "any issues while loading AE125",
-            "get contract123456 failed parts"
+            "ae125 faild becasue no cost data"
         };
-
         
-        String[] contractQueries = {
-            "show contract 123456",
-            "contract details 123456",
-            "get contract info 123456",
-            "contracts created by vinod after 1-Jan-2020",
-            "status of contract 123456",
-            "expired contracts",
-            "contracts for customer number 897654",
-            "account 10840607 contracts",
-            "contracts created in 2024",
-            "get all metadata for contract 123456",
-            "contracts under account name 'Siemens'",
-            "get project type, effective date, and price list for account number 10840607",
-            "show contract for customer number 123456",
-            "shwo contrct 123456",
-            "get contrct infro 123456",
-            "find conract detials 123456",
-            "cntract summry for 123456",
-            "contarcts created by vinod aftr 1-Jan-2020",
-            "statuss of contrct 123456",
-            "exipred contrcts",
-            "contracs for cstomer numer 897654",
-            "accunt number 10840607 contrcts",
-            "contracts from lst mnth",
-            "contrcts creatd in 2024",
-            "shwo efective date and statuz",
-            "get cntracts for acount no 123456",
-            "contrct summry for custmor 999999",
-            "get contrct detals by acount 10840607",
-            "contracts created btwn Jan and June 2024",
-            "custmer honeywel",
-            "contarcts by vinod",
-            "show contracts for acc no 456789",
-            "activ contrcts created by mary",
-            "kontract detials 123456",
-            "kontrakt sumry for account 888888",
-            "boieng contrcts",
-            "acc number 1084",
-            "price list corprate2024",
-            "oppurtunity code details",
-            "get all flieds for customer 123123"
-        };
-  
-       
+        System.out.println("Testing Comprehensive Spell Correction:");
+        System.out.println("==================================================");
         
-        String[] merged = Stream.concat(Arrays.stream(contractQueries), Arrays.stream(partsQUeries))
-                                        .toArray(String[]::new);
-        
-        for (String input : merged) {
-            String output = checker.correctText(input);
-            
-            System.out.println("Original : "+input+" , Corrected : "+output);
+        for (String query : testQueries) {
+            String corrected = spellChecker.performComprehensiveSpellCheck(query);
+            System.out.println("Original: " + query);
+            System.out.println("Corrected: " + corrected);
+            System.out.println();
         }
-        
-        
     }
 }

@@ -1,0 +1,51 @@
+# Contract Domain Corrections
+contrct=contract
+contrcts=contracts
+acount=account
+accnt=account
+custmer=customer
+cusotmer=customer
+
+# Parts Domain Corrections
+prts=parts
+prt=part
+shwo=show
+sho=show
+faild=failed
+failded=failed
+pasd=passed
+passd=passed
+loadded=loaded
+loded=loaded
+specifcations=specifications
+specfications=specifications
+
+# Create/Help Domain Corrections
+creat=create
+creats=create
+mke=make
+mking=making
+buld=build
+bilding=building
+setup=setup
+devlop=develop
+
+# Instructions Keywords
+instrctions=instructions
+instrcutions=instructions
+steps=steps
+guid=guide
+guids=guides
+
+# Common Typos
+hw=how
+yu=you
+teh=the
+fro=for
+nad=and
+wiht=with
+ths=this
+adn=and
+hte=the
+fo=for
+an=and

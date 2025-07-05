@@ -1,0 +1,185 @@
+# Failed Parts Keywords Configuration
+
+# ====================================
+# CORE FAILURE KEYWORDS
+# ====================================
+failed
+failure
+fail
+failing
+fails
+error
+errors
+issue
+issues
+problem
+problems
+defect
+defects
+malfunction
+malfunctions
+
+# ====================================
+# FAILURE STATUS KEYWORDS
+# ====================================
+broken
+damaged
+faulty
+defective
+corrupted
+compromised
+non-functional
+inoperative
+out-of-order
+malfunctioning
+not-working
+down
+offline
+unavailable
+
+# ====================================
+# ERROR TYPE KEYWORDS
+# ====================================
+leak
+leaking
+leakage
+overheat
+overheating
+overheated
+voltage
+electrical
+mechanical
+thermal
+pressure
+temperature
+vibration
+noise
+wear
+tear
+crack
+fracture
+
+# ====================================
+# FAILURE REASON KEYWORDS
+# ====================================
+reason
+reasons
+cause
+causes
+root-cause
+why
+because
+due-to
+resulted-from
+caused-by
+originated-from
+stemmed-from
+attributed-to
+
+# ====================================
+# MESSAGE/REPORT KEYWORDS
+# ====================================
+message
+messages
+report
+reports
+log
+logs
+description
+descriptions
+detail
+details
+information
+info
+explanation
+explanations
+notification
+notifications
+alert
+alerts
+
+# ====================================
+# INVESTIGATION KEYWORDS
+# ====================================
+investigate
+investigation
+analyze
+analysis
+examine
+examination
+review
+inspection
+audit
+assessment
+evaluation
+diagnosis
+troubleshoot
+troubleshooting
+
+# ====================================
+# QUALITY KEYWORDS
+# ====================================
+quality
+qc
+quality-control
+inspection
+test
+testing
+validation
+verification
+compliance
+standard
+standards
+specification
+specifications
+requirement
+requirements
+
+# ====================================
+# TECHNICAL FAILURE KEYWORDS
+# ====================================
+malfunction
+breakdown
+outage
+downtime
+stoppage
+interruption
+disruption
+degradation
+deterioration
+corrosion
+oxidation
+contamination
+pollution
+
+# ====================================
+# SEVERITY KEYWORDS
+# ====================================
+critical
+severe
+major
+minor
+high
+medium
+low
+urgent
+emergency
+immediate
+priority
+escalated
+
+# ====================================
+# RESOLUTION KEYWORDS
+# ====================================
+fix
+repair
+replace
+resolve
+solution
+correction
+remedy
+workaround
+patch
+update
+maintenance
+service

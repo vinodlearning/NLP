@@ -1,0 +1,112 @@
+# Database Column Mappings File
+# Format: field_name → database_column_name
+# Maps user-friendly field names to actual database column names
+
+# Contract table mappings
+contract → contract_number
+contract_number → contract_number
+contract_id → contract_number
+contract_num → contract_number
+id → contract_number
+num → contract_number
+number → contract_number
+
+# Customer mappings
+customer → customer_name
+customer_name → customer_name
+client → customer_name
+client_name → customer_name
+cust → customer_name
+cust_name → customer_name
+customer_id → customer_name
+
+# Account mappings
+account → account_number
+account_number → account_number
+account_id → account_number
+account_num → account_number
+customer_number → account_number
+cust_number → account_number
+acct → account_number
+acct_number → account_number
+
+# Parts mappings
+part → part_number
+part_number → part_number
+part_id → part_number
+part_num → part_number
+parts → part_number
+component → part_number
+component_number → part_number
+item → part_number
+item_number → part_number
+product → part_number
+product_number → part_number
+
+# User mappings
+user → created_by
+created_by → created_by
+author → created_by
+creator → created_by
+created_user → created_by
+user_name → created_by
+username → created_by
+made_by → created_by
+built_by → created_by
+
+# Date mappings
+date → created_date
+created_date → created_date
+creation_date → created_date
+create_date → created_date
+made_date → created_date
+build_date → created_date
+effective_date → effective_date
+start_date → effective_date
+begin_date → effective_date
+expiration_date → expiration_date
+expire_date → expiration_date
+end_date → expiration_date
+finish_date → expiration_date
+due_date → expiration_date
+
+# Status mappings
+status → status
+state → status
+condition → status
+stage → status
+phase → status
+level → status
+
+# Amount/Price mappings
+amount → amount
+price → amount
+cost → amount
+value → amount
+total → amount
+sum → amount
+
+# Description mappings
+description → description
+desc → description
+note → description
+notes → description
+comment → description
+comments → description
+remark → description
+remarks → description
+detail → description
+details → description
+
+# Address mappings
+address → address
+addr → address
+location → address
+place → address
+
+# Contact mappings
+contact → contact_info
+contact_info → contact_info
+phone → contact_info
+email → contact_info
+telephone → contact_info

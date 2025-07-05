@@ -1,0 +1,73 @@
+# Database Queries Configuration
+# Format: query_name=SQL_QUERY
+# Use {parameter_name} for dynamic parameter replacement
+# This file can be updated without recompiling Java code
+
+# Contract Queries
+contract_by_number=SELECT * FROM CONTRACTS WHERE AWARD_NUMBER = '{contract_number}'
+
+contract_by_customer=SELECT * FROM CONTRACTS WHERE UPPER(CUSTOMER_NAME) LIKE UPPER('%{customer_name}%')
+
+contract_by_date_range=SELECT * FROM CONTRACTS WHERE EFFECTIVE_DATE >= '{start_date}' AND EXPIRATION_DATE <= '{end_date}'
+
+contract_by_status=SELECT * FROM CONTRACTS WHERE UPPER(STATUS) = UPPER('{status}')
+
+contract_by_creator=SELECT * FROM CONTRACTS WHERE UPPER(CREATED_BY) LIKE UPPER('%{creator}%')
+
+contract_by_organization=SELECT * FROM CONTRACTS WHERE UPPER(ORGANIZATION) LIKE UPPER('%{organization}%')
+
+contract_search_all=SELECT * FROM CONTRACTS WHERE UPPER(AWARD_NUMBER) LIKE UPPER('%{search_term}%') OR UPPER(CONTRACT_NAME) LIKE UPPER('%{search_term}%') OR UPPER(CUSTOMER_NAME) LIKE UPPER('%{search_term}%')
+
+contract_count_by_customer=SELECT COUNT(*) as contract_count FROM CONTRACTS WHERE UPPER(CUSTOMER_NAME) LIKE UPPER('%{customer_name}%')
+
+contract_expiring_soon=SELECT * FROM CONTRACTS WHERE EXPIRATION_DATE BETWEEN SYSDATE AND SYSDATE + {days}
+
+contract_active=SELECT * FROM CONTRACTS WHERE STATUS = 'ACTIVE' AND EFFECTIVE_DATE <= SYSDATE AND EXPIRATION_DATE >= SYSDATE
+
+# Parts Queries
+parts_by_contract=SELECT * FROM PARTS WHERE CONTRACT_NUMBER = '{contract_number}'
+
+parts_by_number=SELECT * FROM PARTS WHERE PART_NUMBER = '{part_number}'
+
+parts_by_name=SELECT * FROM PARTS WHERE UPPER(PART_NAME) LIKE UPPER('%{part_name}%')
+
+parts_by_contract_and_line=SELECT * FROM PARTS WHERE CONTRACT_NUMBER = '{contract_number}' AND LINE_NUMBER = '{line_number}'
+
+parts_count_by_contract=SELECT COUNT(*) as parts_count, SUM(TOTAL_PRICE) as total_value FROM PARTS WHERE CONTRACT_NUMBER = '{contract_number}'
+
+parts_by_supplier=SELECT * FROM PARTS WHERE UPPER(SUPPLIER) LIKE UPPER('%{supplier}%')
+
+parts_by_availability=SELECT * FROM PARTS WHERE UPPER(AVAILABILITY) = UPPER('{availability}')
+
+parts_search_all=SELECT * FROM PARTS WHERE UPPER(PART_NUMBER) LIKE UPPER('%{search_term}%') OR UPPER(PART_NAME) LIKE UPPER('%{search_term}%') OR UPPER(DESCRIPTION) LIKE UPPER('%{search_term}%')
+
+parts_by_price_range=SELECT * FROM PARTS WHERE UNIT_PRICE BETWEEN {min_price} AND {max_price}
+
+parts_delivery_schedule=SELECT * FROM PARTS WHERE DELIVERY_DATE BETWEEN '{start_date}' AND '{end_date}' ORDER BY DELIVERY_DATE
+
+# Combined Queries
+contract_with_parts_count=SELECT C.*, P.PARTS_COUNT, P.TOTAL_VALUE FROM CONTRACTS C LEFT JOIN (SELECT CONTRACT_NUMBER, COUNT(*) as PARTS_COUNT, SUM(TOTAL_PRICE) as TOTAL_VALUE FROM PARTS GROUP BY CONTRACT_NUMBER) P ON C.AWARD_NUMBER = P.CONTRACT_NUMBER WHERE C.AWARD_NUMBER = '{contract_number}'
+
+parts_with_contract_info=SELECT P.*, C.CONTRACT_NAME, C.CUSTOMER_NAME, C.STATUS as CONTRACT_STATUS FROM PARTS P JOIN CONTRACTS C ON P.CONTRACT_NUMBER = C.AWARD_NUMBER WHERE P.PART_NUMBER = '{part_number}'
+
+customer_contracts_and_parts=SELECT C.AWARD_NUMBER, C.CONTRACT_NAME, COUNT(P.PART_NUMBER) as PARTS_COUNT, SUM(P.TOTAL_PRICE) as TOTAL_VALUE FROM CONTRACTS C LEFT JOIN PARTS P ON C.AWARD_NUMBER = P.CONTRACT_NUMBER WHERE UPPER(C.CUSTOMER_NAME) LIKE UPPER('%{customer_name}%') GROUP BY C.AWARD_NUMBER, C.CONTRACT_NAME
+
+# Validation Queries
+validate_contract_exists=SELECT COUNT(*) FROM CONTRACTS WHERE AWARD_NUMBER = '{contract_number}'
+
+validate_customer_exists=SELECT COUNT(*) FROM CONTRACTS WHERE UPPER(CUSTOMER_NAME) = UPPER('{customer_name}')
+
+validate_part_exists=SELECT COUNT(*) FROM PARTS WHERE PART_NUMBER = '{part_number}'
+
+validate_contract_active=SELECT COUNT(*) FROM CONTRACTS WHERE AWARD_NUMBER = '{contract_number}' AND STATUS = 'ACTIVE'
+
+# Lookup Queries
+lookup_customers=SELECT DISTINCT CUSTOMER_NAME FROM CONTRACTS ORDER BY CUSTOMER_NAME
+
+lookup_organizations=SELECT DISTINCT ORGANIZATION FROM CONTRACTS ORDER BY ORGANIZATION
+
+lookup_contract_types=SELECT DISTINCT CONTRACT_TYPE FROM CONTRACTS ORDER BY CONTRACT_TYPE
+
+lookup_suppliers=SELECT DISTINCT SUPPLIER FROM PARTS ORDER BY SUPPLIER
+
+lookup_manufacturers=SELECT DISTINCT MANUFACTURER FROM PARTS ORDER BY MANUFACTURER

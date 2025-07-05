@@ -1,0 +1,313 @@
+# Enhanced Spell Corrections for Contract System
+
+# ====================================
+# CORE ACTION CORRECTIONS
+# ====================================
+shw=show
+sho=show
+displai=display
+displa=display
+disply=display
+lst=list
+lsit=list
+creat=create
+crate=create
+mak=make
+mke=make
+ad=add
+addd=add
+bild=build
+get=get
+gt=get
+find=find
+fnd=find
+serch=search
+srch=search
+
+# ====================================
+# CONTRACT CORRECTIONS
+# ====================================
+contrct=contract
+contrac=contract
+contrat=contract
+contraact=contract
+conract=contract
+contarct=contract
+cntract=contract
+contraacts=contracts
+contrcts=contracts
+
+# ====================================
+# PARTS CORRECTIONS
+# ====================================
+prts=parts
+prt=part
+parst=parts
+partz=parts
+partt=parts
+prts=parts
+partts=parts
+prts=parts
+
+# ====================================
+# FAILURE/FAILED CORRECTIONS
+# ====================================
+faild=failed
+failrd=failed
+faled=failed
+falied=failed
+faield=failed
+fialed=failed
+faileed=failed
+faild=failed
+failur=failure
+failre=failure
+falure=failure
+failuer=failure
+falur=failure
+
+# ====================================
+# REASON/MESSAGE CORRECTIONS
+# ====================================
+reasn=reason
+resn=reason
+raeson=reason
+reson=reason
+reasan=reason
+mesage=message
+mesag=message
+messag=message
+messg=message
+colum=column
+colmn=column
+culumn=column
+
+# ====================================
+# ERROR/ISSUE CORRECTIONS
+# ====================================
+eror=error
+erro=error
+eroor=error
+isue=issue
+isseu=issue
+problm=problem
+probem=problem
+probelm=problem
+
+# ====================================
+# QUALITY/STATUS CORRECTIONS
+# ====================================
+statu=status
+staus=status
+statsu=status
+qualit=quality
+qualty=quality
+qualiy=quality
+defct=defect
+defect=defect
+defekt=defect
+
+# ====================================
+# TECHNICAL CORRECTIONS
+# ====================================
+voltag=voltage
+volatge=voltage
+ovrheat=overheat
+ovrheating=overheating
+overheatng=overheating
+temperatur=temperature
+temperture=temperature
+presur=pressure
+presure=pressure
+pressur=pressure
+
+# ====================================
+# COMMON TYPOS
+# ====================================
+whch=which
+wht=what
+whih=which
+wich=which
+tht=that
+frm=from
+fr=for
+nd=and
+n=in
+hav=have
+hve=have
+wth=with
+wih=with
+
+# ====================================
+# NUMBER/IDENTIFIER CORRECTIONS
+# ====================================
+numbr=number
+numbe=number
+numer=number
+identifir=identifier
+identifer=identifier
+id=id
+
+# ====================================
+# DATE/TIME CORRECTIONS
+# ====================================
+dat=date
+dte=date
+dae=date
+tim=time
+tme=time
+
+# ====================================
+# FINANCIAL CORRECTIONS
+# ====================================
+pric=price
+prise=price
+prce=price
+amoun=amount
+amunt=amount
+amout=amount
+cost=cost
+cst=cost
+
+# ====================================
+# CUSTOMER/VENDOR CORRECTIONS
+# ====================================
+custome=customer
+customr=customer
+custmer=customer
+vendoe=vendor
+vendro=vendor
+vender=vendor
+supplir=supplier
+suplier=supplier
+suppiler=supplier
+
+# ====================================
+# DOCUMENT CORRECTIONS
+# ====================================
+invoic=invoice
+invoce=invoice
+invice=invoice
+documnt=document
+docment=document
+docuemnt=document
+reprt=report
+reoprt=report
+
+# ====================================
+# ADDRESS/CONTACT CORRECTIONS
+# ====================================
+addres=address
+adress=address
+addess=address
+phon=phone
+fon=phone
+emai=email
+emial=email
+emil=email
+
+# ====================================
+# SYSTEM/PROCESS CORRECTIONS
+# ====================================
+proces=process
+procss=process
+systm=system
+sytem=system
+databas=database
+databse=database
+
+# ====================================
+# COMPLIANCE/REGULATION CORRECTIONS
+# ====================================
+complianc=compliance
+compiance=compliance
+regulaton=regulation
+regulaion=regulation
+requirment=requirement
+requiremnt=requirement
+
+# ====================================
+# INVENTORY/STOCK CORRECTIONS
+# ====================================
+invntory=inventory
+inventroy=inventory
+stok=stock
+stck=stock
+availabl=available
+avlable=available
+quantit=quantity
+qntity=quantity
+qantity=quantity
+
+# ====================================
+# DELIVERY/SHIPPING CORRECTIONS
+# ====================================
+delivry=delivery
+delivey=delivery
+shipng=shipping
+shippng=shipping
+shipment=shipment
+shipmnt=shipment
+
+# ====================================
+# MANUFACTURING CORRECTIONS
+# ====================================
+manufactur=manufacturer
+manufactuer=manufacturer
+manufactrer=manufacturer
+produc=product
+produkt=product
+productn=production
+productio=production
+
+# ====================================
+# LOCATION/PLANT CORRECTIONS
+# ====================================
+locaton=location
+locaion=location
+facilit=facility
+facilty=facility
+warehous=warehouse
+warehose=warehouse
+
+# ====================================
+# BUSINESS TERMS CORRECTIONS
+# ====================================
+compny=company
+busness=business
+organizaton=organization
+organisaton=organization
+departmnt=department
+deparment=department
+
+# ====================================
+# TECHNICAL SPECIFICATIONS CORRECTIONS
+# ====================================
+specificaton=specification
+specificaion=specification
+requirment=requirement
+requiremnt=requirement
+standrd=standard
+standar=standard
+
+# ====================================
+# APPROVAL/AUTHORIZATION CORRECTIONS
+# ====================================
+aprovel=approval
+aproval=approval
+authorizaton=authorization
+authorisaton=authorization
+permision=permission
+permisson=permission
+
+# ====================================
+# COMMON ABBREVIATIONS
+# ====================================
+plz=please
+pls=please
+thx=thanks
+thnks=thanks
+info=information
+infrmation=information
+mgmt=management
+mgmnt=management
