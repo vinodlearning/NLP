@@ -1,0 +1,29 @@
+================================================================================
+COMPREHENSIVE TEST SUMMARY REPORT
+================================================================================
+Generated: 2025-07-05T14:26:34.693935011
+Total Test Cases: 210
+
+OVERALL STATISTICS:
+----------------------------------------
+Successful Tests: 113 (53.8%)
+Failed Tests: 97 (46.2%)
+
+PERFORMANCE STATISTICS:
+----------------------------------------
+Average Processing Time: 0.107 ms
+Minimum Processing Time: 0.014 ms
+Maximum Processing Time: 6.356 ms
+Target Performance (<200ms): ✅ PASSED
+
+QUERY TYPE DISTRIBUTION:
+----------------------------------------
+UNKNOWN: 97 (46.2%)
+PARTS: 81 (38.6%)
+CONTRACTS: 32 (15.2%)
+
+ACTION TYPE DISTRIBUTION:
+----------------------------------------
+error: 97 (46.2%)
+parts_by_partNumber: 81 (38.6%)
+contracts_by_contractNumber: 32 (15.2%)

@@ -1,0 +1,36 @@
+================================================================================
+ERROR ANALYSIS REPORT
+================================================================================
+Generated: 2025-07-05T14:26:34.714679173
+
+TOTAL FAILED TESTS: 114
+UNIQUE ERROR TYPES: 2
+
+ERROR CODE: MISSING_HEADER (49 occurrences)
+--------------------------------------------------
+Sample failed queries (showing 5 of 49):
+  1. "contract 999 where?"
+     Error: Provide at least one identifier (contract/part/customer) or filter (date/status)
+  2. "AE125_validation-fail"
+     Error: Provide at least one identifier (contract/part/customer) or filter (date/status)
+  3. "contract 456 + parts"
+     Error: Provide at least one identifier (contract/part/customer) or filter (date/status)
+  4. "showcontract123456"
+     Error: Provide at least one identifier (contract/part/customer) or filter (date/status)
+  5. "statusofcontract123456"
+     Error: Provide at least one identifier (contract/part/customer) or filter (date/status)
+
+ERROR CODE: INVALID_HEADER (65 occurrences)
+--------------------------------------------------
+Sample failed queries (showing 5 of 65):
+  1. "contracts created by vinod after 1-Jan-2020"
+     Error: Contract number 's' must be 6+ digits (found: 1 digits)
+  2. "expired contracts"
+     Error: Contract number 's' must be 6+ digits (found: 1 digits)
+  3. "contracts for customer number 897654"
+     Error: Contract number 's' must be 6+ digits (found: 1 digits)
+  4. "account 10840607 contracts"
+     Error: Contract number 's' must be 6+ digits (found: 1 digits)
+  5. "contracts created in 2024"
+     Error: Contract number 's' must be 6+ digits (found: 1 digits)
+
