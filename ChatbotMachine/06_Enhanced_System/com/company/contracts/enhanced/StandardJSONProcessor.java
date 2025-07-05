@@ -159,7 +159,7 @@ public class StandardJSONProcessor {
     /**
      * Parse JSON string to QueryResult object
      */
-    private QueryResult parseJSONToObject(String jsonString) {
+    public QueryResult parseJSONToObject(String jsonString) {
         try {
             // Simple JSON parsing without external libraries
             QueryResult result = new QueryResult();
@@ -187,9 +187,31 @@ public class StandardJSONProcessor {
      * Parse inputTracking section from JSON
      */
     private InputTrackingResult parseInputTracking(String json) {
-        String originalInput = extractJSONValue(json, "originalInput");
-        String correctedInput = extractJSONValue(json, "correctedInput");
-        String confidenceStr = extractJSONValue(json, "correctionConfidence");
+        // Extract the inputTracking section which is nested inside header
+        String inputTrackingSection = extractNestedJSONObject(json, "header", "inputTracking");
+        
+        if (inputTrackingSection == null) {
+            // Fallback: try to find at root level
+            String originalInput = extractJSONValue(json, "originalInput");
+            String correctedInput = extractJSONValue(json, "correctedInput");
+            String confidenceStr = extractJSONValue(json, "correctionConfidence");
+            
+            double confidence = 0.0;
+            if (confidenceStr != null && !confidenceStr.equals("null")) {
+                try {
+                    confidence = Double.parseDouble(confidenceStr);
+                } catch (NumberFormatException e) {
+                    confidence = 0.0;
+                }
+            }
+            
+            return new InputTrackingResult(originalInput, correctedInput, confidence);
+        }
+        
+        // Parse from the extracted inputTracking section
+        String originalInput = extractJSONValue(inputTrackingSection, "originalInput");
+        String correctedInput = extractJSONValue(inputTrackingSection, "correctedInput");
+        String confidenceStr = extractJSONValue(inputTrackingSection, "correctionConfidence");
         
         double confidence = 0.0;
         if (confidenceStr != null && !confidenceStr.equals("null")) {
@@ -207,12 +229,35 @@ public class StandardJSONProcessor {
      * Parse header section from JSON
      */
     private Header parseHeader(String json) {
+        // Extract the header section first
+        String headerSection = extractJSONObject(json, "header");
+        
+        if (headerSection == null) {
+            // Fallback: try to find at root level
+            Header header = new Header();
+            header.contractNumber = extractJSONValue(json, "contractNumber");
+            header.partNumber = extractJSONValue(json, "partNumber");
+            header.customerNumber = extractJSONValue(json, "customerNumber");
+            header.customerName = extractJSONValue(json, "customerName");
+            header.createdBy = extractJSONValue(json, "createdBy");
+            
+            // Handle null values
+            if ("null".equals(header.contractNumber)) header.contractNumber = null;
+            if ("null".equals(header.partNumber)) header.partNumber = null;
+            if ("null".equals(header.customerNumber)) header.customerNumber = null;
+            if ("null".equals(header.customerName)) header.customerName = null;
+            if ("null".equals(header.createdBy)) header.createdBy = null;
+            
+            return header;
+        }
+        
+        // Parse from the extracted header section
         Header header = new Header();
-        header.contractNumber = extractJSONValue(json, "contractNumber");
-        header.partNumber = extractJSONValue(json, "partNumber");
-        header.customerNumber = extractJSONValue(json, "customerNumber");
-        header.customerName = extractJSONValue(json, "customerName");
-        header.createdBy = extractJSONValue(json, "createdBy");
+        header.contractNumber = extractJSONValue(headerSection, "contractNumber");
+        header.partNumber = extractJSONValue(headerSection, "partNumber");
+        header.customerNumber = extractJSONValue(headerSection, "customerNumber");
+        header.customerName = extractJSONValue(headerSection, "customerName");
+        header.createdBy = extractJSONValue(headerSection, "createdBy");
         
         // Handle null values
         if ("null".equals(header.contractNumber)) header.contractNumber = null;
@@ -379,6 +424,35 @@ public class StandardJSONProcessor {
         }
         
         return arrayContent.split(",\\s*");
+    }
+    
+    /**
+     * Extract JSON object by key
+     */
+    private String extractJSONObject(String json, String key) {
+        String pattern = "\"" + key + "\"\\s*:\\s*\\{([^}]*(?:\\{[^}]*\\}[^}]*)*)\\}";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(pattern);
+        java.util.regex.Matcher m = p.matcher(json);
+        
+        if (m.find()) {
+            return m.group(1);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Extract nested JSON object (parent.child)
+     */
+    private String extractNestedJSONObject(String json, String parentKey, String childKey) {
+        // First extract the parent object
+        String parentObject = extractJSONObject(json, parentKey);
+        if (parentObject == null) {
+            return null;
+        }
+        
+        // Then extract the child object from the parent
+        return extractJSONObject("{" + parentObject + "}", childKey);
     }
 
     /**
