@@ -1,0 +1,12 @@
+# NLP Routing Keywords Configuration
+# Format: category=keyword1,keyword2,keyword3
+# This file can be updated without recompiling Java code
+
+# Parts-related keywords - Route to PartsModel
+parts_keywords=part,parts,item,items,line,lines,component,components,inventory,stock,material,materials,supplier,vendor,quantity,qty,delivery,ship,specification,spec
+
+# Contract creation keywords - Route to HelpModel when no parts keywords present
+create_keywords=create,creating,make,making,new,add,adding,insert,build,building,setup,establish,generate,how,help,guide,steps,process,procedure,instruction,tutorial,workflow
+
+# Contract query keywords - Used for enhanced routing
+contract_keywords=contract,contracts,award,awards,agreement,agreements,customer,client,effective,expiration,expire,status,organization,department,pricing,amount,value,terms,conditions

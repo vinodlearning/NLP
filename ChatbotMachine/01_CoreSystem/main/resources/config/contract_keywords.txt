@@ -1,0 +1,59 @@
+# Contract Keywords for Domain Classification
+# These keywords help route queries to the contract domain
+
+# Basic contract terms
+contract
+contracts
+agreement
+agreements
+
+# Contract actions
+show
+display
+get
+find
+lookup
+search
+list
+view
+
+# Contract properties
+effective
+expiration
+expires
+start
+end
+date
+dates
+value
+amount
+price
+cost
+total
+
+# Contract stakeholders
+customer
+client
+vendor
+supplier
+company
+organization
+
+# Contract status
+active
+inactive
+expired
+pending
+approved
+draft
+cancelled
+completed
+terminated
+
+# Contract types
+service
+maintenance
+purchase
+supply
+lease
+rental

@@ -1,0 +1,484 @@
+=== ML Processor Test Results ===
+Generated at: 2025-07-05T05:47:52.083
+
+---------------Test Case:1
+Input: "contracts for customer number 897654"
+{
+  "contract_number": "897654",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_customerNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "897654"
+    },
+    {
+      "attribute": "customer_number",
+      "operation": "=",
+      "value": "897654"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 897654)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "contracts for customer number 897654",
+  "correctedInput": "contracts for customer number 897654",
+  "hasSpellCorrections": false,
+  "processingTime": 1.35582313621004E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:2
+Input: "contracts created in 2024"
+{
+  "contract_number": "2024",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "2024"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 2024)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "contracts created in 2024",
+  "correctedInput": "contracts created in 2024",
+  "hasSpellCorrections": false,
+  "processingTime": 1.35582347249195E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [create],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:3
+Input: "show contract for customer number 123456"
+{
+  "contract_number": "123456",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_customerNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "123456"
+    },
+    {
+      "attribute": "customer_number",
+      "operation": "=",
+      "value": "123456"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 123456)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "show contract for customer number 123456",
+  "correctedInput": "show contract for customer number 123456",
+  "hasSpellCorrections": false,
+  "processingTime": 1.35582347991531E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:4
+Input: "contracts created btwn Jan and June 2024"
+{
+  "contract_number": "2024",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "2024"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 2024)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "contracts created btwn Jan and June 2024",
+  "correctedInput": "contracts created between Jan and June 2024",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582348885368E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [create],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:5
+Input: "custmer honeywel"
+{
+  "contract_number": null,
+  "part_number": null,
+  "customer_name": "honeywell",
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_customerName",
+  "entities": [
+    {
+      "attribute": "customer_name",
+      "operation": "=",
+      "value": "honeywell"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "custmer honeywel",
+  "correctedInput": "customer honeywell",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582349716694E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:6
+Input: "kontract detials 123456"
+{
+  "contract_number": "123456",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "123456"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 123456)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "kontract detials 123456",
+  "correctedInput": "contract details 123456",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582350266768E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:7
+Input: "lst out contrcts with part numbr AE125"
+{
+  "contract_number": null,
+  "part_number": "AE125",
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "PARTS",
+  "actionType": "parts_by_partNumber",
+  "entities": [
+    {
+      "attribute": "part_number",
+      "operation": "=",
+      "value": "AE125"
+    }
+  ],
+  "route": "PARTS",
+  "reason": "Input contains parts-related keywords: [ae125, part]",
+  "intentType": "PARTS_QUERY",
+  "originalInput": "lst out contrcts with part numbr AE125",
+  "correctedInput": "list out contracts with part number AE125",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582351400686E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [ae125, part],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:8
+Input: "why ae125 was not addedd in contract"
+{
+  "contract_number": null,
+  "part_number": "ae125",
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "PARTS",
+  "actionType": "parts_by_partNumber",
+  "entities": [
+    {
+      "attribute": "part_number",
+      "operation": "=",
+      "value": "ae125"
+    }
+  ],
+  "route": "PARTS",
+  "reason": "Input contains parts-related keywords: [ae125]",
+  "intentType": "PARTS_QUERY",
+  "originalInput": "why ae125 was not addedd in contract",
+  "correctedInput": "why ae125 was not added in contract",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582351973521E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [ae125],
+  "createKeywords": [add],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:9
+Input: "ae125 discntinued?"
+{
+  "contract_number": null,
+  "part_number": "ae125",
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "PARTS",
+  "actionType": "parts_by_partNumber",
+  "entities": [
+    {
+      "attribute": "part_number",
+      "operation": "=",
+      "value": "ae125"
+    }
+  ],
+  "route": "PARTS",
+  "reason": "Input contains parts-related keywords: [ae125]",
+  "intentType": "PARTS_QUERY",
+  "originalInput": "ae125 discntinued?",
+  "correctedInput": "ae125 discntinued?",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582352423514E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [ae125],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:10
+Input: "wats the statuz of 789"
+{
+  "contract_number": "789",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "789"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 789)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "wats the statuz of 789",
+  "correctedInput": "what's the status of 789",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582352911778E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:11
+Input: "contrct 404 not found"
+{
+  "contract_number": "404",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "404"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 404)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "contrct 404 not found",
+  "correctedInput": "contract 404 not found",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582353388481E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:12
+Input: "contrato 456 detalles"
+{
+  "contract_number": "456",
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [
+    {
+      "attribute": "contract_number",
+      "operation": "=",
+      "value": "456"
+    }
+  ],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model (Contract ID: 456)",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "contrato 456 detalles",
+  "correctedInput": "contract 456 details",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582353908675E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:13
+Input: "AE125 kab load hoga?"
+{
+  "contract_number": null,
+  "part_number": "AE125",
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "PARTS",
+  "actionType": "parts_by_partNumber",
+  "entities": [
+    {
+      "attribute": "part_number",
+      "operation": "=",
+      "value": "AE125"
+    }
+  ],
+  "route": "PARTS",
+  "reason": "Input contains parts-related keywords: [ae125]",
+  "intentType": "PARTS_QUERY",
+  "originalInput": "AE125 kab load hoga?",
+  "correctedInput": "AE125 when load hoga?",
+  "hasSpellCorrections": true,
+  "processingTime": 1.35582354373088E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [ae125],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:14
+Input: "AE125_validation-fail"
+{
+  "contract_number": null,
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "PARTS",
+  "actionType": "parts_by_contract",
+  "entities": [],
+  "route": "PARTS",
+  "reason": "Input contains parts-related keywords: [ae125]",
+  "intentType": "PARTS_QUERY",
+  "originalInput": "AE125_validation-fail",
+  "correctedInput": "AE125_validation-fail",
+  "hasSpellCorrections": false,
+  "processingTime": 1.35582354793062E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [ae125],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+---------------Test Case:15
+Input: "cntrct123456!!!"
+{
+  "contract_number": null,
+  "part_number": null,
+  "customer_name": null,
+  "account_number": null,
+  "created_by": null,
+  "queryType": "CONTRACT",
+  "actionType": "contracts_by_contractNumber",
+  "entities": [],
+  "route": "CONTRACT",
+  "reason": "Default routing to contract model",
+  "intentType": "CONTRACT_ID_QUERY",
+  "originalInput": "cntrct123456!!!",
+  "correctedInput": "cntrct123456!!!",
+  "hasSpellCorrections": false,
+  "processingTime": 1.35582355113004E11,
+  "contextScore": 0.0,
+  "timestamp": "Sat Jul 05 05:47:52 UTC 2025",
+  "partsKeywords": [],
+  "createKeywords": [],
+  "businessRuleViolation": "N/A",
+  "enhancementApplied": "N/A"
+}
+-------------------------------
+
+=== End of Results ===
+Total test cases processed: 15

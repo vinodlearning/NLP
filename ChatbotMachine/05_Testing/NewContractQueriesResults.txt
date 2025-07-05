@@ -1,0 +1,218 @@
+NEW CONTRACT QUERIES TEST RESULTS
+=================================
+Total Queries: 27
+Date: Fri Jul 04 17:20:22 UTC 2025
+
+Query 1 [GENERAL_INFO]:
+  Input: get info for cntract id 123456
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 5077.84 μs
+  Spell Corrected: get info for contract id 123456
+
+Query 2 [GENERAL_INFO]:
+  Input: all contrct info 123456 plz
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 319.37 μs
+  Spell Corrected: all contract info 123456 please
+
+Query 3 [GENERAL_INFO]:
+  Input: display data of contrct 123456
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 270.80 μs
+  Spell Corrected: display data of contract 123456
+
+Query 4 [GENERAL_INFO]:
+  Input: retrive contract 123456 detals
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 209.06 μs
+  Spell Corrected: retrieve contract 123456 details
+
+Query 5 [STATUS_CHECK]:
+  Input: is contract 123456 activ?
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 194.27 μs
+  Spell Corrected: is contract 123456 active
+
+Query 6 [STATUS_CHECK]:
+  Input: contrct 123456 expird?
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 170.55 μs
+  Spell Corrected: contract 123456 expired
+
+Query 7 [STATUS_CHECK]:
+  Input: what is end date of cntract 123456
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 250.56 μs
+  Spell Corrected: what is end date of contract 123456
+
+Query 8 [STATUS_CHECK]:
+  Input: actv cntracts from 2023
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 264.01 μs
+  Spell Corrected: active contracts from 2023
+
+Query 9 [DATE_BASED]:
+  Input: contrcts btw 1-Jan and 30-Jun 2023
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 342.99 μs
+  Spell Corrected: contracts between 1-Jan and 30-Jun 2023
+
+Query 10 [DATE_BASED]:
+  Input: contrcts since april 2022
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 239.24 μs
+  Spell Corrected: contracts since april 2022
+
+Query 11 [DATE_BASED]:
+  Input: contracts in last 60 days
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 694.58 μs
+
+Query 12 [DATE_BASED]:
+  Input: contrcts from previous year
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 259.83 μs
+  Spell Corrected: contracts from previous year
+
+Query 13 [CUSTOMER_ACCOUNT]:
+  Input: contracts fr accnt no 567890
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 143.71 μs
+  Spell Corrected: contracts for account no 567890
+
+Query 14 [CUSTOMER_ACCOUNT]:
+  Input: get cntract by client Honeywell
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 259.52 μs
+  Spell Corrected: get contract by client Honeywell
+
+Query 15 [CUSTOMER_ACCOUNT]:
+  Input: show all contracts of customer vinod
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 292.10 μs
+
+Query 16 [CUSTOMER_ACCOUNT]:
+  Input: contract info for custmr name 'Tata'
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 305.22 μs
+  Spell Corrected: contract info for customer name 'Tata'
+
+Query 17 [ERROR_PRONE]:
+  Input: shw cntract for cutomer 456789
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 150.53 μs
+  Spell Corrected: show contract for customer 456789
+
+Query 18 [ERROR_PRONE]:
+  Input: contrct detils by acnt 999999
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 125.81 μs
+  Spell Corrected: contract details by account 999999
+
+Query 19 [ERROR_PRONE]:
+  Input: info abot kontrct 111111
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 120.59 μs
+  Spell Corrected: info about contract 111111
+
+Query 20 [ERROR_PRONE]:
+  Input: kontracts crated in 2022
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 513.28 μs
+  Spell Corrected: contracts created in 2022
+  Enhancement: Past-tense detection: 'created' identified as informational query
+
+Query 21 [ERROR_PRONE]:
+  Input: retrive cntracts of bayer compny
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 264.39 μs
+  Spell Corrected: retrieve contracts of bayer company
+
+Query 22 [ERROR_PRONE]:
+  Input: contracts under acunt 'GE'
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 197.01 μs
+  Spell Corrected: contracts under account 'GE'
+
+Query 23 [ERROR_PRONE]:
+  Input: get al cntracts with prjct type A1
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 292.79 μs
+  Spell Corrected: get all contracts with project type A1
+
+Query 24 [COMBINED_FIELDS]:
+  Input: shwo contrct details inclde prjct type, price list and dates
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 342.85 μs
+  Spell Corrected: show contract details include project type, price list and dates
+
+Query 25 [COMBINED_FIELDS]:
+  Input: get contract123456 summary and status
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 527.83 μs
+
+Query 26 [COMBINED_FIELDS]:
+  Input: contract123456 – wat's the price list + effective date?
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 674.39 μs
+
+Query 27 [COMBINED_FIELDS]:
+  Input: list contrcts and customer details where price > 100000
+  Expected: CONTRACT
+  Actual: CONTRACT
+  Correct: YES
+  Processing Time: 232.19 μs
+  Spell Corrected: list contracts and customer details where price > 100000
+
