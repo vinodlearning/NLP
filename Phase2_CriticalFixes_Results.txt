@@ -1,0 +1,333 @@
+PHASE 2 CRITICAL FIXES RESULTS
+===============================
+
+Query 1:
+  Input: contracts for customer number 897654
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 897654)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 3900.159 microseconds
+  Routing Correct: YES
+
+Query 2:
+  Input: contracts created in 2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 2024)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 350.743 microseconds
+  Routing Correct: YES
+
+Query 3:
+  Input: show contract for customer number 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 343.993 microseconds
+  Routing Correct: YES
+
+Query 4:
+  Input: contracts created btwn Jan and June 2024
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 2024)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 600.824 microseconds
+  Routing Correct: YES
+
+Query 5:
+  Input: custmer honeywel
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 632.165 microseconds
+  Routing Correct: YES
+
+Query 6:
+  Input: kontract detials 123456
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 123456)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 293.952 microseconds
+  Routing Correct: YES
+
+Query 7:
+  Input: lst out contrcts with part numbr AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 485.704 microseconds
+  Routing Correct: YES
+
+Query 8:
+  Input: why ae125 was not addedd in contract
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 292.623 microseconds
+  Routing Correct: YES
+
+Query 9:
+  Input: ae125 discntinued?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 179.071 microseconds
+  Routing Correct: YES
+
+Query 10:
+  Input: wats the statuz of 789
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 789)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 226.152 microseconds
+  Routing Correct: YES
+
+Query 11:
+  Input: contrct 404 not found
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 404)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 191.292 microseconds
+  Routing Correct: YES
+
+Query 12:
+  Input: contrato 456 detalles
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model (Contract ID: 456)
+  Intent Type: CONTRACT_ID_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 182.952 microseconds
+  Routing Correct: YES
+
+Query 13:
+  Input: AE125 kab load hoga?
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Spell Correction + Enhanced Entity Extraction
+  Spell Corrections: true
+  Processing Time: 197.501 microseconds
+  Routing Correct: YES
+
+Query 14:
+  Input: AE125_validation-fail
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 107.161 microseconds
+  Routing Correct: YES
+
+Query 15:
+  Input: cntrct123456!!!
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 75.68 microseconds
+  Routing Correct: YES
+
+Query 16:
+  Input: prtAE125spec??
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [prt, ae125, spec]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 110.681 microseconds
+  Routing Correct: YES
+
+Query 17:
+  Input: contrct123&prts
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [prt, prts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 91.401 microseconds
+  Routing Correct: YES
+
+Query 18:
+  Input: contract(123)+parts(AE125)
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part, parts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 120.04 microseconds
+  Routing Correct: YES
+
+Query 19:
+  Input: needprtAE125infoASAP
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [prt, ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 96.601 microseconds
+  Routing Correct: YES
+
+Query 20:
+  Input: AE125warrantypls
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, warranty]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 95.05 microseconds
+  Routing Correct: YES
+
+Query 21:
+  Input: prts4contract456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [prt, prts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 79.06 microseconds
+  Routing Correct: YES
+
+Query 22:
+  Input: contract:123456,parts
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 105.1 microseconds
+  Routing Correct: YES
+
+Query 23:
+  Input: AE125_in_contract789
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 94.461 microseconds
+  Routing Correct: YES
+
+Query 24:
+  Input: contract123;parts456
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 98.001 microseconds
+  Routing Correct: YES
+
+Query 25:
+  Input: contract 123?parts=AE125
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125, part, parts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 130.261 microseconds
+  Routing Correct: YES
+
+Query 26:
+  Input: contract@123456#parts
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [part, parts]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 95.561 microseconds
+  Routing Correct: YES
+
+Query 27:
+  Input: AE125|contract123
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: Enhanced Entity Extraction
+  Spell Corrections: false
+  Processing Time: 187.361 microseconds
+  Routing Correct: YES
+
+Query 28:
+  Input: plsshowcntrct123
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 104.541 microseconds
+  Routing Correct: YES
+
+Query 29:
+  Input: givmectrct456deets
+  Expected Route: CONTRACT
+  Actual Route: CONTRACT
+  Routing Reason: Default routing to contract model
+  Intent Type: GENERAL_CONTRACT_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 80.471 microseconds
+  Routing Correct: YES
+
+Query 30:
+  Input: AE125statpls
+  Expected Route: PARTS
+  Actual Route: PARTS
+  Routing Reason: Input contains parts-related keywords: [ae125]
+  Intent Type: PARTS_QUERY
+  Critical Fix Applied: null
+  Spell Corrections: false
+  Processing Time: 95.6 microseconds
+  Routing Correct: YES
+
