@@ -134,12 +134,13 @@ public class CompleteMLResponse {
         if ("CONTRACT".equals(queryType)) {
             if (lowerInput.contains("created by") || lowerInput.matches(".*\\bby\\s+\\w+.*")) {
                 return "contracts_by_user";
+            } else if (customer_name != null || lowerInput.contains("customer") || 
+                      lowerInput.contains("client") || lowerInput.contains("account name")) {
+                return "contracts_by_customerName";
             } else if (contract_number != null) {
                 return "contracts_by_contractNumber";
-            } else if (lowerInput.contains("account")) {
+            } else if (lowerInput.contains("account") && account_number != null) {
                 return "contracts_by_accountNumber";
-            } else if (lowerInput.contains("customer") || lowerInput.contains("client")) {
-                return "contracts_by_customerName";
             } else if (lowerInput.contains("part") || lowerInput.contains("component")) {
                 return "contracts_by_parts";
             }
@@ -209,9 +210,17 @@ public class CompleteMLResponse {
      * Extract part number (format: AE12345, XY123, etc.)
      */
     private String extractPartNumber(String input) {
+        // Pattern 1: Standard format AE12345
         if (input.matches(".*\\b[A-Z]{2}\\d{3,6}\\b.*")) {
             return input.replaceAll(".*\\b([A-Z]{2}\\d{3,6})\\b.*", "$1");
         }
+        
+        // Pattern 2: Case insensitive ae125, AE125
+        if (input.toLowerCase().matches(".*\\b[a-z]{2}\\d{3,6}\\b.*")) {
+            String part = input.toLowerCase().replaceAll(".*\\b([a-z]{2}\\d{3,6})\\b.*", "$1");
+            return part.toUpperCase();
+        }
+        
         return null;
     }
     
@@ -219,6 +228,7 @@ public class CompleteMLResponse {
      * Extract customer name
      */
     private String extractCustomerName(String lowerInput) {
+        // Pattern 1: "customer ABC Corp"
         if (lowerInput.contains("customer ")) {
             String[] parts = lowerInput.split("customer\\s+");
             if (parts.length > 1) {
@@ -235,6 +245,29 @@ public class CompleteMLResponse {
                 return result.isEmpty() ? null : result;
             }
         }
+        
+        // Pattern 2: "account name 'Siemens'" or "account name Siemens"
+        if (lowerInput.contains("account name")) {
+            String[] parts = lowerInput.split("account name\\s+");
+            if (parts.length > 1) {
+                String namesPart = parts[1];
+                // Remove quotes if present
+                namesPart = namesPart.replaceAll("['\"]", "");
+                String[] words = namesPart.split("\\s+");
+                if (words.length > 0 && words[0].matches("[a-zA-Z]+")) {
+                    return words[0];
+                }
+            }
+        }
+        
+        // Pattern 3: Look for known company names
+        String[] companyNames = {"siemens", "microsoft", "google", "apple", "amazon", "oracle", "ibm"};
+        for (String company : companyNames) {
+            if (lowerInput.contains(company)) {
+                return company;
+            }
+        }
+        
         return null;
     }
     
@@ -325,10 +358,22 @@ public class CompleteMLResponse {
         String[] statusValues = {"active", "expired", "pending", "cancelled", "new", "draft"};
         for (String status : statusValues) {
             if (lowerInput.contains("status " + status) || 
-                (lowerInput.contains(status) && lowerInput.contains("status"))) {
+                (lowerInput.contains(status) && lowerInput.contains("status")) ||
+                (status.equals("expired") && lowerInput.contains("expired"))) {
                 entities.add(new EntityOperation("status", "=", status));
                 break;
             }
+        }
+        
+        // Additional status patterns
+        if (lowerInput.contains("not loaded") || lowerInput.contains("not loadded")) {
+            entities.add(new EntityOperation("load_status", "=", "not_loaded"));
+        } else if (lowerInput.contains("loaded") || lowerInput.contains("loadded")) {
+            entities.add(new EntityOperation("load_status", "=", "loaded"));
+        }
+        
+        if (lowerInput.contains("during loading") || lowerInput.contains("during loadding")) {
+            entities.add(new EntityOperation("process_status", "=", "loading"));
         }
     }
     

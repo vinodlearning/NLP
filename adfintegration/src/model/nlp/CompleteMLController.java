@@ -92,9 +92,9 @@ public class CompleteMLController {
             "inventory", "stock", "item", "items", "materials", "supplies"
         ));
         
-        // Creation/Help keywords
+        // Creation/Help keywords (refined to avoid false positives)
         createKeywords = new HashSet<>(Arrays.asList(
-            "create", "creating", "make", "new", "add", "generate", "help", "how to",
+            "create", "creating", "make", "new", "generate", "help", "how to",
             "guide", "steps", "process", "workflow", "instruction", "tutorial"
         ));
         
@@ -139,6 +139,11 @@ public class CompleteMLController {
         spellCorrections.put("shwo", "show");
         spellCorrections.put("dsply", "display");
         spellCorrections.put("lst", "list");
+        
+        // Loading/Status corrections (NOT creation)
+        spellCorrections.put("loadded", "loaded");
+        spellCorrections.put("loadding", "loading");
+        spellCorrections.put("addedd", "added");
         
         // Parts-related corrections
         spellCorrections.put("prts", "parts");
@@ -311,6 +316,7 @@ public class CompleteMLController {
         boolean hasCreateKeywords = !analysis.createKeywords.isEmpty();
         boolean isPastTense = isPastTenseQuery(input);
         boolean hasContractId = contractId != null;
+        boolean isQueryIntent = isQueryIntent(input);
         
         String route;
         String reason;
@@ -319,8 +325,8 @@ public class CompleteMLController {
         String enhancementApplied = null;
         double contextScore = 0.0;
         
-        // BUSINESS RULE 1: Parts + Create keywords = ERROR (parts cannot be created)
-        if (hasPartsKeywords && hasCreateKeywords && !isPastTense) {
+        // BUSINESS RULE 1: Parts + Create keywords = ERROR (only if truly creation intent)
+        if (hasPartsKeywords && hasCreateKeywords && !isPastTense && !isQueryIntent) {
             route = "PARTS_CREATE_ERROR";
             reason = "Parts creation not supported - parts are loaded from Excel files";
             intentType = "BUSINESS_RULE_VIOLATION";
@@ -332,8 +338,8 @@ public class CompleteMLController {
             reason = "Input contains parts-related keywords: " + analysis.partsKeywords;
             intentType = "PARTS_QUERY";
             
-        // BUSINESS RULE 3: Create keywords (not past tense) = HELP routing
-        } else if (hasCreateKeywords && !isPastTense) {
+        // BUSINESS RULE 3: Create keywords (not past tense, not query) = HELP routing
+        } else if (hasCreateKeywords && !isPastTense && !isQueryIntent) {
             route = "HELP";
             reason = "Input contains creation/help keywords: " + analysis.createKeywords;
             intentType = "HELP_REQUEST";
@@ -357,6 +363,27 @@ public class CompleteMLController {
         }
         
         return new RoutingDecision(route, reason, intentType, businessRuleViolation, enhancementApplied, contextScore);
+    }
+    
+    /**
+     * Detect if this is a query intent (not creation intent)
+     */
+    private boolean isQueryIntent(String input) {
+        String lowerInput = input.toLowerCase();
+        
+        // Query indicators
+        String[] queryIndicators = {
+            "show", "display", "list", "get", "find", "what", "why", "how", "when", "where",
+            "status", "happened", "happen", "during", "loaded", "loading", "not loaded"
+        };
+        
+        for (String indicator : queryIndicators) {
+            if (lowerInput.contains(indicator)) {
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     /**
