@@ -51,13 +51,13 @@ public class CompleteMLResponse {
     private String timestamp;
     
     /**
-     * Constructor - Automatically extracts all required attributes
+     * Constructor - Automatically extracts all required attributes - ENHANCED FOR PHASE 2
      */
     public CompleteMLResponse(String route, String reason, String intentType,
                              String originalInput, String correctedInput, boolean hasSpellCorrections,
                              String contractId, Set<String> partsKeywords, Set<String> createKeywords,
                              String businessRuleViolation, String enhancementApplied,
-                             double contextScore, double processingTime) {
+                             double contextScore, double processingTime, Map<String, String> extractedEntities) {
         
         // Initialize ALL required attributes to null (will be populated)
         this.contract_number = null;
@@ -85,9 +85,9 @@ public class CompleteMLResponse {
         this.queryType = determineQueryType(route);
         this.actionType = determineActionType(route, correctedInput);
         
-        // Extract entities with operations
+        // Extract entities with operations - PHASE 2 ENHANCEMENT
         this.entities = new ArrayList<>();
-        extractAllAttributesAndEntities(correctedInput, contractId);
+        extractAllAttributesAndEntitiesEnhanced(correctedInput, contractId, extractedEntities);
     }
     
     /**
@@ -152,9 +152,48 @@ public class CompleteMLResponse {
     }
     
     /**
-     * Extract ALL attributes and entities with operations from input
+     * PHASE 2 FIX: Enhanced extraction using pre-extracted entities
      */
-    private void extractAllAttributesAndEntities(String input, String contractId) {
+    private void extractAllAttributesAndEntitiesEnhanced(String input, String contractId, Map<String, String> extractedEntities) {
+        if (input == null) return;
+        
+        // Use pre-extracted entities from enhanced extraction
+        if (extractedEntities != null) {
+            // Set the main attributes from extracted entities
+            if (extractedEntities.containsKey("contract_number")) {
+                this.contract_number = extractedEntities.get("contract_number");
+                entities.add(new EntityOperation("contract_number", "=", this.contract_number));
+            }
+            if (extractedEntities.containsKey("part_number")) {
+                this.part_number = extractedEntities.get("part_number");
+                entities.add(new EntityOperation("part_number", "=", this.part_number));
+            }
+            if (extractedEntities.containsKey("customer_name")) {
+                this.customer_name = extractedEntities.get("customer_name");
+                entities.add(new EntityOperation("customer_name", "=", this.customer_name));
+            }
+            if (extractedEntities.containsKey("customer_number")) {
+                // Don't set customer_name to customer_number - this was the bug
+                entities.add(new EntityOperation("customer_number", "=", extractedEntities.get("customer_number")));
+            }
+            if (extractedEntities.containsKey("account_number")) {
+                this.account_number = extractedEntities.get("account_number");
+                entities.add(new EntityOperation("account_number", "=", this.account_number));
+            }
+            if (extractedEntities.containsKey("created_by")) {
+                this.created_by = extractedEntities.get("created_by");
+                entities.add(new EntityOperation("created_by", "=", this.created_by));
+            }
+        }
+        
+        // Continue with legacy extraction for additional operations
+        extractAllAttributesAndEntitiesLegacy(input, contractId);
+    }
+    
+    /**
+     * Extract ALL attributes and entities with operations from input - LEGACY METHOD
+     */
+    private void extractAllAttributesAndEntitiesLegacy(String input, String contractId) {
         if (input == null) return;
         
         String lowerInput = input.toLowerCase();

@@ -2,10 +2,18 @@ package model.nlp;
 
 import java.util.*;
 import java.io.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
- * Complete ML Controller for Oracle ADF Integration
+ * Complete ML Controller for Oracle ADF Integration - PHASE 2 CRITICAL FIXES
  * Returns JSON with ALL required attributes and entity operations
+ * 
+ * CRITICAL FIXES APPLIED:
+ * ✅ Enhanced Entity Extraction (customer number vs name)
+ * ✅ Comprehensive Spell Correction (50+ corrections)
+ * ✅ Past-Tense Routing Logic (created vs create)
+ * ✅ Improved Pattern Recognition
  * 
  * ALWAYS includes in JSON response:
  * - contract_number, part_number, customer_name, account_number, created_by
@@ -14,7 +22,7 @@ import java.io.*;
  * - entities (with operations like project_type = "new")
  * 
  * @author Contract Query Processing System
- * @version 2.0 - Complete Implementation
+ * @version 2.1 - Phase 2 Critical Fixes
  */
 public class CompleteMLController {
     
@@ -23,6 +31,12 @@ public class CompleteMLController {
     private Set<String> contractKeywords;
     private Map<String, String> spellCorrections;
     private static CompleteMLController instance;
+    
+    // PHASE 2 FIX: Enhanced regex patterns for better entity extraction
+    private Pattern contractIdPattern;
+    private Pattern partNumberPattern;
+    private Pattern customerNumberPattern;
+    private Pattern accountNumberPattern;
     
     // Singleton pattern for ADF performance
     public static synchronized CompleteMLController getInstance() {
@@ -35,10 +49,11 @@ public class CompleteMLController {
     private CompleteMLController() {
         initializeKeywords();
         initializeSpellCorrections();
+        initializePatterns(); // PHASE 2 FIX: Initialize enhanced patterns
     }
     
     /**
-     * MAIN METHOD FOR ADF INTEGRATION
+     * MAIN METHOD FOR ADF INTEGRATION - ENHANCED WITH PHASE 2 FIXES
      * Returns CompleteMLResponse with ALL required attributes
      * 
      * @param userInput - The user's natural language query
@@ -52,33 +67,45 @@ public class CompleteMLController {
         try {
             long startTime = System.nanoTime();
             
-            // Step 1: Perform spell correction
-            String correctedInput = performSpellCorrection(userInput.trim());
-            boolean hasSpellCorrections = !userInput.equals(correctedInput);
+            // PHASE 2 FIX: Enhanced spell correction with comprehensive dictionary
+            Map<String, String> appliedCorrections = new HashMap<>();
+            String correctedInput = performEnhancedSpellCorrection(userInput.trim(), appliedCorrections);
+            boolean hasSpellCorrections = !appliedCorrections.isEmpty();
             
-            // Step 2: Analyze keywords
+            // PHASE 2 FIX: Enhanced entity extraction with proper patterns
+            Map<String, String> extractedEntities = extractEntitiesEnhanced(correctedInput);
+            
+            // Step 3: Analyze keywords
             KeywordAnalysis analysis = analyzeKeywords(correctedInput);
             
-            // Step 3: Extract contract ID
-            String contractId = extractContractId(correctedInput);
-            
-            // Step 4: Determine routing with business rules
-            RoutingDecision decision = determineRouting(analysis, contractId, correctedInput);
+            // PHASE 2 FIX: Enhanced routing with past-tense detection
+            RoutingDecision decision = determineEnhancedRouting(analysis, extractedEntities, correctedInput);
             
             // Step 5: Create complete response with ALL required attributes
             double processingTime = (System.nanoTime() - startTime) / 1000.0;
             
             return new CompleteMLResponse(
                 decision.route, decision.reason, decision.intentType,
-                userInput, correctedInput, hasSpellCorrections, contractId,
+                userInput, correctedInput, hasSpellCorrections, 
+                extractedEntities.get("contract_number"),
                 analysis.partsKeywords, analysis.createKeywords,
                 decision.businessRuleViolation, decision.enhancementApplied,
-                decision.contextScore, processingTime
+                decision.contextScore, processingTime, extractedEntities
             );
             
         } catch (Exception e) {
             return createErrorResponse("System error: " + e.getMessage());
         }
+    }
+    
+    /**
+     * PHASE 2 FIX: Initialize enhanced regex patterns for better entity extraction
+     */
+    private void initializePatterns() {
+        contractIdPattern = Pattern.compile("\\b(\\d{3,10})\\b");
+        partNumberPattern = Pattern.compile("\\b([A-Z]{1,3}\\d{2,5})\\b", Pattern.CASE_INSENSITIVE);
+        customerNumberPattern = Pattern.compile("customer\\s+number\\s+(\\d+)", Pattern.CASE_INSENSITIVE);
+        accountNumberPattern = Pattern.compile("account\\s+(?:number\\s+)?(\\d+)", Pattern.CASE_INSENSITIVE);
     }
     
     /**
@@ -89,13 +116,15 @@ public class CompleteMLController {
         partsKeywords = new HashSet<>(Arrays.asList(
             "parts", "part", "lines", "line", "components", "component",
             "prts", "prt", "prduct", "product", "ae125", "ae126", "manufacturer",
-            "inventory", "stock", "item", "items", "materials", "supplies"
+            "inventory", "stock", "item", "items", "materials", "supplies",
+            "spec", "specs", "specification", "specifications", "warranty", 
+            "discontinued", "availability", "pricing", "cost", "datasheet"
         ));
         
         // Creation/Help keywords (refined to avoid false positives)
         createKeywords = new HashSet<>(Arrays.asList(
             "create", "creating", "make", "new", "generate", "help", "how to",
-            "guide", "steps", "process", "workflow", "instruction", "tutorial"
+            "guide", "steps", "process", "workflow", "instruction", "tutorial", "add"
         ));
         
         // Contract-related keywords
@@ -106,7 +135,7 @@ public class CompleteMLController {
     }
     
     /**
-     * Initialize spell correction dictionary
+     * PHASE 2 FIX: Enhanced spell correction dictionary with 50+ corrections
      */
     private void initializeSpellCorrections() {
         spellCorrections = new HashMap<>();
@@ -115,44 +144,61 @@ public class CompleteMLController {
         spellCorrections.put("cntract", "contract");
         spellCorrections.put("contrct", "contract");
         spellCorrections.put("kontrct", "contract");
+        spellCorrections.put("kontract", "contract");
         spellCorrections.put("contrst", "contract");
         spellCorrections.put("contarct", "contract");
+        spellCorrections.put("contrato", "contract");
         spellCorrections.put("cntracts", "contracts");
         spellCorrections.put("contrcts", "contracts");
+        spellCorrections.put("cntrct", "contract");
         
         // Common word corrections
         spellCorrections.put("detals", "details");
         spellCorrections.put("detils", "details");
+        spellCorrections.put("detials", "details");
+        spellCorrections.put("detalles", "details");
         spellCorrections.put("retrive", "retrieve");
         spellCorrections.put("activ", "active");
         spellCorrections.put("expird", "expired");
         spellCorrections.put("btw", "between");
+        spellCorrections.put("btwn", "between");
         
         // Account/Customer corrections
         spellCorrections.put("accnt", "account");
         spellCorrections.put("acnt", "account");
         spellCorrections.put("custmr", "customer");
+        spellCorrections.put("custmer", "customer");
         spellCorrections.put("cutomer", "customer");
+        spellCorrections.put("honeywel", "honeywell");
         
         // Action corrections
         spellCorrections.put("shw", "show");
         spellCorrections.put("shwo", "show");
         spellCorrections.put("dsply", "display");
         spellCorrections.put("lst", "list");
+        spellCorrections.put("wats", "what's");
+        spellCorrections.put("statuz", "status");
         
         // Loading/Status corrections (NOT creation)
         spellCorrections.put("loadded", "loaded");
         spellCorrections.put("loadding", "loading");
         spellCorrections.put("addedd", "added");
+        spellCorrections.put("discntinued", "discontinued");
         
         // Parts-related corrections
         spellCorrections.put("prts", "parts");
         spellCorrections.put("partz", "parts");
         spellCorrections.put("parst", "parts");
         spellCorrections.put("prt", "part");
+        spellCorrections.put("numbr", "number");
+        
+        // Multi-language support
+        spellCorrections.put("kab", "when");
+        spellCorrections.put("hoga", "will be");
         
         // Common abbreviations
         spellCorrections.put("plz", "please");
+        spellCorrections.put("pls", "please");
         spellCorrections.put("fr", "for");
         spellCorrections.put("wat", "what");
         spellCorrections.put("al", "all");
@@ -169,18 +215,82 @@ public class CompleteMLController {
     }
     
     /**
-     * Perform spell correction on user input
+     * PHASE 2 FIX: Enhanced spell correction with comprehensive tracking
      */
-    private String performSpellCorrection(String input) {
-        String[] words = input.split("\\s+");
-        StringBuilder corrected = new StringBuilder();
+    private String performEnhancedSpellCorrection(String input, Map<String, String> appliedCorrections) {
+        String corrected = input;
         
+        String[] words = input.split("\\s+");
         for (String word : words) {
-            String correctedWord = correctSingleWord(word);
-            corrected.append(correctedWord).append(" ");
+            String cleanWord = word.toLowerCase().replaceAll("[^a-z0-9]", "");
+            if (spellCorrections.containsKey(cleanWord)) {
+                String correction = spellCorrections.get(cleanWord);
+                appliedCorrections.put(cleanWord, correction);
+                corrected = corrected.replaceAll("(?i)\\b" + Pattern.quote(word) + "\\b", correction);
+            }
         }
         
-        return corrected.toString().trim();
+        return corrected;
+    }
+    
+    /**
+     * PHASE 2 FIX: Enhanced entity extraction with proper customer number handling
+     */
+    private Map<String, String> extractEntitiesEnhanced(String input) {
+        Map<String, String> entities = new HashMap<>();
+        
+        // Extract contract ID
+        Matcher contractMatcher = contractIdPattern.matcher(input);
+        if (contractMatcher.find()) {
+            entities.put("contract_number", contractMatcher.group(1));
+        }
+        
+        // Extract part number
+        Matcher partMatcher = partNumberPattern.matcher(input);
+        if (partMatcher.find()) {
+            entities.put("part_number", partMatcher.group(1));
+        }
+        
+        // CRITICAL FIX: Extract customer number (not name as "number")
+        Matcher customerMatcher = customerNumberPattern.matcher(input);
+        if (customerMatcher.find()) {
+            entities.put("customer_number", customerMatcher.group(1));
+            // Don't set customer_name to "number" - this was the bug
+        }
+        
+        // Extract customer name (when not a number)
+        if (input.toLowerCase().contains("customer") && !input.toLowerCase().contains("customer number")) {
+            Pattern customerNamePattern = Pattern.compile("customer\\s+([a-zA-Z]+)", Pattern.CASE_INSENSITIVE);
+            Matcher customerNameMatcher = customerNamePattern.matcher(input);
+            if (customerNameMatcher.find()) {
+                entities.put("customer_name", customerNameMatcher.group(1));
+            }
+        }
+        
+        // Extract account number
+        Matcher accountMatcher = accountNumberPattern.matcher(input);
+        if (accountMatcher.find()) {
+            entities.put("account_number", accountMatcher.group(1));
+        }
+        
+        // Extract created_by
+        if (input.toLowerCase().contains("created by") || input.toLowerCase().matches(".*\\bby\\s+\\w+.*")) {
+            Pattern createdByPattern = Pattern.compile("(?:created\\s+)?by\\s+(\\w+)", Pattern.CASE_INSENSITIVE);
+            Matcher createdByMatcher = createdByPattern.matcher(input);
+            if (createdByMatcher.find()) {
+                entities.put("created_by", createdByMatcher.group(1));
+            }
+        }
+        
+        return entities;
+    }
+    
+    /**
+     * Perform spell correction on user input - LEGACY METHOD (kept for compatibility)
+     */
+    private String performSpellCorrection(String input) {
+        Map<String, String> dummy = new HashMap<>();
+        return performEnhancedSpellCorrection(input, dummy);
     }
     
     /**
@@ -240,82 +350,31 @@ public class CompleteMLController {
     }
     
     /**
-     * Extract contract ID from input using multiple patterns
+     * Extract contract ID from input using multiple patterns - LEGACY METHOD
      */
     private String extractContractId(String input) {
-        String[] words = input.split("\\s+");
-        
-        // Pattern 1: Exact 6-digit numbers (primary contract ID format)
-        for (String word : words) {
-            if (word.matches("\\d{6}")) {
-                return word;
-            }
-        }
-        
-        // Pattern 2: 4-8 digit numbers (secondary formats)
-        for (String word : words) {
-            if (word.matches("\\d{4,8}")) {
-                return word;
-            }
-        }
-        
-        // Pattern 3: Contract followed by numbers (contract123456)
-        if (input.toLowerCase().matches(".*contract\\d{4,8}.*")) {
-            String[] parts = input.toLowerCase().split("contract");
-            if (parts.length > 1) {
-                String numberPart = parts[1].replaceAll("[^0-9]", "");
-                if (numberPart.length() >= 4) {
-                    return numberPart;
-                }
-            }
-        }
-        
-        // Pattern 4: Any word+number combination after correction
-        for (String word : words) {
-            String cleanWord = word.replaceAll("[^a-zA-Z0-9]", "");
-            if (cleanWord.matches(".*\\d{6,8}.*")) {
-                String numberPart = cleanWord.replaceAll("[^0-9]", "");
-                if (numberPart.length() >= 6) {
-                    return numberPart;
-                }
-            }
-        }
-        
-        // Pattern 5: Numbers after "for" (parts for 123456)
-        if (input.toLowerCase().contains("for ")) {
-            String[] parts = input.toLowerCase().split("for ");
-            if (parts.length > 1) {
-                String afterFor = parts[1].trim();
-                String[] afterForWords = afterFor.split("\\s+");
-                if (afterForWords.length > 0 && afterForWords[0].matches("\\d{4,8}")) {
-                    return afterForWords[0];
-                }
-            }
-        }
-        
-        return null;
+        // Use enhanced entity extraction instead
+        Map<String, String> entities = extractEntitiesEnhanced(input);
+        return entities.get("contract_number");
     }
     
     /**
-     * Detect past-tense queries for enhanced routing
+     * PHASE 2 FIX: Enhanced past-tense detection
      */
     private boolean isPastTenseQuery(String input) {
-        boolean hasCreated = input.toLowerCase().contains("created");
-        boolean hasPastIndicators = input.toLowerCase().contains("by") || 
-                                   input.toLowerCase().contains("in") || 
-                                   input.toLowerCase().contains("after") ||
-                                   input.toLowerCase().contains("before");
-        return hasCreated && hasPastIndicators;
+        String lowerInput = input.toLowerCase();
+        return lowerInput.contains("created") || lowerInput.contains("made") || 
+               lowerInput.contains("generated") || lowerInput.contains("added");
     }
     
     /**
-     * Determine routing based on analysis with business rules
+     * PHASE 2 FIX: Enhanced routing with proper past-tense detection
      */
-    private RoutingDecision determineRouting(KeywordAnalysis analysis, String contractId, String input) {
+    private RoutingDecision determineEnhancedRouting(KeywordAnalysis analysis, Map<String, String> entities, String input) {
         boolean hasPartsKeywords = !analysis.partsKeywords.isEmpty();
         boolean hasCreateKeywords = !analysis.createKeywords.isEmpty();
         boolean isPastTense = isPastTenseQuery(input);
-        boolean hasContractId = contractId != null;
+        boolean hasContractId = entities.containsKey("contract_number");
         boolean isQueryIntent = isQueryIntent(input);
         
         String route;
@@ -351,10 +410,10 @@ public class CompleteMLController {
             intentType = hasContractId ? "CONTRACT_ID_QUERY" : "GENERAL_CONTRACT_QUERY";
             
             if (hasContractId) {
-                reason += " (Contract ID: " + contractId + ")";
+                reason += " (Contract ID: " + entities.get("contract_number") + ")";
             }
             
-            // ENHANCEMENT: Past-tense detection
+            // PHASE 2 ENHANCEMENT: Past-tense detection
             if (isPastTense) {
                 enhancementApplied = "Past-tense detection applied";
                 contextScore = 9.0;
@@ -363,6 +422,17 @@ public class CompleteMLController {
         }
         
         return new RoutingDecision(route, reason, intentType, businessRuleViolation, enhancementApplied, contextScore);
+    }
+    
+    /**
+     * Determine routing based on analysis with business rules - LEGACY METHOD
+     */
+    private RoutingDecision determineRouting(KeywordAnalysis analysis, String contractId, String input) {
+        Map<String, String> entities = new HashMap<>();
+        if (contractId != null) {
+            entities.put("contract_number", contractId);
+        }
+        return determineEnhancedRouting(analysis, entities, input);
     }
     
     /**
@@ -392,7 +462,7 @@ public class CompleteMLController {
     private CompleteMLResponse createErrorResponse(String message) {
         return new CompleteMLResponse(
             "ERROR", message, "ERROR", "", "", false, null,
-            new HashSet<>(), new HashSet<>(), null, null, 0.0, 0.0
+            new HashSet<>(), new HashSet<>(), null, null, 0.0, 0.0, new HashMap<>()
         );
     }
     
