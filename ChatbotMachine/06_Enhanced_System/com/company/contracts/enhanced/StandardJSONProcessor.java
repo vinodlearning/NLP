@@ -148,6 +148,240 @@ public class StandardJSONProcessor {
     }
     
     /**
+     * Process query and return Java object for easy access
+     * Converts JSON string to QueryResult object
+     */
+    public QueryResult processQueryToObject(String originalInput) {
+        String jsonString = processQuery(originalInput);
+        return parseJSONToObject(jsonString);
+    }
+    
+    /**
+     * Parse JSON string to QueryResult object
+     */
+    private QueryResult parseJSONToObject(String jsonString) {
+        try {
+            // Simple JSON parsing without external libraries
+            QueryResult result = new QueryResult();
+            
+            // Extract main sections
+            result.inputTracking = parseInputTracking(jsonString);
+            result.header = parseHeader(jsonString);
+            result.metadata = parseMetadata(jsonString);
+            result.entities = parseEntities(jsonString);
+            result.displayEntities = parseDisplayEntities(jsonString);
+            result.errors = parseErrors(jsonString);
+            
+            return result;
+            
+        } catch (Exception e) {
+            // Return error result
+            QueryResult errorResult = new QueryResult();
+            errorResult.metadata = new QueryMetadata("ERROR", "PARSE_ERROR", 0.0);
+            errorResult.errors = Arrays.asList(new ValidationError("PARSE_ERROR", "Failed to parse JSON: " + e.getMessage(), "ERROR"));
+            return errorResult;
+        }
+    }
+    
+    /**
+     * Parse inputTracking section from JSON
+     */
+    private InputTrackingResult parseInputTracking(String json) {
+        String originalInput = extractJSONValue(json, "originalInput");
+        String correctedInput = extractJSONValue(json, "correctedInput");
+        String confidenceStr = extractJSONValue(json, "correctionConfidence");
+        
+        double confidence = 0.0;
+        if (confidenceStr != null && !confidenceStr.equals("null")) {
+            try {
+                confidence = Double.parseDouble(confidenceStr);
+            } catch (NumberFormatException e) {
+                confidence = 0.0;
+            }
+        }
+        
+        return new InputTrackingResult(originalInput, correctedInput, confidence);
+    }
+    
+    /**
+     * Parse header section from JSON
+     */
+    private Header parseHeader(String json) {
+        Header header = new Header();
+        header.contractNumber = extractJSONValue(json, "contractNumber");
+        header.partNumber = extractJSONValue(json, "partNumber");
+        header.customerNumber = extractJSONValue(json, "customerNumber");
+        header.customerName = extractJSONValue(json, "customerName");
+        header.createdBy = extractJSONValue(json, "createdBy");
+        
+        // Handle null values
+        if ("null".equals(header.contractNumber)) header.contractNumber = null;
+        if ("null".equals(header.partNumber)) header.partNumber = null;
+        if ("null".equals(header.customerNumber)) header.customerNumber = null;
+        if ("null".equals(header.customerName)) header.customerName = null;
+        if ("null".equals(header.createdBy)) header.createdBy = null;
+        
+        return header;
+    }
+    
+    /**
+     * Parse metadata section from JSON
+     */
+    private QueryMetadata parseMetadata(String json) {
+        String queryType = extractJSONValue(json, "queryType");
+        String actionType = extractJSONValue(json, "actionType");
+        String processingTimeStr = extractJSONValue(json, "processingTimeMs");
+        
+        double processingTime = 0.0;
+        if (processingTimeStr != null && !processingTimeStr.equals("null")) {
+            try {
+                processingTime = Double.parseDouble(processingTimeStr);
+            } catch (NumberFormatException e) {
+                processingTime = 0.0;
+            }
+        }
+        
+        return new QueryMetadata(queryType, actionType, processingTime);
+    }
+    
+    /**
+     * Parse entities array from JSON
+     */
+    private List<EntityFilter> parseEntities(String json) {
+        List<EntityFilter> entities = new ArrayList<>();
+        
+        // Find entities array
+        String entitiesSection = extractJSONArray(json, "entities");
+        if (entitiesSection != null) {
+            // Parse each entity object
+            String[] entityObjects = splitJSONObjects(entitiesSection);
+            for (String entityObj : entityObjects) {
+                String attribute = extractJSONValue(entityObj, "attribute");
+                String operation = extractJSONValue(entityObj, "operation");
+                String value = extractJSONValue(entityObj, "value");
+                String source = extractJSONValue(entityObj, "source");
+                
+                entities.add(new EntityFilter(attribute, operation, value, source));
+            }
+        }
+        
+        return entities;
+    }
+    
+    /**
+     * Parse displayEntities array from JSON
+     */
+    private List<String> parseDisplayEntities(String json) {
+        List<String> displayEntities = new ArrayList<>();
+        
+        String displaySection = extractJSONArray(json, "displayEntities");
+        if (displaySection != null) {
+            String[] items = splitJSONArrayItems(displaySection);
+            for (String item : items) {
+                displayEntities.add(item.replace("\"", ""));
+            }
+        }
+        
+        return displayEntities;
+    }
+    
+    /**
+     * Parse errors array from JSON
+     */
+    private List<ValidationError> parseErrors(String json) {
+        List<ValidationError> errors = new ArrayList<>();
+        
+        String errorsSection = extractJSONArray(json, "errors");
+        if (errorsSection != null) {
+            String[] errorObjects = splitJSONObjects(errorsSection);
+            for (String errorObj : errorObjects) {
+                String code = extractJSONValue(errorObj, "code");
+                String message = extractJSONValue(errorObj, "message");
+                String severity = extractJSONValue(errorObj, "severity");
+                
+                errors.add(new ValidationError(code, message, severity));
+            }
+        }
+        
+        return errors;
+    }
+    
+    /**
+     * Extract JSON value by key
+     */
+    private String extractJSONValue(String json, String key) {
+        String pattern = "\"" + key + "\"\\s*:\\s*\"([^\"]*)\"|\"" + key + "\"\\s*:\\s*([^,}\\]]+)";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(pattern);
+        java.util.regex.Matcher m = p.matcher(json);
+        
+        if (m.find()) {
+            return m.group(1) != null ? m.group(1) : m.group(2).trim();
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Extract JSON array by key
+     */
+    private String extractJSONArray(String json, String key) {
+        String pattern = "\"" + key + "\"\\s*:\\s*\\[([^\\]]*(?:\\[[^\\]]*\\][^\\]]*)*)\\]";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(pattern);
+        java.util.regex.Matcher m = p.matcher(json);
+        
+        if (m.find()) {
+            return m.group(1);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Split JSON objects in array
+     */
+    private String[] splitJSONObjects(String arrayContent) {
+        if (arrayContent == null || arrayContent.trim().isEmpty()) {
+            return new String[0];
+        }
+        
+        List<String> objects = new ArrayList<>();
+        int braceCount = 0;
+        int start = 0;
+        
+        for (int i = 0; i < arrayContent.length(); i++) {
+            char c = arrayContent.charAt(i);
+            if (c == '{') {
+                braceCount++;
+            } else if (c == '}') {
+                braceCount--;
+                if (braceCount == 0) {
+                    objects.add(arrayContent.substring(start, i + 1));
+                    start = i + 1;
+                    // Skip comma and whitespace
+                    while (start < arrayContent.length() && 
+                           (arrayContent.charAt(start) == ',' || Character.isWhitespace(arrayContent.charAt(start)))) {
+                        start++;
+                    }
+                    i = start - 1; // -1 because loop will increment
+                }
+            }
+        }
+        
+        return objects.toArray(new String[0]);
+    }
+    
+    /**
+     * Split JSON array items (for simple arrays)
+     */
+    private String[] splitJSONArrayItems(String arrayContent) {
+        if (arrayContent == null || arrayContent.trim().isEmpty()) {
+            return new String[0];
+        }
+        
+        return arrayContent.split(",\\s*");
+    }
+
+    /**
      * Enhanced input tracking with better spell correction
      */
     private InputTrackingResult processInputTracking(String originalInput) {
@@ -826,55 +1060,55 @@ public class StandardJSONProcessor {
     }
     
     // Data classes
-    private static class InputTrackingResult {
-        final String originalInput;
-        final String correctedInput;
-        final double correctionConfidence;
+    public static class InputTrackingResult {
+        public final String originalInput;
+        public final String correctedInput;
+        public final double correctionConfidence;
         
-        InputTrackingResult(String originalInput, String correctedInput, double correctionConfidence) {
+        public InputTrackingResult(String originalInput, String correctedInput, double correctionConfidence) {
             this.originalInput = originalInput;
             this.correctedInput = correctedInput;
             this.correctionConfidence = correctionConfidence;
         }
     }
     
-    private static class Header {
-        String contractNumber;
-        String partNumber;
-        String customerNumber;
-        String customerName;
-        String createdBy;
+    public static class Header {
+        public String contractNumber;
+        public String partNumber;
+        public String customerNumber;
+        public String customerName;
+        public String createdBy;
     }
     
-    private static class HeaderResult {
-        final Header header;
-        final List<String> issues;
+    public static class HeaderResult {
+        public final Header header;
+        public final List<String> issues;
         
-        HeaderResult(Header header, List<String> issues) {
+        public HeaderResult(Header header, List<String> issues) {
             this.header = header;
             this.issues = issues;
         }
     }
     
-    private static class QueryMetadata {
-        final String queryType;
-        final String actionType;
-        double processingTimeMs;
+    public static class QueryMetadata {
+        public final String queryType;
+        public final String actionType;
+        public double processingTimeMs;
         
-        QueryMetadata(String queryType, String actionType, double processingTimeMs) {
+        public QueryMetadata(String queryType, String actionType, double processingTimeMs) {
             this.queryType = queryType;
             this.actionType = actionType;
             this.processingTimeMs = processingTimeMs;
         }
     }
     
-    private static class EntityFilter {
-        final String attribute;
-        final String operation;
-        final String value;
-        final String source;
+    public static class EntityFilter {
+        public final String attribute;
+        public final String operation;
+        public final String value;
+        public final String source;
         
-        EntityFilter(String attribute, String operation, String value, String source) {
+        public EntityFilter(String attribute, String operation, String value, String source) {
             this.attribute = attribute;
             this.operation = operation;
             this.value = value;
@@ -882,15 +1116,109 @@ public class StandardJSONProcessor {
         }
     }
     
-    private static class ValidationError {
-        final String code;
-        final String message;
-        final String severity;
+    public static class ValidationError {
+        public final String code;
+        public final String message;
+        public final String severity;
         
-        ValidationError(String code, String message, String severity) {
+        public ValidationError(String code, String message, String severity) {
             this.code = code;
             this.message = message;
             this.severity = severity;
+        }
+    }
+    
+    /**
+     * QueryResult class for easy Java object access
+     * Contains all parsed components from JSON response
+     */
+    public static class QueryResult {
+        public InputTrackingResult inputTracking;
+        public Header header;
+        public QueryMetadata metadata;
+        public List<EntityFilter> entities;
+        public List<String> displayEntities;
+        public List<ValidationError> errors;
+        
+        public QueryResult() {
+            this.entities = new ArrayList<>();
+            this.displayEntities = new ArrayList<>();
+            this.errors = new ArrayList<>();
+        }
+        
+        // Convenience methods for easy access
+        public String getContractNumber() {
+            return header != null ? header.contractNumber : null;
+        }
+        
+        public String getPartNumber() {
+            return header != null ? header.partNumber : null;
+        }
+        
+        public String getCustomerNumber() {
+            return header != null ? header.customerNumber : null;
+        }
+        
+        public String getCustomerName() {
+            return header != null ? header.customerName : null;
+        }
+        
+        public String getCreatedBy() {
+            return header != null ? header.createdBy : null;
+        }
+        
+        public String getOriginalInput() {
+            return inputTracking != null ? inputTracking.originalInput : null;
+        }
+        
+        public String getCorrectedInput() {
+            return inputTracking != null ? inputTracking.correctedInput : null;
+        }
+        
+        public double getCorrectionConfidence() {
+            return inputTracking != null ? inputTracking.correctionConfidence : 0.0;
+        }
+        
+        public String getQueryType() {
+            return metadata != null ? metadata.queryType : null;
+        }
+        
+        public String getActionType() {
+            return metadata != null ? metadata.actionType : null;
+        }
+        
+        public double getProcessingTimeMs() {
+            return metadata != null ? metadata.processingTimeMs : 0.0;
+        }
+        
+        public boolean hasErrors() {
+            return errors != null && !errors.isEmpty();
+        }
+        
+        public boolean hasBlockingErrors() {
+            return errors != null && errors.stream().anyMatch(e -> "BLOCKER".equals(e.severity));
+        }
+        
+        public boolean hasSpellCorrections() {
+            return inputTracking != null && inputTracking.correctedInput != null;
+        }
+        
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("QueryResult {\n");
+            sb.append("  Original Input: ").append(getOriginalInput()).append("\n");
+            sb.append("  Corrected Input: ").append(getCorrectedInput()).append("\n");
+            sb.append("  Contract Number: ").append(getContractNumber()).append("\n");
+            sb.append("  Part Number: ").append(getPartNumber()).append("\n");
+            sb.append("  Customer Number: ").append(getCustomerNumber()).append("\n");
+            sb.append("  Query Type: ").append(getQueryType()).append("\n");
+            sb.append("  Action Type: ").append(getActionType()).append("\n");
+            sb.append("  Processing Time: ").append(getProcessingTimeMs()).append(" ms\n");
+            sb.append("  Has Errors: ").append(hasErrors()).append("\n");
+            sb.append("  Has Spell Corrections: ").append(hasSpellCorrections()).append("\n");
+            sb.append("}");
+            return sb.toString();
         }
     }
     
